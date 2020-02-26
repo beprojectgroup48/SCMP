@@ -1,4 +1,4 @@
-import { RegistrationService } from '../../service/registration.service';
+import { RegistrationService } from '../../Register/Services/registration.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { manufacturer } from '../../Manufacturer/Models/manufacturer'
@@ -7,11 +7,11 @@ import { pharmacist } from '../../Pharmacist/Models/pharmacist'
 import { customer } from '../../Customer/Models/customer'
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css']
+  selector: 'app-mainpage',
+  templateUrl: './mainpage.component.html',
+  styleUrls: ['./mainpage.component.css']
 })
-export class LoginFormComponent implements OnInit {
+export class MainPageComponent implements OnInit {
 
   constructor(private router: Router, private RegistrationService: RegistrationService) { }
 
