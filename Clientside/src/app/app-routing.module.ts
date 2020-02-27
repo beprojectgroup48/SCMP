@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainPageComponent } from './Main Page/Components/mainpage.component'
-import { RegisterComponent } from './Register/Components/register.component';
 import { LoginComponent } from './Login/Components/login.component';
+import { RegisterComponent } from './Register/Components/register.component';
+import { MainPageComponent } from './Main Page/Components/mainpage.component';
 
 const routes: Routes = [
   {path:'',component:MainPageComponent,

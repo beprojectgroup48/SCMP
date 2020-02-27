@@ -24,7 +24,7 @@ const distributorSchema = mongoose.Schema({
     }
 
 },{
-    collection: 'registration'
+    collection: 'distributor'
 });
 
 const distributors = module.exports = mongoose.model('distributors', distributorSchema);
