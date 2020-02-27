@@ -1,26 +1,45 @@
 <div class="login-content">
 <form #frm="ngForm" (ngSubmit)="addUser(frm)">
-        <mat-select placeholder = "role" 
+      <mat-form-field>
+        <mat-select placeholder = "Role" 
            [(ngModel)] = "roleType" name = "addKarRe" required>
-           <mat-option *ngFor = "let stakeholder of stakeholders" 
+           <mat-option *ngFor = "let stakeholder of stakeholders"
               [value] = "stakeholder">
               {{stakeholder}}
            </mat-option>
         </mat-select>
+      </mat-form-field>
    <div class="input-div one;form-group">
       <div class="i">
            <mat-icon>person</mat-icon>
       </div>
       <div class="div">
-          <input #name1User="ngModel" required pattern="[a-zA-Z ]{2,}" type="text" class="input" name="name" placeholder="Name" class="form-control" ngModel>
+          <input #name1User="ngModel" required pattern="[a-zA-Z ]{1,}" type="text" class="input" name="name" placeholder="Name" class="form-control" ngModel>
       </div>
    </div>
    <div *ngIf="name1User.touched">
-     <div class="abc" *ngIf="name1User.errors?.required">
-        Name is required!
+         <div class="abc" *ngIf="name1User.errors?.required">
+            Name is required!
+         </div>
+         <div class="abc" *ngIf="name1User.errors?.pattern">
+            Name is invalid!
+         </div>
+       </div>
+   <div class="input-div one;form-group">
+         <div class="i">
+              <mat-icon>email</mat-icon>
+         </div>
+         <div class="div">
+             <input pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" 
+             #email1User="ngModel" required type="email" class="input" name="email" placeholder="Email" class="form-control" ngModel>
+         </div>
+      </div>
+   <div *ngIf="email1User.touched">
+     <div class="abc" *ngIf="email1User.errors?.required">
+        Email is required!
      </div>
-     <div class="abc" *ngIf="name1User.errors?.pattern">
-        Name is invalid!
+     <div class="abc" *ngIf="email1User.errors?.pattern">
+        Email is invalid!
      </div>
    </div>
    <div class="input-div one;form-group">
@@ -40,6 +59,23 @@
         Number is invalid!
      </div>
    </div>
+   <div class="input-div pass;form-group">
+         <div class="i"> 
+              <mat-icon>lock</mat-icon>
+         </div>
+         <div class="div">
+            <input #pass1User="ngModel" required type="password" pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$" 
+            class="input" name="password" placeholder="Password" class="form-control" ngModel>
+        </div>
+     </div>
+     <div *ngIf="pass1User.touched">
+        <div class="abc" *ngIf="pass1User.errors?.required">
+           Password is required!
+        </div>
+        <div class="abc" *ngIf="pass1User.errors?.pattern" style="margin-left: 150px">
+           uppercase, lowercase, special char, no. & min-length 8 required!
+        </div>
+      </div>
   <div *ngIf="roleType=='Customer'">
   <div class="input-div one;form-group">
       <div class="i"> 
@@ -76,23 +112,6 @@
      </div>
    </div>
   </div>
-  <div class="input-div pass;form-group">
-      <div class="i"> 
-           <mat-icon>lock</mat-icon>
-      </div>
-      <div class="div">
-         <input #pass1User="ngModel" required type="password" pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$" 
-         class="input" name="password" placeholder="Password" class="form-control" ngModel>
-     </div>
-  </div>
-  <div *ngIf="pass1User.touched">
-     <div class="abc" *ngIf="pass1User.errors?.required">
-        Password is required!
-     </div>
-     <div class="abc" *ngIf="pass1User.errors?.pattern">
-        Password is invalid!
-     </div>
-   </div>
    <div *ngIf="roleType=='Manufacturer'">
   <div class="input-div one;form-group">
      <div class="i"> 
@@ -144,7 +163,7 @@
            <mat-icon>description</mat-icon>
      </div>
      <div class="div">
-        <input #licenceUser="ngModel" required type="number" pattern="[0-9]+" class="input" name="licenceNumber" placeholder="Licence Number" class="form-control" ngModel>
+        <input #licenceUser="ngModel" required type="number" pattern="[0-9]{1,}" class="input" name="licenceNumber" placeholder="Licence Number" class="form-control" ngModel>
      </div>
   </div>
   <div *ngIf="licenceUser.touched">
@@ -157,5 +176,7 @@
    </div>
    </div>
   <button (click)="gotoLoginPage()" type="submit" class="btn btn-success" value="Register" [disabled]="frm.invalid">Register</button>
+  <p style="margin-top: 5px;color: #6b706e;">Already have an account?</p>
+  <a style="margin-left: -5px; display: inline;" routerLink="/login">Login</a>
 </form>
 </div>
