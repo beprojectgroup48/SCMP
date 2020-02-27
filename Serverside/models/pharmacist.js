@@ -27,6 +27,6 @@ const pharmacistSchema = mongoose.Schema({
     }
 
 },{
-    collection: 'registration'
+    collection: 'pharmacist'
 });
 const pharmacists = module.exports = mongoose.model('pharmacists', pharmacistSchema);

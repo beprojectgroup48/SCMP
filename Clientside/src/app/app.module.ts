@@ -6,19 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule,MatSelectModule,MatIconModule} from '@angular/material';
-import { LoginFormComponent } from './login-form/login-form.component'
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { ProfileComponent } from './profile/profile.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/Components/login.component';
+import { RegisterComponent } from './register/Components/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent,
-    ProfileComponent,
     LoginComponent,
     RegisterComponent
   ],

@@ -20,7 +20,7 @@ const customerSchema = mongoose.Schema({
    
 
 },{
-    collection: 'registration'
+    collection: 'customer'
 });
 
 

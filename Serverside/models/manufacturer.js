@@ -33,7 +33,7 @@ const manufacturerSchema = mongoose.Schema({
         required: true
     }
 },{
-    collection: 'registration'
+    collection: 'manufacturer'
 });
 
 const manufacturers = module.exports = mongoose.model('manufacturers', manufacturerSchema);
