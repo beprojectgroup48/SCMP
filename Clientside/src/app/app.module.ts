@@ -12,13 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { LoginComponent } from './Login/Components/login.component';
 import { RegisterComponent } from './Register/Components/register.component';
+import { ForgetpassComponent } from './Forgot Password/Components/forgetpass.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgetpassComponent
   ],
   imports: [
     BrowserModule,

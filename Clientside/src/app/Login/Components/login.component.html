@@ -1,14 +1,6 @@
+<div class="login-content">
 <form #frm2="ngForm" (ngSubmit)="login(frm2)">
-  <mat-form-field>
-        <mat-select placeholder = "Login as" #loginas="ngModel"
-           [(ngModel)] = "userType" name = "login" required>
-           <mat-option *ngFor = "let stakeholder of stakeholders" 
-              [value] = "stakeholder">
-              {{stakeholder}}
-           </mat-option>
-        </mat-select>
-     </mat-form-field>
-   <div class="input-div one;form-group">
+   <div class="input-div one;form-group" style="margin-top: 20px">
       <div class="i">
            <mat-icon>person</mat-icon>
       </div>
@@ -33,12 +25,16 @@
      </div>
   </div>
   <div *ngIf="passUser.touched">
-     <div class="abc" *ngIf="passUser.errors?.required">
+     <div class="abc" *ngIf="passUser.errors?.required" style="margin-bottom: 0px">
         Password is required!
      </div>
-     <div class="abc" *ngIf="passUser.errors?.pattern">
+     <div class="abc" *ngIf="passUser.errors?.pattern" style="margin-bottom: 0px">
         Password is invalid!
      </div>
    </div>
+  <a style="margin-left: 210px; display: inline;" routerLink="/register">Forgot password?</a>
   <button (click)="gotoHomePage()" type="submit" class="btn btn-success" value="Login" [disabled]="frm2.invalid">Login</button>
+   <p style="margin-top: 40px;color: #6b706e;">Have not account yet?</p>
+   <a style="margin-left: -5px; display: inline;" routerLink="/register">Create account</a>
 </form>
+</div>
