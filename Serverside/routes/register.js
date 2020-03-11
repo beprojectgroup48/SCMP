@@ -2,10 +2,10 @@ const express = require('express');
 
 var router = express.Router();
 
-const Manufacturer = require('../models/manufacturer');
-const Distributor = require('../models/distributor');
-const Pharmacist = require('../models/pharmacist');
-const Customer = require('../models/customer');
+const Manufacturer = require('../models/manufacturer/manufacturermodel');
+const Distributor = require('../models/distributor/distributormodel');
+const Pharmacist = require('../models/pharmacist/pharmacistmodel');
+const Customer = require('../models/customer/customermodel');
 
 var sendMail = require('../sendEmail');
 
@@ -23,7 +23,7 @@ router.post('/manufacturer', (req, res )=>{
         licenceNumber:req.body.licenceNumber
     });
     
-    manufacturer.save((err, manufacturer) => {
+    Manufacturer.addManufacturer(manufacturer,(err, manufacturer) => {
         if(err){
             console.log(err);
             res.json(err);
@@ -46,7 +46,7 @@ router.post('/distributor', (req, res )=>{
         licenceNumber:req.body.licenceNumber
     });
 
-    distributor.save((err, distributor) => {
+    Distributor.addDistributor(distributor, (err, distributor) => {
         if(err){
             console.log(err);
             res.json(err);
@@ -70,9 +70,8 @@ router.post('/pharmacist', (req, res )=>{
         licenceNumber:req.body.licenceNumber
     });
 
-    pharmacist.save((err, pharmacist) => {
+    Pharmacist.addPharmacist(pharmacist, (err, pharmacist) => {
         if(err){
-            console.log(err);
             res.json(err);
         }else{
             res.json({msg: 'register successfully'});
@@ -92,7 +91,7 @@ router.post('/customer', (req, res )=>{
         address:req.body.address
     });
 
-    customer.save((err, customer) => {
+    Customer.addCustomer(customer, (err, customer) => {
         if(err){
             console.log(err);
             res.json(err);
@@ -102,6 +101,5 @@ router.post('/customer', (req, res )=>{
     });
     sendMail.sendmail(req);
 });
-
 
 module.exports = router;
