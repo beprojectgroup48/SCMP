@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   password:String;
 
   gotoHomePage(){
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/dashboard']);
   }
 
   login(form2){
