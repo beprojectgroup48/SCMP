@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
 
   verifyLicence(licence){
     console.log(licence.value);
-    this.verify=2;
+    this.verify=1;
   }
 
   gotoLoginPage(){
