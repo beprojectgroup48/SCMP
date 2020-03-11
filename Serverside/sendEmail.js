@@ -8,7 +8,7 @@ const output = `
 <p> Node Mailer Contact </p>
 <h3> Credentials for your login <h3>
 <ul>
-    <li>UserName: ${req.body.name}</li>
+    <li>UserName: ${req.body.username}</li>
     <li>password: ${req.body.password}</li>
 </ul>  
 `;

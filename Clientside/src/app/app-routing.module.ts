@@ -5,8 +5,7 @@ import { RegisterComponent } from './Register/Components/register.component';
 import { MainPageComponent } from './Main Page/Components/mainpage.component';
 
 const routes: Routes = [
-  {path:'', component:MainPageComponent},
-  {path:'login', component:LoginComponent},
+  {path:'login', component:MainPageComponent},
   {path:'register', component:RegisterComponent},
   {path:'profile', component:RegisterComponent}
 ]
