@@ -30,26 +30,11 @@ import { HttpModule } from '@angular/http';
 import { LoginComponent } from './Login/Components/login.component';
 import { RegisterComponent } from './Register/Components/register.component';
 import { ForgetpassComponent } from './Forgot Password/Components/forgetpass.component';
-<<<<<<< HEAD
 import { DistributorYourOrderComponent } from './Distributor/Components/Your Order/dis-yourorder.component';
 import { DistributorDashboardComponent } from './Distributor/Components/Dashboard/dis-dashboard.component';
 import { DistributorNavigationComponent } from './Distributor/Components/Navigation/dis-navigation.component';
 import { CommonModule } from '@angular/common';
-=======
-import { FirstComponent } from './Distributor/Dashboard/first.component';
-import { SecondComponent } from './Distributor/Book Order/second.component';
-import { ThirdComponent } from './Distributor/your-orders/third.component';
-import { NavigationComponent } from './Distributor/navigation/navigation.component';
-import {RouterModule, Routes} from "@angular/router";
-import {CustomMaterialModule} from "./core/material.module";
->>>>>>> 279d3ae10aebf89343f7f26727aa5cd8c4b6cecd
 
-const appRoutes: Routes = [
-  { path: '', component: FirstComponent, data: { title: 'First Component' } },
-  { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
-  { path: 'second', component: SecondComponent, data: { title: 'Second Component' } },
-  { path: 'third', component: ThirdComponent,data:{title: 'Third Component'}}
-];
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,17 +42,10 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     ForgetpassComponent,
-<<<<<<< HEAD
     DistributorDashboardComponent,
     DistributorYourOrderComponent,
     DistributorBookOrderComponent,
     DistributorNavigationComponent
-=======
-    FirstComponent,
-    SecondComponent,
-    ThirdComponent,
-    NavigationComponent
->>>>>>> 279d3ae10aebf89343f7f26727aa5cd8c4b6cecd
   ],
   imports: [
     BrowserModule,
@@ -80,7 +58,6 @@ const appRoutes: Routes = [
     MatIconModule,
     HttpClientModule,
     HttpModule,
-<<<<<<< HEAD
 
     CommonModule,
     MatButtonModule,
@@ -94,13 +71,6 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule
-=======
-    RouterModule.forRoot(
-      appRoutes,
-      { useHash: true } // <-- debugging purposes only
-    ),
-    CustomMaterialModule
->>>>>>> 279d3ae10aebf89343f7f26727aa5cd8c4b6cecd
   ],
   providers: [],
   bootstrap: [AppComponent]
