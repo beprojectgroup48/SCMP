@@ -157,24 +157,33 @@
         </mat-option>
      </mat-select>
   </mat-form-field>
-  <div *ngIf="roleType=='Pharmacist' || roleType=='Distributer' || roleType=='Manufacturer'">
-  <div class="input-div one;form-group">
-     <div class="i"> 
-           <mat-icon>description</mat-icon>
-     </div>
-     <div class="div">
-        <input #licenceUser="ngModel" required type="number" pattern="[0-9]{1,}" class="input" name="licenceNumber" placeholder="Licence Number" class="form-control" ngModel>
-     </div>
-  </div>
-  <div *ngIf="licenceUser.touched">
-     <div class="abc" *ngIf="licenceUser.errors?.required">
-        Licence is required!
-     </div>
-     <div class="abc" *ngIf="licenceUser.errors?.pattern">
-        Licence is invalid!
-     </div>
+<!-- <div *ngIf="roleType=='Pharmacist' || roleType=='Distributer' || roleType=='Manufacturer'">
+--><div>
+   <div style="width:420px;">
+   <div class="input-div one;form-group" style="float: left; width: 210px;margin-bottom: 20px"> 
+         <div style="margin-left: 12px;" class="i"> 
+               <mat-icon>description</mat-icon>
+         </div>
+         <div style="margin-left: 11px;" class="div">
+            <input (ngModelChange)="verify='0'" #licenceUser="ngModel" required type="number" pattern="[0-9]{1,}" class="input" name="licenceNumber" placeholder="Licence Number" class="form-control" ngModel>
+         </div>
    </div>
+   <div style="float: left; width: 50px;margin-left: -5px">
+         <i *ngIf="verify=='1'" style="font-size:36px;color:aqua;margin-top: 5px;" class="fa fa-check-circle"></i>
+         <i *ngIf="verify=='2'" style="font-size:36px;color:red;margin-top: 5px;" class="fa fa-times-circle"></i>  
    </div>
+   <div style="float: right; width: 150px"> 
+      <input type="button" (click)="verifyLicence(licenceUser)" class="verify" value="verify" [disabled]="licenceUser.errors?.required">
+            
+      <div *ngIf="licenceUser.touched" style="margin-left: 20px">
+         <div style="margin-left: -420px" class="abc" *ngIf="licenceUser.errors?.required">
+            Licence is required!
+         </div>
+      </div>
+   </div>
+</div>
+
+</div>
   <button (click)="gotoLoginPage()" type="submit" class="btn btn-success" value="Register" [disabled]="frm.invalid">Register</button>
   <p style="margin-top: 5px;color: #6b706e;">Already have an account?</p>
   <a style="margin-left: -5px; display: inline;" routerLink="/login">Login</a>
