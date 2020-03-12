@@ -67,7 +67,7 @@ router.post('/pharmacist', (req, res )=>{
         name:req.body.name,
         mobileNumber:req.body.mobileNumber,
         location:req.body.location,
-        licenceNumber:req.body.licenceNumber
+        registrationId:req.body.registrationId
     });
 
     Pharmacist.addPharmacist(pharmacist, (err, pharmacist) => {

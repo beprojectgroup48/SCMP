@@ -1,9 +1,10 @@
 export class pharmacist {
   username:String;
   password:String;
+  email:String;
   name:String;
-  mobileNumber:number;
-  registrationId:number;
+  mobileNumber:Number;
+  registrationId:Number;
   location:String
 
 }

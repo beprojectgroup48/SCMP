@@ -6,6 +6,10 @@ const pharmacistSchema = mongoose.Schema({
        type:String,
        required:true
     },
+    email: {
+       type: String,
+       required: true
+    }, 
     name:{
         type:String,
         required:true
@@ -22,7 +26,7 @@ const pharmacistSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    licenceNumber: {
+    registrationId: {
         type: String,
         required: true
     }

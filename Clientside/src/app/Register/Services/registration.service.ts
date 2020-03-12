@@ -11,7 +11,7 @@ export class RegistrationService {
   constructor(private http: Http) { }
 
   verifyRegistrationId(registrationId){
-
+    console.log(registrationId);
     return this.http.get('http://localhost:3000/verify',{params: {"id" : registrationId}}).pipe(map(res => res.json()));  
   }
   registerManufacturer(muser){

@@ -3,14 +3,12 @@ var router = express.Router();
 var licenceInfo = require('../models/licenceInfo');
 var url = require('url');
 
-router.post('/verify', (req, res)=>{
-    console.log('inside verify');
+router.get('/verify', (req, res)=>{
     licenceInfo.getUserByRegistrationId(req.query.id, (err, verificationStatus) =>{
-        console.log(verificationStatus.length)
         if(verificationStatus.length){
-            res.json({msg: 'verification successful'});
+            res.json({msg: "1"});
         }else {
-            res.json({msg: "user is not registered with pharmacy"})
+            res.json({msg: "2"});
         }
     })
 })

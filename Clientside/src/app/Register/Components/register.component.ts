@@ -32,11 +32,10 @@ export class RegisterComponent implements OnInit {
   verify:number=0;
 
   verifyLicence(licence){
-    console.log(licence.value); 
     this.RegistrationService.verifyRegistrationId(licence.value).subscribe(data =>{
-      console.log('verification successful');
+      this.verify = data.msg;
     })
-    this.verify=1;
+   
   }
 
   gotoLoginPage(){
@@ -48,7 +47,7 @@ export class RegisterComponent implements OnInit {
   }
 
   addUser(form1){
-  
+     console.log('hii ' + this.roleType);
     if(this.roleType == 'Manufacturer')
     {
       var muser: manufacturer;
@@ -68,18 +67,25 @@ export class RegisterComponent implements OnInit {
         console.log('registration successful');
     })
     }
-    else if(this.roleType=='Pharamacist')
+    else if(this.roleType=='Pharmacist')
     {
-      var user3: pharmacist;
-      user3=form1.value;
-      user3.username="PH"+user3.registrationId;
-    }
+      
+      var puser: pharmacist;
+      puser=form1.value;
+      puser.username="PH"+ puser.registrationId;
+      this.RegistrationService.registerPharmacist(puser).subscribe( data =>{
+        console.log('registration successful');
+    });
+   }
     else if(this.roleType=='Customer')
     {
-      var user4: customer;
-      user4=form1.value;
-      user4.username="CM"+user4.mobileNumber;
-    }
+      var cuser: customer;
+      cuser=form1.value;
+      cuser.username="CM"+cuser.mobileNumber;
+      this.RegistrationService.registerCustomer(cuser).subscribe( data =>{
+        console.log('registration successful');
+    });
+   }
     
   }
 
