@@ -27,6 +27,12 @@ export class RegisterComponent implements OnInit {
   registrationId:number;
   address:String;
   location:String;
+  verify:number=0;
+
+  verifyLicence(licence){
+    console.log(licence.value);
+    this.verify=1;
+  }
 
   gotoLoginPage(){
     this.router.navigate(['/login']);
@@ -37,7 +43,10 @@ export class RegisterComponent implements OnInit {
   }
 
   addUser(form1){
+<<<<<<< HEAD
   
+=======
+>>>>>>> fb32569ee2f3437fbaa2267ea0548f915b0e7067
     if(this.roleType == 'Manufacturer')
     {
       var muser: manufacturer;

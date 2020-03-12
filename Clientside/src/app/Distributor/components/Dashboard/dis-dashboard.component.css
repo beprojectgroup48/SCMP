@@ -6,12 +6,13 @@
 .pieChart{
   margin: 20px;
   width: 70%;
+  height: 50%;
 }
 .incoming-order{
   margin-left: 20px;
 }
 .table1{
-  width: 100%;
+  width: 1080px;
 }
 .outgoing-order{
   margin-left: 20px;

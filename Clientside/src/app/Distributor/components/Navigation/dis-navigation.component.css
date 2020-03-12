@@ -1,20 +1,60 @@
 .example-container {
   height: 100%;
   margin: 0px;
-  
+
 }
 .side{
   margin-top: 0px;
-  background-color: rgb(149, 149, 121);
+  background-color: rgba(228, 220, 220, 0.74);
+  width: 15%;
+  border: none;
+  outline: none;
+  position: fixed;
+  margin-top: 60px;
 }
 .toolbar{
   background-color: #38d39f;
   color: white;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
 }
 .list{
   color: white;
+  border-color: aliceblue;
 }
 
 .fill{
   flex: 1 1 auto;
+}
+
+.list > a{
+  font-size: 14px;
+  height: 40px;
+  color: rgba(0, 0, 0, 0.874)
+}
+
+.abc{
+  font-size: 18px;
+  margin-right: 10px;
+  margin-top: 5px;
+  color: rgba(0, 0, 0, 0.874)
+}
+
+.pqr{
+  font-size: 21px;
+  margin-right: 5px;
+  color: whitesmoke;
+  margin-left: -10px;
+}
+
+.is-active {
+  background-color: rgba(172, 172, 172, 0.904) !important;
+  font-weight: 500;
+}
+
+.list > a:hover {
+  background-color: rgba(197, 197, 197, 0.904);
 }
