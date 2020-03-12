@@ -10,7 +10,7 @@ router.get('/allmanufacturers', (req, res)=>{
         if(err){
             console.log('error in retrieving manufacturers ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.send(listOfManufacturers);
+            res.json(listOfManufacturers);
         }
     })
 })
@@ -19,7 +19,7 @@ router.get('/allpharmacists', (req, res)=>{
         if(err){
             console.log('error in retrieving pharmacists ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.send(listOfPharmacists);
+            res.json(listOfPharmacists);
         }
     })
 })
@@ -41,6 +41,26 @@ router.post('/placeorder', (req, res)=>{
             console.log('error '+ JSON.stringify(err));
         }else{
             console.log('order placed ' + confirmOrder);
+        }
+    })
+})
+
+router.get('/allIncomingOrders', (req, res)=>{
+    pharmacists.find({}, {orderId:1, pharmacistName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfIncomingOrders)=>{
+        if(err){
+            console.log('error in retrieving pharmacists ' + JSON.stringify(err, undefined, 2)); 
+        }else{
+            res.json(listOfIncomingOrders);
+        }
+    })
+})
+
+router.get('/allOutgoingOrders', (req, res)=>{
+    pharmacists.find({}, {orderId:1, manufacturerName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfIncomingOrders)=>{
+        if(err){
+            console.log('error in retrieving pharmacists ' + JSON.stringify(err, undefined, 2)); 
+        }else{
+            res.json(listOfOutgoingOrders);
         }
     })
 })

@@ -148,15 +148,7 @@
      </div>
    </div>
    </div>
-  <mat-form-field *ngIf="roleType=='Pharmacist' || roleType=='Distributer' || roleType=='Manufacturer'">
-     <mat-select placeholder = "Form Type" 
-        [(ngModel)] = "formType" name = "register" required>
-        <mat-option *ngFor = "let form1 of forms" 
-           [value] = "form1">
-           {{form1}}
-        </mat-option>
-     </mat-select>
-  </mat-form-field>
+
 <div *ngIf="roleType=='Pharmacist' || roleType=='Distributer' || roleType=='Manufacturer'">
 <div>
    <div style="width:420px;">

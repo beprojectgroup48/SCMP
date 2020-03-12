@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
-
+import { manufacturer } from '../../../Manufacturer/Models/manufacturer';
+import { pharmacist } from '../../../Pharmacist/Models/pharmacist';
+import { incomingOrders } from '../../models/incomingOrders';
+import { outgoingOrders } from '../../models/outgoingOrders';
+import { DistributorService } from '../../services/distributor.service';
 
 @Component({
   selector: 'app-dis-dashboard',
@@ -15,8 +19,33 @@ export class DistributorDashboardComponent implements OnInit {
   PieChart=[];
   PieChart2=[];
  
-  constructor() { }
+  manufacturerList: manufacturer[] = [];
+  pharmacistList: pharmacist[] = [];
+  incomingOrders: incomingOrders[] = [];
+  outgoingOrders: outgoingOrders[] = [];
 
+  constructor(private distributorService: DistributorService) { }
+
+  getManufacturerList(){
+    this.distributorService.getManufacturers().subscribe(manufacturerList =>{
+      this.manufacturerList = manufacturerList;
+    });
+  }
+  getPharmacistList(){
+    this.distributorService.getPharmacists().subscribe(pharmacistList =>{
+      this.pharmacistList = pharmacistList;
+    })  
+  }
+  getIncomingOrders() {
+    this.distributorService.getIncomingOrders().subscribe(incomingOrders =>{
+      this.incomingOrders = incomingOrders;
+    });
+  }
+  getOutgoingOrders(){
+    this.distributorService.getOutgoingOrders().subscribe(outgoingOrders =>{
+      this.outgoingOrders = outgoingOrders;
+    })
+  }
   ngOnInit() {
     // Bar chart:
 this.BarChart = new Chart('barChart', {
@@ -59,6 +88,7 @@ options: {
  }
 }
 });
+
 
 
 this.PieChart = new Chart('pieChart', {

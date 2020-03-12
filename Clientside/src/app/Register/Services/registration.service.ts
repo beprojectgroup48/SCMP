@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers} from '@angular/http';
 import { map } from 'rxjs/operators';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,10 @@ export class RegistrationService {
 
   constructor(private http: Http) { }
 
+  verifyRegistrationId(registrationId){
+
+    return this.http.get('http://localhost:3000/verify',{params: {"id" : registrationId}}).pipe(map(res => res.json()));  
+  }
   registerManufacturer(muser){
     console.log(muser);
     const headers = new Headers();

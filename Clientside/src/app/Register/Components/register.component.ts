@@ -15,8 +15,10 @@ export class RegisterComponent implements OnInit {
 
   constructor(private router: Router, private RegistrationService: RegistrationService) { }
 
+  ngOnInit() {
+  }
+
   stakeholders:String[]=["Manufacturer","Distributer","Pharmacist","Customer"];
-  userType:String;
   roleType:String;
   username:String;
   password:String;
@@ -30,7 +32,10 @@ export class RegisterComponent implements OnInit {
   verify:number=0;
 
   verifyLicence(licence){
-    console.log(licence.value);
+    console.log(licence.value); 
+    this.RegistrationService.verifyRegistrationId(licence.value).subscribe(data =>{
+      console.log('verification successful');
+    })
     this.verify=1;
   }
 
@@ -78,7 +83,6 @@ export class RegisterComponent implements OnInit {
     
   }
 
-  ngOnInit() {
-  }
+ 
 
 }
