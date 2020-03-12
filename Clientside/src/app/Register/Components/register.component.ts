@@ -43,10 +43,7 @@ export class RegisterComponent implements OnInit {
   }
 
   addUser(form1){
-<<<<<<< HEAD
   
-=======
->>>>>>> fb32569ee2f3437fbaa2267ea0548f915b0e7067
     if(this.roleType == 'Manufacturer')
     {
       var muser: manufacturer;
