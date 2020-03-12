@@ -3,8 +3,7 @@ export class distributor {
   password:String;
   name:String;
   mobileNumber:number;
-  licenceNumber:number;
-  formType: String
+  registrationId:number
 }
 
 export class subOrder {
@@ -23,3 +22,4 @@ export class completeOrder {
   location: String;
   finalAmount: Number;
 }
+

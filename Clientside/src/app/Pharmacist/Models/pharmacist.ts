@@ -3,8 +3,7 @@ export class pharmacist {
   password:String;
   name:String;
   mobileNumber:number;
-  licenceNumber:number;
-  formType:String;
+  registrationId:number;
   location:String
 
 }

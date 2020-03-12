@@ -16,8 +16,6 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router, private RegistrationService: RegistrationService) { }
 
   stakeholders:String[]=["Manufacturer","Distributer","Pharmacist","Customer"];
-  forms:String[]=['20A','20C','21C'];
-  formType:String;
   userType:String;
   roleType:String;
   username:String;
@@ -26,7 +24,7 @@ export class RegisterComponent implements OnInit {
   mobileNumber:number;
   transportAgency:String;
   modeOfTransport:String;
-  licenceNumber:number;
+  registrationId:number;
   address:String;
   location:String;
 
@@ -39,12 +37,12 @@ export class RegisterComponent implements OnInit {
   }
 
   addUser(form1){
-    console.log(this.roleType);
+  
     if(this.roleType == 'Manufacturer')
     {
       var muser: manufacturer;
       muser=form1.value;
-      muser.username="MF"+muser.licenceNumber;
+      muser.username="MF"+muser.registrationId;
       this.RegistrationService.registerManufacturer(muser).subscribe( data =>{
           console.log('registration successful');
       })
@@ -53,7 +51,7 @@ export class RegisterComponent implements OnInit {
     {
       var duser: distributor;
       duser=form1.value;
-      duser.username="DB"+duser.licenceNumber;
+      duser.username="DB"+duser.registrationId;
 
       this.RegistrationService.registerDistributor(duser).subscribe( data =>{
         console.log('registration successful');
@@ -63,7 +61,7 @@ export class RegisterComponent implements OnInit {
     {
       var user3: pharmacist;
       user3=form1.value;
-      user3.username="PH"+user3.licenceNumber;
+      user3.username="PH"+user3.registrationId;
     }
     else if(this.roleType=='Customer')
     {

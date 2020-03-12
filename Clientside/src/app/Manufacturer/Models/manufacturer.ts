@@ -6,5 +6,5 @@ export class manufacturer{
   transportAgency:String;
   modeOfTransport:String;
   location:String;
-  licenceNumber:number
+  registrationId:number
 }

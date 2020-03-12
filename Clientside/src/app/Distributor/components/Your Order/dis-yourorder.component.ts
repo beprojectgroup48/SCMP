@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-your-orders',
-  templateUrl: './third.component.html',
-  styleUrls: ['./third.component.css']
+  selector: 'app-dis-yourorder',
+  templateUrl: './dis-yourorder.component.html',
+  styleUrls: ['./dis-yourorder.component.css']
 })
-export class ThirdComponent implements OnInit {
+export class DistributorYourOrderComponent implements OnInit {
   displayedColumns: string[] = ['order', 'name', 'idate', 'ddate','amt','status'];
   dataSource = ELEMENT_DATA;
   constructor() { }

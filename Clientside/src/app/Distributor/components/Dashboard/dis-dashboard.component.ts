@@ -3,12 +3,12 @@ import { Chart } from 'chart.js';
 
 
 @Component({
-  selector: 'app-first',
-  templateUrl: './first.component.html',
-  styleUrls: ['./first.component.css']
+  selector: 'app-dis-dashboard',
+  templateUrl: './dis-dashboard.component.html',
+  styleUrls: ['./dis-dashboard.component.css']
 })
 
-export class FirstComponent implements OnInit {
+export class DistributorDashboardComponent implements OnInit {
   displayedColumns: string[] = ['order', 'name', 'idate', 'ddate','amt','status'];
   dataSource = ELEMENT_DATA;
   BarChart=[];
