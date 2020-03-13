@@ -1,3 +1,5 @@
+import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/outgoing-orders.component';
+import { IncomingOrdersComponent } from './Distributor/Components/Incoming Orders/incoming-orders.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './Login/Components/login.component';
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path:'distributor', component:DistributorNavigationComponent,
       children:[
         {path:'dashboard', component:DistributorDashboardComponent},
+        {path:'dashboard/incoming-orders',component:IncomingOrdersComponent},
+        {path:'dashboard/outgoing-orders',component:OutgoingOrdersComponent},
         {path:'bookorder', component:DistributorBookOrderComponent},
         {path:'yourorder', component:DistributorYourOrderComponent},
   ]},

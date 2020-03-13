@@ -25,12 +25,14 @@
 
 .btn{
 	display: block;
-	width: 20%;
+	width: fit-content;
 	height: 30px;
+	padding-left: 0.4cm;
+	padding-right: 0.4cm;
 	border-radius: 25px;
 	outline: none;
 	border: none;
-	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-color: rgb(77, 158, 250);
 	background-size: 200%;
 	font-size: 1rem;
 	color: #fff;

@@ -34,6 +34,8 @@ import { DistributorYourOrderComponent } from './Distributor/Components/Your Ord
 import { DistributorDashboardComponent } from './Distributor/Components/Dashboard/dis-dashboard.component';
 import { DistributorNavigationComponent } from './Distributor/Components/Navigation/dis-navigation.component';
 import { CommonModule } from '@angular/common';
+import { IncomingOrdersComponent } from './Distributor/Components/Incoming Orders/incoming-orders.component';
+import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/outgoing-orders.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { CommonModule } from '@angular/common';
     DistributorDashboardComponent,
     DistributorYourOrderComponent,
     DistributorBookOrderComponent,
-    DistributorNavigationComponent
+    DistributorNavigationComponent,
+    IncomingOrdersComponent,
+    OutgoingOrdersComponent
   ],
   imports: [
     BrowserModule,
