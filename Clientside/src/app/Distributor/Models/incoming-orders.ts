@@ -1,8 +1,8 @@
-export class PeriodicElement {
-    name: string;
-    order: number;
-    idate: string;
-    ddate: string;
-    amt: number;
-    status: string;
+export class IncomingOrders {
+  orderId: String;
+  pharmacistName: String;
+  issueDate: Date;
+  deliveryDate: Date;
+  totalAmount: Number;
+  status: String;
   }

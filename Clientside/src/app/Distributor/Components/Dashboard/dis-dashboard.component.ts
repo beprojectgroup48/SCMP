@@ -1,8 +1,11 @@
-import { PeriodicElement } from './../../Models/incoming-orders';
-
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { DistributorService } from '../../Services/distributor.service';
+import { manufacturer } from 'src/app/Manufacturer/Models/manufacturer';
+import { pharmacist } from 'src/app/Pharmacist/Models/pharmacist';
+import { IncomingOrders } from './../../Models/incoming-orders';
+import { outgoingOrders } from '../../Models/outgoing-orders';
 
 @Component({
   selector: 'app-dis-dashboard',
@@ -11,12 +14,38 @@ import { Chart } from 'chart.js';
 })
 
 export class DistributorDashboardComponent implements OnInit {
-  displayedColumns: string[] = ['order', 'name', 'idate', 'ddate','amt','status'];
+  displayedColumns: string[] = ['orderId', 'name', 'idate', 'ddate','amt','status'];
   dataSource = ELEMENT_DATA;
   PieChart=[];
   PieChart2=[];
- 
-  constructor(private router: Router) { }
+
+  manufacturerList: manufacturer[] = [];
+  pharmacistList: pharmacist[] = [];
+  incomingOrders: IncomingOrders[] = [];
+  outgoingOrders: outgoingOrders[] = [];
+
+  constructor(private router: Router,private distributorService: DistributorService) { }
+
+  getManufacturerList(){
+    this.distributorService.getManufacturers().subscribe(manufacturerList =>{
+      this.manufacturerList = manufacturerList;
+    });
+  }
+  getPharmacistList(){
+    this.distributorService.getPharmacists().subscribe(pharmacistList =>{
+      this.pharmacistList = pharmacistList;
+    })  
+  }
+  getIncomingOrders() {
+    this.distributorService.getIncomingOrders().subscribe(incomingOrders =>{
+      this.incomingOrders = incomingOrders;
+    });
+  }
+  getOutgoingOrders(){
+    this.distributorService.getOutgoingOrders().subscribe(outgoingOrders =>{
+      this.outgoingOrders = outgoingOrders;
+    })
+  }
 
   ngOnInit() {
     
@@ -77,9 +106,8 @@ this.PieChart2 = new Chart('pieChart2', {
 
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { order: 1, name: 'Avinash', idate: '10/02/2020' , ddate: '15/03/2020', amt: 100000, status: 'Pending'},
-  { order: 2, name: 'Puru', idate: '10/02/2020' , ddate: '18/02/2020', amt: 200000, status: 'Done'},
-{ order: 3, name: 'Rohan', idate: '07/03/2020' , ddate: '15/05/2020', amt: 100000, status: 'Pending'},
-//{ order: 4, name: 'Ashish', idate: '02/02/2020' , ddate: '15/02/2020', amt: 150000, status: 'Done'},
+const ELEMENT_DATA: IncomingOrders[] = [
+  { orderId: '1', pharmacistName: 'Avinash', issueDate: new Date(10-2-2020) , deliveryDate: new Date(15-3-2020), totalAmount: 100000, status: 'Pending'},
+  { orderId: '2', pharmacistName: 'Puru', issueDate: new Date(10-2-2020) , deliveryDate: new Date(15-3-2020), totalAmount: 200000, status: 'Done'},
+{ orderId: '3', pharmacistName: 'Rohan', issueDate: new Date(7-3-2020) , deliveryDate: new Date(15-3-2020), totalAmount: 100000, status: 'Pending'},
 ];

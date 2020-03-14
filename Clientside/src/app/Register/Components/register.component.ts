@@ -15,10 +15,10 @@ export class RegisterComponent implements OnInit {
 
   constructor(private router: Router, private RegistrationService: RegistrationService) { }
 
+  ngOnInit() {
+  }
+
   stakeholders:String[]=["Manufacturer","Distributer","Pharmacist","Customer"];
-  forms:String[]=['20A','20C','21C'];
-  formType:String;
-  userType:String;
   roleType:String;
   username:String;
   password:String;
@@ -26,14 +26,16 @@ export class RegisterComponent implements OnInit {
   mobileNumber:number;
   transportAgency:String;
   modeOfTransport:String;
-  licenceNumber:number;
+  registrationId:number;
   address:String;
   location:String;
   verify:number=0;
 
   verifyLicence(licence){
-    console.log(licence.value);
-    this.verify=1;
+    this.RegistrationService.verifyRegistrationId(licence.value).subscribe(data =>{
+      this.verify = data.msg;
+    })
+   
   }
 
   gotoLoginPage(){
@@ -45,11 +47,12 @@ export class RegisterComponent implements OnInit {
   }
 
   addUser(form1){
+     console.log('hii ' + this.roleType);
     if(this.roleType == 'Manufacturer')
     {
       var muser: manufacturer;
       muser=form1.value;
-      muser.username="MF"+muser.licenceNumber;
+      muser.username="MF"+muser.registrationId;
       this.RegistrationService.registerManufacturer(muser).subscribe( data =>{
           console.log('registration successful');
       })
@@ -58,28 +61,34 @@ export class RegisterComponent implements OnInit {
     {
       var duser: distributor;
       duser=form1.value;
-      duser.username="DB"+duser.licenceNumber;
+      duser.username="DB"+duser.registrationId;
 
       this.RegistrationService.registerDistributor(duser).subscribe( data =>{
         console.log('registration successful');
     })
     }
-    else if(this.roleType=='Pharamacist')
+    else if(this.roleType=='Pharmacist')
     {
-      var user3: pharmacist;
-      user3=form1.value;
-      user3.username="PH"+user3.licenceNumber;
-    }
+      
+      var puser: pharmacist;
+      puser=form1.value;
+      puser.username="PH"+ puser.registrationId;
+      this.RegistrationService.registerPharmacist(puser).subscribe( data =>{
+        console.log('registration successful');
+    });
+   }
     else if(this.roleType=='Customer')
     {
-      var user4: customer;
-      user4=form1.value;
-      user4.username="CM"+user4.mobileNumber;
-    }
+      var cuser: customer;
+      cuser=form1.value;
+      cuser.username="CM"+cuser.mobileNumber;
+      this.RegistrationService.registerCustomer(cuser).subscribe( data =>{
+        console.log('registration successful');
+    });
+   }
     
   }
 
-  ngOnInit() {
-  }
+ 
 
 }

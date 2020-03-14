@@ -33,7 +33,7 @@
      </div>
    </div>
   <a style="margin-left: 210px; display: inline;" routerLink="/register">Forgot password?</a>
-  <button (click)="gotoHomePage()" type="submit" class="btn btn-success" value="Login" [disabled]="frm2.invalid">Login</button>
+  <button (click)="login(frm2)" type="button" class="btn btn-success" value="Login" [disabled]="frm2.invalid">Login</button>
    <p style="margin-top: 40px;color: #6b706e;">Have not account yet?</p>
    <a style="margin-left: -5px; display: inline;" routerLink="/register">Create account</a>
 </form>
