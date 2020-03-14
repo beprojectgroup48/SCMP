@@ -5,4 +5,4 @@ export class BookOrder {
   deliveryDate: Date;
   totalAmount: Number;
   status: String;
-  }
+}

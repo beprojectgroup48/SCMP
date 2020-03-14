@@ -1,4 +1,4 @@
-export class distributor {
+export class Distributor {
   username:String;
   password:String;
   name:String;

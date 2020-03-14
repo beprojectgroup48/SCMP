@@ -1,4 +1,4 @@
-export class outgoingOrders{
+export class OutgoingOrders{
     orderId: String;
     manufacturerName: String;
     issueDate: Date;

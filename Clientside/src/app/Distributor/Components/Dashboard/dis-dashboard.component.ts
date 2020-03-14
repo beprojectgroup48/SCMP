@@ -2,10 +2,10 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { DistributorService } from '../../Services/distributor.service';
-import { manufacturer } from 'src/app/Manufacturer/Models/manufacturer';
-import { pharmacist } from 'src/app/Pharmacist/Models/pharmacist';
+import { Manufacturer } from 'src/app/Manufacturer/Models/manufacturer';
+import { Pharmacist } from 'src/app/Pharmacist/Models/pharmacist';
 import { IncomingOrders } from './../../Models/incoming-orders';
-import { outgoingOrders } from '../../Models/outgoing-orders';
+import { OutgoingOrders } from '../../Models/outgoing-orders';
 
 @Component({
   selector: 'app-dis-dashboard',
@@ -14,15 +14,17 @@ import { outgoingOrders } from '../../Models/outgoing-orders';
 })
 
 export class DistributorDashboardComponent implements OnInit {
-  displayedColumns: string[] = ['orderId', 'name', 'idate', 'ddate','amt','status'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns1: string[] = ['Order Id', 'Pharmacist Name', 'Issue Date', 'Delivery Date','Total Amount','Status'];
+  displayedColumns2: string[] = ['Order Id', 'Manufacturer Name', 'Issue Date', 'Delivery Date','Total Amount','Status'];
+  dataSource1 = ELEMENT_DATA1;
+  dataSource2 = ELEMENT_DATA2;
   PieChart=[];
   PieChart2=[];
 
-  manufacturerList: manufacturer[] = [];
-  pharmacistList: pharmacist[] = [];
+  manufacturerList: Manufacturer[] = [];
+  pharmacistList: Pharmacist[] = [];
   incomingOrders: IncomingOrders[] = [];
-  outgoingOrders: outgoingOrders[] = [];
+  outgoingOrders: OutgoingOrders[] = [];
 
   constructor(private router: Router,private distributorService: DistributorService) { }
 
@@ -103,11 +105,16 @@ this.PieChart2 = new Chart('pieChart2', {
     gotoOutgoing(){
         this.router.navigate(['/distributor/dashboard/outgoing-orders']);
     }
-
 }
 
-const ELEMENT_DATA: IncomingOrders[] = [
+const ELEMENT_DATA1: IncomingOrders[] = [
   { orderId: '1', pharmacistName: 'Avinash', issueDate: new Date(10-2-2020) , deliveryDate: new Date(15-3-2020), totalAmount: 100000, status: 'Pending'},
   { orderId: '2', pharmacistName: 'Puru', issueDate: new Date(10-2-2020) , deliveryDate: new Date(15-3-2020), totalAmount: 200000, status: 'Done'},
-{ orderId: '3', pharmacistName: 'Rohan', issueDate: new Date(7-3-2020) , deliveryDate: new Date(15-3-2020), totalAmount: 100000, status: 'Pending'},
+  { orderId: '3', pharmacistName: 'Rohan', issueDate: new Date(7-3-2020) , deliveryDate: new Date(15-3-2020), totalAmount: 100000, status: 'Pending'},
+];
+
+const ELEMENT_DATA2: OutgoingOrders[] = [
+  { orderId: '1', manufacturerName: 'Avinash', issueDate: new Date(10-2-2020) , deliveryDate: new Date(15-3-2020), totalAmount: 100000, status: 'Pending'},
+  { orderId: '2', manufacturerName: 'Puru', issueDate: new Date(10-2-2020) , deliveryDate: new Date(15-3-2020), totalAmount: 200000, status: 'Done'},
+  { orderId: '3', manufacturerName: 'Rohan', issueDate: new Date(7-3-2020) , deliveryDate: new Date(15-3-2020), totalAmount: 100000, status: 'Pending'},
 ];

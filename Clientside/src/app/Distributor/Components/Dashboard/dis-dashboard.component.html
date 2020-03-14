@@ -6,45 +6,45 @@
   <mat-card-title>Incoming Orders</mat-card-title>
   <mat-card-content>
     <div fxLayout="row" fxLayoutAlign="start">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+      <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8" >
       
         <!-- order Column -->
-        <ng-container matColumnDef="order">
-          <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.order}} </td>
+        <ng-container matColumnDef="Order Id">
+          <th mat-header-cell *matHeaderCellDef> Order Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.orderId}} </td>
         </ng-container>
       
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Manufact. Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <ng-container matColumnDef="Pharmacist Name">
+          <th mat-header-cell *matHeaderCellDef> Pharmacist Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.pharmacistName}} </td>
         </ng-container>
       
         <!-- Weight Column -->
-        <ng-container matColumnDef="idate">
+        <ng-container matColumnDef="Issue Date">
           <th mat-header-cell *matHeaderCellDef> Issue Date </th>
-          <td mat-cell *matCellDef="let element"> {{element.idate}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.issueDate}} </td>
         </ng-container>
       
         <!-- Symbol Column -->
-        <ng-container matColumnDef="ddate">
+        <ng-container matColumnDef="Delivery Date">
           <th mat-header-cell *matHeaderCellDef> Delivery Date </th>
-          <td mat-cell *matCellDef="let element"> {{element.ddate}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.deliveryDate}} </td>
         </ng-container>
       
-      <ng-container matColumnDef="amt">
+      <ng-container matColumnDef="Total Amount">
           <th mat-header-cell *matHeaderCellDef> Total Amount </th>
-          <td mat-cell *matCellDef="let element"> {{element.amt}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.totalAmount}} </td>
         </ng-container>
         
       
-      <ng-container matColumnDef="status">
+      <ng-container matColumnDef="Status">
         <th mat-header-cell *matHeaderCellDef> Status </th>
         <td mat-cell *matCellDef="let element"> {{element.status}} </td>
       </ng-container>
       
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
       </table>
       <button (click)="gotoIncoming()" class="btn">Show all</button>
       </div>
@@ -57,45 +57,45 @@
     <mat-card-title>Outgoing Orders</mat-card-title>
     <mat-card-content>
       <div fxLayout="row" fxLayoutAlign="start">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8" >
         
           <!-- order Column -->
-          <ng-container matColumnDef="order">
-            <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.order}} </td>
+          <ng-container matColumnDef="Order Id">
+            <th mat-header-cell *matHeaderCellDef> Order Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.orderId}} </td>
           </ng-container>
         
           <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Manufact. Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          <ng-container matColumnDef="Manufacturer Name">
+            <th mat-header-cell *matHeaderCellDef> Manufacturer Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.manufacturerName}} </td>
           </ng-container>
         
           <!-- Weight Column -->
-          <ng-container matColumnDef="idate">
+          <ng-container matColumnDef="Issue Date">
             <th mat-header-cell *matHeaderCellDef> Issue Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.idate}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.issueDate}} </td>
           </ng-container>
         
           <!-- Symbol Column -->
-          <ng-container matColumnDef="ddate">
+          <ng-container matColumnDef="Delivery Date">
             <th mat-header-cell *matHeaderCellDef> Delivery Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.ddate}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.deliveryDate}} </td>
           </ng-container>
         
-        <ng-container matColumnDef="amt">
+        <ng-container matColumnDef="Total Amount">
             <th mat-header-cell *matHeaderCellDef> Total Amount </th>
-            <td mat-cell *matCellDef="let element"> {{element.amt}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.totalAmount}} </td>
           </ng-container>
           
         
-        <ng-container matColumnDef="status">
+        <ng-container matColumnDef="Status">
           <th mat-header-cell *matHeaderCellDef> Status </th>
           <td mat-cell *matCellDef="let element"> {{element.status}} </td>
         </ng-container>
         
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
         </table>
         <button (click)="gotoOutgoing()" class="btn">Show all</button>
         </div>

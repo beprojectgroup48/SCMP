@@ -1,6 +1,6 @@
-import { subOrder} from '../models/sub-order';
+import { subOrder } from './sub-order';
 
-export class completeOrder {
+export class CompleteOrder {
     orderId: String;
     email: String;
     manufacturerName: String;

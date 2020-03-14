@@ -1,10 +1,10 @@
 import { RegistrationService } from '../../Register/Services/registration.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { manufacturer } from '../../Manufacturer/Models/manufacturer'
-import { distributor } from '../../Distributor/Models/distributor'
-import { pharmacist } from '../../Pharmacist/Models/pharmacist'
-import { customer } from '../../Customer/Models/customer'
+import { Manufacturer } from '../../Manufacturer/Models/manufacturer'
+import { Distributor } from '../../Distributor/Models/distributor'
+import { Pharmacist } from '../../Pharmacist/Models/pharmacist'
+import { Customer } from '../../Customer/Models/customer'
 
 @Component({
   selector: 'app-register',
@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
      console.log('hii ' + this.roleType);
     if(this.roleType == 'Manufacturer')
     {
-      var muser: manufacturer;
+      var muser: Manufacturer;
       muser=form1.value;
       muser.username="MF"+muser.registrationId;
       this.RegistrationService.registerManufacturer(muser).subscribe( data =>{
@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
     }
     else if(this.roleType=='Distributer')
     {
-      var duser: distributor;
+      var duser: Distributor;
       duser=form1.value;
       duser.username="DB"+duser.registrationId;
 
@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
     else if(this.roleType=='Pharmacist')
     {
       
-      var puser: pharmacist;
+      var puser: Pharmacist;
       puser=form1.value;
       puser.username="PH"+ puser.registrationId;
       this.RegistrationService.registerPharmacist(puser).subscribe( data =>{
@@ -79,7 +79,7 @@ export class RegisterComponent implements OnInit {
    }
     else if(this.roleType=='Customer')
     {
-      var cuser: customer;
+      var cuser: Customer;
       cuser=form1.value;
       cuser.username="CM"+cuser.mobileNumber;
       this.RegistrationService.registerCustomer(cuser).subscribe( data =>{

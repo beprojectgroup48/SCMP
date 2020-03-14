@@ -1,4 +1,4 @@
-export class manufacturer{
+export class Manufacturer{
   username:String;
   password:String;
   name:String;
@@ -6,5 +6,5 @@ export class manufacturer{
   transportAgency:String;
   modeOfTransport:String;
   location:String;
-  licenceNumber:number
+  registrationId:number
 }

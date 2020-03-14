@@ -1,4 +1,4 @@
-export class subOrder {
+export class SubOrder {
     productId: String;
     productName: String;
     quantity: Number;
