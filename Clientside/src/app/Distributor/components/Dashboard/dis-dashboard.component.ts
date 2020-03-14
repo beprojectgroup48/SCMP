@@ -1,3 +1,6 @@
+import { PeriodicElement } from './../../Models/incoming-orders';
+
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { manufacturer } from '../../../Manufacturer/Models/manufacturer';
@@ -23,7 +26,8 @@ export class DistributorDashboardComponent implements OnInit {
   incomingOrders: incomingOrders[] = [];
   outgoingOrders: outgoingOrders[] = [];
 
-  constructor(private distributorService: DistributorService) { }
+  constructor(private distributorService: DistributorService , private router: Router) { }
+ 
 
   getManufacturerList(){
     this.distributorService.getManufacturers().subscribe(manufacturerList =>{
@@ -94,16 +98,13 @@ this.PieChart2 = new Chart('pieChart2', {
   });
   
 }
-}
+    gotoIncoming(){
+        this.router.navigate(['/distributor/dashboard/incoming-orders']);
+    }
 
-export interface PeriodicElement {
-  name: string;
-  order: number;
-  idate: string;
-  ddate: string;
-  amt: number;
-  status: string;
-
+    gotoOutgoing(){
+        this.router.navigate(['/distributor/dashboard/outgoing-orders']);
+    }
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [

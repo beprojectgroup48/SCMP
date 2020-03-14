@@ -2,11 +2,11 @@ import { PeriodicElement } from './../../Models/incoming-orders';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dis-yourorder',
-  templateUrl: './dis-yourorder.component.html',
-  styleUrls: ['./dis-yourorder.component.css']
+  selector: 'app-outgoing-orders',
+  templateUrl: './outgoing-orders.component.html',
+  styleUrls: ['./outgoing-orders.component.css']
 })
-export class DistributorYourOrderComponent implements OnInit {
+export class OutgoingOrdersComponent implements OnInit {
     displayedColumns: string[] = ['order', 'name', 'idate', 'ddate','amt','status'];
     dataSource = ELEMENT_DATA;
   

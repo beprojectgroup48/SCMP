@@ -1,7 +1,11 @@
 .mat-elevation-z8 {
-  
-    margin-left: 100px;
-    margin-top: 10px;
-    width: 40%;
-    height: 70%;
-  }
+  width: 100%;
+  height: 100%;
+}
+.incoming-order{
+  margin-left: 13px;
+  margin-right: 13px;
+  margin-top: 13px;
+  margin-bottom: 13px;
+  min-height: 90%;
+}
