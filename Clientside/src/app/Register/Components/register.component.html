@@ -1,0 +1,191 @@
+<div class="login-content">
+<form #frm="ngForm" (ngSubmit)="addUser(frm)">
+      <mat-form-field>
+        <mat-select placeholder = "Role" 
+           [(ngModel)] = "roleType" name = "addKarRe" required>
+           <mat-option *ngFor = "let stakeholder of stakeholders"
+              [value] = "stakeholder">
+              {{stakeholder}}
+           </mat-option>
+        </mat-select>
+      </mat-form-field>
+   <div class="input-div one;form-group">
+      <div class="i">
+           <mat-icon>person</mat-icon>
+      </div>
+      <div class="div">
+          <input #name1User="ngModel" required pattern="[a-zA-Z ]{1,}" type="text" class="input" name="name" placeholder="Name" class="form-control" ngModel>
+      </div>
+   </div>
+   <div *ngIf="name1User.touched">
+         <div class="abc" *ngIf="name1User.errors?.required">
+            Name is required!
+         </div>
+         <div class="abc" *ngIf="name1User.errors?.pattern">
+            Name is invalid!
+         </div>
+       </div>
+   <div class="input-div one;form-group">
+         <div class="i">
+              <mat-icon>email</mat-icon>
+         </div>
+         <div class="div">
+             <input pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" 
+             #email1User="ngModel" required type="email" class="input" name="email" placeholder="Email" class="form-control" ngModel>
+         </div>
+      </div>
+   <div *ngIf="email1User.touched">
+     <div class="abc" *ngIf="email1User.errors?.required">
+        Email is required!
+     </div>
+     <div class="abc" *ngIf="email1User.errors?.pattern">
+        Email is invalid!
+     </div>
+   </div>
+   <div class="input-div one;form-group">
+      <div class="i"> 
+           <mat-icon>call</mat-icon>
+      </div>
+      <div class="div">
+         <input #mobileUser="ngModel" required type="number" pattern="[789][0-9]{9}"
+         class="input" name="mobileNumber" placeholder="Mobile Number" class="form-control" ngModel>
+     </div>
+  </div>
+  <div *ngIf="mobileUser.touched">
+     <div class="abc" *ngIf="mobileUser.errors?.required">
+        Number is required!
+     </div>
+     <div class="abc" *ngIf="mobileUser.errors?.pattern">
+        Number is invalid!
+     </div>
+   </div>
+   <div class="input-div pass;form-group">
+         <div class="i"> 
+              <mat-icon>lock</mat-icon>
+         </div>
+         <div class="div">
+            <input #pass1User="ngModel" required type="password" pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$" 
+            class="input" name="password" placeholder="Password" class="form-control" ngModel>
+        </div>
+     </div>
+     <div *ngIf="pass1User.touched">
+        <div class="abc" *ngIf="pass1User.errors?.required">
+           Password is required!
+        </div>
+        <div class="abc" *ngIf="pass1User.errors?.pattern" style="margin-left: 150px">
+           uppercase, lowercase, special char, no. & min-length 8 required!
+        </div>
+      </div>
+  <div *ngIf="roleType=='Customer'">
+  <div class="input-div one;form-group">
+      <div class="i"> 
+           <mat-icon>location_on</mat-icon>
+      </div>
+      <div class="div">
+         <input #addressUser="ngModel" required pattern="[a-zA-Z0-9 ]*[a-zA-Z][a-zA-Z0-9 ]*" type="address" class="input" name="address" placeholder="Address" class="form-control" ngModel>
+     </div>
+  </div>
+  <div *ngIf="addressUser.touched">
+     <div class="abc" *ngIf="addressUser.errors?.required">
+        Address is required!
+     </div>
+     <div class="abc" *ngIf="addressUser.errors?.pattern">
+        Address is invalid!
+     </div>
+   </div>
+  </div>
+  <div *ngIf="roleType=='Pharmacist' || roleType=='Manufacturer'">
+  <div class="input-div one;form-group">
+     <div class="i"> 
+           <mat-icon>location_on</mat-icon>
+     </div>
+     <div class="div">
+        <input #locationUser="ngModel" required pattern="[a-zA-Z0-9 ]*[a-zA-Z][a-zA-Z0-9 ]*" type="text" class="input" name="location" placeholder="Location" class="form-control" ngModel>
+     </div>
+  </div>
+  <div *ngIf="locationUser.touched">
+     <div class="abc" *ngIf="locationUser.errors?.required">
+        Location is required!
+     </div>
+     <div class="abc" *ngIf="locationUser.errors?.pattern">
+        Location is invalid!
+     </div>
+   </div>
+  </div>
+   <div *ngIf="roleType=='Manufacturer'">
+  <div class="input-div one;form-group">
+     <div class="i"> 
+           <mat-icon>transfer_within_a_station</mat-icon>
+     </div>
+     <div class="div">
+        <input #transUser="ngModel" required type="text" pattern="[a-zA-Z ]{1,}" class="input" name="transportAgency" placeholder="Transport Agency" class="form-control" ngModel>
+     </div>
+  </div>
+  <div *ngIf="transUser.touched">
+     <div class="abc" *ngIf="transUser.errors?.required">
+        Agency is required!
+     </div>
+     <div class="abc" *ngIf="transUser.errors?.pattern">
+        Agency is invalid!
+     </div>
+   </div>
+   </div>
+   <div *ngIf="roleType=='Manufacturer'">
+  <div class="input-div one;form-group">
+     <div class="i"> 
+           <mat-icon>time_to_leave</mat-icon>
+     </div>
+     <div class="div">
+        <input #modeUser="ngModel" required type="text" pattern="[a-zA-Z ]{1,}" class="input" name="modeOfTransport" placeholder="Mode of Transport" class="form-control" ngModel>
+     </div>
+  </div>
+  <div *ngIf="modeUser.touched">
+     <div class="abc" *ngIf="modeUser.errors?.required">
+        Mode is required!
+     </div>
+     <div class="abc" *ngIf="modeUser.errors?.pattern">
+        Mode is invalid!
+     </div>
+   </div>
+   </div>
+  <mat-form-field *ngIf="roleType=='Pharmacist' || roleType=='Distributer' || roleType=='Manufacturer'">
+     <mat-select placeholder = "Form Type" 
+        [(ngModel)] = "formType" name = "register" required>
+        <mat-option *ngFor = "let form1 of forms" 
+           [value] = "form1">
+           {{form1}}
+        </mat-option>
+     </mat-select>
+  </mat-form-field>
+<div *ngIf="roleType=='Pharmacist' || roleType=='Distributer' || roleType=='Manufacturer'">
+<div>
+   <div style="width:420px;">
+   <div class="input-div one;form-group" style="float: left; width: 210px;margin-bottom: 20px"> 
+         <div style="margin-left: 12px;" class="i"> 
+               <mat-icon>description</mat-icon>
+         </div>
+         <div style="margin-left: 11px;" class="div">
+            <input (ngModelChange)="verify='0'" #licenceUser="ngModel" required type="number" pattern="[0-9]{1,}" class="input" name="licenceNumber" placeholder="Licence Number" class="form-control" ngModel>
+         </div>
+   </div>
+   <div style="float: left; width: 50px;margin-left: -5px">
+         <i *ngIf="verify=='1'" style="font-size:36px;color:aqua;margin-top: 5px;" class="fa fa-check-circle"></i>
+         <i *ngIf="verify=='2'" style="font-size:36px;color:red;margin-top: 5px;" class="fa fa-times-circle"></i>  
+   </div>
+   <div style="float: right; width: 150px"> 
+      <input type="button" (click)="verifyLicence(licenceUser)" class="verify" value="verify" [disabled]="licenceUser.errors?.required">
+            
+      <div *ngIf="licenceUser.touched" style="margin-left: 20px">
+         <div style="margin-left: -420px" class="abc" *ngIf="licenceUser.errors?.required">
+            Licence is required!
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+</div>
+  <button (click)="gotoLoginPage()" type="submit" class="btn btn-success" value="Register" [disabled]="frm.invalid || verify!=1">Register</button>
+  <p style="margin-top: 5px;color: #6b706e;">Already have an account?</p>
+  <a style="margin-left: -5px; display: inline;" routerLink="/login">Login</a>
+</form>
+</div>

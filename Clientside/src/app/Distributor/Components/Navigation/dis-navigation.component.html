@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <mat-toolbar-row class ="toolbar">
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color= "white">
+      <i style="font-size: 23px;" class="fa fa-bars"></i>
+    </button>
+   <span style="margin-top: 2px;">Distributor</span>
+   <span class="fill"></span>
+    <button mat-button style="width:85px;"><mat-icon class="pqr">account_box</mat-icon>Profile</button>
+    <button mat-button routerLink="/login" style="width:90px;"><mat-icon class="pqr">logout</mat-icon>Logout</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav class ="side"#drawer mode="side" opened role="navigation">
+    <mat-nav-list class="list">
+      <a mat-list-item routerLink="/distributor/dashboard" [routerLinkActive]="['is-active']"><mat-icon class="abc"> dashboard </mat-icon> Dashboard </a>
+      <a mat-list-item routerLink="/distributor/bookorder" [routerLinkActive]="['is-active']"><mat-icon class="abc"> gavel</mat-icon> Book Order</a>
+      <a mat-list-item routerLink="/distributor/yourorder" [routerLinkActive]="['is-active']"><mat-icon class="abc"> menu_book</mat-icon> Your Orders</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
