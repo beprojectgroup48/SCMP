@@ -1,4 +1,6 @@
 const express = require('express');
+const Verifier = require("email-verifier");
+
 
 var router = express.Router();
 
@@ -8,6 +10,7 @@ const Pharmacist = require('../models/pharmacist/pharmacistmodel');
 const Customer = require('../models/customer/customermodel');
 
 var sendMail = require('../sendEmail');
+
 
 router.post('/manufacturer', (req, res )=>{
     let manufacturer = new Manufacturer ({
@@ -20,20 +23,32 @@ router.post('/manufacturer', (req, res )=>{
         modeOfTransport:req.body.modeOfTransport,
         formType: req.body.formType,
         location:req.body.location,
-        licenceNumber:req.body.licenceNumber
+        registrationId:req.body.registrationId
     });
-    
-    Manufacturer.addManufacturer(manufacturer,(err, manufacturer) => {
-        if(err){
-            console.log(err);
-            res.json(err);
-           
+    let verifier = new Verifier("at_FtKw8OIeUMOt28MavpT4zdXnLFJiZ");
+    verifier.verify(req.body.email,{ hardRefresh: true }, (err, data) => {
+        if (err){
+            throw err;
+            
         }else{
-            res.json(manufacturer);
+            console.log(data.smtpCheck);
+            if(data.smtpCheck == 'true'){
+                
+                Manufacturer.addManufacturer(manufacturer,(err, manufacturer) => {
+                    if(err){
+                        console.log(err);
+                        res.json(err);
+                        
+                    }else{
+                        res.json(manufacturer);
+                    }
+                });
+                sendMail.sendmail(req);
+            }else{
+                res.json({errorMessage: "incoorect email address"});
+            }
         }
     });
-    
-    sendMail.sendmail(req);
 });
 
 router.post('/distributor', (req, res )=>{
@@ -43,20 +58,35 @@ router.post('/distributor', (req, res )=>{
         password:req.body.password,
         name:req.body.name,
         mobileNumber:req.body.mobileNumber,
-        licenceNumber:req.body.licenceNumber
+        registrationId:req.body.registrationId
     });
-
-    Distributor.addDistributor(distributor, (err, distributor) => {
-        if(err){
-            console.log(err);
-            res.json(err);
+    let verifier = new Verifier("at_FtKw8OIeUMOt28MavpT4zdXnLFJiZ");
+    verifier.verify(req.body.email,{ hardRefresh: true }, (err, data) => {
+        if (err){
+            throw err;
+            
         }else{
-            res.json({msg: 'register successfully'});
+            console.log(data.smtpCheck);
+            if(data.smtpCheck == 'true'){
+                
+                Distributor.addDistributor(distributor, (err, distributor) => {
+                    if(err){
+                        console.log(err);
+                        res.json(err);
+                    }else{
+                        res.json({msg: 'register successfully'});
+                    }
+                });
+                
+                sendMail.sendmail(req);
+            }else{
+                res.json({errorMessage: 'incorrect email address'}); 
+            }
+            
         }
+        
     });
-
-    sendMail.sendmail(req);
-   
+    
 });
 
 router.post('/pharmacist', (req, res )=>{
@@ -69,16 +99,33 @@ router.post('/pharmacist', (req, res )=>{
         location:req.body.location,
         registrationId:req.body.registrationId
     });
-
-    Pharmacist.addPharmacist(pharmacist, (err, pharmacist) => {
-        if(err){
-            res.json(err);
+    
+    let verifier = new Verifier("at_FtKw8OIeUMOt28MavpT4zdXnLFJiZ");
+    verifier.verify(req.body.email,{ hardRefresh: true }, (err, data) => {
+        if (err){
+            throw err;
+            
         }else{
-            res.json({msg: 'register successfully'});
+            console.log(data.smtpCheck);
+            if(data.smtpCheck == 'true'){
+                Pharmacist.addPharmacist(pharmacist, (err, pharmacist) => {
+                    if(err){
+                        res.json(err);
+                    }else{
+                        res.json({msg: 'register successfully'});
+                    }
+                });
+                sendMail.sendmail(req);
+            }else{
+                res.json({errorMessage: 'incorrect email address'}); 
+            }
+            
         }
+        
     });
-
-    sendMail.sendmail(req);
+    
+    
+    
 });
 
 router.post('/customer', (req, res )=>{
@@ -90,16 +137,31 @@ router.post('/customer', (req, res )=>{
         mobileNumber:req.body.mobileNumber,
         address:req.body.address
     });
-
-    Customer.addCustomer(customer, (err, customer) => {
-        if(err){
-            console.log(err);
-            res.json(err);
+    let verifier = new Verifier("at_FtKw8OIeUMOt28MavpT4zdXnLFJiZ");
+    verifier.verify(req.body.email,{ hardRefresh: true }, (err, data) => {
+        if (err){
+            throw err;
+            
         }else{
-            res.json({msg: 'register successfully'});
+            console.log(data.smtpCheck);
+            if(data.smtpCheck == 'true'){
+                Customer.addCustomer(customer, (err, customer) => {
+                    if(err){
+                        console.log(err);
+                        res.json(err);
+                    }else{
+                        res.json({msg: 'register successfully'});
+                    }
+                });
+                sendMail.sendmail(req);
+            }else{
+                res.json({errorMessage: 'incorrect email address'}); 
+            }
+            
         }
+        
     });
-    sendMail.sendmail(req);
+    
 });
 
 module.exports = router;

@@ -18,12 +18,8 @@ const distributorSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    formType: {
-        type: String,
-        required: true
-    },
-    licenseNo: {
-        type: String,
+    registrationId: {
+        type: Number,
         required: true
     }
 
