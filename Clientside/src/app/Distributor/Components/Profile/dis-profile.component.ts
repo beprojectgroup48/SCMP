@@ -26,7 +26,8 @@ export class DistributorProfileComponent {
     });
     
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if(!result)
+        return;
       this.currentData.name = result.name;
       this.currentData.mob = result.mob;
       this.currentData.address=result.address;
