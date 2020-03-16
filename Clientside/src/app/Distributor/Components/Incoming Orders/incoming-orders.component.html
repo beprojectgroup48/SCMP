@@ -19,13 +19,13 @@
         <!-- Weight Column -->
         <ng-container matColumnDef="Issue Date">
           <th mat-header-cell *matHeaderCellDef> Issue Date </th>
-          <td mat-cell *matCellDef="let element"> {{element.issueDate}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.issueDate.toDateString()}} </td>
         </ng-container>
       
         <!-- Symbol Column -->
         <ng-container matColumnDef="Delivery Date">
           <th mat-header-cell *matHeaderCellDef> Delivery Date </th>
-          <td mat-cell *matCellDef="let element"> {{element.deliveryDate}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.deliveryDate.toDateString()}} </td>
         </ng-container>
       
       <ng-container matColumnDef="Total Amount">
