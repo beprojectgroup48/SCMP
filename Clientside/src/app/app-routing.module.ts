@@ -1,3 +1,5 @@
+import { UpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/update-profile.component';
+import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
 import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/outgoing-orders.component';
 import { IncomingOrdersComponent } from './Distributor/Components/Incoming Orders/incoming-orders.component';
 import { NgModule } from '@angular/core';
@@ -9,8 +11,8 @@ import { DistributorNavigationComponent } from './Distributor/Components/Navigat
 import { DistributorDashboardComponent } from './Distributor/Components/Dashboard/dis-dashboard.component';
 import { DistributorBookOrderComponent } from './Distributor/Components/Book Order/dis-bookorder.component';
 import { DistributorYourOrderComponent } from './Distributor/Components/Your Order/dis-yourorder.component';
-import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
-import { UpdateProfileComponent } from './Distributor/Components/Profile/update-profile/update-profile.component';
+import { ListOfManufacturerComponent } from './Distributor/Components/list-of-manufacturer/list-of-manufacturer.component';
+
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   {path:'',component:MainPageComponent,
@@ -28,7 +30,8 @@ const routes: Routes = [
         {path:'bookorder', component:DistributorBookOrderComponent},
         {path:'yourorder', component:DistributorYourOrderComponent},
         {path:'profile', component:DistributorProfileComponent},
-        {path:'update-profile', component:UpdateProfileComponent},
+        {path:'profile/edit', component:UpdateProfileComponent},
+        {path:'listofmanufacturer', component:ListOfManufacturerComponent}
   ]},
 
 ]

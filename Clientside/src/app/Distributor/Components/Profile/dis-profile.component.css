@@ -1,24 +1,40 @@
 .profile{
-    margin-left: 50px;
-    margin-top: 50px;
-    width: 80%;
+	margin-left: 19%;
+	margin-right: 20%;
+    margin-top: 30px;
+	width: 60%;
+	height: 85%
 }
 .primary{
-
     display: block;
-	width: 20%;
+	width: fit-content;
 	height: 40px;
 	border-radius: 25px;
 	outline: none;
 	border: none;
-	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-color: rgb(37, 136, 248);
 	background-size: 200%;
 	font-size: 1rem;
-	color: #fff;
+	color: white;
 	font-family: 'Poppins', sans-serif;
-	margin: 1rem 0;
 	cursor: pointer;
 	transition: .5s;
-	margin-bottom: 0px;
-	margin-top: 27px;
+	float: right;
+}
+
+mat-label{
+	color: black;
+	font-size: 17px;
+}
+
+.input{
+	color: rgb(43, 42, 42);
+	font-size: 17px;
+}
+
+mat-form-field{
+	width:60%;
+	background-color: rgb(240, 240, 240);
+	height: 55px;
+	margin-bottom: 30px;
 }

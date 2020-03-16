@@ -1,3 +1,4 @@
+
 import { DistributorBookOrderComponent } from './Distributor/Components/Book Order/dis-bookorder.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -39,9 +40,11 @@ import { DistributorNavigationComponent } from './Distributor/Components/Navigat
 import { CommonModule } from '@angular/common';
 import { IncomingOrdersComponent } from './Distributor/Components/Incoming Orders/incoming-orders.component';
 import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/outgoing-orders.component';
+// import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
+// import { UpdateProfileComponent } from './Distributor/Components/Profile/update-profile/update-profile.component';
+import { UpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/update-profile.component';
 import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
-import { UpdateProfileComponent } from './Distributor/Components/Profile/update-profile/update-profile.component';
-
+import { ListOfManufacturerComponent } from './Distributor/Components/list-of-manufacturer/list-of-manufacturer.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,8 @@ import { UpdateProfileComponent } from './Distributor/Components/Profile/update-
     IncomingOrdersComponent,
     OutgoingOrdersComponent,
     DistributorProfileComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    ListOfManufacturerComponent
   ],
   imports: [
     BrowserModule,
