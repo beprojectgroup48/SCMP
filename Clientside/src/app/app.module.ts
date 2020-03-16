@@ -1,7 +1,10 @@
+import { UpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/update-profile.component';
+import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
 import { DistributorBookOrderComponent } from './Distributor/Components/Book Order/dis-bookorder.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { 
   MatButtonModule,
@@ -49,7 +52,9 @@ import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Order
     DistributorBookOrderComponent,
     DistributorNavigationComponent,
     IncomingOrdersComponent,
-    OutgoingOrdersComponent
+    OutgoingOrdersComponent,
+    DistributorProfileComponent,
+    UpdateProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +79,8 @@ import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Order
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

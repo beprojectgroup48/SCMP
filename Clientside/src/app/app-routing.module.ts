@@ -1,3 +1,5 @@
+import { UpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/update-profile.component';
+import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
 import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/outgoing-orders.component';
 import { IncomingOrdersComponent } from './Distributor/Components/Incoming Orders/incoming-orders.component';
 import { NgModule } from '@angular/core';
@@ -26,6 +28,8 @@ const routes: Routes = [
         {path:'dashboard/outgoing-orders',component:OutgoingOrdersComponent},
         {path:'bookorder', component:DistributorBookOrderComponent},
         {path:'yourorder', component:DistributorYourOrderComponent},
+        {path:'profile', component:DistributorProfileComponent},
+        {path:'profile/edit', component:UpdateProfileComponent}
   ]},
 
 ]

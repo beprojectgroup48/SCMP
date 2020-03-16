@@ -1,6 +1,6 @@
+import { UpdateProfileComponent } from './Update Profile/update-profile.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 export interface DialogData{
   name: string;
