@@ -1,0 +1,45 @@
+<mat-card class="profile">
+  <mat-card-title>
+    My Profile
+  </mat-card-title>
+  <mat-card-content>
+   
+         <mat-form-field appearance="fill">
+          <mat-label>Name:</mat-label>
+          <input disabled type="text" matInput [(ngModel)]="name">
+         </mat-form-field>
+         <p>
+         <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input disabled type="text" matInput [(ngModel)]="password" [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+         </p>
+         <p>
+         <mat-form-field appearance="fill">
+          <mat-label>Email ID:</mat-label>
+          <input disabled type="text" matInput [(ngModel)]="email">
+         </mat-form-field>
+        </p>
+         <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Mobile No:</mat-label>
+            <input disabled type="text" matInput [(ngModel)]="mob">
+           </mat-form-field>
+        </p>
+        <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Address:</mat-label>
+          <input disabled type="text" matInput [(ngModel)]="address">
+         </mat-form-field>
+        </p>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button class="primary" mat-raised-button (click)="openDialog()">
+      Update Profile
+    </button>
+  </mat-card-actions>
+</mat-card> 
