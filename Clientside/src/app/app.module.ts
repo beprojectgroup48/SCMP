@@ -16,7 +16,10 @@ import {
   MatInputModule,
   MatDividerModule,
   MatTabsModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDialogModule,
+  MatDialogRef, 
+  MAT_DIALOG_DATA
 
 } from '@angular/material';
 
@@ -36,6 +39,9 @@ import { DistributorNavigationComponent } from './Distributor/Components/Navigat
 import { CommonModule } from '@angular/common';
 import { IncomingOrdersComponent } from './Distributor/Components/Incoming Orders/incoming-orders.component';
 import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/outgoing-orders.component';
+import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
+import { UpdateProfileComponent } from './Distributor/Components/Profile/update-profile/update-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +55,9 @@ import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Order
     DistributorBookOrderComponent,
     DistributorNavigationComponent,
     IncomingOrdersComponent,
-    OutgoingOrdersComponent
+    OutgoingOrdersComponent,
+    DistributorProfileComponent,
+    UpdateProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +82,8 @@ import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Order
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
