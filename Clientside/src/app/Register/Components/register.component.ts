@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
       puser=form1.value;
       puser.username="PH"+ puser.registrationId;
       this.RegistrationService.registerPharmacist(puser).subscribe( data =>{
-        console.log('registration successful');
+        console.log(data);
     });
    }
     else if(this.roleType=='Customer')
