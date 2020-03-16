@@ -12,7 +12,7 @@ import { DistributorDashboardComponent } from './Distributor/Components/Dashboar
 import { DistributorBookOrderComponent } from './Distributor/Components/Book Order/dis-bookorder.component';
 import { DistributorYourOrderComponent } from './Distributor/Components/Your Order/dis-yourorder.component';
 import { ListOfManufacturerComponent } from './Distributor/Components/list-of-manufacturer/list-of-manufacturer.component';
-
+import { ListOfPharmacistComponent } from './Distributor/Components/list-of-pharmacist/list-of-pharmacist.component';
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   {path:'',component:MainPageComponent,
@@ -31,7 +31,8 @@ const routes: Routes = [
         {path:'yourorder', component:DistributorYourOrderComponent},
         {path:'profile', component:DistributorProfileComponent},
         {path:'profile/edit', component:UpdateProfileComponent},
-        {path:'listofmanufacturer', component:ListOfManufacturerComponent}
+        {path:'listofmanufacturer', component:ListOfManufacturerComponent},
+        {path:'listofpharmacist', component:ListOfPharmacistComponent},
   ]},
 
 ]

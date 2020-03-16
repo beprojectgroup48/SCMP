@@ -45,6 +45,7 @@ import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Order
 import { UpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/update-profile.component';
 import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
 import { ListOfManufacturerComponent } from './Distributor/Components/list-of-manufacturer/list-of-manufacturer.component';
+import { ListOfPharmacistComponent } from './Distributor/Components/list-of-pharmacist/list-of-pharmacist.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ListOfManufacturerComponent } from './Distributor/Components/list-of-ma
     OutgoingOrdersComponent,
     DistributorProfileComponent,
     UpdateProfileComponent,
-    ListOfManufacturerComponent
+    ListOfManufacturerComponent,
+    ListOfPharmacistComponent
   ],
   imports: [
     BrowserModule,
