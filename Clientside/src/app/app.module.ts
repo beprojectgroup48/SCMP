@@ -20,7 +20,8 @@ import {
   MatSelectModule,
   MatDialogModule,
   MatDialogRef, 
-  MAT_DIALOG_DATA
+  MAT_DIALOG_DATA,
+  MatPaginatorModule
 
 } from '@angular/material';
 
@@ -40,8 +41,6 @@ import { DistributorNavigationComponent } from './Distributor/Components/Navigat
 import { CommonModule } from '@angular/common';
 import { IncomingOrdersComponent } from './Distributor/Components/Incoming Orders/incoming-orders.component';
 import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/outgoing-orders.component';
-// import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
-// import { UpdateProfileComponent } from './Distributor/Components/Profile/update-profile/update-profile.component';
 import { UpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/update-profile.component';
 import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
 import { ListOfManufacturerComponent } from './Distributor/Components/list-of-manufacturer/list-of-manufacturer.component';
@@ -89,7 +88,8 @@ import { ListOfPharmacistComponent } from './Distributor/Components/list-of-phar
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
