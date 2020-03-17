@@ -1,5 +1,6 @@
 import { OutgoingOrders } from './../../Models/outgoing-orders';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-dis-yourorder',
@@ -8,11 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DistributorYourOrderComponent implements OnInit {
   displayedColumns: string[] = ['Order Id', 'Manufacturer Name', 'Issue Date', 'Delivery Date','Total Amount','Status'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   
     constructor() { }
   
     ngOnInit() {
+    }
+
+    ngAfterViewInit(): void {
+      this.dataSource.paginator = this.paginator;
     }
   
   }
