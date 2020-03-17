@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const outorderdistributorSchema = mongoose.Schema({
+const outgoingOrderDistributorSchema = mongoose.Schema({
     orderId:{
         type:String,
         required:true
@@ -28,6 +28,6 @@ const outorderdistributorSchema = mongoose.Schema({
     }
 
 },{
-    collection: 'outorderdistributor'
+    collection: 'outgoingOrderDistributor'
 });
-const outorders = module.exports = mongoose.model('outorders', outorderdistributorSchema);
+const outgoingOrderDistributor = module.exports = mongoose.model('outgoingOrderDistributor', outgoingOrderDistributorSchema);
