@@ -1,0 +1,15 @@
+.mat-elevation-z8 {
+    width: 100%;
+    height: 100%;
+  }
+  .listofman{
+    margin-left: 13px;
+    margin-right: 13px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    min-height: 90%;
+  }
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }

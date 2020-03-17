@@ -1,10 +1,8 @@
-import { UpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/update-profile.component';
-import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
+
 import { DistributorBookOrderComponent } from './Distributor/Components/Book Order/dis-bookorder.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatDialogModule} from '@angular/material/dialog';
 
 import { 
   MatButtonModule,
@@ -19,7 +17,10 @@ import {
   MatInputModule,
   MatDividerModule,
   MatTabsModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDialogModule,
+  MatDialogRef, 
+  MAT_DIALOG_DATA
 
 } from '@angular/material';
 
@@ -39,6 +40,12 @@ import { DistributorNavigationComponent } from './Distributor/Components/Navigat
 import { CommonModule } from '@angular/common';
 import { IncomingOrdersComponent } from './Distributor/Components/Incoming Orders/incoming-orders.component';
 import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/outgoing-orders.component';
+// import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
+// import { UpdateProfileComponent } from './Distributor/Components/Profile/update-profile/update-profile.component';
+import { UpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/update-profile.component';
+import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
+import { ListOfManufacturerComponent } from './Distributor/Components/list-of-manufacturer/list-of-manufacturer.component';
+import { ListOfPharmacistComponent } from './Distributor/Components/list-of-pharmacist/list-of-pharmacist.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +61,9 @@ import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Order
     IncomingOrdersComponent,
     OutgoingOrdersComponent,
     DistributorProfileComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    ListOfManufacturerComponent,
+    ListOfPharmacistComponent
   ],
   imports: [
     BrowserModule,
