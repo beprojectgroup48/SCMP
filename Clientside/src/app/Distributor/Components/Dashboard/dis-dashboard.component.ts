@@ -22,7 +22,7 @@ export class DistributorDashboardComponent implements OnInit {
   PieChart2=[];
 
   manufacturerList: Manufacturer[] = [];
-  pharmacistList: Pharmacist[] = [];
+ 
   incomingOrders: IncomingOrders[] = [];
   outgoingOrders: OutgoingOrders[] = [];
 
@@ -33,11 +33,7 @@ export class DistributorDashboardComponent implements OnInit {
       this.manufacturerList = manufacturerList;
     });
   }
-  getPharmacistList(){
-    this.distributorService.getPharmacists().subscribe(pharmacistList =>{
-      this.pharmacistList = pharmacistList;
-    })  
-  }
+  
   getIncomingOrders() {
     this.distributorService.getIncomingOrders().subscribe(incomingOrders =>{
       this.incomingOrders = incomingOrders;

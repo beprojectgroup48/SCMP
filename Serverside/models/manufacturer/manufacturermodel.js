@@ -30,7 +30,11 @@ const manufacturerSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    registrationId: {
+    formType: {
+        type: String,
+        required: true
+    },
+    licenceNumber: {
         type: String,
         required: true
     }

@@ -10,7 +10,7 @@ const licenceInfoSchema = mongoose.Schema({
         required:true
     },
     registrationId:{
-        type:String,
+        type:Number,
         required:true
     },
     issueDate: {

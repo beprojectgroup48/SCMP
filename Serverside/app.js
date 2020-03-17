@@ -16,13 +16,6 @@ var distributorroute = require('./routes/distributor');
 //connect to the mongodb
 mongoose.connect(config.urldb);
 
-// mongoose.model('inorder',{orderid:String});
-// app.get('/inorder',function(req, res){
-//     mongoose.model('inorder'.find(function(err, inorder){
-//         res.send(inorder);
-//     }));
-// });
-
 mongoose.connection.on('connected' , ()=>{
     console.log("connection established");
 })
