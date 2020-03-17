@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { listOfManufacturer } from './../../Models/list-of-manufacturer';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { DistributorService } from '../../Services/distributor.service';
+import { Manufacturer } from 'src/app/Manufacturer/Models/manufacturer';
 
 @Component({
   selector: 'app-list-of-manufacturer',
@@ -10,10 +12,10 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 export class ListOfManufacturerComponent implements OnInit {
   displayedColumns: string[] = ['Order Id', 'Manufacturer Name', 'Issue Date', 'Delivery Date','Total Amount','Status'];
   dataSource =  new MatTableDataSource(ELEMENT_DATA);
-
+  manufacturerList: Manufacturer[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
-  constructor() { }
+  constructor(private distributorService: DistributorService) { }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -23,6 +25,13 @@ export class ListOfManufacturerComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+  }
+
+  
+  getManufacturerList(){
+    this.distributorService.getManufacturers().subscribe(manufacturerList =>{
+      this.manufacturerList = manufacturerList;
+    });
   }
 
 }

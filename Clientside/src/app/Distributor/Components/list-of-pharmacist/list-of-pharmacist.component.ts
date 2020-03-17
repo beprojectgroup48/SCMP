@@ -27,12 +27,11 @@ export class ListOfPharmacistComponent implements OnInit {
   ngOnInit() {
     this.getPharmacistList();
   }
-
   getPharmacistList(){
     this.distributorService.getPharmacists().subscribe(pharmacistList =>{
       this.pharmacistList = pharmacistList;
       //this.dataSource.data = this.pharmacistList;
-      console.log(this.dataSource.data);
+      console.log(this.pharmacistList);
     })  
   }
 

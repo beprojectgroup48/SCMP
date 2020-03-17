@@ -1,6 +1,7 @@
 import { OutgoingOrders } from './../../Models/outgoing-orders';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { DistributorService } from '../../Services/distributor.service';
 
 @Component({
   selector: 'app-outgoing-orders',
@@ -10,17 +11,26 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 export class OutgoingOrdersComponent implements OnInit {
     displayedColumns: string[] = ['Order Id', 'Manufacturer Name', 'Issue Date', 'Delivery Date','Total Amount','Status'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);
-
+    outgoingOrders: OutgoingOrders[] = [];
     @ViewChild(MatPaginator) paginator: MatPaginator;
   
-    constructor() { }
+    constructor(private distributorService: DistributorService) { }
   
     ngOnInit() {
+      this.getOutgoingOrders();
     }
 
     ngAfterViewInit(): void {
       this.dataSource.paginator = this.paginator;
     }
+
+    
+  getOutgoingOrders(){
+    this.distributorService.getOutgoingOrders().subscribe(outgoingOrders =>{
+      this.outgoingOrders = outgoingOrders;
+      console.log(this.outgoingOrders);
+    })
+  }
   
   }
   

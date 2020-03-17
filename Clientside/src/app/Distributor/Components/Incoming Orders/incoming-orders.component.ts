@@ -1,6 +1,7 @@
 import { IncomingOrders } from './../../Models/incoming-orders';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { DistributorService } from '../../Services/distributor.service';
 
 @Component({
   selector: 'app-incoming-orders',
@@ -10,18 +11,26 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 export class IncomingOrdersComponent implements OnInit {
   displayedColumns: string[] = ['Order Id', 'Pharmacist Name', 'Issue Date', 'Delivery Date','Total Amount','Status'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-
+  incomingOrders: IncomingOrders[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() { }
+  constructor(private distributorService: DistributorService) { }
 
   ngOnInit() {
+    this.getIncomingOrders();
   }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
 
+  
+  getIncomingOrders() {
+    this.distributorService.getIncomingOrders().subscribe(incomingOrders =>{
+      this.incomingOrders = incomingOrders;
+      console.log(this.incomingOrders);
+    });
+  }
 }
 
 const ELEMENT_DATA: IncomingOrders[] = [
