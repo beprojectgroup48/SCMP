@@ -36,7 +36,7 @@ router.post('/placeorder', (req, res)=>{
         location:req.body.location,
         totalAmount:req.body.totalAmount
     });
-
+    
     Order.placeOrder(order, (err, confirmOrder)=>{
         if(err){
             console.log('error '+ JSON.stringify(err));

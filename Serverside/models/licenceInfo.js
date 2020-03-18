@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 
 const licenceInfoSchema = mongoose.Schema({
-    firmName:{
+    /* firmName:{
         type:String,
         required:true
-    },
+    },*/
     name:{
         type:String,
         required:true
     },
     registrationId:{
-        type:Number,
+        type:String,
         required:true
-    },
+    }/*,
     issueDate: {
         type: Date,
         required: true
@@ -21,7 +21,7 @@ const licenceInfoSchema = mongoose.Schema({
         type:String,
         required:true
     }
-   
+    */
     
     
 },{
