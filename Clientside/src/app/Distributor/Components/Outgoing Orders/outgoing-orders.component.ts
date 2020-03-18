@@ -9,28 +9,25 @@ import { DistributorService } from '../../Services/distributor.service';
   styleUrls: ['./outgoing-orders.component.css']
 })
 export class OutgoingOrdersComponent implements OnInit {
-    displayedColumns: string[] = ['Order Id', 'Manufacturer Name', 'Issue Date', 'Delivery Date','Total Amount','Status'];
-    dataSource = new MatTableDataSource(ELEMENT_DATA);
-    outgoingOrders: OutgoingOrders[] = [];
+  outgoingOrderList: OutgoingOrders[];
+  displayedColumns: string[] = ['orderId', 'manufacturerName', 'issueDate', 'deliveryDate','totalAmount','status'];
+  dataSource: any;
+
     @ViewChild(MatPaginator) paginator: MatPaginator;
   
     constructor(private distributorService: DistributorService) { }
   
     ngOnInit() {
-      this.getOutgoingOrders();
+      this.getOutgoingOrderList();
     }
 
-    ngAfterViewInit(): void {
-      this.dataSource.paginator = this.paginator;
+    getOutgoingOrderList(){
+        this.distributorService.getOutgoingOrders().subscribe(outgoingOrderList =>{
+        this.outgoingOrderList = outgoingOrderList;
+        this.dataSource = new MatTableDataSource(this.outgoingOrderList);
+        this.dataSource.paginator = this.paginator;
+      })
     }
-
-    
-  getOutgoingOrders(){
-    this.distributorService.getOutgoingOrders().subscribe(outgoingOrders =>{
-      this.outgoingOrders = outgoingOrders;
-      console.log(this.outgoingOrders);
-    })
-  }
   
   }
   
