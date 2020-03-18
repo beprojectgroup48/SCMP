@@ -12,12 +12,12 @@ import { Customer } from '../../Customer/Models/customer'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  
   constructor(private router: Router, private RegistrationService: RegistrationService) { }
-
+  
   ngOnInit() {
   }
-
+  
   stakeholders:String[]=["Manufacturer","Distributer","Pharmacist","Customer"];
   roleType:String;
   username:String;
@@ -30,31 +30,31 @@ export class RegisterComponent implements OnInit {
   address:String;
   location:String;
   verify:number=0;
-
+  
   verifyLicence(licence){
     this.RegistrationService.verifyRegistrationId(licence.value).subscribe(data =>{
       this.verify = data.msg;
     })
-   
+    
   }
-
+  
   gotoLoginPage(){
     this.router.navigate(['/login']);
   }
-
+  
   gotoRegisterPage(){
     this.router.navigate(['/register']);
   }
-
+  
   addUser(form1){
-     console.log('hii ' + this.roleType);
+    console.log('hii ' + this.roleType);
     if(this.roleType == 'Manufacturer')
     {
       var muser: Manufacturer;
       muser=form1.value;
       muser.username="MF"+muser.registrationId;
       this.RegistrationService.registerManufacturer(muser).subscribe( data =>{
-          console.log('registration successful');
+        console.log('registration successful');
       })
     }
     else if(this.roleType=='Distributer')
@@ -62,10 +62,10 @@ export class RegisterComponent implements OnInit {
       var duser: Distributor;
       duser=form1.value;
       duser.username="DB"+duser.registrationId;
-
+      
       this.RegistrationService.registerDistributor(duser).subscribe( data =>{
-        console.log('registration successful');
-    })
+        console.log(data);
+      })
     }
     else if(this.roleType=='Pharmacist')
     {
@@ -75,8 +75,8 @@ export class RegisterComponent implements OnInit {
       puser.username="PH"+ puser.registrationId;
       this.RegistrationService.registerPharmacist(puser).subscribe( data =>{
         console.log(data);
-    });
-   }
+      });
+    }
     else if(this.roleType=='Customer')
     {
       var cuser: Customer;
@@ -84,11 +84,11 @@ export class RegisterComponent implements OnInit {
       cuser.username="CM"+cuser.mobileNumber;
       this.RegistrationService.registerCustomer(cuser).subscribe( data =>{
         console.log('registration successful');
-    });
-   }
+      });
+    }
     
   }
-
- 
-
+  
+  
+  
 }

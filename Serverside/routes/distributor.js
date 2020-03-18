@@ -3,6 +3,8 @@ var router = express.Router();
 var Order = require('../models/distributor/order');
 const manufacturers = require('../models/manufacturer/manufacturermodel');
 const pharmacists = require('../models/pharmacist/pharmacistmodel');
+const incomingOrders = require('../models/distributor/incomingOrder');
+const outgoingOrders = require('../models/distributor/outgoingOrder');
 
 router.get('/allmanufacturers', (req, res)=>{
     manufacturers.find((err, listOfManufacturers)=>{
@@ -34,7 +36,7 @@ router.post('/placeorder', (req, res)=>{
         location:req.body.location,
         totalAmount:req.body.totalAmount
     });
-
+    
     Order.placeOrder(order, (err, confirmOrder)=>{
         if(err){
             console.log('error '+ JSON.stringify(err));
@@ -45,9 +47,10 @@ router.post('/placeorder', (req, res)=>{
 })
 
 router.get('/allIncomingOrders', (req, res)=>{
-    pharmacists.find({}, {orderId:1, pharmacistName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfIncomingOrders)=>{
+    
+    incomingOrders.find({}, {orderId:1, pharmacistName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfIncomingOrders)=>{
         if(err){
-            console.log('error in retrieving pharmacists ' + JSON.stringify(err, undefined, 2)); 
+            console.log('error in retrieving incoming orders ' + JSON.stringify(err, undefined, 2)); 
         }else{
             res.json(listOfIncomingOrders);
         }
@@ -55,9 +58,9 @@ router.get('/allIncomingOrders', (req, res)=>{
 })
 
 router.get('/allOutgoingOrders', (req, res)=>{
-    pharmacists.find({}, {orderId:1, manufacturerName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfIncomingOrders)=>{
+    outgoingOrders.find({}, {orderId:1, manufacturerName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfOutgoingOrders)=>{
         if(err){
-            console.log('error in retrieving pharmacists ' + JSON.stringify(err, undefined, 2)); 
+            console.log('error in retrieving outgoing orders ' + JSON.stringify(err, undefined, 2)); 
         }else{
             res.json(listOfOutgoingOrders);
         }

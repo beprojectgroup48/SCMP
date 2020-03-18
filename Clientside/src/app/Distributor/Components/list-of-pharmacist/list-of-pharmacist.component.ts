@@ -25,7 +25,6 @@ export class ListOfPharmacistComponent implements OnInit {
   ngOnInit() {
     this.getPharmacistList();
   }
-
   getPharmacistList(){
     this.distributorService.getPharmacists().subscribe(pharmacistList =>{
       this.pharmacistList = pharmacistList;

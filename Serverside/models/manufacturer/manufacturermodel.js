@@ -39,35 +39,34 @@ const manufacturerSchema = mongoose.Schema({
         required: true
     }
 },{
-    collection: 'manufacturer'
+  collection: 'manufacturer'
 });
 
 const manufacturers = module.exports = mongoose.model('manufacturers', manufacturerSchema);
 
 
 module.exports.getManufacturerById = function(id, callback){
-    manufacturers.findById(id, callback);
-  }
-  
-  module.exports.getManufacturerByUsername = function(username, callback){
-    const query = {username: username}
-    manufacturers.findOne(query, callback);
-  }
-  
-  module.exports.addManufacturer = function(manufacturer, callback){
-    bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(manufacturer.password, salt, (err, hash) => {
-        if(err) throw err;
-        manufacturer.password = hash;
-        manufacturer.save(callback);
-      });
-    });
-  }
-  
-  module.exports.comparePassword = function(candidatePassword, hash, callback){
-    bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+  manufacturers.findById(id, callback);
+}
+
+module.exports.getManufacturerByUsername = function(username, callback){
+  const query = {username: username}
+  manufacturers.findOne(query, callback);
+}
+
+module.exports.addManufacturer = function(manufacturer, callback){
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(manufacturer.password, salt, (err, hash) => {
       if(err) throw err;
-      callback(null, isMatch);
+      manufacturer.password = hash;
+      manufacturer.save(callback);
     });
-  }
-  
+  });
+}
+
+module.exports.comparePassword = function(candidatePassword, hash, callback){
+  bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+    if(err) throw err;
+    callback(null, isMatch);
+  });
+}

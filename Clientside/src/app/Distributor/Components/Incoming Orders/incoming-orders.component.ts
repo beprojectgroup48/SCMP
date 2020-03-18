@@ -1,7 +1,7 @@
-import { DistributorService } from './../../Services/distributor.service';
 import { IncomingOrders } from './../../Models/incoming-orders';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { DistributorService } from '../../Services/distributor.service';
 
 @Component({
   selector: 'app-incoming-orders',
