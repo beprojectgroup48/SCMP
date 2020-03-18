@@ -2,10 +2,14 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');;
 
 const manufacturerSchema = mongoose.Schema({
-  username:{
-    type:String,
-    required:true
- },
+    username:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
     name:{
         type:String,
         required:true
@@ -27,10 +31,6 @@ const manufacturerSchema = mongoose.Schema({
         required: true
     },
     modeOfTransport: {
-        type: String,
-        required: true
-    },
-    formType: {
         type: String,
         required: true
     },

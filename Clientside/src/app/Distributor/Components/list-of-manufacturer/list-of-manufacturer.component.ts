@@ -1,3 +1,5 @@
+import { Manufacturer } from './../../../Manufacturer/Models/manufacturer';
+import { DistributorService } from './../../Services/distributor.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { listOfManufacturer } from './../../Models/list-of-manufacturer';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
@@ -8,21 +10,27 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
   styleUrls: ['./list-of-manufacturer.component.css']
 })
 export class ListOfManufacturerComponent implements OnInit {
-  displayedColumns: string[] = ['Order Id', 'Manufacturer Name', 'Issue Date', 'Delivery Date','Total Amount','Status'];
-  dataSource =  new MatTableDataSource(ELEMENT_DATA);
+  manufacturerList: Manufacturer[];
+  displayedColumns: string[] = ['username', 'email', 'name', 'mobileNumber', 'location', 'password', 'transportAgency', 'modeOfTransport', 'licenceNumber'];
+  dataSource : any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
-  constructor() { }
+  constructor(private distributorService: DistributorService) { }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   ngOnInit() {
+    this.getManufacturerList();
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+  getManufacturerList(){
+    this.distributorService.getManufacturers().subscribe(manufacturerList =>{
+      this.manufacturerList = manufacturerList;
+      this.dataSource = new MatTableDataSource(this.manufacturerList);
+      this.dataSource.paginator = this.paginator;
+    })
   }
 
 }

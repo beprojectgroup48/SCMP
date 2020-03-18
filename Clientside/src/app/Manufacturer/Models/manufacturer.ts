@@ -1,5 +1,6 @@
 export class Manufacturer{
   username:String;
+  email:String;
   password:String;
   name:String;
   mobileNumber:number;

@@ -14,7 +14,7 @@ router.get('/allmanufacturers', (req, res)=>{
     })
 })
 router.get('/allpharmacists', (req, res)=>{
-    pharmacists.find({}, {name:1, location:1, registrationId:1}, (err, listOfPharmacists)=>{
+    pharmacists.find((err, listOfPharmacists)=>{
         if(err){
             console.log('error in retrieving pharmacists ' + JSON.stringify(err, undefined, 2)); 
         }else{

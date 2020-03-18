@@ -1,4 +1,3 @@
-//import { listOfPharmacist } from './../../Models/list-of-pharmacist';
 import { Pharmacist } from '../../../Pharmacist/Models/pharmacist';
 import { DistributorService} from '../../Services/distributor.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -12,11 +11,10 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 })
 export class ListOfPharmacistComponent implements OnInit {
   
-  pharmacistList: Pharmacist[] = null;
-  //dataSource = new MatTableDataSource<Pharmacist>(this.pharmacistList);
+  pharmacistList: Pharmacist[];
   constructor(private distributorService: DistributorService) { }
-  displayedColumns: string[] = ['Sr No', 'Firm Name', 'Pharmacist Name', 'License No','Address'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['username', 'email', 'name', 'mobileNumber', 'location', 'password', 'registrationId'];
+  dataSource:any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
@@ -31,15 +29,10 @@ export class ListOfPharmacistComponent implements OnInit {
   getPharmacistList(){
     this.distributorService.getPharmacists().subscribe(pharmacistList =>{
       this.pharmacistList = pharmacistList;
-      //this.dataSource.data = this.pharmacistList;
-      console.log(this.dataSource.data);
+      this.dataSource = new MatTableDataSource(this.pharmacistList);
+      this.dataSource.paginator = this.paginator;
     })  
   }
-
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-  }
-
 }
 
 const ELEMENT_DATA: listOfPharmacist[] = [

@@ -12,37 +12,52 @@
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
       
         <!-- order Column -->
-        <ng-container matColumnDef="Order Id">
-          <th mat-header-cell *matHeaderCellDef> Sr. No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.orderId}} </td>
+        <ng-container matColumnDef="username">
+          <th mat-header-cell *matHeaderCellDef> Username </th>
+          <td mat-cell *matCellDef="let element"> {{element.username}} </td>
         </ng-container>
       
         <!-- Name Column -->
-        <ng-container matColumnDef="Manufacturer Name">
+        <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Manufacturer Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.manufacturerName}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
       
         <!-- Weight Column -->
-        <ng-container matColumnDef="Issue Date">
-          <th mat-header-cell *matHeaderCellDef> Product ID</th>
-          <td mat-cell *matCellDef="let element"> {{element.issueDate.toDateString()}} </td>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email</th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
         </ng-container>
       
         <!-- Symbol Column -->
-        <ng-container matColumnDef="Delivery Date">
-          <th mat-header-cell *matHeaderCellDef> Product Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.deliveryDate.toDateString()}} </td>
+        <ng-container matColumnDef="mobileNumber">
+          <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
+          <td mat-cell *matCellDef="let element"> {{element.mobileNumber}} </td>
         </ng-container>
       
-      <ng-container matColumnDef="Total Amount">
-          <th mat-header-cell *matHeaderCellDef> License No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.totalAmount}} </td>
+      <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef> Location </th>
+          <td mat-cell *matCellDef="let element"> {{element.location}} </td>
         </ng-container>
         
-      <ng-container matColumnDef="Status">
-        <th mat-header-cell *matHeaderCellDef> Address </th>
-        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      <ng-container matColumnDef="password">
+        <th mat-header-cell *matHeaderCellDef> Password </th>
+        <td mat-cell *matCellDef="let element"> {{element.password}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="transportAgency">
+        <th mat-header-cell *matHeaderCellDef> Transport Agency </th>
+        <td mat-cell *matCellDef="let element"> {{element.transportAgency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="modeOfTransport">
+        <th mat-header-cell *matHeaderCellDef> Mode of Transport </th>
+        <td mat-cell *matCellDef="let element"> {{element.modeOfTransport}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="licenceNumber">
+        <th mat-header-cell *matHeaderCellDef> Licence Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.licenceNumber}} </td>
       </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
