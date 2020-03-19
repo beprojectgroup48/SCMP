@@ -5,10 +5,6 @@ const incomingOrderDistributorSchema = mongoose.Schema({
         type:String,
         required:true
     },
-   /* email:{
-        type:String,
-        required:true
-    },*/
     pharmacistName:{
         type:String,
         required:true

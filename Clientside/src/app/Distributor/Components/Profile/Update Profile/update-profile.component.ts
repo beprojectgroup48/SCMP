@@ -10,12 +10,17 @@ import { DistributorProfileComponent } from '../dis-profile.component';
   styleUrls: ['./update-profile.component.css']
 })
 export class UpdateProfileComponent{
+  
+  
+ 
 
   constructor(
     public dialogRef: MatDialogRef<DistributorProfileComponent>,
     @Inject (MAT_DIALOG_DATA) public data: Profile) {    }
     
+   
     onNoClick(): void{
+      
       this.dialogRef.close();
     }
 }

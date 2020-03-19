@@ -5,8 +5,25 @@
     </button>
    <span style="margin-top: 2px;">Distributor</span>
    <span class="fill"></span>
-    <button mat-button routerLink="/distributor/profile" style="width:85px;"><mat-icon class="pqr">account_box</mat-icon>Profile</button>
+    <!-- <button mat-button routerLink="/distributor/profile" style="width:85px;"><mat-icon class="pqr">account_box</mat-icon>Profile</button>
     <button mat-button routerLink="/login" style="width:90px;"><mat-icon class="pqr">logout</mat-icon>Logout</button>
+     -->
+    <button mat-button [matMenuTriggerFor]="menu"><mat-icon>account_circle</mat-icon></button>
+    <div class="menus">
+    <mat-menu #menu="matMenu">
+      <div>
+        <mat-toolbar class="primary">
+          <div fxlayout="row" fxlayoutalign="space-around center" class="user-info">
+            <img alt="user-image" width="50" class="rounded mat-elevation-z6" src="../assets/avatar.svg">
+            <p style="font-size:12">Distributor1</p></div>
+        </mat-toolbar>
+      </div>
+      <button mat-menu-item (click)="goToProfile()"><mat-icon>account_box</mat-icon>Profile</button>
+      <button mat-menu-item><mat-icon>edit</mat-icon>Edit Profile</button>
+      <div class="divider"></div>
+      <button mat-menu-item (click)="goToLogin()"><mat-icon>logout</mat-icon>Logout</button>
+    </mat-menu>
+  </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
