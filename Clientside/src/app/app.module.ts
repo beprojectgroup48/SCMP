@@ -23,11 +23,8 @@ import {
   MatDialogRef, 
   MAT_DIALOG_DATA,
   MatPaginatorModule,
-<<<<<<< HEAD
-  MatMenuModule
-=======
+  MatMenuModule,
   MatDatepickerModule
->>>>>>> f925e02868c44d4c97f978603205fb536877a9b2
 
 } from '@angular/material';
 
@@ -98,11 +95,8 @@ import { ListOfPharmacistComponent } from './Distributor/Components/list-of-phar
     MatDividerModule,
     MatDialogModule,
     MatPaginatorModule,
-<<<<<<< HEAD
-    MatMenuModule
-=======
+    MatMenuModule,
     MatDatepickerModule
->>>>>>> f925e02868c44d4c97f978603205fb536877a9b2
   ],
   entryComponents:[AddItemsComponent],
   providers: [],
