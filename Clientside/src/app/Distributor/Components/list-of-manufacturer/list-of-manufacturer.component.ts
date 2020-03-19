@@ -2,9 +2,8 @@ import { Manufacturer } from './../../../Manufacturer/Models/manufacturer';
 import { DistributorService } from './../../Services/distributor.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { listOfManufacturer } from './../../Models/list-of-manufacturer';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
-import { DistributorService } from '../../Services/distributor.service';
-import { Manufacturer } from 'src/app/Manufacturer/Models/manufacturer';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
+
 
 @Component({
   selector: 'app-list-of-manufacturer',
