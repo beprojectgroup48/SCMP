@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../../shared/order.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,8 +9,7 @@ import { Router } from '@angular/router';
 export class ViewOrderComponent implements OnInit {
   orderList;
 
-  constructor(private service: OrderService,
-    private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     //this.refreshList();
