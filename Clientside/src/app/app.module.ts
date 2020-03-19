@@ -1,5 +1,6 @@
-
-import { DistributorBookOrderComponent } from './Distributor/Components/Book Order/dis-bookorder.component';
+import { ViewOrderComponent } from './Distributor/Components/Book Order/View Order/view-order.component';
+import { AddItemsComponent } from './Distributor/Components/Book Order/Add Items/add-items.component';
+import { OrderComponent } from './Distributor/Components/Book Order/Order/order.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -22,7 +23,11 @@ import {
   MatDialogRef, 
   MAT_DIALOG_DATA,
   MatPaginatorModule,
+<<<<<<< HEAD
   MatMenuModule
+=======
+  MatDatepickerModule
+>>>>>>> f925e02868c44d4c97f978603205fb536877a9b2
 
 } from '@angular/material';
 
@@ -56,14 +61,16 @@ import { ListOfPharmacistComponent } from './Distributor/Components/list-of-phar
     ForgetpassComponent,
     DistributorDashboardComponent,
     DistributorYourOrderComponent,
-    DistributorBookOrderComponent,
     DistributorNavigationComponent,
     IncomingOrdersComponent,
     OutgoingOrdersComponent,
     DistributorProfileComponent,
     UpdateProfileComponent,
     ListOfManufacturerComponent,
-    ListOfPharmacistComponent
+    ListOfPharmacistComponent,
+    OrderComponent,
+    AddItemsComponent,
+    ViewOrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,8 +98,13 @@ import { ListOfPharmacistComponent } from './Distributor/Components/list-of-phar
     MatDividerModule,
     MatDialogModule,
     MatPaginatorModule,
+<<<<<<< HEAD
     MatMenuModule
+=======
+    MatDatepickerModule
+>>>>>>> f925e02868c44d4c97f978603205fb536877a9b2
   ],
+  entryComponents:[AddItemsComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -2,11 +2,10 @@ import { SubOrder } from './sub-order';
 
 export class CompleteOrder {
     orderId: String;
-    email: String;
-    manufacturerName: String;
     orders: SubOrder[];
+    distributorUsername: String;
     issueDate: Date;
-    deliveryDate: Date;
-    location: String;
-    finalAmount: Number;
+    dueDate: Date;
+    finalAmount: number;
+    status: String;
   }
