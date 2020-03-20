@@ -2,7 +2,7 @@ import { Profile } from './../../Models/profile';
 import { UpdateProfileComponent } from './Update Profile/update-profile.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-dis-profile',
   templateUrl: './dis-profile.component.html',
@@ -10,7 +10,20 @@ import { MatDialog } from '@angular/material';
 })
 export class DistributorProfileComponent {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    public _d:DomSanitizer
+    ) { }
+
+  url ='';
+  imgsrc="/assets/avatar.svg";
+  onSelectFile(event)
+  {
+    const file = event.srcElement.files[0]; 
+    this.imgsrc = window.URL.createObjectURL(file); 
+  }
+    
+  
 
   currentData: Profile={name:'Distributor1', email:'distributor@scmp.com', mob:1234567890, address: 'Swargate, Pune', password: 'Password@123'};
 
@@ -33,7 +46,11 @@ export class DistributorProfileComponent {
       this.currentData.address=result.address;
       this.currentData.email=result.email;
       this.currentData.password=result.password;
+    
     });
     
+    
+
+
   }
 }

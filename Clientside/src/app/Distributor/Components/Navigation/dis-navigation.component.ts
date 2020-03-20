@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dis-navigation',
@@ -6,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dis-navigation.component.css']
 })
 export class DistributorNavigationComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(private router:Router) { }
+  goToProfile(){ 
+    this.router.navigate(['/distributor/profile']);
+  }
+  goToLogin(){
+    this.router.navigate(['/login']);
+  }
 
   ngOnInit() {
   }

@@ -1,41 +1,67 @@
-<mat-card class="profile">
-  <mat-card-title>
-    My Profile
-  </mat-card-title>
-  <mat-card-content style="margin-left: 25%;">
-   
-         <mat-form-field appearance="fill">
-          <mat-label>Name:</mat-label>
-          <input class="input" disabled type="text" matInput [(ngModel)]="currentData.name">
-         </mat-form-field>
-         
-         <mat-form-field appearance="fill">
-          <mat-label>Password:</mat-label>
-          <input class="input" disabled type="text" matInput [(ngModel)]="currentData.password" [type]="!hide ? 'password' : 'text'">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
-        
-         <mat-form-field appearance="fill">
-          <mat-label>Email ID:</mat-label>
-          <input class="input" disabled type="text" matInput [(ngModel)]="currentData.email">
-         </mat-form-field>
-       
-          <mat-form-field appearance="fill">
-            <mat-label>Mobile No:</mat-label>
-            <input class="input" disabled type="text" matInput [(ngModel)]="currentData.mob">
-           </mat-form-field>
-        
-           <mat-form-field appearance="fill">
-          <mat-label>Address:</mat-label>
-          <input class="input" disabled type="text" matInput [(ngModel)]="currentData.address">
-         </mat-form-field>
 
+<div class="container" fxLayout="row wrap">
+
+<div  class="div1">
+<mat-card class="profile_pic" fxLayout="row" >
+  <mat-card-content style="text-align: center;">
+    
+    <img mat-card-image [src]="_d.bypassSecurityTrustUrl(imgsrc)" alt="User Photo" class="mat-card-image">
+    
+    <!-- <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+    </div> -->
+    <input type='file' (change)="onSelectFile($event)">
+    <div class="divider">
+        <button mat-button type="submit" class="upload" ><mat-icon>edit</mat-icon>Change Profile Photo</button>
+    </div>
   </mat-card-content>
-  <mat-card-actions>
-    <button class="primary" mat-button (click)="openDialog()">
-      Update Profile
-    </button>
-  </mat-card-actions>
-</mat-card> 
+</mat-card>
+</div>
+<div  class="div2">
+  <mat-card class="profile">
+  
+    <mat-card-content>
+     <div class="heading" >
+      <label #lblName id="lblName">{{currentData.name}}</label>
+      <!-- <h2 > Distributor1</h2> -->
+     </div>
+  
+           <mat-form-field appearance="fill">
+            <mat-label>Name:</mat-label>
+            <input class="input" type="text" matInput [(ngModel)]="currentData.name">
+           </mat-form-field>
+           
+           <mat-form-field appearance="fill">
+            <mat-label>Password:</mat-label>
+            <input class="input" disabled type="text" matInput [(ngModel)]="currentData.password" [type]="!hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          
+           <mat-form-field appearance="fill">
+            <mat-label>Email ID:</mat-label>
+            <input class="input" disabled type="text" matInput [(ngModel)]="currentData.email">
+           </mat-form-field>
+         
+            <mat-form-field appearance="fill">
+              <mat-label>Mobile No:</mat-label>
+              <input class="input" disabled type="text" matInput [(ngModel)]="currentData.mob">
+             </mat-form-field>
+          
+             <mat-form-field appearance="fill">
+            <mat-label>Address:</mat-label>
+            <input class="input" disabled type="text" matInput [(ngModel)]="currentData.address">
+           </mat-form-field>
+          
+    </mat-card-content>
+    
+    <mat-card-actions >
+      <button class="primary" mat-button (click)="openDialog()">
+        Update Profile
+      </button>
+    </mat-card-actions>
+  
+  </mat-card> 
+</div>
+</div>
+
