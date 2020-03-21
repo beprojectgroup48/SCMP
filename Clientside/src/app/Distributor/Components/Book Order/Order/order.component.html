@@ -20,12 +20,12 @@ min-height: 90%;">
         </div>
       </div>
       <div class="form-group">
-          <label>Due Date</label>
+          <label>Issue Date</label>
           <mat-form-field class="input-group" style="font-size: 16px;margin-top: -18px">
-              <input [min]="currentCompleteOrder.issueDate" matInput [matDatepicker]="picker" name="dueDate" #dueDate="ngModel" [(ngModel)]="currentCompleteOrder.dueDate">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+            <input style="color:rgb(90, 90, 90)" name="dueDate" [value]="date.value" disabled [min]="currentCompleteOrder.issueDate" matInput [matDatepicker]="picker1">
+            <mat-datepicker-toggle [disabled]="true" matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker [disabled]="true"></mat-datepicker>
+        </mat-form-field>
       </div>
     </div>
     <div class="col-md-6">
@@ -37,6 +37,14 @@ min-height: 90%;">
           </div>
           <input name="GTotal" class="form-control" [(ngModel)]="currentCompleteOrder.finalAmount" readonly>
         </div>
+      </div>
+      <div class="form-group">
+          <label>Due Date</label>
+          <mat-form-field class="input-group" style="font-size: 16px;margin-top: -18px">
+              <input [min]="currentCompleteOrder.issueDate" matInput [matDatepicker]="picker" name="dueDate" #dueDate="ngModel" [(ngModel)]="currentCompleteOrder.dueDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
       </div>
     </div>
   </div>

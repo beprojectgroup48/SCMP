@@ -2,7 +2,7 @@ import { Product } from './../../../Models/product';
 import { CompleteOrder } from './../../../Models/complete-order';
 import { AddItemsComponent } from './../Add Items/add-items.component';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SubOrder } from 'src/app/Distributor/Models/sub-order';
 import { DistributorService } from '../../../Services/distributor.service';
@@ -21,6 +21,9 @@ export class OrderComponent implements OnInit {
   count: number = 0;
   username: String = "DB76390";
   productList = ELEMENT_DATA;
+  dateRe : String;
+  date = new FormControl(new Date());
+  serializedDate = new FormControl((new Date()).toISOString());
 
   constructor(private dialog: MatDialog, private distributorService: DistributorService) { }
 
@@ -33,6 +36,7 @@ export class OrderComponent implements OnInit {
     this.currentCompleteOrder.finalAmount = 0;
     this.currentCompleteOrder.status =  "Pending";
     this.currentCompleteOrder.orders = this.currentSubOrderList;
+    this.dateRe = new Date().toDateString();
   }
 
   resetForm(form?: NgForm) {
