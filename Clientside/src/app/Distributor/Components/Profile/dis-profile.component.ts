@@ -3,6 +3,7 @@ import { UpdateProfileComponent } from './Update Profile/update-profile.componen
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-dis-profile',
   templateUrl: './dis-profile.component.html',
