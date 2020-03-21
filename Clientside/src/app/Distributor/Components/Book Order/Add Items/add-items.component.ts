@@ -19,6 +19,7 @@ export class AddItemsComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public currentSubOrder: SubOrder,
     public dialogRef: MatDialogRef<AddItemsComponent>) {
       this.data1 = currentSubOrder;
+      console.log("selected manufacturer is "+currentSubOrder.manufacturerName);
      }
 
   ngOnInit() {

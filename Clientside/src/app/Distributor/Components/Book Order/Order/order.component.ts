@@ -1,3 +1,4 @@
+import { Manufacturer } from './../../../../Manufacturer/Models/manufacturer';
 import { Product } from './../../../Models/product';
 import { CompleteOrder } from './../../../Models/complete-order';
 import { AddItemsComponent } from './../Add Items/add-items.component';
@@ -23,6 +24,7 @@ export class OrderComponent implements OnInit {
   dateRe : String;
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
+  manufacturersList : Manufacturer[] = ELEMENT_DATA2;
 
   constructor(private dialog: MatDialog) { }
 
@@ -34,8 +36,16 @@ export class OrderComponent implements OnInit {
     this.currentCompleteOrder.dueDate = undefined;
     this.currentCompleteOrder.finalAmount = 0;
     this.currentCompleteOrder.status =  "Pending";
+    this.currentCompleteOrder.manufacturerName =  "0";
+    this.currentCompleteOrder.manufacturerUsername =  "0";
     this.currentCompleteOrder.orders = this.currentSubOrderList;
     this.dateRe = new Date().toDateString();
+  }
+
+  updateProductList(ctrl){
+    if (ctrl.selectedIndex != 0) {
+      this.currentCompleteOrder.manufacturerName = this.manufacturersList[ctrl.selectedIndex-1].name;
+    }
   }
 
   resetForm(form?: NgForm) {
@@ -51,11 +61,16 @@ export class OrderComponent implements OnInit {
   }
 
   AddOrEditOrderItem() {
+    if(this.currentCompleteOrder.manufacturerUsername=="0")
+    {
+      confirm('Please select the Manufacturer first!');
+      return;
+    }
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     dialogConfig.width = "50%";
-    dialogConfig.data = { productId : "0", productName : "", unitPrice : 0, quantity: undefined, totalAmount : 0 };
+    dialogConfig.data = { productId : "0", productName : "", unitPrice : 0, quantity: undefined, totalAmount : 0, manufacturerusername : this.currentCompleteOrder.manufacturerUsername, manufacturerName : this.currentCompleteOrder.manufacturerName };
     const dialogRef = this.dialog.open(AddItemsComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -128,4 +143,36 @@ const ELEMENT_DATA: Product[] = [
   { id: '4', name: 'Fever', unitPrice: 400, manufacturerUsername: 'MF369412', manufacturerName:'Mukesh'},
   { id: '5', name: 'Cold', unitPrice: 500, manufacturerUsername: 'MF201596', manufacturerName:'Nilesh'},
   { id: '6', name: 'Flu', unitPrice: 600, manufacturerUsername: 'MF963480', manufacturerName:'Hitesh'},
+];
+
+const ELEMENT_DATA2: Manufacturer[] = [
+  {username: "MF123456",
+    email: "manufacturer1@scmp.com",
+    password: "password@123",
+    name: "Ashok Industries",
+    mobileNumber: 8605038260,
+    transportAgency: "Tejas Agency",
+    modeOfTransport: "Road",
+    location: "Pune",
+    registrationId: 458961},
+    
+    {username: "MF564800",
+    email: "manufacturer2@scmp.com",
+    password: "password@123",
+    name: "Kartik Industries",
+    mobileNumber: 9648201163,
+    transportAgency: "Vikas Agency",
+    modeOfTransport: "Road",
+    location: "Mumbai",
+    registrationId: 789624},
+
+    {username: "MF489651",
+    email: "manufacturer3@scmp.com",
+    password: "password@123",
+    name: "Vikas Industries",
+    mobileNumber: 8965214521,
+    transportAgency: "Prakash Agency",
+    modeOfTransport: "Road",
+    location: "Nagar",
+    registrationId: 789654},
 ];
