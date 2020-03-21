@@ -48,6 +48,7 @@ import { UpdateProfileComponent } from './Distributor/Components/Profile/Update 
 import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
 import { ListOfManufacturerComponent } from './Distributor/Components/list-of-manufacturer/list-of-manufacturer.component';
 import { ListOfPharmacistComponent } from './Distributor/Components/list-of-pharmacist/list-of-pharmacist.component';
+import { ShowProductsComponent } from './Distributor/Components/Book Order/Show Products/show-products.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ListOfPharmacistComponent } from './Distributor/Components/list-of-phar
     OrderComponent,
     AddItemsComponent,
     ViewOrderComponent,
+    ShowProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,7 +100,7 @@ import { ListOfPharmacistComponent } from './Distributor/Components/list-of-phar
     MatMenuModule,
     MatDatepickerModule
   ],
-  entryComponents:[AddItemsComponent],
+  entryComponents:[AddItemsComponent,ShowProductsComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

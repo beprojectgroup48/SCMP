@@ -1,22 +1,43 @@
-<table class="table table-hover">
-  <thead class="thead-light">
-    <th>#Order No.</th>
-    <th>Customer</th>
-    <th>P. Method</th>
-    <th>G. Total</th>
-    <th>
-      <a class="btn btn-outline-success" routerLink="/distributor/bookorder"><i class="fa fa-plus-square"></i> Create New</a>
-    </th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of orderList">
-      <th (click)="openForEdit(item.OrderID)">{{item.OrderNo}}</th>
-      <td (click)="openForEdit(item.OrderID)">{{item.Customer}}</td>
-      <td (click)="openForEdit(item.OrderID)">{{item.PMethod}}</td>
-      <td (click)="openForEdit(item.OrderID)">{{item.GTotal}}</td>
-      <td>
-          <a class="btn text-danger" (click)="onOrderDelete(item.OrderID)"><i class="fa fa-trash fa-lg"></i></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<mat-card class="your-order" style="margin-left: 13px;
+margin-right: 13px;
+margin-top: 13px;
+margin-bottom: 13px;
+min-height: 90%;">
+  <mat-card-title>Your Orders</mat-card-title>
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutAlign="start">
+      <table class="table table-borderless">
+        <thead class="thead-light">
+          <th>#Order Id.</th>
+          <th>Manufacturer Name</th>
+          <th>Issue Date</th>
+          <th>Due Date</th>
+          <th>Final Amount</th>
+          <th>Status</th>
+          <th>
+            <a class="btn btn-outline-success" routerLink="/distributor/bookorder"><i class="fa fa-plus-square"></i> Create New</a>
+          </th>
+        </thead>
+        <tbody>
+            <tr *ngIf="orderList.length==0">
+                <td class="font-italic text-center" colspan="6">
+                  No orders.
+                </td>
+              </tr>
+          <tr *ngFor="let item of orderList;let i=index">
+            <th>{{item.orderId}}</th>
+            <td>{{item.manufacturerName}}</td>
+            <td>{{item.issueDate.toDateString()}}</td>
+            <td>{{item.dueDate.toDateString()}}</td>
+            <td>{{item.finalAmount}}</td>
+            <td>{{item.status}}</td>
+            <td>
+                <a class="btn btn-sm btn-success text-white" (click)="showProducts(item.orderId)"> Show Products</a>
+                <a class="btn text-danger" (click)="onDeleteOrder(i)"><i class="fa fa-trash fa-lg"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</mat-card-content>
+</mat-card>

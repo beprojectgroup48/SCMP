@@ -34,8 +34,7 @@ const routes: Routes = [
         {path:'profile/edit', component:UpdateProfileComponent},
         {path:'listofmanufacturer', component:ListOfManufacturerComponent},
         {path:'listofpharmacist', component:ListOfPharmacistComponent},
-        {path:'view-order',component:ViewOrderComponent}
-
+        {path:'view-order',component:ViewOrderComponent},
   ]},
 ]
 
