@@ -24,10 +24,10 @@ router.get('/allpharmacists', (req, res)=>{
         }
     })
 })
-router.post('/placeorder', (req, res)=>{
+router.post('/placeOrder', (req, res)=>{
     let order = new Order ({
         orderId: req.body.orderId,
-        email: req.body.email,
+      //  email: req.body.email,
         productName:req.body.productName,
         quantity: req.body.quantity,
         unitamount: req.body.unitamount,

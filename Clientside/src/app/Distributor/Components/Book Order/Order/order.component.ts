@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SubOrder } from 'src/app/Distributor/Models/sub-order';
+import { DistributorService } from '../../../Services/distributor.service';
 
 @Component({
   selector: 'app-order',
@@ -21,7 +22,7 @@ export class OrderComponent implements OnInit {
   username: String = "DB76390";
   productList = ELEMENT_DATA;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private distributorService: DistributorService) { }
 
   ngOnInit() {
     this.currentCompleteOrder = new CompleteOrder();
@@ -113,7 +114,9 @@ export class OrderComponent implements OnInit {
 
 
   onSubmit(form: NgForm) {
-    console.log(this.currentCompleteOrder);
+    this.distributorService.placeOrder(this.currentCompleteOrder).subscribe(data =>{
+       console.log(data);
+    })
   }
 }
 

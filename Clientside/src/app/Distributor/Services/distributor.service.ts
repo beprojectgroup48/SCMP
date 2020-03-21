@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -15,10 +15,13 @@ export class DistributorService {
   getPharmacists(){
    return  this.http.get('http://localhost:3000/distributor/allpharmacists').pipe(map(res => res.json()));
   }
-  placeOrder(){
+  placeOrder(order){
     const headers = new Headers();
     headers.append('content-Type' , 'application/json');
-   // this.http.post('http://localhost:3000/distributor/placeorder', order, {headers : headers})
+
+    return this.http.post('http://localhost:3000/distributor/placeOrder', order, {headers : headers}).pipe(map(res => res.json()));
+
+
   }
   getIncomingOrders(){
    return this.http.get('http://localhost:3000/distributor/allIncomingOrders').pipe(map(res => res.json()));
