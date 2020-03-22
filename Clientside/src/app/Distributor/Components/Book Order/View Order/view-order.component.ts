@@ -54,8 +54,8 @@ const ELEMENT_DATA: CompleteOrder[] = [
 ];
 
 const ELEMENT_DATA2: SubOrder[] = [
-  { productId: "2386", productName: "Crosin", unitPrice: 100, quantity: 7, totalAmount: 700},
-  { productId: "4865", productName: "Fever", unitPrice: 200, quantity: 4, totalAmount: 800},
-  { productId: "1956", productName: "Cold", unitPrice: 300, quantity: 2, totalAmount: 600},
-  { productId: "2020", productName: "Flu", unitPrice: 400, quantity: 6, totalAmount: 2400},
+  { productId: "2386", productName: "Crosin", unitPrice: 100, quantity: 7, totalAmount: 700, manufacturerUsername: "MF123456", manufacturerName:"Sachin"},
+  { productId: "4865", productName: "Fever", unitPrice: 200, quantity: 4, totalAmount: 800, manufacturerUsername: "MF896412", manufacturerName:"Sehwag"},
+  { productId: "1956", productName: "Cold", unitPrice: 300, quantity: 2, totalAmount: 600, manufacturerUsername: "MF489210", manufacturerName:"Virat"},
+  { productId: "2020", productName: "Flu", unitPrice: 400, quantity: 6, totalAmount: 2400, manufacturerUsername: "MF023694", manufacturerName:"Dhoni"},
 ];
