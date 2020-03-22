@@ -27,13 +27,22 @@ min-height: 90%;">
             <mat-datepicker #picker [disabled]="true"></mat-datepicker>
         </mat-form-field>
       </div>
+      <div class="form-group" style="margin-top: -15px;margin-bottom: 20px;">
+          <label>Manufacturer Name</label>
+          <select name="manufacturerUsername" #manufacturerUsername="ngModel" [(ngModel)]="currentCompleteOrder.manufacturerUsername" class="form-control" (change)="updateProductList($event.target,form)"
+          [class.is-invalid]="manufacturerUsername.touched && currentCompleteOrder.manufacturerUsername==0">
+            <option value="0">-Select-</option>
+            <option *ngFor="let manu of manufacturersList" value="{{manu.username}}">{{manu.name}}</option>
+          </select>
+        </div>
     </div>
+  
     <div class="col-md-6">
       <div class="form-group">
         <label>Grand Total</label>
         <div class="input-group">
           <div class="input-group-prepend">
-            <div class="input-group-text">$</div>
+            <div class="input-group-text">&#8377;</div>
           </div>
           <input name="GTotal" class="form-control" [(ngModel)]="currentCompleteOrder.finalAmount" readonly>
         </div>
@@ -47,7 +56,9 @@ min-height: 90%;">
           </mat-form-field>
       </div>
     </div>
+    
   </div>
+
   <!-- order items table-->
   <table class="table table-borderless">
     <thead class="thead-light">
@@ -79,7 +90,7 @@ min-height: 90%;">
     </tbody>
   </table>
   <div class="form-group">
-    <button type="submit" class="btn btn-dark" [disabled]="form.invalid || count==0 || currentCompleteOrder.dueDate==invalid"><i class="fa fa-database"></i> Submit</button>
+    <button type="submit" class="btn btn-dark" [disabled]="currentCompleteOrder.manufacturerUsername==0 || form.invalid || count==0 || currentCompleteOrder.dueDate==invalid"><i class="fa fa-database"></i> Submit</button>
   </div>
 </form>
 </div>
