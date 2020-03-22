@@ -1,10 +1,11 @@
 const express = require('express');
 var router = express.Router();
-var Order = require('../models/distributor/order');
+var completeOrder = require('../models/distributor/complete-order');
+var subOrder = require('../models/distributor/sub-order');
 const manufacturers = require('../models/manufacturer/manufacturermodel');
 const pharmacists = require('../models/pharmacist/pharmacistmodel');
-const incomingOrders = require('../models/distributor/incomingOrder');
-const outgoingOrders = require('../models/distributor/outgoingOrder');
+const incomingOrders = require('../models/distributor/incoming-order');
+const outgoingOrders = require('../models/distributor/outgoing-order');
 
 router.get('/allmanufacturers', (req, res)=>{
     manufacturers.find((err, listOfManufacturers)=>{
@@ -25,19 +26,24 @@ router.get('/allpharmacists', (req, res)=>{
     })
 })
 router.post('/placeOrder', (req, res)=>{
-    let order = new Order ({
+
+    let subOrder = new subOrder({
+        productNam
+    })
+    let order = new completeOrder ({
         orderId: req.body.orderId,
       //  email: req.body.email,
-        productName:req.body.productName,
+      /*  productName:req.body.productName,
         quantity: req.body.quantity,
         unitamount: req.body.unitamount,
-        manufacturerName:req.body.manufacturerName,
+        manufacturerName:req.body.manufacturerName,*/
+        subOrders: req.body.orders,
+        issueDate: req.body.issueDate,
         deliveryDate: req.body.deliveryDate,
-        location:req.body.location,
         totalAmount:req.body.totalAmount
     });
     
-    Order.placeOrder(order, (err, confirmOrder)=>{
+    completeOrder.placeOrder(order, (err, confirmOrder)=>{
         if(err){
             console.log('error '+ JSON.stringify(err));
         }else{

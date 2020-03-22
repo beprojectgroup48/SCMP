@@ -30,7 +30,7 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     this.currentCompleteOrder = new CompleteOrder();
     this.currentCompleteOrder.orderId=this.OrderId;
-    this.currentCompleteOrder.distributorUsername = this.username;
+   // this.currentCompleteOrder.distributorUsername = this.username;
     this.currentCompleteOrder.issueDate = new Date();
     this.currentCompleteOrder.dueDate = undefined;
     this.currentCompleteOrder.finalAmount = 0;
@@ -63,7 +63,7 @@ export class OrderComponent implements OnInit {
       if(!result)
         return;
       this.currentSubOrder = new SubOrder();
-      this.currentSubOrder.productId = result.productId;
+    //  this.currentSubOrder.productId = result.productId;
       this.currentSubOrder.productName = result.productName;
       this.currentSubOrder.unitPrice = result.unitPrice;
       this.currentSubOrder.quantity = result.quantity;

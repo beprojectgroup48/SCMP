@@ -1,44 +1,32 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const subOrders = require('./sub-order');
 
 const orderdistributorSchema = mongoose.Schema({
     orderId:{
         type:String,
         required:true
     },
-    email:{
-        type:String,
-        required:true
-    },
-    productName:{
-        type:String,
-        required:true
-    },
-    quantity:{
-        type:Number,
-        required:true
-    },
-    unitamount:{
-        type:Number,
-        required:true
-    },
-    manufacturerName:{
-        type:String,
+    issueDate:{
+        type:Date,
         required:true
     },
     deliveryDate:{
-        type:String,
+        type:Date,
         required:true
     },
-    location: {
-        type:String,
-        required:true
-    },
+    subOrders:[{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: subOrders 
+    }],
     totalAmount: {
         type: Number,
         required: true
+    },
+    status: {
+        type: String,
+        required: true
     }
-    
+
 },{
     collection: 'orderdistributor'
 });
