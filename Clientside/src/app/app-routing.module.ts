@@ -1,6 +1,6 @@
 import { OrderComponent } from './Distributor/Components/Book Order/Order/order.component';
 import { ViewOrderComponent } from './Distributor/Components/Book Order/View Order/view-order.component';
-import { UpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/update-profile.component';
+import { ChangePasswordComponent } from './Distributor/Components/Profile/Change-Password/change-password.component';
 import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
 import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/outgoing-orders.component';
 import { IncomingOrdersComponent } from './Distributor/Components/Incoming Orders/incoming-orders.component';
@@ -31,7 +31,7 @@ const routes: Routes = [
         {path:'bookorder', component:OrderComponent},
         {path:'yourorder', component:DistributorYourOrderComponent},
         {path:'profile', component:DistributorProfileComponent},
-        {path:'profile/edit', component:UpdateProfileComponent},
+        {path:'profile/edit', component:ChangePasswordComponent},
         {path:'listofmanufacturer', component:ListOfManufacturerComponent},
         {path:'listofpharmacist', component:ListOfPharmacistComponent},
         {path:'view-order',component:ViewOrderComponent},

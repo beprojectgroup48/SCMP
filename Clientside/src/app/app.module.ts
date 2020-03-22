@@ -44,7 +44,7 @@ import { DistributorNavigationComponent } from './Distributor/Components/Navigat
 import { CommonModule } from '@angular/common';
 import { IncomingOrdersComponent } from './Distributor/Components/Incoming Orders/incoming-orders.component';
 import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/outgoing-orders.component';
-import { UpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/update-profile.component';
+import { ChangePasswordComponent } from './Distributor/Components/Profile/Change-Password/change-password.component';
 import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
 import { ListOfManufacturerComponent } from './Distributor/Components/list-of-manufacturer/list-of-manufacturer.component';
 import { ListOfPharmacistComponent } from './Distributor/Components/list-of-pharmacist/list-of-pharmacist.component';
@@ -63,7 +63,7 @@ import { ShowProductsComponent } from './Distributor/Components/Book Order/Show 
     IncomingOrdersComponent,
     OutgoingOrdersComponent,
     DistributorProfileComponent,
-    UpdateProfileComponent,
+    ChangePasswordComponent,
     ListOfManufacturerComponent,
     ListOfPharmacistComponent,
     OrderComponent,
