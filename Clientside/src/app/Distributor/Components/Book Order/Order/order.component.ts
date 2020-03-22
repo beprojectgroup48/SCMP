@@ -38,7 +38,7 @@ export class OrderComponent implements OnInit {
     this.currentCompleteOrder.finalAmount = 0;
     this.currentCompleteOrder.status =  "Pending";
     this.currentCompleteOrder.manufacturerName =  "0";
-    this.currentCompleteOrder.manufacturerUsername =  "0";
+   // this.currentCompleteOrder.manufacturerUsername =  "0";
     this.currentCompleteOrder.orders = this.currentSubOrderList;
     this.dateRe = new Date().toDateString();
   }

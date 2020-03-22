@@ -14,10 +14,7 @@ const subOrderSchema = mongoose.Schema({
         type:Number,
         required:true
     },
-   /* manufacturerName:{
-        type:String,
-        required:true
-    },*/
+  
     totalAmount: {
         type: Number,
         required:true

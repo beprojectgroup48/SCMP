@@ -26,21 +26,20 @@ router.get('/allpharmacists', (req, res)=>{
     })
 })
 router.post('/placeOrder', (req, res)=>{
-
-    let subOrder = new subOrder({
-        productNam
-    })
+    console.log(req.body);
     let order = new completeOrder ({
         orderId: req.body.orderId,
       //  email: req.body.email,
       /*  productName:req.body.productName,
         quantity: req.body.quantity,
         unitamount: req.body.unitamount,
-        manufacturerName:req.body.manufacturerName,*/
+       */manufacturerName:req.body.manufacturerName,
         subOrders: req.body.orders,
         issueDate: req.body.issueDate,
-        deliveryDate: req.body.deliveryDate,
-        totalAmount:req.body.totalAmount
+        deliveryDate: req.body.dueDate,
+        totalAmount:req.body.finalAmount,
+        status: req.body.status,
+        manufacturerUsername: req.body.manufacturerUsername
     });
     
     completeOrder.placeOrder(order, (err, confirmOrder)=>{

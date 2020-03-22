@@ -14,10 +14,12 @@ const orderdistributorSchema = mongoose.Schema({
         type:Date,
         required:true
     },
-    subOrders:[{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: subOrders 
-    }],
+    manufacturerName:{
+        type:String
+    },
+    subOrders:{
+      type: Array 
+    },
     totalAmount: {
         type: Number,
         required: true
