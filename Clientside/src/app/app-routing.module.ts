@@ -23,6 +23,7 @@ const routes: Routes = [
       {path:'register', component:RegisterComponent}
   ]},
 
+  {path: 'distributor', redirectTo: 'distributor/dashboard', pathMatch: 'full' },
   {path:'distributor', component:DistributorNavigationComponent,
       children:[
         {path:'dashboard', component:DistributorDashboardComponent},

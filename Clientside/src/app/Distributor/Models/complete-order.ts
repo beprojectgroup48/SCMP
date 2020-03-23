@@ -5,8 +5,6 @@ export class CompleteOrder {
     orders: SubOrder[];
     distributorUsername: String;
     distributorName: String;
-    manufacturerUsername: String;
-    manufacturerName: String;
     issueDate: Date;
     dueDate: Date;
     finalAmount: number;

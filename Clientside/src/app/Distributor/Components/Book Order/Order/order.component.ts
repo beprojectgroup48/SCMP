@@ -23,6 +23,8 @@ export class OrderComponent implements OnInit {
   username: String = "DB76390";
   productList = ELEMENT_DATA;
   dateRe : String;
+  manufacturerName1 : String;
+  manufacturerUsername1 : String;
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
   manufacturersList : Manufacturer[] = ELEMENT_DATA2;
@@ -37,15 +39,15 @@ export class OrderComponent implements OnInit {
     this.currentCompleteOrder.dueDate = undefined;
     this.currentCompleteOrder.finalAmount = 0;
     this.currentCompleteOrder.status =  "Pending";
-    this.currentCompleteOrder.manufacturerName =  "0";
-   // this.currentCompleteOrder.manufacturerUsername =  "0";
+    this.manufacturerName1 =  "0";
+    this.manufacturerUsername1 =  "0";
     this.currentCompleteOrder.orders = this.currentSubOrderList;
     this.dateRe = new Date().toDateString();
   }
 
   updateProductList(ctrl){
     if (ctrl.selectedIndex != 0) {
-      this.currentCompleteOrder.manufacturerName = this.manufacturersList[ctrl.selectedIndex-1].name;
+      this.manufacturerName1 = this.manufacturersList[ctrl.selectedIndex-1].name;
     }
   }
 
@@ -62,7 +64,7 @@ export class OrderComponent implements OnInit {
   }
 
   AddOrEditOrderItem() {
-    if(this.currentCompleteOrder.manufacturerUsername=="0")
+    if(this.manufacturerUsername1=="0")
     {
       confirm('Please select the Manufacturer first!');
       return;
@@ -71,7 +73,7 @@ export class OrderComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     dialogConfig.width = "50%";
-    dialogConfig.data = { productId : "0", productName : "", unitPrice : 0, quantity: undefined, totalAmount : 0, manufacturerusername : this.currentCompleteOrder.manufacturerUsername, manufacturerName : this.currentCompleteOrder.manufacturerName };
+    dialogConfig.data = { productId : "0", productName : "", unitPrice : 0, quantity: undefined, totalAmount : 0, manufacturerusername : this.manufacturerUsername1, manufacturerName : this.manufacturerName1 };
     const dialogRef = this.dialog.open(AddItemsComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {

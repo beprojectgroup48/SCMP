@@ -46,11 +46,11 @@ export class ViewOrderComponent implements OnInit {
 }
 
 const ELEMENT_DATA: CompleteOrder[] = [
-  { orderId: "1324", orders: undefined, manufacturerUsername: "MF123456", manufacturerName:"Sachin", distributorUsername: "DB123456", distributorName:"Ganesh", issueDate: new Date('4-2-2020'), dueDate: new Date('4-12-2020'), finalAmount: 10000, status: "Pending"},
-  { orderId: "2433", orders: undefined, manufacturerUsername: "MF896412", manufacturerName:"Sehwag", distributorUsername: "DB659745", distributorName:"Mahesh", issueDate: new Date('4-2-2020'), dueDate: new Date('4-12-2020'), finalAmount: 15000, status: "Pending"},
-  { orderId: "3234", orders: undefined, manufacturerUsername: "MF103578", manufacturerName:"Virat", distributorUsername: "DB896314", distributorName:"Ramesh", issueDate: new Date('4-2-2020'), dueDate: new Date('4-12-2020'), finalAmount: 20000, status: "Pending"},
-  { orderId: "4224", orders: undefined, manufacturerUsername: "MF023694", manufacturerName:"Dhoni", distributorUsername: "DB102591", distributorName:"Rakesh", issueDate: new Date('4-2-2020'), dueDate: new Date('4-12-2020'), finalAmount: 25000, status: "Pending"},
-  { orderId: "5543", orders: undefined, manufacturerUsername: "MF489210", manufacturerName:"Rohit", distributorUsername: "DB400632", distributorName:"Nilesh", issueDate: new Date('4-2-2020'), dueDate: new Date('4-12-2020'), finalAmount: 30000, status: "Pending"},
+  { orderId: "1324", orders: undefined, distributorUsername: "DB123456", distributorName:"Ganesh", issueDate: new Date('4-2-2020'), dueDate: new Date('4-12-2020'), finalAmount: 10000, status: "Pending"},
+  { orderId: "2433", orders: undefined, distributorUsername: "DB659745", distributorName:"Mahesh", issueDate: new Date('4-2-2020'), dueDate: new Date('4-12-2020'), finalAmount: 15000, status: "Pending"},
+  { orderId: "3234", orders: undefined, distributorUsername: "DB896314", distributorName:"Ramesh", issueDate: new Date('4-2-2020'), dueDate: new Date('4-12-2020'), finalAmount: 20000, status: "Pending"},
+  { orderId: "4224", orders: undefined, distributorUsername: "DB102591", distributorName:"Rakesh", issueDate: new Date('4-2-2020'), dueDate: new Date('4-12-2020'), finalAmount: 25000, status: "Pending"},
+  { orderId: "5543", orders: undefined, distributorUsername: "DB400632", distributorName:"Nilesh", issueDate: new Date('4-2-2020'), dueDate: new Date('4-12-2020'), finalAmount: 30000, status: "Pending"},
 ];
 
 const ELEMENT_DATA2: SubOrder[] = [
