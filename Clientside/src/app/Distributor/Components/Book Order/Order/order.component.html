@@ -63,6 +63,7 @@ min-height: 90%;">
   <table class="table table-borderless">
     <thead class="thead-light">
       <th>Product</th>
+      <th>Manufacturer Name</th>
       <th>Unit Price</th>
       <th>Quantity</th>
       <th>Total</th>
@@ -79,6 +80,7 @@ min-height: 90%;">
 
       <tr *ngFor="let order of currentCompleteOrder.orders;let i=index;">
         <td>{{order.productName}}</td>
+        <td>{{order.manufacturerName}}</td>
         <td>{{order.unitPrice}}</td>
         <td>{{order.quantity}}</td>
         <td>{{order.totalAmount}}</td>

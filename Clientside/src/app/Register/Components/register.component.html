@@ -76,24 +76,6 @@
            uppercase, lowercase, special char, no. & min-length 8 required!
         </div>
       </div>
-  <div *ngIf="roleType=='Customer'">
-  <div class="input-div one;form-group">
-      <div class="i"> 
-           <mat-icon>location_on</mat-icon>
-      </div>
-      <div class="div">
-         <input #addressUser="ngModel" required pattern="[a-zA-Z0-9 ]*[a-zA-Z][a-zA-Z0-9 ]*" type="address" class="input" name="address" placeholder="Address" class="form-control" ngModel>
-     </div>
-  </div>
-  <div *ngIf="addressUser.touched">
-     <div class="abc" *ngIf="addressUser.errors?.required">
-        Address is required!
-     </div>
-     <div class="abc" *ngIf="addressUser.errors?.pattern">
-        Address is invalid!
-     </div>
-   </div>
-  </div>
   <div *ngIf="roleType=='Pharmacist' || roleType=='Manufacturer'">
   <div class="input-div one;form-group">
      <div class="i"> 

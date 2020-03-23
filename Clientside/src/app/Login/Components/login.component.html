@@ -5,7 +5,7 @@
            <mat-icon>person</mat-icon>
       </div>
       <div class="div">
-          <input #nameUser="ngModel" required pattern="(MF|DB|PH|CM)[0-9]+" type="text" class="input" name="username" placeholder="Username" class="form-control" ngModel>
+          <input #nameUser="ngModel" required pattern="(MF|DB|PH)[0-9]+" type="text" class="input" name="username" placeholder="Username" class="form-control" ngModel>
       </div>
    </div>
    <div *ngIf="nameUser.touched">

@@ -79,12 +79,23 @@ export class OrderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(!result)
         return;
+      var index = this.currentSubOrderList.findIndex(x => x.productId === result.productId);
+      if(index != -1)
+      {
+        this.currentSubOrderList[index].quantity += result.quantity;
+        this.currentCompleteOrder.finalAmount -= this.currentSubOrderList[index].totalAmount;
+        this.currentSubOrderList[index].totalAmount = this.currentSubOrderList[index].quantity * this.currentSubOrderList[index].unitPrice;
+        this.currentCompleteOrder.finalAmount += this.currentSubOrderList[index].totalAmount;
+        return;
+      }
       this.currentSubOrder = new SubOrder();
-    //  this.currentSubOrder.productId = result.productId;
+      this.currentSubOrder.productId = result.productId;
       this.currentSubOrder.productName = result.productName;
       this.currentSubOrder.unitPrice = result.unitPrice;
       this.currentSubOrder.quantity = result.quantity;
       this.currentSubOrder.totalAmount=result.totalAmount;
+      this.currentSubOrder.manufacturerUsername=this.manufacturerUsername1;
+      this.currentSubOrder.manufacturerName=this.manufacturerName1;
       this.currentSubOrderList[this.count] = this.currentSubOrder;
       this.updateGrandTotal();
       this.count++;
@@ -96,13 +107,31 @@ export class OrderComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     dialogConfig.width = "50%";
-    dialogConfig.data = { productId : this.currentSubOrderList[orderItemIndex].productId, productName : this.currentSubOrderList[orderItemIndex].productName, unitPrice : this.currentSubOrderList[orderItemIndex].unitPrice, quantity : this.currentSubOrderList[orderItemIndex].quantity, totalAmount : this.currentSubOrderList[orderItemIndex].totalAmount };
+    dialogConfig.data = { productId : this.currentSubOrderList[orderItemIndex].productId, productName : this.currentSubOrderList[orderItemIndex].productName, unitPrice : this.currentSubOrderList[orderItemIndex].unitPrice, quantity : this.currentSubOrderList[orderItemIndex].quantity,
+       totalAmount : this.currentSubOrderList[orderItemIndex].totalAmount, manufacturerusername : this.currentSubOrderList[orderItemIndex].manufacturerUsername, manufacturerName : this.currentSubOrderList[orderItemIndex].manufacturerName };
     const dialogRef = this.dialog.open(AddItemsComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
       if(!result)
         return;
-      
+      var index = this.currentSubOrderList.findIndex(x => x.productId === result.productId);
+      if(index != -1 && index == orderItemIndex)
+      {
+        this.currentCompleteOrder.finalAmount -= this.currentSubOrderList[orderItemIndex].totalAmount;
+        this.currentCompleteOrder.finalAmount += result.totalAmount;
+        this.currentSubOrderList[orderItemIndex].quantity = result.quantity;
+        this.currentSubOrderList[orderItemIndex].totalAmount = result.totalAmount;
+        return;
+      }
+      else if(index != -1)
+      {
+        this.currentSubOrderList[index].quantity += result.quantity;
+        this.currentCompleteOrder.finalAmount -= this.currentSubOrderList[index].totalAmount;
+        this.currentSubOrderList[index].totalAmount = this.currentSubOrderList[index].quantity * this.currentSubOrderList[index].unitPrice;
+        this.currentCompleteOrder.finalAmount += this.currentSubOrderList[index].totalAmount;
+        this.onDeleteOrderItem(orderItemIndex);
+        return;
+      }
         this.currentCompleteOrder.finalAmount -= this.currentSubOrderList[orderItemIndex].totalAmount;
         this.currentCompleteOrder.finalAmount += result.totalAmount;
         

@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { Manufacturer } from '../../Manufacturer/Models/manufacturer'
 import { Distributor } from '../../Distributor/Models/distributor'
 import { Pharmacist } from '../../Pharmacist/Models/pharmacist'
-import { Customer } from '../../Customer/Models/customer'
 
 @Component({
   selector: 'app-register',
@@ -18,7 +17,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
   
-  stakeholders:String[]=["Manufacturer","Distributer","Pharmacist","Customer"];
+  stakeholders:String[]=["Manufacturer","Distributer","Pharmacist"];
   roleType:String;
   username:String;
   password:String;
@@ -77,18 +76,5 @@ export class RegisterComponent implements OnInit {
         console.log(data);
       });
     }
-    else if(this.roleType=='Customer')
-    {
-      var cuser: Customer;
-      cuser=form1.value;
-      cuser.username="CM"+cuser.mobileNumber;
-      this.RegistrationService.registerCustomer(cuser).subscribe( data =>{
-        console.log('registration successful');
-      });
-    }
-    
   }
-  
-  
-  
 }
