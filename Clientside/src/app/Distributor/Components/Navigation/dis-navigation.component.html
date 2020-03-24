@@ -8,6 +8,30 @@
     <!-- <button mat-button routerLink="/distributor/profile" style="width:85px;"><mat-icon class="pqr">account_box</mat-icon>Profile</button>
     <button mat-button routerLink="/login" style="width:90px;"><mat-icon class="pqr">logout</mat-icon>Logout</button>
      -->
+     
+    <button mat-button [matMenuTriggerFor]="notificationsMenu" matToolTip="Alerts"><mat-icon>notifications_active</mat-icon> </button>
+    <mat-menu #notificationsMenu="matMenu">
+      <td>
+        <div td-menu-header class="mat-subhead" style="text-align: center;">Notifications</div>
+        <div class="divider"></div>
+        <mat-nav-list dense>
+          <ng-template let-last="last" ngFor [ngForOf]="[0,1,2]">
+            <a mat-list-item>
+              <mat-icon matListAvatar>event</mat-icon>
+              <h4 mat-line><span class="text-wrap">A new order has been placed</span></h4>
+              <p mat-line>22 minutes ago</p>
+            </a>
+            <mat-divider *ngIf="!last"></mat-divider>
+          </ng-template>
+        </mat-nav-list>
+        <div class="divider"></div>
+        <div style="text-align: center;">
+        <button mat-button style="color: blue;">
+          See All Notifications
+        </button></div>
+      </td>
+    </mat-menu>
+
     <button mat-button [matMenuTriggerFor]="menu"><mat-icon>account_circle</mat-icon></button>
     <div class="menus">
     <mat-menu #menu="matMenu">
