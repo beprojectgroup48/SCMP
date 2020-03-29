@@ -11,7 +11,7 @@ import { DistributorService } from '../../Services/distributor.service';
 export class IncomingOrdersComponent implements OnInit {
   incomingOrderList: IncomingOrders[];
   displayedColumns: string[] = ['orderId', 'pharmacistName', 'issueDate', 'deliveryDate','totalAmount','status'];
-  dataSource: any;
+  dataSource: any = ELEMENT_DATA;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -19,6 +19,8 @@ export class IncomingOrdersComponent implements OnInit {
 
   ngOnInit() {
     this.getIncomingOrderList();
+    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator;
   }
 
   getIncomingOrderList(){

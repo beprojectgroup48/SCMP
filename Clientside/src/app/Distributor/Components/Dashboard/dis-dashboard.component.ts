@@ -17,10 +17,10 @@ export class DistributorDashboardComponent implements OnInit {
 
   incomingOrderList: IncomingOrders[];
   displayedColumns1: string[] = ['orderId', 'pharmacistName', 'issueDate', 'deliveryDate','totalAmount','status'];
-  dataSource1: any;
+  dataSource1: any = ELEMENT_DATA;
   outgoingOrderList: OutgoingOrders[];
   displayedColumns2: string[] = ['orderId', 'manufacturerName', 'issueDate', 'deliveryDate','totalAmount','status'];
-  dataSource2: any;
+  dataSource2: any = ELEMENT_DATA2;
   PieChart=[];
   PieChart2=[];
 
@@ -100,3 +100,15 @@ this.PieChart2 = new Chart('pieChart2', {
         this.router.navigate(['/distributor/dashboard/outgoing-orders']);
     }
 }
+
+const ELEMENT_DATA: IncomingOrders[] = [
+    { orderId: '1', pharmacistName: 'Avinash', issueDate: new Date('3-10-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
+    { orderId: '2', pharmacistName: 'Puru', issueDate: new Date('5-2-2020') , deliveryDate: new Date('5-14-2020'), totalAmount: 200000, status: 'Done'},
+    { orderId: '3', pharmacistName: 'Rohan', issueDate: new Date('7-21-2020') , deliveryDate: new Date('7-29-2020'), totalAmount: 100000, status: 'Pending'},
+]
+
+const ELEMENT_DATA2: OutgoingOrders[] = [
+    { orderId: '1', manufacturerName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
+    { orderId: '2', manufacturerName: 'Puru', issueDate: new Date('5-21-2020') , deliveryDate: new Date('5-14-2020'), totalAmount: 200000, status: 'Done'},
+    { orderId: '3', manufacturerName: 'Rohan', issueDate: new Date('7-13-2020') , deliveryDate: new Date('7-28-2020'), totalAmount: 100000, status: 'Pending'},
+]

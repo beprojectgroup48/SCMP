@@ -13,8 +13,8 @@ export class ListOfPharmacistComponent implements OnInit {
   
   pharmacistList: Pharmacist[];
   constructor(private distributorService: DistributorService) { }
-  displayedColumns: string[] = ['username', 'email', 'name', 'mobileNumber', 'location', 'password', 'registrationId'];
-  dataSource:any;
+  displayedColumns: string[] = ['username', 'firmName', 'pharmacistName', 'license', 'address'];
+  dataSource:any = ELEMENT_DATA;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
@@ -24,6 +24,8 @@ export class ListOfPharmacistComponent implements OnInit {
   }
   ngOnInit() {
     this.getPharmacistList();
+    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator;
   }
   getPharmacistList(){
     this.distributorService.getPharmacists().subscribe(pharmacistList =>{
@@ -35,25 +37,13 @@ export class ListOfPharmacistComponent implements OnInit {
 }
 
 const ELEMENT_DATA: listOfPharmacist[] = [
-  { no: 1, firmName: 'GLOBAL MEDICAL AND GENERAL STORES', pharmacistName:'hitendra mukund pathare, DPH, [43584-18/07/2019]' , license:'RWHXN-8' , address:'POLICE CHOW, PUNE-ROOM NO. 15, GLOBAL HOSPITAL & RESEARCH INSTITUTE,,FINAL PLOT NO. 577/2, S.NO.129A/1A, NR DATTAWADI' },
-  { no: 2, firmName: 'MEDICINE WORLD  ', pharmacistName:'sanjeevani nitin musale, DPH, [56381-12/01/2018]'  , license:'RH - 3' , address:'PUNE-S. NO.82/1, SHOP NO.B-3, BUILDING-B, ARANYESHWAR PARK-A,,PHASE-1, SAHAKAR NAGAR-I, PARVATI' },
-  { no: 3, firmName: 'RohVINAYAK MEDICINES', pharmacistName:'shweta tatyaso khandagale, DPH, [185035-24/05/2019]', license:'RH - 3' , address: 'PUNE-1ST FLOOR,F. NO. 109,AJINKYATARA BUILDING,S.NO.120+124/214,,PARVATI , SINHGAD ROAD '},
-  { no: 4, firmName: 'AL FATAHA MEDICAL AND GENERAL STORES  ', pharmacistName: 'shaikh faiyaz ahmed basharat husain , DPH, [80946-13/07/2011]  ' , license: 'RH - 3  ', address:'PUNE-SURVEY NO. 90/91, KASHIWADI ZOPADPATTI, BHAWANI PETH,BHAWANI PETH  ' },
-  { no: 1, firmName: 'GLOBAL MEDICAL AND GENERAL STORES', pharmacistName:'hitendra mukund pathare, DPH, [43584-18/07/2019]' , license:'RWHXN-8' , address:'POLICE CHOW, PUNE-ROOM NO. 15, GLOBAL HOSPITAL & RESEARCH INSTITUTE,,FINAL PLOT NO. 577/2, S.NO.129A/1A, NR DATTAWADI' },
-  { no: 2, firmName: 'MEDICINE WORLD  ', pharmacistName:'sanjeevani nitin musale, DPH, [56381-12/01/2018]'  , license:'RH - 3' , address:'PUNE-S. NO.82/1, SHOP NO.B-3, BUILDING-B, ARANYESHWAR PARK-A,,PHASE-1, SAHAKAR NAGAR-I, PARVATI' },
-  { no: 3, firmName: 'RohVINAYAK MEDICINES', pharmacistName:'shweta tatyaso khandagale, DPH, [185035-24/05/2019]', license:'RH - 3' , address: 'PUNE-1ST FLOOR,F. NO. 109,AJINKYATARA BUILDING,S.NO.120+124/214,,PARVATI , SINHGAD ROAD '},
-  { no: 4, firmName: 'AL FATAHA MEDICAL AND GENERAL STORES  ', pharmacistName: 'shaikh faiyaz ahmed basharat husain , DPH, [80946-13/07/2011]  ' , license: 'RH - 3  ', address:'PUNE-SURVEY NO. 90/91, KASHIWADI ZOPADPATTI, BHAWANI PETH,BHAWANI PETH  ' },
-  { no: 1, firmName: 'GLOBAL MEDICAL AND GENERAL STORES', pharmacistName:'hitendra mukund pathare, DPH, [43584-18/07/2019]' , license:'RWHXN-8' , address:'POLICE CHOW, PUNE-ROOM NO. 15, GLOBAL HOSPITAL & RESEARCH INSTITUTE,,FINAL PLOT NO. 577/2, S.NO.129A/1A, NR DATTAWADI' },
-  { no: 2, firmName: 'MEDICINE WORLD  ', pharmacistName:'sanjeevani nitin musale, DPH, [56381-12/01/2018]'  , license:'RH - 3' , address:'PUNE-S. NO.82/1, SHOP NO.B-3, BUILDING-B, ARANYESHWAR PARK-A,,PHASE-1, SAHAKAR NAGAR-I, PARVATI' },
-  { no: 3, firmName: 'RohVINAYAK MEDICINES', pharmacistName:'shweta tatyaso khandagale, DPH, [185035-24/05/2019]', license:'RH - 3' , address: 'PUNE-1ST FLOOR,F. NO. 109,AJINKYATARA BUILDING,S.NO.120+124/214,,PARVATI , SINHGAD ROAD '},
-  { no: 4, firmName: 'AL FATAHA MEDICAL AND GENERAL STORES  ', pharmacistName: 'shaikh faiyaz ahmed basharat husain , DPH, [80946-13/07/2011]  ' , license: 'RH - 3  ', address:'PUNE-SURVEY NO. 90/91, KASHIWADI ZOPADPATTI, BHAWANI PETH,BHAWANI PETH  ' },
-  { no: 1, firmName: 'GLOBAL MEDICAL AND GENERAL STORES', pharmacistName:'hitendra mukund pathare, DPH, [43584-18/07/2019]' , license:'RWHXN-8' , address:'POLICE CHOW, PUNE-ROOM NO. 15, GLOBAL HOSPITAL & RESEARCH INSTITUTE,,FINAL PLOT NO. 577/2, S.NO.129A/1A, NR DATTAWADI' },
-  { no: 2, firmName: 'MEDICINE WORLD  ', pharmacistName:'sanjeevani nitin musale, DPH, [56381-12/01/2018]'  , license:'RH - 3' , address:'PUNE-S. NO.82/1, SHOP NO.B-3, BUILDING-B, ARANYESHWAR PARK-A,,PHASE-1, SAHAKAR NAGAR-I, PARVATI' },
-  { no: 3, firmName: 'RohVINAYAK MEDICINES', pharmacistName:'shweta tatyaso khandagale, DPH, [185035-24/05/2019]', license:'RH - 3' , address: 'PUNE-1ST FLOOR,F. NO. 109,AJINKYATARA BUILDING,S.NO.120+124/214,,PARVATI , SINHGAD ROAD '},
-  { no: 4, firmName: 'AL FATAHA MEDICAL AND GENERAL STORES  ', pharmacistName: 'shaikh faiyaz ahmed basharat husain , DPH, [80946-13/07/2011]  ' , license: 'RH - 3  ', address:'PUNE-SURVEY NO. 90/91, KASHIWADI ZOPADPATTI, BHAWANI PETH,BHAWANI PETH  ' },
-  { no: 1, firmName: 'GLOBAL MEDICAL AND GENERAL STORES', pharmacistName:'hitendra mukund pathare, DPH, [43584-18/07/2019]' , license:'RWHXN-8' , address:'POLICE CHOW, PUNE-ROOM NO. 15, GLOBAL HOSPITAL & RESEARCH INSTITUTE,,FINAL PLOT NO. 577/2, S.NO.129A/1A, NR DATTAWADI' },
-  { no: 2, firmName: 'MEDICINE WORLD  ', pharmacistName:'sanjeevani nitin musale, DPH, [56381-12/01/2018]'  , license:'RH - 3' , address:'PUNE-S. NO.82/1, SHOP NO.B-3, BUILDING-B, ARANYESHWAR PARK-A,,PHASE-1, SAHAKAR NAGAR-I, PARVATI' },
-  { no: 3, firmName: 'RohVINAYAK MEDICINES', pharmacistName:'shweta tatyaso khandagale, DPH, [185035-24/05/2019]', license:'RH - 3' , address: 'PUNE-1ST FLOOR,F. NO. 109,AJINKYATARA BUILDING,S.NO.120+124/214,,PARVATI , SINHGAD ROAD '},
-  { no: 4, firmName: 'AL FATAHA MEDICAL AND GENERAL STORES  ', pharmacistName: 'shaikh faiyaz ahmed basharat husain , DPH, [80946-13/07/2011]  ' , license: 'RH - 3  ', address:'PUNE-SURVEY NO. 90/91, KASHIWADI ZOPADPATTI, BHAWANI PETH,BHAWANI PETH  ' },
+  { username: "PH123", firmName: 'GLOBAL MEDICAL AND GENERAL STORES', pharmacistName:'hitendra mukund pathare, DPH, [43584-18/07/2019]' , license:'RWHXN-8' , address:'POLICE CHOW, PUNE-ROOM NO. 15, GLOBAL HOSPITAL & RESEARCH INSTITUTE,,FINAL PLOT NO. 577/2, S.NO.129A/1A, NR DATTAWADI' },
+  { username: "PH965", firmName: 'MEDICINE WORLD  ', pharmacistName:'sanjeevani nitin musale, DPH, [56381-12/01/2018]'  , license:'RH - 3' , address:'PUNE-S. NO.82/1, SHOP NO.B-3, BUILDING-B, ARANYESHWAR PARK-A,,PHASE-1, SAHAKAR NAGAR-I, PARVATI' },
+  { username: "PH745", firmName: 'RohVINAYAK MEDICINES', pharmacistName:'shweta tatyaso khandagale, DPH, [185035-24/05/2019]', license:'RH - 3' , address: 'PUNE-1ST FLOOR,F. NO. 109,AJINKYATARA BUILDING,S.NO.120+124/214,,PARVATI , SINHGAD ROAD '},
+  { username: "PH200", firmName: 'AL FATAHA MEDICAL AND GENERAL STORES  ', pharmacistName: 'shaikh faiyaz ahmed basharat husain , DPH, [80946-13/07/2011]  ' , license: 'RH - 3  ', address:'PUNE-SURVEY NO. 90/91, KASHIWADI ZOPADPATTI, BHAWANI PETH,BHAWANI PETH  ' },
+  { username: "PH123", firmName: 'GLOBAL MEDICAL AND GENERAL STORES', pharmacistName:'hitendra mukund pathare, DPH, [43584-18/07/2019]' , license:'RWHXN-8' , address:'POLICE CHOW, PUNE-ROOM NO. 15, GLOBAL HOSPITAL & RESEARCH INSTITUTE,,FINAL PLOT NO. 577/2, S.NO.129A/1A, NR DATTAWADI' },
+  { username: "PH965", firmName: 'MEDICINE WORLD  ', pharmacistName:'sanjeevani nitin musale, DPH, [56381-12/01/2018]'  , license:'RH - 3' , address:'PUNE-S. NO.82/1, SHOP NO.B-3, BUILDING-B, ARANYESHWAR PARK-A,,PHASE-1, SAHAKAR NAGAR-I, PARVATI' },
+  { username: "PH745", firmName: 'RohVINAYAK MEDICINES', pharmacistName:'shweta tatyaso khandagale, DPH, [185035-24/05/2019]', license:'RH - 3' , address: 'PUNE-1ST FLOOR,F. NO. 109,AJINKYATARA BUILDING,S.NO.120+124/214,,PARVATI , SINHGAD ROAD '},
+  { username: "PH200", firmName: 'AL FATAHA MEDICAL AND GENERAL STORES  ', pharmacistName: 'shaikh faiyaz ahmed basharat husain , DPH, [80946-13/07/2011]  ' , license: 'RH - 3  ', address:'PUNE-SURVEY NO. 90/91, KASHIWADI ZOPADPATTI, BHAWANI PETH,BHAWANI PETH  ' },
 ];
 

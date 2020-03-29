@@ -11,8 +11,8 @@ import { Manufacturer } from 'src/app/Manufacturer/Models/manufacturer';
 })
 export class ListOfManufacturerComponent implements OnInit {
   manufacturerList: Manufacturer[];
-  displayedColumns: string[] = ['username', 'email', 'name', 'mobileNumber', 'location', 'password', 'transportAgency', 'modeOfTransport', 'licenceNumber'];
-  dataSource : any;
+  displayedColumns: string[] = ['username', 'email', 'name', 'mobileNumber', 'location', 'licenceNumber'];
+  dataSource : any = ELEMENT_DATA;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
@@ -23,6 +23,8 @@ export class ListOfManufacturerComponent implements OnInit {
   }
   ngOnInit() {
     this.getManufacturerList();
+    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator;
   }
 
   getManufacturerList(){
@@ -35,24 +37,10 @@ export class ListOfManufacturerComponent implements OnInit {
 
 }
 const ELEMENT_DATA: listOfManufacturer[] = [
-  { orderId: '1', manufacturerName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '2', manufacturerName: 'Puru', issueDate: new Date('5-21-2020') , deliveryDate: new Date('5-14-2020'), totalAmount: 200000, status: 'Done'},
-  { orderId: '3', manufacturerName: 'Rohan', issueDate: new Date('7-13-2020') , deliveryDate: new Date('7-28-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '4', manufacturerName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '1', manufacturerName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '2', manufacturerName: 'Puru', issueDate: new Date('5-21-2020') , deliveryDate: new Date('5-14-2020'), totalAmount: 200000, status: 'Done'},
-  { orderId: '3', manufacturerName: 'Rohan', issueDate: new Date('7-13-2020') , deliveryDate: new Date('7-28-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '4', manufacturerName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '1', manufacturerName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '2', manufacturerName: 'Puru', issueDate: new Date('5-21-2020') , deliveryDate: new Date('5-14-2020'), totalAmount: 200000, status: 'Done'},
-  { orderId: '3', manufacturerName: 'Rohan', issueDate: new Date('7-13-2020') , deliveryDate: new Date('7-28-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '4', manufacturerName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '1', manufacturerName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '2', manufacturerName: 'Puru', issueDate: new Date('5-21-2020') , deliveryDate: new Date('5-14-2020'), totalAmount: 200000, status: 'Done'},
-  { orderId: '3', manufacturerName: 'Rohan', issueDate: new Date('7-13-2020') , deliveryDate: new Date('7-28-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '4', manufacturerName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '1', manufacturerName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '2', manufacturerName: 'Puru', issueDate: new Date('5-21-2020') , deliveryDate: new Date('5-14-2020'), totalAmount: 200000, status: 'Done'},
-  { orderId: '3', manufacturerName: 'Rohan', issueDate: new Date('7-13-2020') , deliveryDate: new Date('7-28-2020'), totalAmount: 100000, status: 'Pending'},
-  { orderId: '4', manufacturerName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
+  {username:"MF12345",email:"ashok321@scmp.com",name:"Ashok Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
+  {username:"MF74563",email:"vipul321@scmp.com",name:"Vipul Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
+  {username:"MF56932",email:"kishor321@scmp.com",name:"Kishor Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
+  {username:"MF87459",email:"kartik321@scmp.com",name:"kartik Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
+  {username:"MF36415",email:"viraj321@scmp.com",name:"Viraj Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
+  {username:"MF78965",email:"mahesh321@scmp.com",name:"Mahesh Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
 ];

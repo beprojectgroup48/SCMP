@@ -1,8 +1,7 @@
 export class listOfPharmacist{
-    no: Number;
+    username: String;
     firmName: String;
     pharmacistName: String;
     license: String;
     address: String;
-    
   }

@@ -11,7 +11,7 @@ import { DistributorService } from '../../Services/distributor.service';
 export class OutgoingOrdersComponent implements OnInit {
   outgoingOrderList: OutgoingOrders[];
   displayedColumns: string[] = ['orderId', 'manufacturerName', 'issueDate', 'deliveryDate','totalAmount','status'];
-  dataSource: any;
+  dataSource: any = ELEMENT_DATA;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
   
@@ -19,6 +19,8 @@ export class OutgoingOrdersComponent implements OnInit {
   
     ngOnInit() {
       this.getOutgoingOrderList();
+      this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+        this.dataSource.paginator = this.paginator;
     }
 
     getOutgoingOrderList(){
