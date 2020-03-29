@@ -462,3 +462,9 @@ placeholder() {
 	border: 1px solid $white-color;
 	position: relative;
 }
+.mat-card-image{	
+	width: 200px;
+	height: 200px;
+	
+	
+}
