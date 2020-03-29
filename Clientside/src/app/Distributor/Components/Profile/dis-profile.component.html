@@ -5,10 +5,21 @@
         <h5 class="card-title">User Profile</h5>
       </div>
       <div class="card-body" style="text-align: center;">
+        
         <div class="author">
+        <img mat-card-image [src]="_d.bypassSecurityTrustUrl(imgsrc)" alt="User Photo" class="mat-card-image">
+        </div> 
+        <input type='file' (change)="onSelectFile($event)">
+        
+        
+       <!-- <button mat-button type="submit" class="upload" ><mat-icon>edit</mat-icon>Change Profile Photo</button>
+      
+      
+         <div class="author">
             <img class="avatar" src="assets/avatar.svg" alt="...">
-            <h5 class="title">Distributor 1</h5>
-       </div>
+            
+       </div> -->
+       <h5 class="title">Distributor 1</h5>
        <p>
          Cipla
        </p>
