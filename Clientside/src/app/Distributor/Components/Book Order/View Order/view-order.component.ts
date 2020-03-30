@@ -11,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewOrderComponent implements OnInit {
   orderList: CompleteOrder[] = ELEMENT_DATA;
-  filterdOrderList: CompleteOrder[] = [];
+  PriceFilterdOrderList: CompleteOrder[] = [];
+  StatusFilterdOrderList: CompleteOrder[] = [];
+  DateFilterdOrderList: CompleteOrder[] = [];
   currentOrderProducts: SubOrder[] = ELEMENT_DATA2;
 
   priceFilterArray: number[] = [];
@@ -24,16 +26,87 @@ export class ViewOrderComponent implements OnInit {
 
   startDate1: Date = undefined;
   endDate1: Date = undefined;
-  dateFilterNumber: number;
+  dateFilterNumber: number = undefined;
   dateFilterFlags: boolean[] = [false,false,false,false,false,false];
   today: Date = new Date();
+
+  commonArray: CompleteOrder[] = [];
+  commonArrayCache: CompleteOrder[] = [];
+  totalFilterCount: number = 0;
 
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
-    for(let i=0;i<this.orderList.length;i++)
-          this.filterdOrderList.push(this.orderList[i]);
+    for(let i=0;i<this.orderList.length;i++){
+      this.PriceFilterdOrderList.push(this.orderList[i]);
+      this.StatusFilterdOrderList.push(this.orderList[i]);
+      this.DateFilterdOrderList.push(this.orderList[i]);
+      this.commonArray.push(this.orderList[i]);
+    }  
     //this.refreshList();
+  }
+
+  refreshFilterCount(){
+    this.totalFilterCount = 0;
+    if(this.priceFilterCount != 0)
+      this.totalFilterCount = this.totalFilterCount +1;
+    if(this.statusFilterCount != 0)
+      this.totalFilterCount = this.totalFilterCount +1;
+    if(this.dateFilterNumber != undefined)
+      this.totalFilterCount = this.totalFilterCount +1;
+  }
+
+  clearAllFilters(){
+    if(this.priceFilterCount == 0 && this.statusFilterCount == 0 && this.dateFilterNumber == undefined)
+      return;
+    if(this.priceFilterCount != 0){
+      this.PriceFilterdOrderList.splice(0, this.PriceFilterdOrderList.length);
+      for(let i=0;i<this.orderList.length;i++)
+        this.PriceFilterdOrderList.push(this.orderList[i]);
+      this.priceFilterCount = 0;
+      this.priceFilterArray.splice(0, this.priceFilterArray.length);
+      this.priceFilterFlags.splice(0, 6, false,false,false,false,false,false);
+    }
+    if(this.statusFilterCount != 0){
+      this.StatusFilterdOrderList.splice(0, this.StatusFilterdOrderList.length);
+      for(let i=0;i<this.orderList.length;i++)
+        this.StatusFilterdOrderList.push(this.orderList[i]);
+      this.statusFilterCount = 0;
+      this.statusFilterArray.splice(0, this.statusFilterArray.length);
+      this.statusFilterFlags.splice(0, 3, false,false,false);
+    }
+    if(this.dateFilterNumber != undefined){
+      this.DateFilterdOrderList.splice(0, this.DateFilterdOrderList.length);
+      for(let i=0;i<this.orderList.length;i++)
+        this.DateFilterdOrderList.push(this.orderList[i]);
+      this.dateFilterNumber = undefined;
+      this.startDate1 = undefined;
+      this.endDate1 = undefined;
+      this.dateFilterFlags.splice(0, 6, false,false,false,false,false,false);
+    }
+    this.findCommonCache(this.PriceFilterdOrderList, this.StatusFilterdOrderList);
+    this.findCommon(this.commonArrayCache, this.DateFilterdOrderList);
+    this.refreshFilterCount();
+  }
+
+  findCommonCache(a,b){
+    this.commonArrayCache.splice(0, this.commonArrayCache.length);
+    for(var i=0; i< b.length; i++)
+    {
+      const f = a.some(e1 => e1.orderId === b[i].orderId);
+      if(f)
+        this.commonArrayCache.push(b[i]);
+    }
+  }
+
+  findCommon(a,b){
+    this.commonArray.splice(0, this.commonArray.length);
+    for(var i=0; i< b.length; i++)
+    {
+      const f = a.some(e1 => e1.orderId === b[i].orderId);
+      if(f)
+        this.commonArray.push(b[i]);
+    }
   }
 
   removeCustomDateFilter(){
@@ -42,9 +115,12 @@ export class ViewOrderComponent implements OnInit {
       this.dateFilterFlags[5] = false;
       this.startDate1 = undefined;
       this.endDate1 = undefined;
-      this.filterdOrderList.splice(0, this.filterdOrderList.length);
+      this.DateFilterdOrderList.splice(0, this.DateFilterdOrderList.length);
       for(let i=0;i<this.orderList.length;i++)
-        this.filterdOrderList.push(this.orderList[i]);
+        this.DateFilterdOrderList.push(this.orderList[i]);
+      this.findCommonCache(this.PriceFilterdOrderList, this.StatusFilterdOrderList);
+      this.findCommon(this.commonArrayCache, this.DateFilterdOrderList);
+      this.refreshFilterCount();
     }
   }
 
@@ -54,9 +130,12 @@ export class ViewOrderComponent implements OnInit {
     this.dateFilterFlags.splice(0, 6, false,false,false,false,false,false);
     if(this.dateFilterNumber == a && a != 20){
       this.dateFilterNumber = undefined;
-      this.filterdOrderList.splice(0, this.filterdOrderList.length);
+      this.DateFilterdOrderList.splice(0, this.DateFilterdOrderList.length);
       for(let i=0;i<this.orderList.length;i++)
-        this.filterdOrderList.push(this.orderList[i]);
+        this.DateFilterdOrderList.push(this.orderList[i]);
+      this.findCommonCache(this.PriceFilterdOrderList, this.StatusFilterdOrderList);
+      this.findCommon(this.commonArrayCache, this.DateFilterdOrderList);
+      this.refreshFilterCount();
       return;
     }
     var ss = new Date();
@@ -90,10 +169,13 @@ export class ViewOrderComponent implements OnInit {
   }
 
   dateFilter(a,b){
-    this.filterdOrderList.splice(0, this.filterdOrderList.length);
+    this.DateFilterdOrderList.splice(0, this.DateFilterdOrderList.length);
     let indices = this.orderList.map((element,index) => element.issueDate >= a && element.issueDate <= b ? index: '').filter(String);
     for(let i=0;i<indices.length;i++)
-      this.filterdOrderList.push(this.orderList[indices[i]]);
+      this.DateFilterdOrderList.push(this.orderList[indices[i]]);
+    this.findCommonCache(this.PriceFilterdOrderList, this.StatusFilterdOrderList);
+    this.findCommon(this.commonArrayCache, this.DateFilterdOrderList);
+    this.refreshFilterCount();
   }
   
   filterByStatus(status){
@@ -115,24 +197,27 @@ export class ViewOrderComponent implements OnInit {
     var index = this.statusFilterArray.indexOf(a);
       if(index == -1){
         if(this.statusFilterCount == 0)
-          this.filterdOrderList.splice(0, this.filterdOrderList.length);
+          this.StatusFilterdOrderList.splice(0, this.StatusFilterdOrderList.length);
         this.statusFilterCount = this.statusFilterCount + 1;
         this.statusFilterArray.push(a);
         let indices = this.orderList.map((element,index) => element.status == b ? index: '').filter(String);
         for(let i=0;i<indices.length;i++)
-          this.filterdOrderList.push(this.orderList[indices[i]]);
+          this.StatusFilterdOrderList.push(this.orderList[indices[i]]);
       }
       else{
         this.statusFilterCount = this.statusFilterCount - 1;
         this.statusFilterArray.splice(index, 1);
-        let indices = this.filterdOrderList.map((element,index) => element.status == b ? index: '').filter(String);
+        let indices = this.StatusFilterdOrderList.map((element,index) => element.status == b ? index: '').filter(String);
         for(let i=indices.length-1;i>=0;i--)
-          this.filterdOrderList.splice(Number(indices[i]), 1);
+          this.StatusFilterdOrderList.splice(Number(indices[i]), 1);
         if(this.statusFilterCount == 0){
           for(let i=0;i<this.orderList.length;i++)
-            this.filterdOrderList.push(this.orderList[i]);
+            this.StatusFilterdOrderList.push(this.orderList[i]);
           }
       }
+      this.findCommonCache(this.PriceFilterdOrderList, this.StatusFilterdOrderList);
+      this.findCommon(this.commonArrayCache, this.DateFilterdOrderList);
+      this.refreshFilterCount();
   }
 
   filterByPrice(price){
@@ -166,24 +251,27 @@ export class ViewOrderComponent implements OnInit {
     var index = this.priceFilterArray.indexOf(c);
       if(index == -1){
         if(this.priceFilterCount == 0)
-          this.filterdOrderList.splice(0, this.filterdOrderList.length);
+          this.PriceFilterdOrderList.splice(0, this.PriceFilterdOrderList.length);
         this.priceFilterCount = this.priceFilterCount + 1;
         this.priceFilterArray.push(c);
         let indices = this.orderList.map((element,index) => element.finalAmount <= b && element.finalAmount > a ? index: '').filter(String);
         for(let i=0;i<indices.length;i++)
-          this.filterdOrderList.push(this.orderList[indices[i]]);
+          this.PriceFilterdOrderList.push(this.orderList[indices[i]]);
       }
       else{
         this.priceFilterCount = this.priceFilterCount - 1;
         this.priceFilterArray.splice(index, 1);
-        let indices = this.filterdOrderList.map((element,index) => element.finalAmount <= b && element.finalAmount > a ? index: '').filter(String);
+        let indices = this.PriceFilterdOrderList.map((element,index) => element.finalAmount <= b && element.finalAmount > a ? index: '').filter(String);
         for(let i=indices.length-1;i>=0;i--)
-          this.filterdOrderList.splice(Number(indices[i]), 1);
+          this.PriceFilterdOrderList.splice(Number(indices[i]), 1);
         if(this.priceFilterCount == 0){
           for(let i=0;i<this.orderList.length;i++)
-            this.filterdOrderList.push(this.orderList[i]);
+            this.PriceFilterdOrderList.push(this.orderList[i]);
           }
       }
+      this.findCommonCache(this.PriceFilterdOrderList, this.StatusFilterdOrderList);
+      this.findCommon(this.commonArrayCache, this.DateFilterdOrderList);
+      this.refreshFilterCount();
   }
 
   /*refreshList() {

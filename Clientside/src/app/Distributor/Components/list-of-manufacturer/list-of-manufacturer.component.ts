@@ -12,7 +12,7 @@ import { Manufacturer } from 'src/app/Manufacturer/Models/manufacturer';
 export class ListOfManufacturerComponent implements OnInit {
   manufacturerList: Manufacturer[];
   displayedColumns: string[] = ['username', 'email', 'name', 'mobileNumber', 'location', 'licenceNumber'];
-  dataSource : any = ELEMENT_DATA;
+  dataSource : any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
@@ -23,8 +23,6 @@ export class ListOfManufacturerComponent implements OnInit {
   }
   ngOnInit() {
     this.getManufacturerList();
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-      this.dataSource.paginator = this.paginator;
   }
 
   getManufacturerList(){

@@ -1,12 +1,13 @@
 <mat-card class="your-order" >
   <mat-card-title>Your Orders
-      <button style="float:right;background-color: rgb(37, 136, 248);" class="btn btn-sm btn-success text-white" [matMenuTriggerFor]="rootMenu"><i class="fa fa-filter"></i>
+      <button style="float:right;background-color: rgb(37, 136, 248);" class="btn btn-sm btn-success text-white" 
+      [matMenuTriggerFor]="rootMenu" [matBadgeHidden]="totalFilterCount==0" [matBadge]="totalFilterCount" matBadgeColor="warn" matBadgePosition="above after"><i class="fa fa-filter"></i>
         Filter
       </button>
   </mat-card-title>
 
   <mat-menu #rootMenu="matMenu" xPosition="after">
-      <button style="margin-left: 10px;margin-bottom: 10px;background-color: rgb(240, 152, 38)" class="btn btn-sm text-white">
+      <button (click)="clearAllFilters()" style="margin-left: 10px;margin-bottom: 10px;background-color: rgb(240, 152, 38)" class="btn btn-sm text-white">
         Clear all
       </button>
       <button style="min-width:250px;" mat-menu-item [matMenuTriggerFor]="subMenu"> Price<strong *ngIf="priceFilterCount != 0" style="margin-right: 10px;color: rgb(34, 170, 34);float: right;">{{priceFilterCount}}</strong></button>
@@ -103,7 +104,7 @@
                   No orders.
                 </td>
               </tr>
-          <tr *ngFor="let item of filterdOrderList;let i=index">
+          <tr *ngFor="let item of commonArray;let i=index">
             <th>{{item.orderId}}</th>
             <td>{{item.issueDate.toDateString()}}</td>
             <td>{{item.dueDate.toDateString()}}</td>

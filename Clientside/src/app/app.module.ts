@@ -24,7 +24,8 @@ import {
   MAT_DIALOG_DATA,
   MatPaginatorModule,
   MatMenuModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatBadgeModule
 
 } from '@angular/material';
 
@@ -98,7 +99,8 @@ import { ShowProductsComponent } from './Distributor/Components/Book Order/Show 
     MatDialogModule,
     MatPaginatorModule,
     MatMenuModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatBadgeModule
   ],
   entryComponents:[AddItemsComponent,ShowProductsComponent],
   providers: [],

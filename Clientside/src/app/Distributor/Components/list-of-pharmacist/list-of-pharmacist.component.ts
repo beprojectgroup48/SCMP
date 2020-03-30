@@ -14,7 +14,7 @@ export class ListOfPharmacistComponent implements OnInit {
   pharmacistList: Pharmacist[];
   constructor(private distributorService: DistributorService) { }
   displayedColumns: string[] = ['username', 'firmName', 'pharmacistName', 'license', 'address'];
-  dataSource:any = ELEMENT_DATA;
+  dataSource:any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
@@ -24,8 +24,6 @@ export class ListOfPharmacistComponent implements OnInit {
   }
   ngOnInit() {
     this.getPharmacistList();
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-      this.dataSource.paginator = this.paginator;
   }
   getPharmacistList(){
     this.distributorService.getPharmacists().subscribe(pharmacistList =>{

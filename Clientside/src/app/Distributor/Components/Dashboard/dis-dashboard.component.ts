@@ -17,10 +17,10 @@ export class DistributorDashboardComponent implements OnInit {
 
   incomingOrderList: IncomingOrders[];
   displayedColumns1: string[] = ['orderId', 'pharmacistName', 'issueDate', 'deliveryDate','totalAmount','status'];
-  dataSource1: any = ELEMENT_DATA;
+  dataSource1: any;
   outgoingOrderList: OutgoingOrders[];
   displayedColumns2: string[] = ['orderId', 'manufacturerName', 'issueDate', 'deliveryDate','totalAmount','status'];
-  dataSource2: any = ELEMENT_DATA2;
+  dataSource2: any;
   PieChart=[];
   PieChart2=[];
 
