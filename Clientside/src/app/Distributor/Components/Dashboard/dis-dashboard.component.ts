@@ -29,6 +29,12 @@ export class DistributorDashboardComponent implements OnInit {
   getIncomingOrderList(){
       this.distributorService.getIncomingOrders().subscribe(incomingOrderList =>{
       this.incomingOrderList = incomingOrderList;
+      for(var i=0;i<this.incomingOrderList.length;i++)
+    {
+        this.incomingOrderList[i].issueDate = new Date(this.incomingOrderList[i].issueDate);
+        this.incomingOrderList[i].deliveryDate = new Date(this.incomingOrderList[i].deliveryDate);
+    }
+      this.incomingOrderList.splice(3);
       this.dataSource1 = new MatTableDataSource(this.incomingOrderList);
     })
   }
@@ -36,6 +42,12 @@ export class DistributorDashboardComponent implements OnInit {
   getOutgoingOrderList(){
     this.distributorService.getOutgoingOrders().subscribe(outgoingOrderList =>{
     this.outgoingOrderList = outgoingOrderList;
+    for(var i=0;i<this.outgoingOrderList.length;i++)
+    {
+        this.outgoingOrderList[i].issueDate = new Date(this.outgoingOrderList[i].issueDate);
+        this.outgoingOrderList[i].deliveryDate = new Date(this.outgoingOrderList[i].deliveryDate);
+    }
+    this.outgoingOrderList.splice(3);
     this.dataSource2 = new MatTableDataSource(this.outgoingOrderList);
   })
 }

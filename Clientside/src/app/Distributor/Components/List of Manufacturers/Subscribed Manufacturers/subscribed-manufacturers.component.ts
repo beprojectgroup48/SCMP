@@ -1,17 +1,17 @@
-import { AddManufacturerComponent } from './add-manufacturer/add-manufacturer.component';
+import { listOfManufacturer } from './../../../Models/list-of-manufacturer';
+import { AddManufacturerComponent } from './../Add Manufacturer/add-manufacturer.component';
+import { DistributorService } from './../../../Services/distributor.service';
 import { MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { listOfManufacturer } from './../../Models/list-of-manufacturer';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
-import { DistributorService } from '../../Services/distributor.service';
 import { Manufacturer } from 'src/app/Manufacturer/Models/manufacturer';
 
 @Component({
-  selector: 'app-list-of-manufacturer',
-  templateUrl: './list-of-manufacturer.component.html',
-  styleUrls: ['./list-of-manufacturer.component.css']
+  selector: 'app-subscribed-manufacturers',
+  templateUrl: './subscribed-manufacturers.component.html',
+  styleUrls: ['./subscribed-manufacturers.component.css']
 })
-export class ListOfManufacturerComponent implements OnInit {
+export class SubscribedManufacturersComponent implements OnInit {
   manufacturerList: Manufacturer[];
   displayedColumns: string[] = ['username', 'name', 'email', 'mobileNumber', 'location', 'licenceNumber'];
   dataSource: any;
