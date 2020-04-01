@@ -1,5 +1,7 @@
 <mat-card class="listofman">
-  <mat-card-title>List of Manufacturers</mat-card-title>
+  <mat-card-title>List of Manufacturers
+    <a style="float:right" class="btn btn-md btn-success text-white" (click)="addManufacturer()"><i style="margin-right: 5px;" class="fa fa-plus-square"></i> Edit List</a>
+  </mat-card-title>
   <mat-card-content>
     <div>
       <mat-form-field>
@@ -9,7 +11,7 @@
     </div>
    
     <div fxLayout="row" fxLayoutAlign="start">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       
         <!-- order Column -->
         <ng-container matColumnDef="username">

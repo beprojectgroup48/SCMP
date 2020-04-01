@@ -25,7 +25,8 @@ import {
   MatPaginatorModule,
   MatMenuModule,
   MatDatepickerModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatCheckboxModule
 
 } from '@angular/material';
 
@@ -50,6 +51,7 @@ import { DistributorProfileComponent } from './Distributor/Components/Profile/di
 import { ListOfManufacturerComponent } from './Distributor/Components/list-of-manufacturer/list-of-manufacturer.component';
 import { ListOfPharmacistComponent } from './Distributor/Components/list-of-pharmacist/list-of-pharmacist.component';
 import { ShowProductsComponent } from './Distributor/Components/Book Order/Show Products/show-products.component';
+import { AddManufacturerComponent } from './Distributor/Components/list-of-manufacturer/add-manufacturer/add-manufacturer.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,7 @@ import { ShowProductsComponent } from './Distributor/Components/Book Order/Show 
     AddItemsComponent,
     ViewOrderComponent,
     ShowProductsComponent,
+    AddManufacturerComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,9 +103,10 @@ import { ShowProductsComponent } from './Distributor/Components/Book Order/Show 
     MatPaginatorModule,
     MatMenuModule,
     MatDatepickerModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCheckboxModule
   ],
-  entryComponents:[AddItemsComponent,ShowProductsComponent],
+  entryComponents:[AddItemsComponent,ShowProductsComponent,AddManufacturerComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

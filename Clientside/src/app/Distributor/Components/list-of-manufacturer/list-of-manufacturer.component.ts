@@ -1,6 +1,8 @@
+import { AddManufacturerComponent } from './add-manufacturer/add-manufacturer.component';
+import { MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { listOfManufacturer } from './../../Models/list-of-manufacturer';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { DistributorService } from '../../Services/distributor.service';
 import { Manufacturer } from 'src/app/Manufacturer/Models/manufacturer';
 
@@ -11,18 +13,40 @@ import { Manufacturer } from 'src/app/Manufacturer/Models/manufacturer';
 })
 export class ListOfManufacturerComponent implements OnInit {
   manufacturerList: Manufacturer[];
-  displayedColumns: string[] = ['username', 'email', 'name', 'mobileNumber', 'location', 'licenceNumber'];
-  dataSource : any;
+  displayedColumns: string[] = ['username', 'name', 'email', 'mobileNumber', 'location', 'licenceNumber'];
+  dataSource: any;
+  sendData: any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
-  constructor(private distributorService: DistributorService) { }
+  constructor(private dialog: MatDialog,private distributorService: DistributorService) { }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   ngOnInit() {
     this.getManufacturerList();
+    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+    this.dataSource.paginator = this.paginator;
+    this.sendData = ELEMENT_DATA;
+  }
+
+  addManufacturer(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.width = "55%";
+    dialogConfig.data = this.sendData;
+    const dialogRef = this.dialog.open(AddManufacturerComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(!result)
+        return;
+      this.dataSource = new MatTableDataSource(result.selected);
+      this.dataSource.paginator = this.paginator;
+      this.sendData = result.selected;
+      console.log(result.selected);
+    });
   }
 
   getManufacturerList(){
@@ -34,11 +58,10 @@ export class ListOfManufacturerComponent implements OnInit {
   }
 
 }
+// this is the list of subscribed manufacturers by this distributor
 const ELEMENT_DATA: listOfManufacturer[] = [
-  {username:"MF12345",email:"ashok321@scmp.com",name:"Ashok Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
   {username:"MF74563",email:"vipul321@scmp.com",name:"Vipul Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
-  {username:"MF56932",email:"kishor321@scmp.com",name:"Kishor Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
-  {username:"MF87459",email:"kartik321@scmp.com",name:"kartik Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
   {username:"MF36415",email:"viraj321@scmp.com",name:"Viraj Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
-  {username:"MF78965",email:"mahesh321@scmp.com",name:"Mahesh Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
+  {username:"MF53641",email:"jayesh321@scmp.com",name:"Jayesh Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
 ];
+
