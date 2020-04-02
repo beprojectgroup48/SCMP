@@ -14,6 +14,7 @@ import { DistributorDashboardComponent } from './Distributor/Components/Dashboar
 import { DistributorYourOrderComponent } from './Distributor/Components/Your Order/dis-yourorder.component';
 import { ListOfManufacturerComponent } from './Distributor/Components/list-of-manufacturer/list-of-manufacturer.component';
 import { ListOfPharmacistComponent } from './Distributor/Components/list-of-pharmacist/list-of-pharmacist.component';
+import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-Profile/update-profile.component';
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   {path:'',component:MainPageComponent,
@@ -36,6 +37,7 @@ const routes: Routes = [
         {path:'listofmanufacturer', component:ListOfManufacturerComponent},
         {path:'listofpharmacist', component:ListOfPharmacistComponent},
         {path:'view-order',component:ViewOrderComponent},
+        {path:'update-profile',component:UpdateProfileComponent}
   ]},
 ]
 

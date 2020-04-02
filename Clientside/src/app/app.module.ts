@@ -24,7 +24,8 @@ import {
   MAT_DIALOG_DATA,
   MatPaginatorModule,
   MatMenuModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatBadgeModule
 
 } from '@angular/material';
 
@@ -49,6 +50,8 @@ import { DistributorProfileComponent } from './Distributor/Components/Profile/di
 import { ListOfManufacturerComponent } from './Distributor/Components/list-of-manufacturer/list-of-manufacturer.component';
 import { ListOfPharmacistComponent } from './Distributor/Components/list-of-pharmacist/list-of-pharmacist.component';
 import { ShowProductsComponent } from './Distributor/Components/Book Order/Show Products/show-products.component';
+import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-Profile/update-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -70,6 +73,8 @@ import { ShowProductsComponent } from './Distributor/Components/Book Order/Show 
     AddItemsComponent,
     ViewOrderComponent,
     ShowProductsComponent,
+    UpdateProfileComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -98,10 +103,15 @@ import { ShowProductsComponent } from './Distributor/Components/Book Order/Show 
     MatDialogModule,
     MatPaginatorModule,
     MatMenuModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatBadgeModule
+    
   ],
   entryComponents:[AddItemsComponent,ShowProductsComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
+
+
+
 export class AppModule { }
