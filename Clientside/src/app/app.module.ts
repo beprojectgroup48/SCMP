@@ -28,7 +28,6 @@ import {
   MatPaginatorModule,
   MatMenuModule,
   MatDatepickerModule,
-  MatBadgeModule
   MatBadgeModule,
   MatCheckboxModule
 
@@ -107,9 +106,7 @@ import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-
     MatDialogModule,
     MatPaginatorModule,
     MatMenuModule,
-    MatDatepickerModule,
-    MatBadgeModule
-    
+    MatDatepickerModule,    
     MatBadgeModule,
     MatCheckboxModule
   ],
