@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Profile } from '../../Models/profile';
-import { ChangePasswordComponent } from '../Profile/Change-Password/change-password.component';
+import { DistributorProfile } from '../../Models/dis-profile';
+import { DistributorChangePasswordComponent } from '../Profile/Change Password/dis-change-password.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
@@ -22,7 +22,7 @@ export class DistributorNavigationComponent  {
     this.router.navigate(['/login']);
   }
  
-  currentData: Profile={
+  currentData: DistributorProfile={
     username:'Distributor1',
     fname:'Ram',
     lname:'Sharma', 
@@ -36,7 +36,7 @@ export class DistributorNavigationComponent  {
   };
 
   openDialog(): void{
-    const dialogRef = this.dialog.open(ChangePasswordComponent, {
+    const dialogRef = this.dialog.open(DistributorChangePasswordComponent, {
       width: '500px',
       data: { 
         username: this.currentData.username, 

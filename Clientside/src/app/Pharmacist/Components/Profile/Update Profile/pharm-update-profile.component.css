@@ -1,0 +1,15 @@
+.primary{
+    display: block;
+    width: fit-content;
+    height: fit-content;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-color: rgb(37, 136, 248);
+	background-size: 200%;
+	font-size: 1rem;
+	color: white;
+	font-family: 'Poppins', sans-serif;
+	cursor: pointer;
+	transition: .5s;
+}

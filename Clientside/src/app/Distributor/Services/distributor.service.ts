@@ -20,8 +20,6 @@ export class DistributorService {
     headers.append('content-Type' , 'application/json');
     console.log(order);
     return this.http.post('http://localhost:3000/distributor/placeOrder', order, {headers : headers}).pipe(map(res => res.json()));
-
-
   }
   getIncomingOrders(){
    return this.http.get('http://localhost:3000/distributor/allIncomingOrders').pipe(map(res => res.json()));

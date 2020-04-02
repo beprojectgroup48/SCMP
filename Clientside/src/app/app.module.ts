@@ -1,9 +1,18 @@
+import { DistributorUpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/dis-update-profile.component';
+import { DistributorShowProductsComponent } from './Distributor/Components/Your Order/Show Products/dis-show-products.component';
+import { DistributorAddItemsComponent } from './Distributor/Components/Book Order/Add Items/dis-add-items.component';
+import { DistributorOrderComponent } from './Distributor/Components/Book Order/Order/dis-order.component';
+import { DistributorChangePasswordComponent } from './Distributor/Components/Profile/Change Password/dis-change-password.component';
+import { DistributorOutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/dis-outgoing-orders.component';
+import { DistributorIncomingOrdersComponent } from './Distributor/Components/Incoming Orders/dis-incoming-orders.component';
+import { DistributorViewOrderComponent } from './Distributor/Components/Your Order/View Order/dis-view-order.component';
+import { PharmacistUpdateProfileComponent } from './Pharmacist/Components/Profile/Update Profile/pharm-update-profile.component';
 import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Order/pharm-order.component';
 import { PharmacistAddItemsComponent } from './Pharmacist/Components/Book Order/Add Items/pharm-add-items.component';
 import { AddDistributorComponent } from './Pharmacist/Components/List of Distributors/Add Distributor/add-distributor.component';
 import { SubscribedDistributorsComponent } from './Pharmacist/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
 import { PharmacistOutgoingOrdersComponent } from './Pharmacist/Components/Outgoing Orders/pharm-outgoing-orders.component';
-import { PharmacistChangePasswordComponent } from './Pharmacist/Components/Profile/Change-Password/pharm-change-password.component';
+import { PharmacistChangePasswordComponent } from './Pharmacist/Components/Profile/Change Password/pharm-change-password.component';
 import { PharmacistProfileComponent } from './Pharmacist/Components/Profile/pharm-profile.component';
 import { PharmacistShowProductsComponent } from './Pharmacist/Components/Your Order/Show Products/pharm-show-products.component';
 import { PharmacistViewOrderComponent } from './Pharmacist/Components/Your Order/View Order/pharm-view-order.component';
@@ -12,9 +21,6 @@ import { PharmacistNavigationComponent } from './Pharmacist/Components/Navigatio
 import { ListOfPharmacistComponent } from './Distributor/Components/List of Pharmacists/list-of-pharmacist.component';
 import { AddManufacturerComponent } from './Distributor/Components/List of Manufacturers/Add Manufacturer/add-manufacturer.component';
 import { SubscribedManufacturersComponent } from './Distributor/Components/List of Manufacturers/Subscribed Manufacturers/subscribed-manufacturers.component';
-import { ViewOrderComponent } from './Distributor/Components/Book Order/View Order/view-order.component';
-import { AddItemsComponent } from './Distributor/Components/Book Order/Add Items/add-items.component';
-import { OrderComponent } from './Distributor/Components/Book Order/Order/order.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -54,17 +60,10 @@ import { HttpModule } from '@angular/http';
 import { LoginComponent } from './Login/Components/login.component';
 import { RegisterComponent } from './Register/Components/register.component';
 import { ForgetpassComponent } from './Forgot Password/Components/forgetpass.component';
-import { DistributorYourOrderComponent } from './Distributor/Components/Your Order/dis-yourorder.component';
 import { DistributorDashboardComponent } from './Distributor/Components/Dashboard/dis-dashboard.component';
 import { DistributorNavigationComponent } from './Distributor/Components/Navigation/dis-navigation.component';
 import { CommonModule } from '@angular/common';
-import { IncomingOrdersComponent } from './Distributor/Components/Incoming Orders/incoming-orders.component';
-import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/outgoing-orders.component';
-import { ChangePasswordComponent } from './Distributor/Components/Profile/Change-Password/change-password.component';
 import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
-import { ShowProductsComponent } from './Distributor/Components/Book Order/Show Products/show-products.component';
-import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-Profile/update-profile.component';
-
 
 @NgModule({
   declarations: [
@@ -75,20 +74,19 @@ import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-
     ForgetpassComponent,
 
     DistributorDashboardComponent,
-    DistributorYourOrderComponent,
+    DistributorViewOrderComponent,
     DistributorNavigationComponent,
-    IncomingOrdersComponent,
-    OutgoingOrdersComponent,
+    DistributorIncomingOrdersComponent,
+    DistributorOutgoingOrdersComponent,
     DistributorProfileComponent,
-    ChangePasswordComponent,
+    DistributorChangePasswordComponent,
     SubscribedManufacturersComponent,
     ListOfPharmacistComponent,
-    OrderComponent,
-    AddItemsComponent,
-    ViewOrderComponent,
-    ShowProductsComponent,
-    UpdateProfileComponent,
-    
+    DistributorOrderComponent,
+    DistributorAddItemsComponent,
+    DistributorViewOrderComponent,
+    DistributorShowProductsComponent,
+    DistributorUpdateProfileComponent,
     AddManufacturerComponent,
 
     PharmacistDashboardComponent,
@@ -102,6 +100,7 @@ import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-
     AddDistributorComponent,
     PharmacistAddItemsComponent,
     PharmacistOrderComponent,
+    PharmacistUpdateProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -135,12 +134,13 @@ import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-
     MatCheckboxModule
   ],
   entryComponents:[
-    AddItemsComponent,
+    DistributorAddItemsComponent,
     PharmacistAddItemsComponent,
-    ShowProductsComponent,
+    DistributorShowProductsComponent,
     PharmacistShowProductsComponent,
     AddManufacturerComponent,
-    AddDistributorComponent
+    AddDistributorComponent,
+    PharmacistUpdateProfileComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
