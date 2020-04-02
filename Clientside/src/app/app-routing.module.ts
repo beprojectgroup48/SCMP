@@ -6,7 +6,6 @@ import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Ord
 import { PharmacistOutgoingOrdersComponent} from './Pharmacist/Components/Outgoing Orders/pharm-outgoing-orders.component';
 import { PharmacistDashboardComponent } from './Pharmacist/Components/Dashboard/pharm-dashboard.component';
 import { PharmacistNavigationComponent } from './Pharmacist/Components/Navigation/pharm-navigation.component';
-import { ListOfPharmacistComponent } from './Distributor/Components/List of Pharmacists/list-of-pharmacist.component';
 import { SubscribedManufacturersComponent } from './Distributor/Components/List of Manufacturers/Subscribed Manufacturers/subscribed-manufacturers.component';
 import { OrderComponent } from './Distributor/Components/Book Order/Order/order.component';
 import { ViewOrderComponent } from './Distributor/Components/Book Order/View Order/view-order.component';
@@ -22,6 +21,8 @@ import { MainPageComponent } from './Main Page/Components/mainpage.component';
 import { DistributorNavigationComponent } from './Distributor/Components/Navigation/dis-navigation.component';
 import { DistributorDashboardComponent } from './Distributor/Components/Dashboard/dis-dashboard.component';
 import { DistributorYourOrderComponent } from './Distributor/Components/Your Order/dis-yourorder.component';
+import { ListOfPharmacistComponent } from './Distributor/Components/List of Pharmacists/list-of-pharmacist.component';
+import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-Profile/update-profile.component';
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   {path:'',component:MainPageComponent,
@@ -44,6 +45,7 @@ const routes: Routes = [
         {path:'listofmanufacturer', component:SubscribedManufacturersComponent},
         {path:'listofpharmacist', component:ListOfPharmacistComponent},
         {path:'view-order',component:ViewOrderComponent},
+        {path:'update-profile',component:UpdateProfileComponent}
   ]},
 
   {path: 'pharmacist', redirectTo: 'pharmacist/dashboard', pathMatch: 'full' },

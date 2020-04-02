@@ -9,7 +9,7 @@
     <button mat-button routerLink="/login" style="width:90px;"><mat-icon class="pqr">logout</mat-icon>Logout</button>
      -->
      
-    <button mat-button [matMenuTriggerFor]="notificationsMenu" matToolTip="Alerts"><mat-icon>notifications_active</mat-icon> </button>
+    <button mat-button [matMenuTriggerFor]="notificationsMenu" matToolTip="Alerts"><mat-icon matBadge="3" matBadgeColor="accent" >notifications</mat-icon> </button>
     <mat-menu #notificationsMenu="matMenu">
       <td>
         <div td-menu-header class="mat-subhead" style="text-align: center;">Notifications</div>
@@ -24,11 +24,11 @@
             <mat-divider *ngIf="!last"></mat-divider>
           </ng-template>
         </mat-nav-list>
-        <div class="divider"></div>
+        <!-- <div class="divider"></div>
         <div style="text-align: center;">
         <button mat-button style="color: blue;">
           See All Notifications
-        </button></div>
+        </button></div> -->
       </td>
     </mat-menu>
 

@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UpdateProfileComponent } from './Update-Profile/update-profile.component';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { Profile } from '../../Models/profile';
+
 
 @Component({
   selector: 'app-dis-profile',
@@ -8,11 +12,16 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./dis-profile.component.css']
 })
 export class DistributorProfileComponent {
+ 
+  public constructor(
+  
+    public _d:DomSanitizer,
+    private router:Router,
+    public dialog:MatDialog,
+    
 
-  constructor(
-   
-    public _d:DomSanitizer
-    ) { }
+    ) 
+    {  }
 
   url ='';
   imgsrc="/assets/avatar.svg";
@@ -21,5 +30,50 @@ export class DistributorProfileComponent {
     const file = event.srcElement.files[0]; 
     this.imgsrc = window.URL.createObjectURL(file); 
   }
-    
+  
+  currentData: Profile={
+  username:'Distributor1',
+  fname:'Ram',
+  lname:'Sharma', 
+  email:'distributor@scmp.com', 
+  mob:1234567890, 
+  address: 'Swargate, Pune', 
+  country: 'India',
+  city: 'Pune',
+  companyInfo: 'Pharma Industry',
+  password: 'Password@123'};
+
+  openDialog(): void{
+    const dialogRef = this.dialog.open(UpdateProfileComponent, {
+      width: '500px',
+      data: {  
+        username: this.currentData.username, 
+        fname: this.currentData.fname,
+        lname: this.currentData.lname,
+        country: this.currentData.country,
+        companyInfo: this.currentData.companyInfo,
+        city: this.currentData.city,
+        mob: this.currentData.mob,
+        address: this.currentData.address,
+        email: this.currentData.email,
+        password: this.currentData.password
+            }
+    });
+
+dialogRef.afterClosed().subscribe(result => {
+  if(!result)
+    return;
+  this.currentData.username = result.username;
+  this.currentData.mob = result.mob;
+  this.currentData.address=result.address;
+  this.currentData.email=result.email;
+  this.currentData.fname=result.fname;
+  this.currentData.lname=result.lname;
+  this.currentData.city=result.city;
+  this.currentData.country=result.country;
+  this.currentData.companyInfo=result.companyInfo;
+  this.currentData.password=result.password;
+}); 
+ 
+  }
 }

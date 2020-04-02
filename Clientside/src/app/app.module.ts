@@ -63,6 +63,8 @@ import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Order
 import { ChangePasswordComponent } from './Distributor/Components/Profile/Change-Password/change-password.component';
 import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
 import { ShowProductsComponent } from './Distributor/Components/Book Order/Show Products/show-products.component';
+import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-Profile/update-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -85,6 +87,8 @@ import { ShowProductsComponent } from './Distributor/Components/Book Order/Show 
     AddItemsComponent,
     ViewOrderComponent,
     ShowProductsComponent,
+    UpdateProfileComponent,
+    
     AddManufacturerComponent,
 
     PharmacistDashboardComponent,
@@ -126,7 +130,7 @@ import { ShowProductsComponent } from './Distributor/Components/Book Order/Show 
     MatDialogModule,
     MatPaginatorModule,
     MatMenuModule,
-    MatDatepickerModule,
+    MatDatepickerModule,    
     MatBadgeModule,
     MatCheckboxModule
   ],
@@ -141,4 +145,7 @@ import { ShowProductsComponent } from './Distributor/Components/Book Order/Show 
   providers: [],
   bootstrap: [AppComponent]
 })
+
+
+
 export class AppModule { }

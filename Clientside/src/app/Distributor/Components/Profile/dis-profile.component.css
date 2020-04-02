@@ -405,6 +405,16 @@ placeholder() {
 	  }
   }
    */
+
+   .form-control {
+	background-color: white;
+	border: 1px solid gray;
+	color: black;
+	line-height: normal;
+	font-size: font-size-base;
+	text-emphasis-color: black;
+	
+   }
    .card-user{
     .image{
         height: 130px;
