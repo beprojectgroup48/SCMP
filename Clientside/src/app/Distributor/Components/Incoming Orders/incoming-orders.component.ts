@@ -24,6 +24,11 @@ export class IncomingOrdersComponent implements OnInit {
   getIncomingOrderList(){
     this.distributorService.getIncomingOrders().subscribe(incomingOrderList =>{
       this.incomingOrderList = incomingOrderList;
+      for(var i=0;i<this.incomingOrderList.length;i++)
+      {
+        this.incomingOrderList[i].issueDate = new Date(this.incomingOrderList[i].issueDate);
+        this.incomingOrderList[i].deliveryDate = new Date(this.incomingOrderList[i].deliveryDate);
+      }
       this.dataSource = new MatTableDataSource(this.incomingOrderList);
       this.dataSource.paginator = this.paginator;
     })

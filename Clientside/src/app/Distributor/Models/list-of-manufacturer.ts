@@ -1,8 +1,8 @@
 export class listOfManufacturer{
-    orderId: String;
-    manufacturerName: String;
-    issueDate: Date;
-    deliveryDate: Date;
-    totalAmount: Number;
-    status: String;
+    username: String;
+    email: String;
+    name: String;
+    mobileNumber: number;
+    location: String;
+    licenceNumber: number;
   }

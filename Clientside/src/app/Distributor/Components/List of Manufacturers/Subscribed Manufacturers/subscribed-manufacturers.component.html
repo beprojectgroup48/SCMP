@@ -1,5 +1,7 @@
 <mat-card class="listofman">
-  <mat-card-title>List of Manufacturers</mat-card-title>
+  <mat-card-title>List of Manufacturers
+    <a style="float:right" class="btn btn-md btn-success text-white" (click)="addManufacturer()"><i style="margin-right: 5px;" class="fa fa-plus-square"></i> Edit List</a>
+  </mat-card-title>
   <mat-card-content>
     <div>
       <mat-form-field>
@@ -9,7 +11,7 @@
     </div>
    
     <div fxLayout="row" fxLayoutAlign="start">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       
         <!-- order Column -->
         <ng-container matColumnDef="username">
@@ -40,20 +42,6 @@
           <td mat-cell *matCellDef="let element"> {{element.location}} </td>
         </ng-container>
         
-      <ng-container matColumnDef="password">
-        <th mat-header-cell *matHeaderCellDef> Password </th>
-        <td mat-cell *matCellDef="let element"> {{element.password}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="transportAgency">
-        <th mat-header-cell *matHeaderCellDef> Transport Agency </th>
-        <td mat-cell *matCellDef="let element"> {{element.transportAgency}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="modeOfTransport">
-        <th mat-header-cell *matHeaderCellDef> Mode of Transport </th>
-        <td mat-cell *matCellDef="let element"> {{element.modeOfTransport}} </td>
-      </ng-container>
 
       <ng-container matColumnDef="licenceNumber">
         <th mat-header-cell *matHeaderCellDef> Licence Number </th>

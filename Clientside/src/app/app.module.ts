@@ -1,3 +1,6 @@
+import { ListOfPharmacistComponent } from './Distributor/Components/List of Pharmacists/list-of-pharmacist.component';
+import { AddManufacturerComponent } from './Distributor/Components/List of Manufacturers/Add Manufacturer/add-manufacturer.component';
+import { SubscribedManufacturersComponent } from './Distributor/Components/List of Manufacturers/Subscribed Manufacturers/subscribed-manufacturers.component';
 import { ViewOrderComponent } from './Distributor/Components/Book Order/View Order/view-order.component';
 import { AddItemsComponent } from './Distributor/Components/Book Order/Add Items/add-items.component';
 import { OrderComponent } from './Distributor/Components/Book Order/Order/order.component';
@@ -26,6 +29,8 @@ import {
   MatMenuModule,
   MatDatepickerModule,
   MatBadgeModule
+  MatBadgeModule,
+  MatCheckboxModule
 
 } from '@angular/material';
 
@@ -47,8 +52,6 @@ import { IncomingOrdersComponent } from './Distributor/Components/Incoming Order
 import { OutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/outgoing-orders.component';
 import { ChangePasswordComponent } from './Distributor/Components/Profile/Change-Password/change-password.component';
 import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
-import { ListOfManufacturerComponent } from './Distributor/Components/list-of-manufacturer/list-of-manufacturer.component';
-import { ListOfPharmacistComponent } from './Distributor/Components/list-of-pharmacist/list-of-pharmacist.component';
 import { ShowProductsComponent } from './Distributor/Components/Book Order/Show Products/show-products.component';
 import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-Profile/update-profile.component';
 
@@ -67,7 +70,7 @@ import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-
     OutgoingOrdersComponent,
     DistributorProfileComponent,
     ChangePasswordComponent,
-    ListOfManufacturerComponent,
+    SubscribedManufacturersComponent,
     ListOfPharmacistComponent,
     OrderComponent,
     AddItemsComponent,
@@ -75,6 +78,7 @@ import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-
     ShowProductsComponent,
     UpdateProfileComponent,
     
+    AddManufacturerComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,8 +110,10 @@ import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-
     MatDatepickerModule,
     MatBadgeModule
     
+    MatBadgeModule,
+    MatCheckboxModule
   ],
-  entryComponents:[AddItemsComponent,ShowProductsComponent],
+  entryComponents:[AddItemsComponent,ShowProductsComponent,AddManufacturerComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

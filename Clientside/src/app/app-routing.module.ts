@@ -1,3 +1,5 @@
+import { ListOfPharmacistComponent } from './Distributor/Components/List of Pharmacists/list-of-pharmacist.component';
+import { SubscribedManufacturersComponent } from './Distributor/Components/List of Manufacturers/Subscribed Manufacturers/subscribed-manufacturers.component';
 import { OrderComponent } from './Distributor/Components/Book Order/Order/order.component';
 import { ViewOrderComponent } from './Distributor/Components/Book Order/View Order/view-order.component';
 import { ChangePasswordComponent } from './Distributor/Components/Profile/Change-Password/change-password.component';
@@ -34,7 +36,7 @@ const routes: Routes = [
         {path:'yourorder', component:DistributorYourOrderComponent},
         {path:'profile', component:DistributorProfileComponent},
         {path:'profile/edit', component:ChangePasswordComponent},
-        {path:'listofmanufacturer', component:ListOfManufacturerComponent},
+        {path:'listofmanufacturer', component:SubscribedManufacturersComponent},
         {path:'listofpharmacist', component:ListOfPharmacistComponent},
         {path:'view-order',component:ViewOrderComponent},
         {path:'update-profile',component:UpdateProfileComponent}
