@@ -1,6 +1,6 @@
 .mat-elevation-z8 {
    
-  width: 50%;
+  width: 100%;
   height: 100%;
 }
 .pieChart{
@@ -8,11 +8,10 @@
   width: 50%;
   height: 50%;
 }
-.incoming-order{
-  margin-left: 20px;
-}
 .table1{
-  width: 99%;
+	width: 99%;
+	margin-left: -7px;
+	margin-top: 12px;
 }
 .outgoing-order{
   margin-left: 20px;
