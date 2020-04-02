@@ -1,3 +1,11 @@
+import { SubscribedDistributorsComponent } from './Pharmacist/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
+import { PharmacistViewOrderComponent } from './Pharmacist/Components/Your Order/View Order/pharm-view-order.component';
+import { PharmacistProfileComponent } from './Pharmacist/Components/Profile/pharm-profile.component';
+import { PharmacistChangePasswordComponent } from './Pharmacist/Components/Profile/Change-Password/pharm-change-password.component';
+import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Order/pharm-order.component';
+import { PharmacistOutgoingOrdersComponent} from './Pharmacist/Components/Outgoing Orders/pharm-outgoing-orders.component';
+import { PharmacistDashboardComponent } from './Pharmacist/Components/Dashboard/pharm-dashboard.component';
+import { PharmacistNavigationComponent } from './Pharmacist/Components/Navigation/pharm-navigation.component';
 import { ListOfPharmacistComponent } from './Distributor/Components/List of Pharmacists/list-of-pharmacist.component';
 import { SubscribedManufacturersComponent } from './Distributor/Components/List of Manufacturers/Subscribed Manufacturers/subscribed-manufacturers.component';
 import { OrderComponent } from './Distributor/Components/Book Order/Order/order.component';
@@ -36,6 +44,18 @@ const routes: Routes = [
         {path:'listofmanufacturer', component:SubscribedManufacturersComponent},
         {path:'listofpharmacist', component:ListOfPharmacistComponent},
         {path:'view-order',component:ViewOrderComponent},
+  ]},
+
+  {path: 'pharmacist', redirectTo: 'pharmacist/dashboard', pathMatch: 'full' },
+  {path:'pharmacist', component:PharmacistNavigationComponent,
+      children:[
+        {path:'dashboard', component:PharmacistDashboardComponent},
+        {path:'dashboard/outgoing-orders',component:PharmacistOutgoingOrdersComponent},
+        {path:'bookorder', component:PharmacistOrderComponent},
+        {path:'profile', component:PharmacistProfileComponent},
+        {path:'profile/edit', component:PharmacistChangePasswordComponent},
+        {path:'listofdistributors', component:SubscribedDistributorsComponent},
+        {path:'view-order',component:PharmacistViewOrderComponent},
   ]},
 ]
 

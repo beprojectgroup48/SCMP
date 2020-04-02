@@ -1,3 +1,14 @@
+import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Order/pharm-order.component';
+import { PharmacistAddItemsComponent } from './Pharmacist/Components/Book Order/Add Items/pharm-add-items.component';
+import { AddDistributorComponent } from './Pharmacist/Components/List of Distributors/Add Distributor/add-distributor.component';
+import { SubscribedDistributorsComponent } from './Pharmacist/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
+import { PharmacistOutgoingOrdersComponent } from './Pharmacist/Components/Outgoing Orders/pharm-outgoing-orders.component';
+import { PharmacistChangePasswordComponent } from './Pharmacist/Components/Profile/Change-Password/pharm-change-password.component';
+import { PharmacistProfileComponent } from './Pharmacist/Components/Profile/pharm-profile.component';
+import { PharmacistShowProductsComponent } from './Pharmacist/Components/Your Order/Show Products/pharm-show-products.component';
+import { PharmacistViewOrderComponent } from './Pharmacist/Components/Your Order/View Order/pharm-view-order.component';
+import { PharmacistDashboardComponent } from './Pharmacist/Components/Dashboard/pharm-dashboard.component';
+import { PharmacistNavigationComponent } from './Pharmacist/Components/Navigation/pharm-navigation.component';
 import { ListOfPharmacistComponent } from './Distributor/Components/List of Pharmacists/list-of-pharmacist.component';
 import { AddManufacturerComponent } from './Distributor/Components/List of Manufacturers/Add Manufacturer/add-manufacturer.component';
 import { SubscribedManufacturersComponent } from './Distributor/Components/List of Manufacturers/Subscribed Manufacturers/subscribed-manufacturers.component';
@@ -60,6 +71,7 @@ import { ShowProductsComponent } from './Distributor/Components/Book Order/Show 
     LoginComponent,
     RegisterComponent,
     ForgetpassComponent,
+
     DistributorDashboardComponent,
     DistributorYourOrderComponent,
     DistributorNavigationComponent,
@@ -74,6 +86,18 @@ import { ShowProductsComponent } from './Distributor/Components/Book Order/Show 
     ViewOrderComponent,
     ShowProductsComponent,
     AddManufacturerComponent,
+
+    PharmacistDashboardComponent,
+    PharmacistViewOrderComponent,
+    PharmacistNavigationComponent,
+    PharmacistShowProductsComponent,
+    PharmacistProfileComponent,
+    PharmacistChangePasswordComponent,
+    PharmacistOutgoingOrdersComponent,
+    SubscribedDistributorsComponent,
+    AddDistributorComponent,
+    PharmacistAddItemsComponent,
+    PharmacistOrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,7 +130,14 @@ import { ShowProductsComponent } from './Distributor/Components/Book Order/Show 
     MatBadgeModule,
     MatCheckboxModule
   ],
-  entryComponents:[AddItemsComponent,ShowProductsComponent,AddManufacturerComponent],
+  entryComponents:[
+    AddItemsComponent,
+    PharmacistAddItemsComponent,
+    ShowProductsComponent,
+    PharmacistShowProductsComponent,
+    AddManufacturerComponent,
+    AddDistributorComponent
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
