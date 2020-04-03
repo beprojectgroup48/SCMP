@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Profile } from 'src/app/Distributor/Models/profile';
+import { Profile } from '../../../Models/profile';
 import { ManufacturerProfileComponent } from '../manu-profile.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 

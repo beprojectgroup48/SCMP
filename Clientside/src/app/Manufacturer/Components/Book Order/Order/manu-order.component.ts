@@ -7,7 +7,7 @@ import { ManufacturerAddItemsComponent } from '../Add Items/manu-add-items.compo
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormControl } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { SubOrder } from 'src/app/Distributor/Models/sub-order';
+import { ManufacturerSubOrder } from '../../../Models/manu-sub-order';
 
 @Component({
   selector: 'app-manu-order',
@@ -17,8 +17,8 @@ import { SubOrder } from 'src/app/Distributor/Models/sub-order';
 export class ManufacturerOrderComponent implements OnInit {
   isValid: boolean = true;
   OrderId: String = "123456";
-  currentSubOrder: SubOrder;
-  currentSubOrderList: SubOrder[] = [];
+  currentSubOrder: ManufacturerSubOrder;
+  currentSubOrderList: ManufacturerSubOrder[] = [];
   currentCompleteOrder: ManufacturerCompleteOrder;
   count: number = 0;
   username: String = "DB76390";
@@ -98,7 +98,7 @@ export class ManufacturerOrderComponent implements OnInit {
         this.currentCompleteOrder.finalAmount += this.currentSubOrderList[index].totalAmount;
         return;
       }
-      this.currentSubOrder = new SubOrder();
+      this.currentSubOrder = new ManufacturerSubOrder();
       this.currentSubOrder.productId = result.productId;
       this.currentSubOrder.productName = result.productName;
       this.currentSubOrder.unitPrice = result.unitPrice;

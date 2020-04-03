@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { ManufacturerDashboardComponent } from './Manufacturer/Components/Dashboard/manu-dashboard.component';
 import { ManufacturerNavigationComponent } from './Manufacturer/Components/Navigation/manu-navigation.component';
 import { ManufacturerProfileComponent } from './Manufacturer/Components/Profile/manu-profile.component';
@@ -10,7 +9,6 @@ import { ManufacturerShowProductsComponent } from './Manufacturer/Components/You
 import { ManufacturerViewOrderComponent } from './Manufacturer/Components/Your Order/View Order/manu-view-order.component';
 import { ManufacturerIncomingOrdersComponent } from './Manufacturer/Components/Incoming Orders/manu-incoming-orders.component';
 
-=======
 import { DistributorUpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/dis-update-profile.component';
 import { DistributorShowProductsComponent } from './Distributor/Components/Your Order/Show Products/dis-show-products.component';
 import { DistributorAddItemsComponent } from './Distributor/Components/Book Order/Add Items/dis-add-items.component';
@@ -20,7 +18,6 @@ import { DistributorOutgoingOrdersComponent } from './Distributor/Components/Out
 import { DistributorIncomingOrdersComponent } from './Distributor/Components/Incoming Orders/dis-incoming-orders.component';
 import { DistributorViewOrderComponent } from './Distributor/Components/Your Order/View Order/dis-view-order.component';
 import { PharmacistUpdateProfileComponent } from './Pharmacist/Components/Profile/Update Profile/pharm-update-profile.component';
->>>>>>> 19bc5b8b45c379389b74f3b3cb55ddb06be39ed9
 import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Order/pharm-order.component';
 import { PharmacistAddItemsComponent } from './Pharmacist/Components/Book Order/Add Items/pharm-add-items.component';
 import { AddDistributorComponent } from './Pharmacist/Components/List of Distributors/Add Distributor/add-distributor.component';
@@ -114,7 +111,6 @@ import { DistributorProfileComponent } from './Distributor/Components/Profile/di
     AddDistributorComponent,
     PharmacistAddItemsComponent,
     PharmacistOrderComponent,
-<<<<<<< HEAD
     ManufacturerDashboardComponent,
     ManufacturerNavigationComponent,
     ManufacturerProfileComponent,
@@ -124,10 +120,8 @@ import { DistributorProfileComponent } from './Distributor/Components/Profile/di
     ManufacturerAddItemsComponent,
     ManufacturerShowProductsComponent,
     ManufacturerViewOrderComponent,
-    ManufacturerIncomingOrdersComponent
-=======
-    PharmacistUpdateProfileComponent,
->>>>>>> 19bc5b8b45c379389b74f3b3cb55ddb06be39ed9
+    ManufacturerIncomingOrdersComponent,
+    PharmacistUpdateProfileComponent
   ],
   imports: [
     BrowserModule,

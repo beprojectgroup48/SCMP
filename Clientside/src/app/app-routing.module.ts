@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 //Manufacturer
 import { ManufacturerDashboardComponent } from './Manufacturer/Components/Dashboard/manu-dashboard.component';
@@ -11,14 +10,12 @@ import { ManufacturerViewOrderComponent } from './Manufacturer/Components/Your O
 import { ManufacturerIncomingOrdersComponent } from './Manufacturer/Components/Incoming Orders/manu-incoming-orders.component';
 
 //Pharmacist
-=======
 import { PharmacistUpdateProfileComponent } from './Pharmacist/Components/Profile/Update Profile/pharm-update-profile.component';
 import { DistributorUpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/dis-update-profile.component';
 import { DistributorChangePasswordComponent } from './Distributor/Components/Profile/Change Password/dis-change-password.component';
 import { DistributorOutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/dis-outgoing-orders.component';
 import { DistributorIncomingOrdersComponent } from './Distributor/Components/Incoming Orders/dis-incoming-orders.component';
 import { DistributorViewOrderComponent } from './Distributor/Components/Your Order/View Order/dis-view-order.component';
->>>>>>> 19bc5b8b45c379389b74f3b3cb55ddb06be39ed9
 import { SubscribedDistributorsComponent } from './Pharmacist/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
 import { PharmacistViewOrderComponent } from './Pharmacist/Components/Your Order/View Order/pharm-view-order.component';
 import { PharmacistProfileComponent } from './Pharmacist/Components/Profile/pharm-profile.component';
@@ -39,10 +36,6 @@ import { MainPageComponent } from './Main Page/Components/mainpage.component';
 import { DistributorNavigationComponent } from './Distributor/Components/Navigation/dis-navigation.component';
 import { DistributorDashboardComponent } from './Distributor/Components/Dashboard/dis-dashboard.component';
 import { ListOfPharmacistComponent } from './Distributor/Components/List of Pharmacists/list-of-pharmacist.component';
-<<<<<<< HEAD
-import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-Profile/update-profile.component';
-=======
->>>>>>> 19bc5b8b45c379389b74f3b3cb55ddb06be39ed9
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
