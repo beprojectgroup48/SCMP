@@ -1,6 +1,6 @@
-import { OutgoingOrders } from './../../Models/outgoing-orders';
+import { DistributorOutgoingOrders } from '../../Models/dis-outgoing-orders';
 import { MatTableDataSource } from '@angular/material';
-import { IncomingOrders } from './../../Models/incoming-orders';
+import { DistributorIncomingOrders } from '../../Models/dis-incoming-orders';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
@@ -15,10 +15,10 @@ import { DistributorService } from '../../Services/distributor.service';
 
 export class DistributorDashboardComponent implements OnInit {
 
-  incomingOrderList: IncomingOrders[];
+  incomingOrderList: DistributorIncomingOrders[];
   displayedColumns1: string[] = ['orderId', 'pharmacistName', 'issueDate', 'deliveryDate','totalAmount','status'];
   dataSource1: any;
-  outgoingOrderList: OutgoingOrders[];
+  outgoingOrderList: DistributorOutgoingOrders[];
   displayedColumns2: string[] = ['orderId', 'manufacturerName', 'issueDate', 'deliveryDate','totalAmount','status'];
   dataSource2: any;
   PieChart=[];
@@ -113,13 +113,13 @@ this.PieChart2 = new Chart('pieChart2', {
     }
 }
 
-const ELEMENT_DATA: IncomingOrders[] = [
+const ELEMENT_DATA: DistributorIncomingOrders[] = [
     { orderId: '1', pharmacistName: 'Avinash', issueDate: new Date('3-10-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
     { orderId: '2', pharmacistName: 'Puru', issueDate: new Date('5-2-2020') , deliveryDate: new Date('5-14-2020'), totalAmount: 200000, status: 'Done'},
     { orderId: '3', pharmacistName: 'Rohan', issueDate: new Date('7-21-2020') , deliveryDate: new Date('7-29-2020'), totalAmount: 100000, status: 'Pending'},
 ]
 
-const ELEMENT_DATA2: OutgoingOrders[] = [
+const ELEMENT_DATA2: DistributorOutgoingOrders[] = [
     { orderId: '1', manufacturerName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
     { orderId: '2', manufacturerName: 'Puru', issueDate: new Date('5-21-2020') , deliveryDate: new Date('5-14-2020'), totalAmount: 200000, status: 'Done'},
     { orderId: '3', manufacturerName: 'Rohan', issueDate: new Date('7-13-2020') , deliveryDate: new Date('7-28-2020'), totalAmount: 100000, status: 'Pending'},

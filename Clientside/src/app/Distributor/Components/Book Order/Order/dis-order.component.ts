@@ -1,25 +1,24 @@
-import { PharmacistSubOrder } from './../../../Models/pharm-sub-order';
-import { Distributor } from './../../../../Distributor/Models/distributor';
-import { PharmacistService } from './../../../Services/pharmacist.service';
 import { Manufacturer } from '../../../../Manufacturer/Models/manufacturer';
-import { PharmacistProduct } from '../../../Models/pharm-product';
-import { PharmacistCompleteOrder } from '../../../Models/pharm-complete-order';
-import { PharmacistAddItemsComponent } from '../Add Items/pharm-add-items.component';
+import { DistributorProduct } from '../../../Models/dis-product';
+import { DistributorCompleteOrder } from '../../../Models/dis-complete-order';
+import { DistributorAddItemsComponent } from '../Add Items/dis-add-items.component';
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormControl } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DistributorSubOrder } from 'src/app/Distributor/Models/dis-sub-order';
+import { DistributorService } from '../../../Services/distributor.service';
 
 @Component({
-  selector: 'app-pharm-order',
-  templateUrl: './pharm-order.component.html',
-  styles: ['./pharm-order.component.css']
+  selector: 'app-dis-order',
+  templateUrl: './dis-order.component.html',
+  styles: ['./dis-order.component.css']
 })
-export class PharmacistOrderComponent implements OnInit {
+export class DistributorOrderComponent implements OnInit {
   isValid: boolean = true;
   OrderId: String = "123456";
-  currentSubOrder: PharmacistSubOrder;
-  currentSubOrderList: PharmacistSubOrder[] = [];
-  currentCompleteOrder: PharmacistCompleteOrder;
+  currentSubOrder: DistributorSubOrder;
+  currentSubOrderList: DistributorSubOrder[] = [];
+  currentCompleteOrder: DistributorCompleteOrder;
   count: number = 0;
   username: String = "DB76390";
   productList = ELEMENT_DATA;
@@ -29,30 +28,21 @@ export class PharmacistOrderComponent implements OnInit {
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
   manufacturersList : Manufacturer[] = ELEMENT_DATA2;
-  distributorList : Distributor[] = ELEMENT_DATA3;
 
-  constructor(private dialog: MatDialog, private pharmacistService: PharmacistService) { }
+  constructor(private dialog: MatDialog, private distributorService: DistributorService) { }
 
   ngOnInit() {
-    this.currentCompleteOrder = new PharmacistCompleteOrder();
+    this.currentCompleteOrder = new DistributorCompleteOrder();
     this.currentCompleteOrder.orderId=this.OrderId;
    // this.currentCompleteOrder.distributorUsername = this.username;
     this.currentCompleteOrder.issueDate = new Date();
     this.currentCompleteOrder.dueDate = undefined;
     this.currentCompleteOrder.finalAmount = 0;
     this.currentCompleteOrder.status =  "Pending";
-    this.currentCompleteOrder.distributorName = "0";
-    this.currentCompleteOrder.distributorUsername =  "0";
     this.manufacturerName1 =  "0";
     this.manufacturerUsername1 =  "0";
     this.currentCompleteOrder.orders = this.currentSubOrderList;
     this.dateRe = new Date().toDateString();
-  }
-
-  addDistributorName(ctrl){
-    if (ctrl.selectedIndex != 0) {
-      this.currentCompleteOrder.distributorName = this.distributorList[ctrl.selectedIndex-1].name;
-    }
   }
 
   updateProductList(ctrl){
@@ -61,8 +51,8 @@ export class PharmacistOrderComponent implements OnInit {
     }
   }
 
-  /*resetForm(form?: NgForm) {
-    if (form = null)
+  resetForm(form?: NgForm) {
+    /*if (form = null)
       form.resetForm();
     this.service.formData = {
       OrderID: null,
@@ -70,8 +60,8 @@ export class PharmacistOrderComponent implements OnInit {
       GTotal: 0,
       DeletedOrderItemIDs: ''
     };
-    this.service.orderItems = [];
-  }*/
+    this.service.orderItems = [];*/
+  }
 
   AddOrEditOrderItem() {
     if(this.manufacturerUsername1=="0")
@@ -84,7 +74,7 @@ export class PharmacistOrderComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.width = "50%";
     dialogConfig.data = { productId : "0", productName : "", unitPrice : 0, quantity: undefined, totalAmount : 0, manufacturerusername : this.manufacturerUsername1, manufacturerName : this.manufacturerName1 };
-    const dialogRef = this.dialog.open(PharmacistAddItemsComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DistributorAddItemsComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
       if(!result)
@@ -98,7 +88,7 @@ export class PharmacistOrderComponent implements OnInit {
         this.currentCompleteOrder.finalAmount += this.currentSubOrderList[index].totalAmount;
         return;
       }
-      this.currentSubOrder = new PharmacistSubOrder();
+      this.currentSubOrder = new DistributorSubOrder();
       this.currentSubOrder.productId = result.productId;
       this.currentSubOrder.productName = result.productName;
       this.currentSubOrder.unitPrice = result.unitPrice;
@@ -119,7 +109,7 @@ export class PharmacistOrderComponent implements OnInit {
     dialogConfig.width = "50%";
     dialogConfig.data = { productId : this.currentSubOrderList[orderItemIndex].productId, productName : this.currentSubOrderList[orderItemIndex].productName, unitPrice : this.currentSubOrderList[orderItemIndex].unitPrice, quantity : this.currentSubOrderList[orderItemIndex].quantity,
        totalAmount : this.currentSubOrderList[orderItemIndex].totalAmount, manufacturerusername : this.currentSubOrderList[orderItemIndex].manufacturerUsername, manufacturerName : this.currentSubOrderList[orderItemIndex].manufacturerName };
-    const dialogRef = this.dialog.open(PharmacistAddItemsComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DistributorAddItemsComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
       if(!result)
@@ -174,13 +164,13 @@ export class PharmacistOrderComponent implements OnInit {
 
 
   onSubmit(form: NgForm) {
-    this.pharmacistService.placeOrder(this.currentCompleteOrder).subscribe(data =>{
+    this.distributorService.placeOrder(this.currentCompleteOrder).subscribe(data =>{
        console.log(data);
     })
   }
 }
 
-const ELEMENT_DATA: PharmacistProduct[] = [
+const ELEMENT_DATA: DistributorProduct[] = [
   { id: "1", name: "Crosin", unitPrice: 100, manufacturerUsername: "MF123456", manufacturerName:"Ganesh"},
   { id: '2', name: 'Trishul', unitPrice: 200, manufacturerUsername: 'MF896412', manufacturerName:'Ramesh'},
   { id: '3', name: 'Pain Killer', unitPrice: 300, manufacturerUsername: 'MF486215', manufacturerName:'Suresh'},
@@ -218,28 +208,5 @@ const ELEMENT_DATA2: Manufacturer[] = [
     transportAgency: "Prakash Agency",
     modeOfTransport: "Road",
     location: "Nagar",
-    registrationId: 789654},
-];
-
-const ELEMENT_DATA3: Distributor[] = [
-  { username: "DB123456",
-    email: "distributor1@scmp.com",
-    password: "password@123",
-    name: "Ashish Distributors",
-    mobileNumber: 8605038260,
-    registrationId: 458961},
-    
-  { username: "DB564800",
-    email: "distributorr2@scmp.com",
-    password: "password@123",
-    name: "Rohan Distributors",
-    mobileNumber: 9648201163,
-    registrationId: 789624},
-
-  { username: "DB489651",
-    email: "distributor3@scmp.com",
-    password: "password@123",
-    name: "Avinash Distributors",
-    mobileNumber: 8965214521,
     registrationId: 789654},
 ];

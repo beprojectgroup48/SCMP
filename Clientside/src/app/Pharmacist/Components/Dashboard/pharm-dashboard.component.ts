@@ -17,7 +17,7 @@ export class PharmacistDashboardComponent implements OnInit {
   outgoingOrderList: PharmacistOutgoingOrders[];
   displayedColumns: string[] = ['orderId', 'distributorName', 'issueDate', 'deliveryDate','totalAmount','status'];
   dataSource: any;
-  PieChart=[];
+  PieChart = [];
 
   constructor(private router: Router,private pharmacistService: PharmacistService) { }
 
@@ -68,7 +68,7 @@ this.PieChart = new Chart('pieChart', {
     }
 }
 
-const ELEMENT_DATA2: PharmacistOutgoingOrders[] = [
+const ELEMENT_DATA: PharmacistOutgoingOrders[] = [
     { orderId: '1', distributorName: 'Avinash', issueDate: new Date('3-25-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
     { orderId: '2', distributorName: 'Puru', issueDate: new Date('5-21-2020') , deliveryDate: new Date('5-14-2020'), totalAmount: 200000, status: 'Done'},
     { orderId: '3', distributorName: 'Rohan', issueDate: new Date('7-13-2020') , deliveryDate: new Date('7-28-2020'), totalAmount: 100000, status: 'Pending'},

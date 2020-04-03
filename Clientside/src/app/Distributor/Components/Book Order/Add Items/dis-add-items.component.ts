@@ -1,21 +1,23 @@
-import { PharmacistProduct } from '../../../Models/pharm-product';
-import { PharmacistSubOrder } from '../../../Models/pharm-sub-order';
+import { DistributorCompleteOrder } from './../../../Models/dis-complete-order';
+import { DistributorProduct } from '../../../Models/dis-product';
+import { DistributorSubOrder } from '../../../Models/dis-sub-order';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 
 @Component({
-  selector: 'app-pharm-add-items',
-  templateUrl: './pharm-add-items.component.html',
-  styles: ['./pharm-add-items.component.css']
+  selector: 'app-dis-add-items',
+  templateUrl: './dis-add-items.component.html',
+  styles: ['./dis-add-items.component.css']
 })
-export class PharmacistAddItemsComponent implements OnInit {
+export class DistributorAddItemsComponent implements OnInit {
+  orderList: DistributorCompleteOrder;
   productList = ELEMENT_DATA;
   isValid: boolean = true;
-  data1: PharmacistSubOrder = new PharmacistSubOrder;
+  data1: DistributorSubOrder =new DistributorSubOrder;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public currentSubOrder: PharmacistSubOrder,
-    public dialogRef: MatDialogRef<PharmacistAddItemsComponent>) {
+    @Inject(MAT_DIALOG_DATA) public currentSubOrder: DistributorSubOrder,
+    public dialogRef: MatDialogRef<DistributorAddItemsComponent>) {
       this.data1 = currentSubOrder;
       console.log("selected manufacturer is "+currentSubOrder.manufacturerName);
      }
@@ -47,7 +49,7 @@ export class PharmacistAddItemsComponent implements OnInit {
 
 }
 
-const ELEMENT_DATA: PharmacistProduct[] = [
+const ELEMENT_DATA: DistributorProduct[] = [
   { id: "1", name: "Crosin", unitPrice: 100, manufacturerUsername: "MF123456", manufacturerName:"Ganesh"},
   { id: '2', name: 'Trishul', unitPrice: 200, manufacturerUsername: 'MF896412', manufacturerName:'Ramesh'},
   { id: '3', name: 'Pain Killer', unitPrice: 300, manufacturerUsername: 'MF486215', manufacturerName:'Suresh'},

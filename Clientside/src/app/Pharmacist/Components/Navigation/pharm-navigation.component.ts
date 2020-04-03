@@ -1,7 +1,7 @@
-import { PharmacistProfile } from '../../Models/pharm-profile';
+import { PharmacistChangePasswordComponent } from './../Profile/Change Password/pharm-change-password.component';
+import { PharmacistProfile } from './../../Models/pharm-profile';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PharmacistChangePasswordComponent } from '../Profile/Change-Password/pharm-change-password.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
@@ -11,27 +11,48 @@ import { MatDialog } from '@angular/material';
 })
 export class PharmacistNavigationComponent  {
   
-  currentData: PharmacistProfile={name:'Pharmacist1', email:'pharmacist@scmp.com', mob:1234567890, address: 'Swargate, Pune', password: 'Password@123'};
-
-  constructor(private router:Router,public dialog:MatDialog) {}
-
+  constructor(
+    private router:Router,
+    public dialog:MatDialog
+    ) { }
   goToProfile(){ 
     this.router.navigate(['/pharmacist/profile']);
   }
-
   goToLogin(){
     this.router.navigate(['/login']);
   }
+ 
+  currentData: PharmacistProfile={
+    username:'Distributor1',
+    fname:'Ram',
+    lname:'Sharma', 
+    email:'distributor@scmp.com', 
+    mob:1234567890, 
+    address: 'Swargate, Pune', 
+    country: 'India',
+    city: 'Pune',
+    companyInfo: 'Pharma Industry',
+    password: 'Password@123'
+  };
 
   openDialog(): void{
     const dialogRef = this.dialog.open(PharmacistChangePasswordComponent, {
       width: '500px',
-      data: { name: this.currentData.name, 
-              mob: this.currentData.mob,
-              address: this.currentData.address,
-              email: this.currentData.email,
-              password: this.currentData.password
+      data: { 
+        username: this.currentData.username, 
+        fname: this.currentData.fname,
+        lname: this.currentData.lname,
+        country: this.currentData.country,
+        companyInfo: this.currentData.companyInfo,
+        city: this.currentData.city,
+        mob: this.currentData.mob,
+        address: this.currentData.address,
+        email: this.currentData.email,
+        password: this.currentData.password
             }
     });
+
+
   }
-}
+  }
+

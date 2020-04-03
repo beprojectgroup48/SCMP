@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { UpdateProfileComponent } from './Update-Profile/update-profile.component';
+import { DistributorUpdateProfileComponent } from './Update Profile/dis-update-profile.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { Profile } from '../../Models/profile';
+import { DistributorProfile } from '../../Models/dis-profile';
 
 
 @Component({
@@ -31,7 +31,7 @@ export class DistributorProfileComponent {
     this.imgsrc = window.URL.createObjectURL(file); 
   }
   
-  currentData: Profile={
+  currentData: DistributorProfile={
   username:'Distributor1',
   fname:'Ram',
   lname:'Sharma', 
@@ -44,7 +44,7 @@ export class DistributorProfileComponent {
   password: 'Password@123'};
 
   openDialog(): void{
-    const dialogRef = this.dialog.open(UpdateProfileComponent, {
+    const dialogRef = this.dialog.open(DistributorUpdateProfileComponent, {
       width: '500px',
       data: {  
         username: this.currentData.username, 
