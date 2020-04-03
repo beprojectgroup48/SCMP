@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profile } from '../../Models/profile';
-import { ManufacturerChangePasswordComponent } from '../Profile/Change-Password/manu-change-password.component';
+import { ManufacturerChangePasswordComponent } from '../Profile/Change Password/manu-change-password.component';
 import { MatDialog } from '@angular/material';
 
 @Component({

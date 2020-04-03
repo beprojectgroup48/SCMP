@@ -1,8 +1,8 @@
 import { ManufacturerDashboardComponent } from './Manufacturer/Components/Dashboard/manu-dashboard.component';
 import { ManufacturerNavigationComponent } from './Manufacturer/Components/Navigation/manu-navigation.component';
 import { ManufacturerProfileComponent } from './Manufacturer/Components/Profile/manu-profile.component';
-import { ManufacturerChangePasswordComponent } from './Manufacturer/Components/Profile/Change-Password/manu-change-password.component';
-import { ManufacturerUpdateProfileComponent } from './Manufacturer/Components/Profile/Update-Profile/manu-update-profile.component';
+import { ManufacturerChangePasswordComponent } from './Manufacturer/Components/Profile/Change Password/manu-change-password.component';
+import { ManufacturerUpdateProfileComponent } from './Manufacturer/Components/Profile/Update Profile/manu-update-profile.component';
 import { ManufacturerOrderComponent } from './Manufacturer/Components/Book Order/Order/manu-order.component';
 import { ManufacturerAddItemsComponent } from './Manufacturer/Components/Book Order/Add Items/manu-add-items.component';
 import { ManufacturerShowProductsComponent } from './Manufacturer/Components/Your Order/Show Products/manu-show-products.component';
