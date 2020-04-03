@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ManufacturerUpdateProfileComponent } from './Update-Profile/manu-update-profile.component';
+import { ManufacturerUpdateProfileComponent } from './Update Profile/manu-update-profile.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { Profile } from '../../Models/profile';
