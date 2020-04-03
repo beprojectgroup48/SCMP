@@ -1,0 +1,108 @@
+<mat-card class="pharm-order" style="margin-left: 13px;
+margin-right: 13px;
+margin-top: 13px;
+margin-bottom: 13px;
+min-height: 90%;">
+  <mat-card-title>Book Order</mat-card-title>
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutAlign="start">
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <input type="hidden"  name="OrderID">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Order No.</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">#</div>
+          </div>
+          <input name="OrderNo" class="form-control" [(ngModel)]="OrderId" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+          <label>Issue Date</label>
+          <mat-form-field class="input-group" style="font-size: 16px;margin-top: -18px">
+            <input style="color:rgb(90, 90, 90)" name="dueDate" [value]="date.value" disabled [min]="currentCompleteOrder.issueDate" matInput [matDatepicker]="picker1">
+            <mat-datepicker-toggle [disabled]="true" matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker [disabled]="true"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-group" style="margin-top: -15px;margin-bottom: 20px;">
+          <label>Manufacturer Name</label>
+          <select name="manufacturerUsername" #manufacturerUsername="ngModel" [(ngModel)]="manufacturerUsername1" class="form-control" (change)="updateProductList($event.target,form)"
+          [class.is-invalid]="manufacturerUsername.touched && manufacturerUsername1==0">
+            <option value="0">-Select-</option>
+            <option *ngFor="let manu of manufacturersList" value="{{manu.username}}">{{manu.name}}</option>
+          </select>
+      </div>
+    </div>
+  
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Grand Total</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">&#8377;</div>
+          </div>
+          <input name="GTotal" class="form-control" [(ngModel)]="currentCompleteOrder.finalAmount" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+          <label>Due Date</label>
+          <mat-form-field class="input-group" style="font-size: 16px;margin-top: -18px">
+              <input [min]="currentCompleteOrder.issueDate" matInput [matDatepicker]="picker" name="dueDate" #dueDate="ngModel" [(ngModel)]="currentCompleteOrder.dueDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+      </div>
+      <div class="form-group" style="margin-top: -15px;margin-bottom: 20px;">
+        <label>Distributor Name</label>
+        <select name="distributorUsername" #distributorUsername="ngModel" [(ngModel)]="currentCompleteOrder.distributorUsername" class="form-control" (change)="addDistributorName($event.target,form)"
+        [class.is-invalid]="distributorUsername.touched && currentCompleteOrder.distributorUsername==0">
+          <option value="0">-Select-</option>
+          <option *ngFor="let dis of distributorList" value="{{dis.username}}">{{dis.name}}</option>
+        </select>
+    </div>
+    </div>
+    
+  </div>
+
+  <!-- order items table-->
+  <table class="table table-borderless">
+    <thead class="thead-light">
+      <th>Product</th>
+      <th>Manufacturer Name</th>
+      <th>Unit Price</th>
+      <th>Quantity</th>
+      <th>Total</th>
+      <th>
+        <a class="btn btn-sm btn-success text-white" (click)="AddOrEditOrderItem()"><i class="fa fa-plus"></i> Add Product</a>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngIf="count==0" [class.text-danger]="!isValid && service.orderItems.length==0">
+        <td class="font-italic text-center" colspan="5">
+          No products selected for this order.
+        </td>
+      </tr>
+
+      <tr *ngFor="let order of currentCompleteOrder.orders;let i=index;">
+        <td>{{order.productName}}</td>
+        <td>{{order.manufacturerName}}</td>
+        <td>{{order.unitPrice}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{{order.totalAmount}}</td>
+        <td>
+          <a class="btn btn-sm btn-info text-white" (click)="EditOrderItem(i)"><i class="fa fa-pencil"></i></a>
+          <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteOrderItem(i)"><i class="fa fa-trash"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark" [disabled]="currentCompleteOrder.distributorUsername==0 || manufacturerUsername1==0 || form.invalid || count==0 || currentCompleteOrder.dueDate==invalid"><i class="fa fa-database"></i> Submit</button>
+  </div>
+</form>
+</div>
+</mat-card-content>
+</mat-card> 

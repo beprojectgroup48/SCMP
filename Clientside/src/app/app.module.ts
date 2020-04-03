@@ -1,3 +1,14 @@
+import { ManufacturerDashboardComponent } from './Manufacturer/Components/Dashboard/manu-dashboard.component';
+import { ManufacturerNavigationComponent } from './Manufacturer/Components/Navigation/manu-navigation.component';
+import { ManufacturerProfileComponent } from './Manufacturer/Components/Profile/manu-profile.component';
+import { ManufacturerChangePasswordComponent } from './Manufacturer/Components/Profile/Change-Password/manu-change-password.component';
+import { ManufacturerUpdateProfileComponent } from './Manufacturer/Components/Profile/Update-Profile/manu-update-profile.component';
+import { ManufacturerOrderComponent } from './Manufacturer/Components/Book Order/Order/manu-order.component';
+import { ManufacturerAddItemsComponent } from './Manufacturer/Components/Book Order/Add Items/manu-add-items.component';
+import { ManufacturerShowProductsComponent } from './Manufacturer/Components/Your Order/Show Products/manu-show-products.component';
+import { ManufacturerViewOrderComponent } from './Manufacturer/Components/Your Order/View Order/manu-view-order.component';
+import { ManufacturerIncomingOrdersComponent } from './Manufacturer/Components/Incoming Orders/manu-incoming-orders.component';
+
 import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Order/pharm-order.component';
 import { PharmacistAddItemsComponent } from './Pharmacist/Components/Book Order/Add Items/pharm-add-items.component';
 import { AddDistributorComponent } from './Pharmacist/Components/List of Distributors/Add Distributor/add-distributor.component';
@@ -102,6 +113,16 @@ import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-
     AddDistributorComponent,
     PharmacistAddItemsComponent,
     PharmacistOrderComponent,
+    ManufacturerDashboardComponent,
+    ManufacturerNavigationComponent,
+    ManufacturerProfileComponent,
+    ManufacturerChangePasswordComponent,
+    ManufacturerUpdateProfileComponent,
+    ManufacturerOrderComponent,
+    ManufacturerAddItemsComponent,
+    ManufacturerShowProductsComponent,
+    ManufacturerViewOrderComponent,
+    ManufacturerIncomingOrdersComponent
   ],
   imports: [
     BrowserModule,

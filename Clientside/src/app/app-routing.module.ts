@@ -1,3 +1,15 @@
+
+//Manufacturer
+import { ManufacturerDashboardComponent } from './Manufacturer/Components/Dashboard/manu-dashboard.component';
+import { ManufacturerNavigationComponent } from './Manufacturer/Components/Navigation/manu-navigation.component';
+import { ManufacturerProfileComponent } from './Manufacturer/Components/Profile/manu-profile.component';
+import { ManufacturerChangePasswordComponent } from './Manufacturer/Components/Profile/Change-Password/manu-change-password.component';
+import { ManufacturerUpdateProfileComponent } from './Manufacturer/Components/Profile/Update-Profile/manu-update-profile.component';
+import { ManufacturerOrderComponent } from './Manufacturer/Components/Book Order/Order/manu-order.component';
+import { ManufacturerViewOrderComponent } from './Manufacturer/Components/Your Order/View Order/manu-view-order.component';
+import { ManufacturerIncomingOrdersComponent } from './Manufacturer/Components/Incoming Orders/manu-incoming-orders.component';
+
+//Pharmacist
 import { SubscribedDistributorsComponent } from './Pharmacist/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
 import { PharmacistViewOrderComponent } from './Pharmacist/Components/Your Order/View Order/pharm-view-order.component';
 import { PharmacistProfileComponent } from './Pharmacist/Components/Profile/pharm-profile.component';
@@ -6,6 +18,7 @@ import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Ord
 import { PharmacistOutgoingOrdersComponent} from './Pharmacist/Components/Outgoing Orders/pharm-outgoing-orders.component';
 import { PharmacistDashboardComponent } from './Pharmacist/Components/Dashboard/pharm-dashboard.component';
 import { PharmacistNavigationComponent } from './Pharmacist/Components/Navigation/pharm-navigation.component';
+//Distributor
 import { SubscribedManufacturersComponent } from './Distributor/Components/List of Manufacturers/Subscribed Manufacturers/subscribed-manufacturers.component';
 import { OrderComponent } from './Distributor/Components/Book Order/Order/order.component';
 import { ViewOrderComponent } from './Distributor/Components/Book Order/View Order/view-order.component';
@@ -23,6 +36,7 @@ import { DistributorDashboardComponent } from './Distributor/Components/Dashboar
 import { DistributorYourOrderComponent } from './Distributor/Components/Your Order/dis-yourorder.component';
 import { ListOfPharmacistComponent } from './Distributor/Components/List of Pharmacists/list-of-pharmacist.component';
 import { UpdateProfileComponent } from './Distributor/Components/Profile/Update-Profile/update-profile.component';
+
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   {path:'',component:MainPageComponent,
@@ -55,10 +69,26 @@ const routes: Routes = [
         {path:'dashboard/outgoing-orders',component:PharmacistOutgoingOrdersComponent},
         {path:'bookorder', component:PharmacistOrderComponent},
         {path:'profile', component:PharmacistProfileComponent},
+        {path:'dashboard/incoming-orders', component:ManufacturerIncomingOrdersComponent},
         {path:'profile/edit', component:PharmacistChangePasswordComponent},
         {path:'listofdistributors', component:SubscribedDistributorsComponent},
         {path:'view-order',component:PharmacistViewOrderComponent},
   ]},
+
+  {path: 'manufacturer', redirectTo: 'manufacturer/dashboard', pathMatch: 'full'},
+  {path: 'manufacturer', component: ManufacturerNavigationComponent,
+   children:[
+     {path: 'dashboard', component:ManufacturerDashboardComponent},
+     {path: 'profile', component:ManufacturerProfileComponent},
+     {path: 'profile/edit', component:ManufacturerChangePasswordComponent},
+     {path: 'update-profile', component:ManufacturerUpdateProfileComponent},
+     {path: 'listofdistributors',component: SubscribedDistributorsComponent},
+     {path: 'bookorder', component: ManufacturerOrderComponent},
+     {path: 'view-order', component: ManufacturerViewOrderComponent}
+     
+
+   ]}
+
 ]
 
 @NgModule({
