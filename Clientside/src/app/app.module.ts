@@ -1,3 +1,4 @@
+import { ForgetpassComponent } from './Login/Components/Forgot Password/forgetpass.component';
 import { ManufacturerDashboardComponent } from './Manufacturer/Components/Dashboard/manu-dashboard.component';
 import { ManufacturerNavigationComponent } from './Manufacturer/Components/Navigation/manu-navigation.component';
 import { ManufacturerProfileComponent } from './Manufacturer/Components/Profile/manu-profile.component';
@@ -75,7 +76,6 @@ import { HttpModule } from '@angular/http';
 
 import { LoginComponent } from './Login/Components/login.component';
 import { RegisterComponent } from './Register/Components/register.component';
-import { ForgetpassComponent } from './Forgot Password/Components/forgetpass.component';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -160,8 +160,10 @@ import { CommonModule } from '@angular/common';
   entryComponents:[
     DistributorAddItemsComponent,
     PharmacistAddItemsComponent,
+    ManufacturerAddItemsComponent,
     DistributorShowProductsComponent,
     PharmacistShowProductsComponent,
+    ManufacturerShowProductsComponent,
     AddManufacturerComponent,
     AddDistributorComponent,
     PharmacistUpdateProfileComponent,

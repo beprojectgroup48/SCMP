@@ -24,6 +24,7 @@ import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Ord
 import { PharmacistOutgoingOrdersComponent} from './Pharmacist/Components/Outgoing Orders/pharm-outgoing-orders.component';
 import { PharmacistDashboardComponent } from './Pharmacist/Components/Dashboard/pharm-dashboard.component';
 import { PharmacistNavigationComponent } from './Pharmacist/Components/Navigation/pharm-navigation.component';
+
 //Distributor
 import { SubscribedManufacturersComponent } from './Distributor/Components/List of Manufacturers/Subscribed Manufacturers/subscribed-manufacturers.component';
 import { DistributorOrderComponent } from './Distributor/Components/Book Order/Order/dis-order.component';
