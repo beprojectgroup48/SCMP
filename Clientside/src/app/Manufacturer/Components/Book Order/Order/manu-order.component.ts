@@ -1,7 +1,7 @@
 import { Distributor } from '../../../../Distributor/Models/distributor';
 import { ManufacturerService } from './../../../Services/manufacturer.service';
 import { Manufacturer } from '../../../Models/manufacturer';
-import { Product } from './../../../Models/product';
+import { Product } from '../../../Models/product';
 import { ManufacturerCompleteOrder } from '../../../Models/manu-complete-order';
 import { ManufacturerAddItemsComponent } from '../Add Items/manu-add-items.component';
 import { Component, OnInit } from '@angular/core';

@@ -167,6 +167,7 @@ import { CommonModule } from '@angular/common';
     AddManufacturerComponent,
     AddDistributorComponent,
     PharmacistUpdateProfileComponent,
+    ManufacturerUpdateProfileComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
