@@ -1,12 +1,12 @@
 export class DistributorProfile{
-    username: string;
-    fname: string;
-    lname: string;
-    email: string;
-    mob: number;
-    address: string;
-    city: string;
-    country: string;
-    companyInfo: string;
-    password: string;
+  username: string;
+  name: string;
+  email: string;
+  mobileNumber: number;
+  address: string;
+  city: string;
+  companyName: String;
+  companyInfo: string;
+  password: string;
+  registrationId: number;
   }
