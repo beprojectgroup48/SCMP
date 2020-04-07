@@ -1,0 +1,122 @@
+<mat-card class="your-order" >
+  <mat-card-title>Your Orders
+      <button style="float:right;background-color: rgb(37, 136, 248);" class="btn btn-sm btn-success text-white" 
+      [matMenuTriggerFor]="rootMenu" [matBadgeHidden]="totalFilterCount==0" [matBadge]="totalFilterCount" matBadgeColor="warn" matBadgePosition="above after"><i class="fa fa-filter"></i>
+        Filter
+      </button>
+  </mat-card-title>
+
+  <mat-menu #rootMenu="matMenu" xPosition="after">
+      <button (click)="clearAllFilters()" style="margin-left: 10px;margin-bottom: 10px;background-color: rgb(240, 152, 38)" class="btn btn-sm text-white">
+        Clear all
+      </button>
+      <button style="min-width:250px;" mat-menu-item [matMenuTriggerFor]="subMenu"> Price<strong *ngIf="priceFilterCount != 0" style="margin-right: 10px;color: rgb(34, 170, 34);float: right;">{{priceFilterCount}}</strong></button>
+      <button mat-menu-item [matMenuTriggerFor]="subMenu4"> Date<strong *ngIf="dateFilterNumber != undefined" style="margin-right: 10px;color: rgb(34, 170, 34);float: right;">1</strong></button>
+      <button mat-menu-item [matMenuTriggerFor]="subMenu3"> Status<strong *ngIf="statusFilterCount != 0" style="margin-right: 10px;color: rgb(34, 170, 34);float: right;">{{statusFilterCount}}</strong></button>
+    </mat-menu>
+    
+    <mat-menu #subMenu="matMenu">
+      <button (click)="filterByPrice(500)" mat-menu-item>
+         <i *ngIf="!priceFilterFlags[0]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+         <i *ngIf="priceFilterFlags[0]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>1 to 500</button>
+      <button (click)="filterByPrice(1000)" mat-menu-item>
+        <i *ngIf="!priceFilterFlags[1]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+        <i *ngIf="priceFilterFlags[1]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>501 to 1000</button>
+      <button (click)="filterByPrice(2000)" mat-menu-item>
+        <i *ngIf="!priceFilterFlags[2]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+        <i *ngIf="priceFilterFlags[2]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>1001 to 2000</button>
+      <button (click)="filterByPrice(5000)" mat-menu-item>
+        <i *ngIf="!priceFilterFlags[3]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+        <i *ngIf="priceFilterFlags[3]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>2001 to 5000</button>
+      <button (click)="filterByPrice(10000)" mat-menu-item>
+        <i *ngIf="!priceFilterFlags[4]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+        <i *ngIf="priceFilterFlags[4]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>5001 to 10000</button>
+      <button (click)="filterByPrice(10001)" mat-menu-item>
+        <i *ngIf="!priceFilterFlags[5]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+        <i *ngIf="priceFilterFlags[5]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>greater than 10000</button>
+    </mat-menu>
+
+    <mat-menu #subMenu4="matMenu">
+        <button (click)="filterByDate(0)" mat-menu-item>
+            <i *ngIf="!dateFilterFlags[0]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+            <i *ngIf="dateFilterFlags[0]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>last week</button>
+        <button (click)="filterByDate(1)" mat-menu-item>
+             <i *ngIf="!dateFilterFlags[1]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+             <i *ngIf="dateFilterFlags[1]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>Last month</button>
+        <button (click)="filterByDate(3)" mat-menu-item>
+             <i *ngIf="!dateFilterFlags[2]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+             <i *ngIf="dateFilterFlags[2]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>Last 3 months</button>
+        <button (click)="filterByDate(6)" mat-menu-item>
+             <i *ngIf="!dateFilterFlags[3]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+             <i *ngIf="dateFilterFlags[3]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>Last 6 months</button>
+        <button (click)="filterByDate(12)" mat-menu-item>
+             <i *ngIf="!dateFilterFlags[4]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+             <i *ngIf="dateFilterFlags[4]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>Last year</button>
+        <button (click)="removeCustomDateFilter()" mat-menu-item [matMenuTriggerFor]="subMenu2">
+             <i *ngIf="!dateFilterFlags[5]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+             <i *ngIf="dateFilterFlags[5]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>Custom</button> 
+      </mat-menu>
+
+    <mat-menu #subMenu2="matMenu">
+        <mat-form-field class="input-group" style="margin-left: 20px;width: 240px;margin-top: 5px">
+          <input (dateInput)="filterByDate(20)" (dateChange)="filterByDate(20)" [(ngModel)]="startDate1" #startDate="ngModel" style="color:rgb(90, 90, 90)" matInput disabled [matDatepicker]="picker" name="startDate" placeholder="Select start date">
+          <mat-datepicker-toggle style="font-size: 20px" matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="input-group" style="margin-left: 20px;width: 240px">
+            <input (dateInput)="filterByDate(20)" (dateChange)="filterByDate(20)" [(ngModel)]="endDate1" #endDate="ngModel" style="color:rgb(90, 90, 90)" matInput disabled [matDatepicker]="picker2" name="endDate" placeholder="Select end date">
+            <mat-datepicker-toggle style="font-size: 20px" matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker [disabled]="startDate1==undefined" #picker2></mat-datepicker>
+        </mat-form-field>
+      </mat-menu>
+    
+    <mat-menu #subMenu3="matMenu">
+        <button (click)="filterByStatus('Pending')" mat-menu-item>
+            <i *ngIf="!statusFilterFlags[0]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+            <i *ngIf="statusFilterFlags[0]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>Pending</button>
+        <button (click)="filterByStatus('Done')" mat-menu-item>
+             <i *ngIf="!statusFilterFlags[1]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+             <i *ngIf="statusFilterFlags[1]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>Done</button>
+        <button (click)="filterByStatus('Processing')" mat-menu-item>
+             <i *ngIf="!statusFilterFlags[2]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: transparent"></i>
+             <i *ngIf="statusFilterFlags[2]" class="fa fa-check" style="margin-left: -7px;margin-right: 10px;color: rgb(34, 170, 34)"></i>Processing</button>
+      </mat-menu>
+
+  <mat-card-content>
+  
+
+    <div fxLayout="row" fxLayoutAlign="start">
+      <table class="table table-borderless">
+        <thead class="thead-light">
+          <th>#Order Id.</th>
+          <th>Issue Date</th>
+          <th>Due Date</th>
+          <th>Final Amount</th>
+          <th>Status</th>
+          <th>
+            <a class="btn btn-outline-success" routerLink="/distributor/bookorder"><i class="fa fa-plus-square"></i> Create New</a>
+          </th>
+        </thead>
+        <tbody>
+            <tr *ngIf="orderList.length==0">
+                <td class="font-italic text-center" colspan="6">
+                  No orders.
+                </td>
+              </tr>
+          <tr *ngFor="let item of commonArray;let i=index">
+            <th>{{item.orderId}}</th>
+            <td>{{item.issueDate.toDateString()}}</td>
+            <td>{{item.dueDate.toDateString()}}</td>
+            <td>{{item.finalAmount}}</td>
+            <td>{{item.status}}</td>
+            <td>
+                <a class="btn btn-sm btn-success text-white" (click)="showProducts(item.orderId)"> Show Products</a>
+                <a class="btn text-danger" (click)="onDeleteOrder(i)"><i class="fa fa-trash fa-lg"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</mat-card-content>
+</mat-card>

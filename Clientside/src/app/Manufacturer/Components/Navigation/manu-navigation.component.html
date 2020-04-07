@@ -1,0 +1,67 @@
+<mat-toolbar>
+  <mat-toolbar-row class ="toolbar">
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color= "white">
+      <i style="font-size: 23px;" class="fa fa-bars"></i>
+    </button>
+   <span style="margin-top: 2px;">Manufacturer</span>
+   <span class="fill"></span>
+    <!-- <button mat-button routerLink="/distributor/profile" style="width:85px;"><mat-icon class="pqr">account_box</mat-icon>Profile</button>
+    <button mat-button routerLink="/login" style="width:90px;"><mat-icon class="pqr">logout</mat-icon>Logout</button>
+     -->
+     
+    <button mat-button [matMenuTriggerFor]="notificationsMenu" matToolTip="Alerts"><mat-icon matBadge="3" matBadgeColor="accent" >notifications</mat-icon> </button>
+    <mat-menu #notificationsMenu="matMenu">
+      <td>
+        <div td-menu-header class="mat-subhead" style="text-align: center;">Notifications</div>
+        <div class="divider"></div>
+        <mat-nav-list dense>
+          <ng-template let-last="last" ngFor [ngForOf]="[0,1,2]">
+            <a mat-list-item>
+              <mat-icon matListAvatar>event</mat-icon>
+              <h4 mat-line><span class="text-wrap">A new order has been placed</span></h4>
+              <p mat-line>22 minutes ago</p>
+            </a>
+            <mat-divider *ngIf="!last"></mat-divider>
+          </ng-template>
+        </mat-nav-list>
+        <!-- <div class="divider"></div>
+        <div style="text-align: center;">
+        <button mat-button style="color: blue;">
+          See All Notifications
+        </button></div> -->
+      </td>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu"><mat-icon>account_circle</mat-icon></button>
+    <div class="menus">
+    <mat-menu #menu="matMenu">
+      <div>
+        <mat-toolbar class="primary">
+          <div fxlayout="row" fxlayoutalign="space-around center" class="user-info">
+            <img alt="user-image" width="50" class="rounded mat-elevation-z6" src="../assets/avatar.svg">
+            <p style="font-size:12">Manufacturer1</p></div>
+        </mat-toolbar>
+      </div>
+      <button mat-menu-item (click)="goToProfile()"><mat-icon>account_box</mat-icon>Profile</button>
+      <button mat-menu-item (click)="openDialog()"><mat-icon>edit</mat-icon>Change Password</button>
+      <div class="divider"></div>
+      <button mat-menu-item (click)="goToLogin()"><mat-icon>logout</mat-icon>Logout</button>
+    </mat-menu>
+  </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav class ="side"#drawer mode="side" opened role="navigation">
+    <mat-nav-list class="list">
+      <a mat-list-item routerLink="/manufacturer/dashboard" [routerLinkActive]="['is-active']"><mat-icon class="abc"> dashboard </mat-icon> Dashboard </a>
+      <a mat-list-item routerLink="/manufacturer/bookorder" [routerLinkActive]="['is-active']"><mat-icon class="abc"> gavel</mat-icon> Book Order</a>
+      <a mat-list-item routerLink="/manufacturer/view-order" [routerLinkActive]="['is-active']"><mat-icon class="abc"> menu_book</mat-icon> Your Orders</a>
+      <a mat-list-item routerLink="/manufacturer/listofdistributors" [routerLinkActive]="['is-active']"><mat-icon class="abc"> list</mat-icon> List of Distributors</a>
+      
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

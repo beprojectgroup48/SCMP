@@ -1,0 +1,133 @@
+<div class="row">
+    <!-- <div class="col-md-3"  style="margin-top: 10px; margin-left: 10px;">
+      <div class="card card-user">
+        <div class="card-header">
+          <h5 class="card-title">User Profile</h5>
+        </div>
+        <div class="card-body" style="text-align: center;">
+          
+          <div class="author">
+          <img mat-card-image [src]="_d.bypassSecurityTrustUrl(imgsrc)" alt="User Photo" class="mat-card-image">
+          </div> 
+          <button mat-button type="submit" class="upload" ><mat-icon>edit</mat-icon>
+            <input type='file' accept=".png, .jpg, .jpeg" (change)="onSelectFile($event)">
+          </button>
+        
+        <!--
+           <div class="author">
+              <img class="avatar" src="assets/avatar.svg" alt="...">
+              
+         </div> -->
+         <!-- <h5 class="title">Distributor 1</h5>
+         <p>
+           Cipla
+         </p>
+          <p class="description text-center">
+            Hadapsar, Pune
+          </p> 
+        </div>
+      </div>
+    </div> -->
+  
+  
+    <div class="col-md-8" style="margin-top: 20px; margin-left: 50px;">
+      <div class="card card-user">
+        <div class="card-header">
+          <h5 class="card-title">My Profile</h5>
+        </div>
+        <div class="card-body" style="text-align: center;">
+          
+          <div class="author">
+          <img mat-card-image [src]="_d.bypassSecurityTrustUrl(imgsrc)" alt="User Photo" class="mat-card-image">
+          </div> 
+          <!-- <button mat-button type="submit" class="upload" ><mat-icon>edit</mat-icon> -->
+            <input type='file' accept=".png, .jpg, .jpeg" (change)="onSelectFile($event)">
+          
+        </div>
+  
+        <div class="card-body">
+         <form>
+            <div class="row">
+              <div class="col-md-5 pr-1">
+                <div class="form-group">
+                  <label>Company Name</label>
+                  <input type="text" class="form-control" disabled="" placeholder="Company" value="Cipla">
+                </div>
+              </div>
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label>Username</label>
+                  <input  type="text" class="form-control" matInput [(ngModel)]="currentData.username" disabled="" [ngModelOptions]="{standalone: true}"  >
+                </div>
+              </div>
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" disabled="" matInput [(ngModel)]="currentData.email"[ngModelOptions]="{standalone: true}" >
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" class="form-control" disabled="" matInput [(ngModel)]="currentData.fname"[ngModelOptions]="{standalone: true}">
+                </div>
+              </div>
+              <div class="col-md-6 pl-1">
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" class="form-control" disabled="" matInput [(ngModel)]="currentData.lname"[ngModelOptions]="{standalone: true}">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Address</label>
+                  <input type="text" class="form-control" disabled="" matInput [(ngModel)]="currentData.address"[ngModelOptions]="{standalone: true}">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>City</label>
+                  <input type="text" class="form-control" disabled="" matInput [(ngModel)]="currentData.city"[ngModelOptions]="{standalone: true}">
+                </div>
+              </div>
+              <div class="col-md-4 px-1">
+                <div class="form-group">
+                  <label>Country</label>
+                  <input type="text" class="form-control" disabled="" matInput [(ngModel)]="currentData.country"[ngModelOptions]="{standalone: true}">
+                </div>
+              </div>
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label>Mobile Number</label>
+                  
+                  <input type="number" class="form-control" disabled="" matInput [(ngModel)]="currentData.mob"[ngModelOptions]="{standalone: true}">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Company Information</label>
+                  <textarea class="form-control textarea" disabled=""matInput [(ngModel)]="currentData.companyInfo"[ngModelOptions]="{standalone: true}"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="update ml-auto mr-auto">
+                <button class="btn btn-primary btn-round" (click)="openDialog()">
+                Update Profile
+              </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

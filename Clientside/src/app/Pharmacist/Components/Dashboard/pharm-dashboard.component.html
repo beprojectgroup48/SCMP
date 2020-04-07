@@ -1,0 +1,66 @@
+<table class="table1"> 
+  <tr>
+<td style="width: 50%">
+  <mat-card class="outgoing-order">
+    <mat-card-title>Outgoing Orders</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="row" fxLayoutAlign="start">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+        
+          <!-- order Column -->
+          <ng-container matColumnDef="orderId">
+            <th mat-header-cell *matHeaderCellDef> Order Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.orderId}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="distributorName">
+            <th mat-header-cell *matHeaderCellDef> Distributor Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.distributorName}} </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="issueDate">
+            <th mat-header-cell *matHeaderCellDef> Issue Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.issueDate.toDateString()}} </td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="deliveryDate">
+            <th mat-header-cell *matHeaderCellDef> Delivery Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.deliveryDate.toDateString()}} </td>
+          </ng-container>
+        
+        <ng-container matColumnDef="totalAmount">
+            <th mat-header-cell *matHeaderCellDef> Total Amount </th>
+            <td mat-cell *matCellDef="let element"> {{element.totalAmount}} </td>
+          </ng-container>
+          
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <button (click)="gotoOutgoing()" class="btn">Show all</button>
+        </div>
+    </mat-card-content>
+  </mat-card>
+</td>
+<td style="width: 50%">
+  <mat-card class="outgoing-order" style="margin-left: 12px">
+    <mat-card-title style="margin-bottom: 0px">
+      Outgoing Orders
+    </mat-card-title>
+    <a style="margin-left: 215px">Pie Chart</a>
+    <mat-card-content style="width:400px;padding-bottom: 3%;padding-top: 3%">
+      <div fxLayout="row" fxLayoutAlign="start">
+      <canvas id="pieChart" style="margin-left: 13%"></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  </td>
+</tr>
+</table>

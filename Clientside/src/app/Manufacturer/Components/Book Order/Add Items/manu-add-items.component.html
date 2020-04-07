@@ -1,0 +1,44 @@
+<h4 class="dispaly-4">Add Product</h4>
+<hr>
+<form #form="ngForm" autocomplete="off" (ngSubmit)="validateForm(form)">
+    <input type="hidden"  name="OrderItemID">
+    <input type="hidden"  name="OrderID">
+  <input type="hidden"  name="ItemName">
+  <div class="form-group">
+    <label>Product</label>
+    <select name="productId" #productId="ngModel" [(ngModel)]="data1.productId" class="form-control" (change)="updatePrice($event.target,form)"
+    [class.is-invalid]="productId.touched && data1.productId==0">
+      <option value="0">-Select-</option>
+      <option *ngFor="let product of productList" value="{{product.id}}">{{product.name}}</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Unit Price</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">&#8377;</div>
+        </div>
+        <input name="unitPrice" #unitPrice="ngModel" [(ngModel)]="data1.unitPrice" class="form-control" readonly>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Quantity</label>
+      <input type="number" min="0" step="1" pattern="[0-9]{1,}" placeholder="0" name="quantity" #quantity="ngModel" required [(ngModel)]="data1.quantity" class="form-control"
+      (keyup)="updateTotal()" [class.is-invalid]="quantity.touched && (quantity.errors?.required || quantity.errors?.pattern)">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Total</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">&#8377;</div>
+      </div>
+      <input name="total" #total="ngModel" [(ngModel)]="data1.totalAmount" class="form-control" readonly>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark" [disabled]="form.invalid || data1.productId==0" [mat-dialog-close]="data1"><i class="fa fa-database"></i> Submit</button>
+    <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
+  </div>
+</form>

@@ -1,0 +1,8 @@
+.mat-elevation-z8 {
+    width: 100%;
+    height: 100%;
+}
+.mat-row:hover {
+    background-color: rgba(230, 227, 227, 0.904);
+    cursor: pointer;
+  }
