@@ -24,7 +24,22 @@ export class LoginComponent implements OnInit {
      this.loginService.login(user).subscribe ( data =>{
        if(data){
          console.log(data);
+         if(user.username.substring(0,2) == "MF"){
+
+         }else if(user.username.substring(0,2) == "DB"){
+         localStorage.setItem('id', data.distributor.id);
+         localStorage.setItem('username', data.distributor.username);
+         localStorage.setItem('token', data.token);
+         this.router.navigate(['/distributor']);
+         }else if (user.username.substring(0,2) == "PH"){
+        localStorage.setItem('id', data.pharmacist.id);
+        localStorage.setItem('username', data.pharmacist.username);
+        localStorage.setItem('token', data.token);
+        this.router.navigate(['/pharmacist']);
+       }else{
+         console.log("error in logging");
        }
+      }
      })
     // verify the user using username and password
   }

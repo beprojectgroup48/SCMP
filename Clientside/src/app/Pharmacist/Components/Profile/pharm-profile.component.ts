@@ -4,6 +4,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { PharmacistService } from '../../Services/pharmacist.service';
 
 @Component({
   selector: 'app-pharm-profile',
@@ -14,22 +15,41 @@ export class PharmacistProfileComponent {
  
   public constructor(
   
-    public _d:DomSanitizer,
+    public sanitizer:DomSanitizer,
     private router:Router,
     public dialog:MatDialog,
-    
+    private pharmacistService: PharmacistService
 
     ) 
     {  }
+  ngOnInit(){
 
+    var token = localStorage.getItem('token');
+    if( token !== null){
+      this.setProfilePhoto(this.pharmacistService.imageName);
+    }
+    else{
+      this.router.navigate(['/login']);
+    }
+  }
   url ='';
   imgsrc="/assets/avatar.svg";
   onSelectFile(event)
   {
-    const file = event.srcElement.files[0]; 
-    this.imgsrc = window.URL.createObjectURL(file); 
+    
+    const file = (event.target as HTMLInputElement).files[0];
+   this.pharmacistService.uploadProfilePhoto(file).subscribe(data =>{
+      var filename = data.filename;   
+       this.setProfilePhoto(filename);
+    })
+    
   }
-  
+  setProfilePhoto(filename:any){
+    this.pharmacistService.getProfilePhoto(filename).subscribe(blob=>{
+      this.imgsrc = window.URL.createObjectURL(blob);       
+     // this.imgsrc = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+    })
+  }
   currentData: PharmacistProfile={
   username:'Distributor1',
   fname:'Ram',
@@ -72,7 +92,7 @@ dialogRef.afterClosed().subscribe(result => {
   this.currentData.country=result.country;
   this.currentData.companyInfo=result.companyInfo;
   this.currentData.password=result.password;
-}); 
+  }); 
  
   }
 }

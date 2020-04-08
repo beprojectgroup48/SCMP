@@ -3,6 +3,7 @@ import { PharmacistShowProductsComponent } from '../Show Products/pharm-show-pro
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { PharmacistCompleteOrder } from '../../../Models/pharm-complete-order';
 import { Component, OnInit } from '@angular/core';
+import { PharmacistService} from '../../../Services/pharmacist.service';
 
 @Component({
   selector: 'app-pharm-view-order',
@@ -34,7 +35,7 @@ export class PharmacistViewOrderComponent implements OnInit {
   commonArrayCache: PharmacistCompleteOrder[] = [];
   totalFilterCount: number = 0;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private pharmacistService: PharmacistService) { }
 
   ngOnInit() {
     for(let i=0;i<this.orderList.length;i++){
@@ -43,9 +44,14 @@ export class PharmacistViewOrderComponent implements OnInit {
       this.DateFilterdOrderList.push(this.orderList[i]);
       this.commonArray.push(this.orderList[i]);
     }  
+    this.getOrders();
     //this.refreshList();
   }
-
+  getOrders() {
+    this.pharmacistService.getOutgoingOrders().subscribe(data=>{
+      console.log(data);
+    })
+  }
   refreshFilterCount(){
     this.totalFilterCount = 0;
     if(this.priceFilterCount != 0)
@@ -55,7 +61,7 @@ export class PharmacistViewOrderComponent implements OnInit {
     if(this.dateFilterNumber != undefined)
       this.totalFilterCount = this.totalFilterCount +1;
   }
-
+  
   clearAllFilters(){
     if(this.priceFilterCount == 0 && this.statusFilterCount == 0 && this.dateFilterNumber == undefined)
       return;

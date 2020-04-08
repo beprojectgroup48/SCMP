@@ -1,36 +1,51 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { DistributorUpdateProfileComponent } from './Update Profile/dis-update-profile.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { DistributorProfile } from '../../Models/dis-profile';
-
-
+import { DistributorService } from '../../Services/distributor.service';
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { DistributorDashboardComponent } from '../Dashboard/dis-dashboard.component';
+import { copyStyles } from '@angular/animations/browser/src/util';
 @Component({
   selector: 'app-dis-profile',
   templateUrl: './dis-profile.component.html',
   styleUrls: ['./dis-profile.component.css']
 })
 export class DistributorProfileComponent {
- 
+   selectedFile: File;
+   form: FormGroup;
+   imageName: any;
   public constructor(
   
-    public _d:DomSanitizer,
+    public sanitizer:DomSanitizer,
     private router:Router,
     public dialog:MatDialog,
-    
-
+    private distributorService: DistributorService
     ) 
-    {  }
+    {
+    }
 
   url ='';
-  imgsrc="/assets/avatar.svg";
+  imgsrc:any = "/assets/avatar.svg";
+  
   onSelectFile(event)
   {
-    const file = event.srcElement.files[0]; 
-    this.imgsrc = window.URL.createObjectURL(file); 
+    
+    const file = (event.target as HTMLInputElement).files[0];
+   this.distributorService.uploadProfilePhoto(file).subscribe(data =>{
+      var filename = data.filename;   
+       this.setProfilePhoto(filename);
+    })
+    
   }
-  
+  setProfilePhoto(filename:any){
+    this.distributorService.getProfilePhoto(filename).subscribe(blob=>{
+      this.imgsrc = window.URL.createObjectURL(blob);       
+     // this.imgsrc = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+    })
+  }
   currentData: DistributorProfile={
   username:'Distributor1',
   fname:'Ram',
@@ -75,5 +90,9 @@ dialogRef.afterClosed().subscribe(result => {
   this.currentData.password=result.password;
 }); 
  
+  }
+  ngOnInit() {
+
+    this.setProfilePhoto(this.distributorService.imageName);
   }
 }

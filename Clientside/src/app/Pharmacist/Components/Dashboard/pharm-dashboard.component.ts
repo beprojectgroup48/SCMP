@@ -21,6 +21,13 @@ export class PharmacistDashboardComponent implements OnInit {
 
   constructor(private router: Router,private pharmacistService: PharmacistService) { }
 
+  getDashboard(){
+    this.pharmacistService.getPharmacistDashboard().subscribe(dashboard =>{
+      console.log(dashboard);
+      this.pharmacistService.imageName = dashboard.image;
+      console.log(this.pharmacistService.imageName);
+    })
+  }
   getOutgoingOrderList(){
     this.pharmacistService.getOutgoingOrders().subscribe(outgoingOrderList =>{
     this.outgoingOrderList = outgoingOrderList;
@@ -36,8 +43,10 @@ export class PharmacistDashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getOutgoingOrderList();
-
+    var token = localStorage.getItem('token');
+    if( token !== null){
+    //this.getOutgoingOrderList();
+    this.getDashboard();
 this.PieChart = new Chart('pieChart', {
     type: 'pie',
   data: {
@@ -60,7 +69,9 @@ this.PieChart = new Chart('pieChart', {
    }
   }
   });
-  
+}else{
+  this.router.navigate(['/login']);
+}
 }
 
     gotoOutgoing(){

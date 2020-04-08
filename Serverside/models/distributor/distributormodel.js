@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+
+let manufacturer = require('../manufacturer/manufacturermodel');
+let pharmacist = require('../pharmacist/pharmacistmodel');
+let orders = require('./complete-order');
+let Schema = mongoose.Schema;
 const distributorSchema = mongoose.Schema({
   username:{
     type:String,
@@ -17,7 +22,6 @@ const distributorSchema = mongoose.Schema({
     type:Number,
     required:true
   },
-  
   password: {
     type:String,
     required:true
@@ -25,7 +29,28 @@ const distributorSchema = mongoose.Schema({
   registrationId: {
     type: String,
     required: true
-  }
+  },
+  image: {
+    type: String
+  },
+  manufacturers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'manufacturer'
+    }
+  ],
+  pharmacists: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'pharmacist'
+    }
+  ],
+  orders: [{
+    type : Schema.Types.ObjectId,
+    ref : 'orders'
+    }
+  ]
+ 
   
 },{
   collection: 'distributor'
@@ -39,6 +64,7 @@ module.exports.getDistributorById = function(id, callback){
 }
 
 module.exports.getDistributorByUsername = function(username, callback){
+  console.log('inside distributor model');
   const query = {username: username}
   distributors.findOne(query, callback);
 }

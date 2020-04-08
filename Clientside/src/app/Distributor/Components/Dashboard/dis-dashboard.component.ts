@@ -1,10 +1,11 @@
-import { DistributorOutgoingOrders } from '../../Models/dis-outgoing-orders';
+import { DistributorOutgoingOrders } from './../../Models/dis-outgoing-orders';
 import { MatTableDataSource } from '@angular/material';
-import { DistributorIncomingOrders } from '../../Models/dis-incoming-orders';
-import { Router } from '@angular/router';
+import { DistributorIncomingOrders } from './../../Models/dis-incoming-orders';
+import { Router  } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { DistributorService } from '../../Services/distributor.service';
+
 
 
 @Component({
@@ -24,8 +25,16 @@ export class DistributorDashboardComponent implements OnInit {
   PieChart=[];
   PieChart2=[];
 
-  constructor(private router: Router,private distributorService: DistributorService) { }
-
+  constructor(private router: Router,private distributorService: DistributorService) {
+     
+   }
+  getDashboard(){
+    this.distributorService.getDistributorDashboard().subscribe(dashboard =>{
+      console.log(dashboard);
+      this.distributorService.imageName = dashboard.image;
+      console.log(this.distributorService.imageName);
+    })
+  }
   getIncomingOrderList(){
       this.distributorService.getIncomingOrders().subscribe(incomingOrderList =>{
       this.incomingOrderList = incomingOrderList;
@@ -53,42 +62,20 @@ export class DistributorDashboardComponent implements OnInit {
 }
 
   ngOnInit() {
-
-    this.getIncomingOrderList();
-    this.getOutgoingOrderList();
-    
-this.PieChart = new Chart('pieChart', {
-  type: 'pie',
-data: {
- labels: ["Completed", "Pending", "Delayed"],
- datasets: [{
-     label: '# of Votes',
-     data: [9, 7, 3],
-     backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C"],
-     hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870"],
-     borderWidth: 1
- }]
-}, 
-options: {
- scales: {
-     yAxes: [{
-         ticks: {
-             beginAtZero:true
-         }
-     }]
- }
-}
-});
-
-this.PieChart2 = new Chart('pieChart2', {
+    var token = localStorage.getItem('token');
+    if( token !== null){
+    this.getDashboard();
+   // this.getIncomingOrderList();
+   // this.getOutgoingOrderList();
+   this.PieChart = new Chart('pieChart', {
     type: 'pie',
   data: {
    labels: ["Completed", "Pending", "Delayed"],
    datasets: [{
        label: '# of Votes',
-       data: [19, 17, 13],
+       data: [9, 7, 3],
        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C"],
-     hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870"],
+       hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870"],
        borderWidth: 1
    }]
   }, 
@@ -103,6 +90,34 @@ this.PieChart2 = new Chart('pieChart2', {
   }
   });
   
+  this.PieChart2 = new Chart('pieChart2', {
+      type: 'pie',
+    data: {
+     labels: ["Completed", "Pending", "Delayed"],
+     datasets: [{
+         label: '# of Votes',
+         data: [19, 17, 13],
+         backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C"],
+       hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870"],
+         borderWidth: 1
+     }]
+    }, 
+    options: {
+     scales: {
+         yAxes: [{
+             ticks: {
+                 beginAtZero:true
+             }
+         }]
+     }
+    }
+    });
+    
+    }else{
+      this.router.navigate(['/login']);
+    }
+    
+
 }
     gotoIncoming(){
         this.router.navigate(['/distributor/dashboard/incoming-orders']);

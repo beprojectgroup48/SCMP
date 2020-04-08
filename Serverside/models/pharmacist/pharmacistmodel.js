@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-
+const Schema = mongoose.Schema;
 const pharmacistSchema = mongoose.Schema({
     username:{
        type:String,
@@ -29,7 +29,20 @@ const pharmacistSchema = mongoose.Schema({
     registrationId: {
         type: String,
         required: true
+    },
+    distributors: [{
+      type: Schema.Types.ObjectId,
+      ref: 'distributors'
+    }],
+    orders: [{
+      type : Schema.Types.ObjectId,
+      ref : 'orders'
+      }
+    ], 
+    image: {
+      type: String
     }
+
 
 },{
     collection: 'pharmacist'

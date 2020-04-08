@@ -19,6 +19,7 @@ export class DistributorNavigationComponent  {
     this.router.navigate(['/distributor/profile']);
   }
   goToLogin(){
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
  

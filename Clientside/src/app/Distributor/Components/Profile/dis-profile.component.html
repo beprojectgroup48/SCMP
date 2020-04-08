@@ -12,8 +12,7 @@
         <button mat-button type="submit" class="upload" ><mat-icon>edit</mat-icon>
           <input type='file' accept=".png, .jpg, .jpeg" (change)="onSelectFile($event)">
         </button>
-      
-      <!--
+    
          <div class="author">
             <img class="avatar" src="assets/avatar.svg" alt="...">
             
@@ -38,7 +37,7 @@
       <div class="card-body" style="text-align: center;">
         
         <div class="author">
-        <img mat-card-image [src]="_d.bypassSecurityTrustUrl(imgsrc)" alt="User Photo" class="mat-card-image">
+        <img mat-card-image [src]="sanitizer.bypassSecurityTrustUrl(imgsrc)" alt="User Photo" class="mat-card-image">
         </div> 
         <!-- <button mat-button type="submit" class="upload" ><mat-icon>edit</mat-icon> -->
           <input type='file' accept=".png, .jpg, .jpeg" (change)="onSelectFile($event)">
