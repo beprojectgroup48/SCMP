@@ -105,7 +105,7 @@ export class ManufacturerOrderComponent implements OnInit {
       this.currentSubOrder.quantity = result.quantity;
       this.currentSubOrder.totalAmount=result.totalAmount;
       this.currentSubOrder.manufacturerUsername=this.manufacturerUsername1;
-      this.currentSubOrder.manufacturerName=this.manufacturerName1;
+      this.currentSubOrder.manufacturerUsername=this.manufacturerName1;
       this.currentSubOrderList[this.count] = this.currentSubOrder;
       this.updateGrandTotal();
       this.count++;

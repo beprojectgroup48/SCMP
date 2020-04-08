@@ -5,6 +5,7 @@ import { Router  } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { DistributorService } from '../../Services/distributor.service';
+import { DistributorIncomingOrdersComponent } from '../Incoming Orders/dis-incoming-orders.component';
 
 
 
@@ -31,6 +32,7 @@ export class DistributorDashboardComponent implements OnInit {
   getDashboard(){
     this.distributorService.getDistributorDashboard().subscribe(dashboard =>{
       console.log(dashboard);
+     
       this.distributorService.imageName = dashboard.image;
       console.log(this.distributorService.imageName);
     })
@@ -50,14 +52,15 @@ export class DistributorDashboardComponent implements OnInit {
 
   getOutgoingOrderList(){
     this.distributorService.getOutgoingOrders().subscribe(outgoingOrderList =>{
-    this.outgoingOrderList = outgoingOrderList;
+    console.log(outgoingOrderList);
+   /* this.outgoingOrderList = outgoingOrderList;
     for(var i=0;i<this.outgoingOrderList.length;i++)
     {
         this.outgoingOrderList[i].issueDate = new Date(this.outgoingOrderList[i].issueDate);
         this.outgoingOrderList[i].deliveryDate = new Date(this.outgoingOrderList[i].deliveryDate);
     }
     this.outgoingOrderList.splice(3);
-    this.dataSource2 = new MatTableDataSource(this.outgoingOrderList);
+    this.dataSource2 = new MatTableDataSource(this.outgoingOrderList);*/
   })
 }
 
@@ -66,7 +69,7 @@ export class DistributorDashboardComponent implements OnInit {
     if( token !== null){
     this.getDashboard();
    // this.getIncomingOrderList();
-   // this.getOutgoingOrderList();
+    this.getOutgoingOrderList();
    this.PieChart = new Chart('pieChart', {
     type: 'pie',
   data: {

@@ -1,3 +1,4 @@
+import { MatDialogConfig } from '@angular/material/dialog';
 import { PharmacistChangePasswordComponent } from './../Profile/Change Password/pharm-change-password.component';
 import { PharmacistProfile } from './../../Models/pharm-profile';
 import { Component, OnInit } from '@angular/core';
@@ -19,40 +20,40 @@ export class PharmacistNavigationComponent  {
     this.router.navigate(['/pharmacist/profile']);
   }
   goToLogin(){
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
  
   currentData: PharmacistProfile={
-    username:'Distributor1',
-    fname:'Ram',
-    lname:'Sharma', 
-    email:'distributor@scmp.com', 
-    mob:1234567890, 
-    address: 'Swargate, Pune', 
-    country: 'India',
-    city: 'Pune',
-    companyInfo: 'Pharma Industry',
-    password: 'Password@123'
+    username: 'PH123456',
+    name: 'Ashish Chintakindi',
+    email: 'ashish@scmp.com', 
+    mobileNumber: 8605038260, 
+    address: 'Zarekar Lane',
+    city: 'Ahmednagar',
+    companyName: 'Seva Healthcare Ltd. ',
+    companyInfo: 'Seva Healthcare Private Limited is a Private incorporated on 24 February 2000. It is classified as Non-govt company and is registered at Registrar of Companies',
+    password: 'Password@123',
+    registrationId: 864598
   };
 
   openDialog(): void{
-    const dialogRef = this.dialog.open(PharmacistChangePasswordComponent, {
-      width: '500px',
-      data: { 
-        username: this.currentData.username, 
-        fname: this.currentData.fname,
-        lname: this.currentData.lname,
-        country: this.currentData.country,
-        companyInfo: this.currentData.companyInfo,
-        city: this.currentData.city,
-        mob: this.currentData.mob,
-        address: this.currentData.address,
-        email: this.currentData.email,
-        password: this.currentData.password
-            }
-    });
-
-
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = false;
+    dialogConfig.disableClose = true;
+    dialogConfig.width = "50%";
+    dialogConfig.data = { 
+      username: this.currentData.username, 
+      name: this.currentData.name,
+      companyName: this.currentData.companyName,
+      companyInfo: this.currentData.companyInfo,
+      city: this.currentData.city,
+      mobileNumber: this.currentData.mobileNumber,
+      address: this.currentData.address,
+      email: this.currentData.email,
+      registrationId: this.currentData.registrationId,
+      password: this.currentData.password 
+    };
+    const dialogRef = this.dialog.open(PharmacistChangePasswordComponent, dialogConfig);
   }
-  }
-
+}

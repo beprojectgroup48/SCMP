@@ -4,11 +4,10 @@ import { ManufacturerNavigationComponent } from './Manufacturer/Components/Navig
 import { ManufacturerProfileComponent } from './Manufacturer/Components/Profile/manu-profile.component';
 import { ManufacturerChangePasswordComponent } from './Manufacturer/Components/Profile/Change Password/manu-change-password.component';
 import { ManufacturerUpdateProfileComponent } from './Manufacturer/Components/Profile/Update Profile/manu-update-profile.component';
-import { ManufacturerOrderComponent } from './Manufacturer/Components/Book Order/Order/manu-order.component';
-import { ManufacturerAddItemsComponent } from './Manufacturer/Components/Book Order/Add Items/manu-add-items.component';
-import { ManufacturerShowProductsComponent } from './Manufacturer/Components/Your Order/Show Products/manu-show-products.component';
-import { ManufacturerViewOrderComponent } from './Manufacturer/Components/Your Order/View Order/manu-view-order.component';
 import { ManufacturerIncomingOrdersComponent } from './Manufacturer/Components/Incoming Orders/manu-incoming-orders.component';
+import { CreateProductComponent } from './Manufacturer/Components/Create Product/create-product.component';
+import { TransferOrderComponent } from './Manufacturer/Components/Transfer Order/transfer-order.component';
+
 
 import { DistributorUpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/dis-update-profile.component';
 import { DistributorShowProductsComponent } from './Distributor/Components/Your Order/Show Products/dis-show-products.component';
@@ -30,7 +29,6 @@ import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Ord
 import { PharmacistAddItemsComponent } from './Pharmacist/Components/Book Order/Add Items/pharm-add-items.component';
 import { AddDistributorComponent } from './Pharmacist/Components/List of Distributors/Add Distributor/add-distributor.component';
 import { SubscribedDistributorsComponent } from './Pharmacist/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
-import { PharmacistOutgoingOrdersComponent } from './Pharmacist/Components/Outgoing Orders/pharm-outgoing-orders.component';
 import { PharmacistChangePasswordComponent } from './Pharmacist/Components/Profile/Change Password/pharm-change-password.component';
 import { PharmacistProfileComponent } from './Pharmacist/Components/Profile/pharm-profile.component';
 import { PharmacistShowProductsComponent } from './Pharmacist/Components/Your Order/Show Products/pharm-show-products.component';
@@ -59,7 +57,8 @@ import {
   MatMenuModule,
   MatDatepickerModule,
   MatBadgeModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  
 
 } from '@angular/material';
 
@@ -101,30 +100,25 @@ import { CommonModule } from '@angular/common';
     DistributorShowProductsComponent,
     DistributorUpdateProfileComponent,
     AddManufacturerComponent,
-
+    PharmacistUpdateProfileComponent,
     PharmacistDashboardComponent,
     PharmacistViewOrderComponent,
     PharmacistNavigationComponent,
     PharmacistShowProductsComponent,
     PharmacistProfileComponent,
     PharmacistChangePasswordComponent,
-    PharmacistOutgoingOrdersComponent,
     SubscribedDistributorsComponent,
     AddDistributorComponent,
     PharmacistAddItemsComponent,
     PharmacistOrderComponent,
-
     ManufacturerDashboardComponent,
     ManufacturerNavigationComponent,
     ManufacturerProfileComponent,
     ManufacturerChangePasswordComponent,
     ManufacturerUpdateProfileComponent,
-    ManufacturerOrderComponent,
-    ManufacturerAddItemsComponent,
-    ManufacturerShowProductsComponent,
-    ManufacturerViewOrderComponent,
     ManufacturerIncomingOrdersComponent,
-    PharmacistUpdateProfileComponent
+    CreateProductComponent,
+    TransferOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -160,13 +154,15 @@ import { CommonModule } from '@angular/common';
   entryComponents:[
     DistributorAddItemsComponent,
     PharmacistAddItemsComponent,
-    ManufacturerAddItemsComponent,
+   
     DistributorShowProductsComponent,
     PharmacistShowProductsComponent,
-    ManufacturerShowProductsComponent,
+    
     AddManufacturerComponent,
     AddDistributorComponent,
     PharmacistUpdateProfileComponent,
+    ManufacturerUpdateProfileComponent,
+    DistributorUpdateProfileComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

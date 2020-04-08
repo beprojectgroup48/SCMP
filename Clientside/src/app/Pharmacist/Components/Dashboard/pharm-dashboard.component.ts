@@ -1,10 +1,11 @@
-import { PharmacistOutgoingOrders } from '../../Models/pharm-outgoing-orders';
+import { PharmacistSubOrder } from './../../Models/pharm-sub-order';
+import { PharmacistCompleteOrder } from './../../Models/pharm-complete-order';
 import { MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { PharmacistService } from '../../Services/pharmacist.service';
-
+import { PharmacistOutgoingOrders} from '../../Models/pharm-outgoing-orders';
 
 @Component({
   selector: 'app-pharm-dashboard',
@@ -14,8 +15,9 @@ import { PharmacistService } from '../../Services/pharmacist.service';
 
 export class PharmacistDashboardComponent implements OnInit {
 
+  yourOrders: PharmacistCompleteOrder[];
   outgoingOrderList: PharmacistOutgoingOrders[];
-  displayedColumns: string[] = ['orderId', 'distributorName', 'issueDate', 'deliveryDate','totalAmount','status'];
+  displayedColumns: string[] = ['orderId', 'distributorName', 'issueDate', 'dueDate','finalAmount','status'];
   dataSource: any;
   PieChart = [];
 

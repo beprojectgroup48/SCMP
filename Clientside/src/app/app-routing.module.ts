@@ -5,10 +5,9 @@ import { ManufacturerNavigationComponent } from './Manufacturer/Components/Navig
 import { ManufacturerProfileComponent } from './Manufacturer/Components/Profile/manu-profile.component';
 import { ManufacturerChangePasswordComponent } from './Manufacturer/Components/Profile/Change Password/manu-change-password.component';
 import { ManufacturerUpdateProfileComponent } from './Manufacturer/Components/Profile/Update Profile/manu-update-profile.component';
-import { ManufacturerOrderComponent } from './Manufacturer/Components/Book Order/Order/manu-order.component';
-import { ManufacturerViewOrderComponent } from './Manufacturer/Components/Your Order/View Order/manu-view-order.component';
 import { ManufacturerIncomingOrdersComponent } from './Manufacturer/Components/Incoming Orders/manu-incoming-orders.component';
-
+import { CreateProductComponent } from './Manufacturer/Components/Create Product/create-product.component';
+import { TransferOrderComponent } from './Manufacturer/Components/Transfer Order/transfer-order.component';
 //Pharmacist
 import { PharmacistUpdateProfileComponent } from './Pharmacist/Components/Profile/Update Profile/pharm-update-profile.component';
 import { DistributorUpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/dis-update-profile.component';
@@ -21,7 +20,6 @@ import { PharmacistViewOrderComponent } from './Pharmacist/Components/Your Order
 import { PharmacistProfileComponent } from './Pharmacist/Components/Profile/pharm-profile.component';
 import { PharmacistChangePasswordComponent } from './Pharmacist/Components/Profile/Change Password/pharm-change-password.component';
 import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Order/pharm-order.component';
-import { PharmacistOutgoingOrdersComponent} from './Pharmacist/Components/Outgoing Orders/pharm-outgoing-orders.component';
 import { PharmacistDashboardComponent } from './Pharmacist/Components/Dashboard/pharm-dashboard.component';
 import { PharmacistNavigationComponent } from './Pharmacist/Components/Navigation/pharm-navigation.component';
 
@@ -67,10 +65,8 @@ const routes: Routes = [
   {path:'pharmacist', component:PharmacistNavigationComponent,
       children:[
         {path:'dashboard', component:PharmacistDashboardComponent},
-        {path:'dashboard/outgoing-orders',component:PharmacistOutgoingOrdersComponent},
         {path:'bookorder', component:PharmacistOrderComponent},
         {path:'profile', component:PharmacistProfileComponent},
-        {path:'dashboard/incoming-orders', component:ManufacturerIncomingOrdersComponent},
         {path:'profile/edit', component:PharmacistChangePasswordComponent},
         {path:'listofdistributors', component:SubscribedDistributorsComponent},
         {path:'view-order',component:PharmacistViewOrderComponent},
@@ -85,8 +81,9 @@ const routes: Routes = [
      {path: 'profile/edit', component:ManufacturerChangePasswordComponent},
      {path: 'update-profile', component:ManufacturerUpdateProfileComponent},
      {path: 'listofdistributors',component: SubscribedDistributorsComponent},
-     {path: 'bookorder', component: ManufacturerOrderComponent},
-     {path: 'view-order', component: ManufacturerViewOrderComponent}
+     {path: 'createproduct', component: CreateProductComponent},
+     {path: 'transferorder', component: TransferOrderComponent}
+   
      
 
    ]}

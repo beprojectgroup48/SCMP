@@ -90,7 +90,6 @@ router.get('/allpharmacists', (req, res)=>{
     })
 })*/
 router.get('/distdashboard/:id', (req, res, next)=>{
-    console.log('inside distributor')
     const dashboard = distributor.findOne({_id: req.params.id}, (err, data)=>{
         if(err){
             console.log('error in retrieving  ' + JSON.stringify(err, undefined, 2))
@@ -133,7 +132,7 @@ router.post('/placeOrder/:id', (req, res)=>{
     })
 })
 
-router.get('/allIncomingOrders', (req, res)=>{
+router.get('/allIncomingOrders/:id', (req, res)=>{
     
     incomingOrders.find({}, {orderId:1, pharmacistName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfIncomingOrders)=>{
         if(err){
@@ -144,13 +143,13 @@ router.get('/allIncomingOrders', (req, res)=>{
     })
 })
 
-router.get('/allOutgoingOrders', (req, res)=>{
-    outgoingOrders.find({}, {orderId:1, manufacturerName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfOutgoingOrders)=>{
+router.get('/allOutgoingOrders/:id', (req, res)=>{
+    distributor.findById({_id: req.params.id}).populate("orders").exec((err, listOfOutgoingOrders)=>{
         if(err){
             console.log('error in retrieving outgoing orders ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json(listOfOutgoingOrders);
+            res.json({msg:'list of orders',listOfOutgoingOrders});
         }
-    })
+    });
 })
 module.exports = router;

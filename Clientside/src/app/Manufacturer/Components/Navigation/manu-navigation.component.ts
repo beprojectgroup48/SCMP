@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Profile } from '../../Models/profile';
+import { ManufacturerProfile } from '../../Models/manu-profile';
 import { ManufacturerChangePasswordComponent } from '../Profile/Change Password/manu-change-password.component';
 import { MatDialog } from '@angular/material';
 
@@ -11,48 +11,44 @@ import { MatDialog } from '@angular/material';
 })
 export class ManufacturerNavigationComponent  {
   
-  constructor(
-    private router:Router,
-    public dialog:MatDialog
-    ) { }
+  constructor(private router:Router,public dialog:MatDialog) { }
+
   goToProfile(){ 
     this.router.navigate(['/manufacturer/profile']);
   }
+  
   goToLogin(){
     this.router.navigate(['/login']);
   }
  
-  currentData: Profile={
-    username:'Distributor1',
-    fname:'Ram',
-    lname:'Sharma', 
-    email:'distributor@scmp.com', 
-    mob:1234567890, 
-    address: 'Swargate, Pune', 
-    country: 'India',
-    city: 'Pune',
-    companyInfo: 'Pharma Industry',
-    password: 'Password@123'
+  currentData: ManufacturerProfile={
+    username: 'MF123456',
+    name: 'Ashish Chintakindi',
+    email: 'ashish@scmp.com', 
+    mobileNumber: 8605038260, 
+    address: 'Zarekar Lane',
+    city: 'Ahmednagar',
+    companyName: 'Seva Healthcare Ltd. ',
+    companyInfo: 'Seva Healthcare Private Limited is a Private incorporated on 24 February 2000. It is classified as Non-govt company and is registered at Registrar of Companies',
+    password: 'Password@123',
+    registrationId: 864598
   };
-
+  
   openDialog(): void{
     const dialogRef = this.dialog.open(ManufacturerChangePasswordComponent, {
       width: '500px',
-      data: { 
+      data: {  
         username: this.currentData.username, 
-        fname: this.currentData.fname,
-        lname: this.currentData.lname,
-        country: this.currentData.country,
+        name: this.currentData.name,
+        companyName: this.currentData.companyName,
         companyInfo: this.currentData.companyInfo,
         city: this.currentData.city,
-        mob: this.currentData.mob,
+        mob: this.currentData.mobileNumber,
         address: this.currentData.address,
         email: this.currentData.email,
+        registrationId: this.currentData.registrationId,
         password: this.currentData.password
-            }
+      }
     });
-
-
   }
-  }
-
+}

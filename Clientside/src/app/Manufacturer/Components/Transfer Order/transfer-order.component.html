@@ -1,0 +1,103 @@
+<table>
+  <tr>
+    <td>
+      <mat-card class="card1">
+        <mat-card-title>
+          Get Order Details:
+        </mat-card-title>
+        <mat-card-content>
+          <mat-form-field>
+            <mat-label>Order No.:</mat-label>
+            <input matInput type="text" placeholder="Enter Order No.">
+          </mat-form-field>
+          
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="orderButton" (click)="onGetOrderDetails()">Get Order Details</button>
+        </mat-card-actions>
+      </mat-card>
+      
+    </td>
+
+    <td>
+      <mat-card class="card2" *ngIf="isValid">
+        <mat-card-title>
+          Order Details:
+        </mat-card-title>
+        <mat-card-content>
+          <table>
+            <tr>
+              <td>
+                <label>Order No.:</label>
+                <label class="labelvalue">123456</label>
+              </td>
+              
+                <td>
+                  <label>Distributor Name:</label>
+                  <label class="labelvalue">Distributor1</label>
+                </td>
+              
+              
+            </tr>
+            
+            <tr>
+              <td>
+                <label>Issue Date:</label>
+                <label class="labelvalue">10 March 2020</label>
+              </td>
+              
+                <td>
+                  <label>Due Date:</label>
+                  <label class="labelvalue">25 March 2020</label>
+                </td>
+              
+            
+            </tr>
+            
+            <tr>
+              <td>
+                <label>Total Amount:</label>
+                <label class="labelvalue">4000</label>
+              </td>
+            </tr>
+          </table> 
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="showProducts" (click)="onShowProducts()">Show Products</button>
+        </mat-card-actions>
+      </mat-card>
+    </td>
+  </tr>
+</table>
+
+
+
+<mat-card class="card3" *ngIf="isValidOrder">
+  <mat-card-title>
+    Show Products
+  </mat-card-title>
+  <mat-card-content>
+    <table class="table table-borderless">
+      <thead class="thead-light">
+        <th>Sr. No.</th>
+        <th>Product</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Total Amount</th>
+        
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of data1;let i=index">
+          <td>{{i+1}}</td>
+          <td>{{product.productName}}</td>
+          <td>{{product.unitPrice}}</td>
+          <td>{{product.quantity}}</td>
+          <td>{{product.totalAmount}}</td>
+          <td>
+            <a class="btn btn-sm btn-success text-white" > Transfer Product</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>

@@ -39,10 +39,10 @@ export class DistributorService {
     return this.http.get('http://localhost:3000/distributor/image/'+filename, {responseType: ResponseContentType.Blob}).pipe(map(res=> res.blob() ));
   }
   getIncomingOrders(){
-   return this.http.get('http://localhost:3000/distributor/allIncomingOrders').pipe(map(res => res.json()));
+   return this.http.get('http://localhost:3000/distributor/allIncomingOrders/'+this.id).pipe(map(res => res.json()));
   }
   getOutgoingOrders(){
-    return this.http.get('http://localhost:3000/distributor/allOutgoingOrders').pipe(map(res => res.json()));
+    return this.http.get('http://localhost:3000/distributor/allOutgoingOrders/'+this.id).pipe(map(res => res.json()));
   }
   getPendingOrders(){
 
