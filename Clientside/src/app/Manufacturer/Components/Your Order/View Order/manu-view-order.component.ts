@@ -292,25 +292,10 @@ export class ManufacturerViewOrderComponent implements OnInit {
     if (confirm('Are you sure to delete this record?')) {
       //this.service.deleteOrder(id).then(res => {
         //this.refreshList();
+        
       //});
-      var index = this.PriceFilterdOrderList.findIndex(e1 => e1.orderId === this.commonArray[i].orderId);
-      if(index != -1)
-        this.PriceFilterdOrderList.splice(index, 1);
-      
-      index = this.StatusFilterdOrderList.findIndex(e1 => e1.orderId === this.commonArray[i].orderId);
-      if(index != -1)
-        this.StatusFilterdOrderList.splice(index, 1);
-
-      index = this.DateFilterdOrderList.findIndex(e1 => e1.orderId === this.commonArray[i].orderId);
-      if(index != -1)
-        this.DateFilterdOrderList.splice(index, 1);
-
-      index = this.orderList.findIndex(e1 => e1.orderId === this.commonArray[i].orderId);
-      if(index != -1)
-        this.orderList.splice(index, 1);
-
-      this.findCommonCache(this.PriceFilterdOrderList, this.StatusFilterdOrderList);
-      this.findCommon(this.commonArrayCache, this.DateFilterdOrderList);
+      console.log("Deleted Successfully", "Restaurent App.");
+      this.orderList.splice(i, 1);
     }
   }
 }

@@ -1,0 +1,31 @@
+.primary{
+    display: block;
+    width: fit-content;
+    height: fit-content;
+	border-radius: 35px;
+	outline: none;
+	border: none;
+	background-color: rgb(37, 136, 248);
+	
+	font-size: 1rem;
+	color: white;
+	font-family: 'Poppins', sans-serif;
+	cursor: pointer;
+	transition: .5s;
+	margin-left: 70%;
+}
+.mat-card{
+
+	max-width: 500px;
+	margin-top: 10px;
+	margin-left: 350px;
+}
+.header{
+	font-size: x-large;
+	max-width: 500px;
+	background-color: rgba(0,0,0,.03);
+	border-bottom: 1px solid rgba(0,0,0,.125);
+	padding: .75rem 1.25rem;
+
+
+}

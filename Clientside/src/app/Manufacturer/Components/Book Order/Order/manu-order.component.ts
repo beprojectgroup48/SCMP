@@ -1,7 +1,7 @@
 import { Distributor } from '../../../../Distributor/Models/distributor';
 import { ManufacturerService } from './../../../Services/manufacturer.service';
 import { Manufacturer } from '../../../Models/manufacturer';
-import { Product } from '../../../Models/product';
+import { Product } from './../../../Models/product';
 import { ManufacturerCompleteOrder } from '../../../Models/manu-complete-order';
 import { ManufacturerAddItemsComponent } from '../Add Items/manu-add-items.component';
 import { Component, OnInit } from '@angular/core';
@@ -105,7 +105,7 @@ export class ManufacturerOrderComponent implements OnInit {
       this.currentSubOrder.quantity = result.quantity;
       this.currentSubOrder.totalAmount=result.totalAmount;
       this.currentSubOrder.manufacturerUsername=this.manufacturerUsername1;
-      this.currentSubOrder.manufacturerName=this.manufacturerName1;
+      this.currentSubOrder.manufacturerUsername=this.manufacturerName1;
       this.currentSubOrderList[this.count] = this.currentSubOrder;
       this.updateGrandTotal();
       this.count++;

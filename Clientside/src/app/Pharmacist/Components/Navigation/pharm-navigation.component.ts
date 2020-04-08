@@ -12,13 +12,15 @@ import { MatDialog } from '@angular/material';
 })
 export class PharmacistNavigationComponent  {
   
-  constructor(private router:Router,public dialog:MatDialog) {}
-
+  constructor(
+    private router:Router,
+    public dialog:MatDialog
+    ) { }
   goToProfile(){ 
     this.router.navigate(['/pharmacist/profile']);
   }
-
   goToLogin(){
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
  

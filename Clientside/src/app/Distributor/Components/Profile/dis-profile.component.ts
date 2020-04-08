@@ -5,6 +5,8 @@ import { DistributorUpdateProfileComponent } from './Update Profile/dis-update-p
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { DistributorProfile } from '../../Models/dis-profile';
+import { FormGroup } from '@angular/forms';
+import { DistributorService } from '../../Services/distributor.service';
 
 
 @Component({
@@ -13,15 +15,28 @@ import { DistributorProfile } from '../../Models/dis-profile';
   styleUrls: ['./dis-profile.component.css']
 })
 export class DistributorProfileComponent {
- 
-  public constructor(public _d:DomSanitizer,private router:Router,public dialog:MatDialog) {}
+  selectedFile: File;
+  form: FormGroup;
+  imageName: any;
+  public constructor(public _d:DomSanitizer,private router:Router,public dialog:MatDialog,private distributorService: DistributorService){}
 
   url ='';
   imgsrc="/assets/avatar.svg";
-
-  uploadFile(event){
-    const file = event.srcElement.files[0]; 
-    this.imgsrc = window.URL.createObjectURL(file);
+  onSelectFile(event)
+  {
+    
+    const file = (event.target as HTMLInputElement).files[0];
+   this.distributorService.uploadProfilePhoto(file).subscribe(data =>{
+      var filename = data.filename;   
+       this.setProfilePhoto(filename);
+    })
+    
+  }
+  setProfilePhoto(filename:any){
+    this.distributorService.getProfilePhoto(filename).subscribe(blob=>{
+      this.imgsrc = window.URL.createObjectURL(blob);       
+     // this.imgsrc = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+    })
   }
   
   currentData: DistributorProfile={
@@ -70,5 +85,9 @@ export class DistributorProfileComponent {
   this.currentData.registrationId = result.registrationId;
   this.currentData.password = result.password;
   }); 
+  }
+  ngOnInit() {
+
+    this.setProfilePhoto(this.distributorService.imageName);
   }
 }

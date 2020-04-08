@@ -3,6 +3,7 @@ import { DistributorShowProductsComponent } from '../Show Products/dis-show-prod
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { DistributorCompleteOrder } from '../../../Models/dis-complete-order';
 import { Component, OnInit } from '@angular/core';
+import { DistributorService } from 'src/app/Distributor/Services/distributor.service';
 
 @Component({
   selector: 'app-dis-view-order',
@@ -34,7 +35,7 @@ export class DistributorViewOrderComponent implements OnInit {
   commonArrayCache: DistributorCompleteOrder[] = [];
   totalFilterCount: number = 0;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private distributorService: DistributorService) { }
 
   ngOnInit() {
     for(let i=0;i<this.orderList.length;i++){
@@ -45,7 +46,11 @@ export class DistributorViewOrderComponent implements OnInit {
     }  
     //this.refreshList();
   }
-
+  getOrders() {
+    this.distributorService.getOutgoingOrders().subscribe(data=>{
+      console.log(data);
+    })
+  }
   refreshFilterCount(){
     this.totalFilterCount = 0;
     if(this.priceFilterCount != 0)

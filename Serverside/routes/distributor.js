@@ -1,4 +1,10 @@
 const express = require('express');
+let multer = require('multer');
+let GridFsStorage = require('multer-gridfs-storage');
+let Grid = require('gridfs-stream');
+let crypto = require('crypto');
+var path = require('path');
+const config = require('../config/database');
 var router = express.Router();
 var completeOrder = require('../models/distributor/complete-order');
 var subOrder = require('../models/distributor/sub-order');
@@ -6,7 +12,65 @@ const manufacturers = require('../models/manufacturer/manufacturermodel');
 const pharmacists = require('../models/pharmacist/pharmacistmodel');
 const incomingOrders = require('../models/distributor/incoming-order');
 const outgoingOrders = require('../models/distributor/outgoing-order');
+const distributor = require('../models/distributor/distributormodel');
 
+const storage = new GridFsStorage({
+   
+    url: config.urldb,
+    file: (req, file) => {
+        return new Promise((resolve, reject) => {
+          crypto.randomBytes(16, (err, buf) => {
+            if (err) {
+              return reject(err);
+            }
+            const filename = buf.toString("hex") + path.extname(file.originalname);
+            const fileInfo = {
+              filename: filename,
+              bucketName: "uploads"
+            };
+            resolve(fileInfo);
+          });
+        });
+      }
+      
+  });
+  
+  const upload = multer({
+    storage
+  });
+
+router.post("/upload/:id", upload.single("avatar"), (req, res) => {
+      console.log( req.params.id);
+       distributor.findByIdAndUpdate({_id: req.params.id}, {image: req.file.filename}, (err, result)=>{
+           if(err){
+               console.log(err);
+           }else{
+            res.json({filename:req.file.filename});
+           }
+       })
+  });
+
+router.get("/image/:filename", (req, res) => {
+    const file = gfs.files.findOne({
+      filename: req.params.filename
+    },(err, file) => {  
+        
+      if (!file || file.length === 0) {
+        return res.status(404).json({
+          err: "no files exist"
+        });
+      }
+     if(file.contentType === 'image/jpeg' || file.contentType === 'img/png'){
+        var readstream = gfs.createReadStream(file.filename);
+        readstream.pipe(res);
+     }else{
+         res.status(404).json({
+             err: 'not an image'
+         })
+     }
+    });
+  });
+/*
 router.get('/allmanufacturers', (req, res)=>{
     manufacturers.find((err, listOfManufacturers)=>{
         if(err){
@@ -24,8 +88,19 @@ router.get('/allpharmacists', (req, res)=>{
             res.json(listOfPharmacists);
         }
     })
+})*/
+router.get('/distdashboard/:id', (req, res, next)=>{
+    const dashboard = distributor.findOne({_id: req.params.id}, (err, data)=>{
+        if(err){
+            console.log('error in retrieving  ' + JSON.stringify(err, undefined, 2))
+        }else{
+            res.json(data);
+        }
+    })
+    //console.log(dashboard.);
+
 })
-router.post('/placeOrder', (req, res)=>{
+router.post('/placeOrder/:id', (req, res)=>{
     console.log(req.body);
     let order = new completeOrder ({
         orderId: req.body.orderId,
@@ -46,12 +121,18 @@ router.post('/placeOrder', (req, res)=>{
         if(err){
             console.log('error '+ JSON.stringify(err));
         }else{
-            console.log('order placed ' + confirmOrder);
+            distributor.findByIdAndUpdate({_id: req.params.id }, {$push:{orders: confirmOrder._id}}, (err, result)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                }
+            })
         }
     })
 })
 
-router.get('/allIncomingOrders', (req, res)=>{
+router.get('/allIncomingOrders/:id', (req, res)=>{
     
     incomingOrders.find({}, {orderId:1, pharmacistName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfIncomingOrders)=>{
         if(err){
@@ -62,13 +143,13 @@ router.get('/allIncomingOrders', (req, res)=>{
     })
 })
 
-router.get('/allOutgoingOrders', (req, res)=>{
-    outgoingOrders.find({}, {orderId:1, manufacturerName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfOutgoingOrders)=>{
+router.get('/allOutgoingOrders/:id', (req, res)=>{
+    distributor.findById({_id: req.params.id}).populate("orders").exec((err, listOfOutgoingOrders)=>{
         if(err){
             console.log('error in retrieving outgoing orders ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json(listOfOutgoingOrders);
+            res.json({msg:'list of orders',listOfOutgoingOrders});
         }
-    })
+    });
 })
 module.exports = router;

@@ -3,7 +3,7 @@ var router = express.Router();
 const manufacturers = require('../models/manufacturer/manufacturermodel');
 const distributors = require('../models/distributor/distributormodel');
 const pharmacists = require('../models/pharmacist/pharmacistmodel');
-const customers = require('../models/customer/customermodel');
+
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 router.post('/manufacturer', (req, res) =>{
@@ -108,37 +108,5 @@ router.post('/pharmacist', (req, res) =>{
 
 })
 
-router.post('/customer', (req, res) =>{
-    
-    const username = req.body.username;
-    const password = req.body.password;
-    customers.getCustomerByUsername(username, (err, customer) => {
-    if(err) throw err;
-    if(!customer){
-      return res.json({success: false, msg: 'User not found'});
-    }
-    console.log(customer.password);
-    customers.comparePassword(password, customer.password, (err, isMatch) => {
-      if(err) throw err;
-      if(isMatch){
-        const token = jwt.sign(customer.toJSON(), config.secret, {
-          expiresIn: 604800 // 1 week
-        });
-
-        res.json({
-          success: true,
-          token: 'JWT '+token,
-          customer: {
-            id: customer._id,
-            name: customer.name,
-            username: customer.username
-          }
-        });
-      } else {
-        return res.json({success: false, msg: 'Wrong password'});
-      }
-    });
-  });
-})
 
 module.exports = router;
