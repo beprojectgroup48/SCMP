@@ -1,56 +1,59 @@
-<h1 mat-dialog-title> Edit Profile</h1>
-  <div mat-dialog-content>
-    <p>
-      <mat-form-field>
-         <mat-label>Email:</mat-label>
-         <input matInput [(ngModel)]="data.email">
-     </mat-form-field>
-     </p>
-    <p>
-      <mat-form-field >
-          <mat-label>First Name:</mat-label>
-          <input matInput [(ngModel)]="data.fname">
-          
-      </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field>
-        <mat-label>Last Name</mat-label>
-        <input matInput [(ngModel)]="data.lname">
-    </mat-form-field>
-     </p>
-     <p>
-     <mat-form-field>
-        <mat-label>Address:</mat-label>
-        <input matInput [(ngModel)]="data.address">
-    </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field>
-         <mat-label>City:</mat-label>
-         <input matInput [(ngModel)]="data.city">
-     </mat-form-field>
-     </p>
-     <p>
-      <mat-form-field>
-         <mat-label>Country:</mat-label>
-         <input matInput [(ngModel)]="data.country">
-     </mat-form-field>
-     </p>
-     <p>
-      <mat-form-field>
-         <mat-label>Mobile Number:</mat-label>
-         <input matInput [(ngModel)]="data.mob">
-     </mat-form-field>
-     </p> 
-     <p>
-      <mat-form-field>
-         <mat-label>Company Information:</mat-label>
-         <input matInput [(ngModel)]="data.companyInfo">
-     </mat-form-field>
-     </p>
+<h4 class="dispaly-4">Update Profile</h4>
+<hr>
+<form #form="ngForm">
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label>Username</label>
+            <input type="text" name="username" #username="ngModel" [(ngModel)]="currentData.username" class="form-control" readonly>
+        </div>
+        <div class="form-group col-md-3">
+                <label>Registration Id</label>
+                <input type="text" name="registrationId" #registrationId="ngModel" [(ngModel)]="currentData.registrationId" class="form-control" readonly>
+            </div>
+        <div class="form-group col-md-6">
+            <label>Name</label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="currentData.name" class="form-control" required
+            [class.is-invalid]="name.errors?.required">
+        </div>
     </div>
-  <div mat-dialog-actions>
-      <button style="margin-right: 5px;" class="primary" mat-button [mat-dialog-close]="data">Cancel</button>
-      <button class="primary" mat-button [mat-dialog-close]="data">Update Profile</button>
-  </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Email</label>
+            <input type="email" name="email" #email="ngModel" [(ngModel)]="currentData.email" class="form-control" required
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [class.is-invalid]="email.errors?.required || email.errors?.pattern">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Mobile Number</label>
+            <input type="number" name="mobileNumber" #mobileNumber="ngModel" [(ngModel)]="currentData.mobileNumber" class="form-control" required
+            pattern="[789][0-9]{9}" [class.is-invalid]="mobileNumber.errors?.required || mobileNumber.errors?.pattern">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Address</label>
+            <input type="text" name="address" #address="ngModel" [(ngModel)]="currentData.address" class="form-control" required
+            [class.is-invalid]="address.errors?.required">
+        </div>
+        <div class="form-group col-md-6">
+            <label>City</label>
+            <input type="text" name="city" #city="ngModel" [(ngModel)]="currentData.city" class="form-control" required
+            [class.is-invalid]="city.errors?.required">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Company Name</label>
+            <input type="text" name="companyName" #companyName="ngModel" [(ngModel)]="currentData.companyName" class="form-control" required
+            [class.is-invalid]="companyName.errors?.required">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Company Information</label>
+            <input type="text" name="companyInfo" #companyInfo="ngModel" [(ngModel)]="currentData.companyInfo" class="form-control" required
+            [class.is-invalid]="companyInfo.errors?.required">
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-dark" [disabled]="form.invalid" [mat-dialog-close]="currentData"><i class="fa fa-edit"></i> Update</button>
+        <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
+    </div>
+</form>

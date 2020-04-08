@@ -1,12 +1,12 @@
 export class PharmacistProfile{
   username: string;
-  fname: string;
-  lname: string;
+  name: string;
   email: string;
-  mob: number;
+  mobileNumber: number;
   address: string;
   city: string;
-  country: string;
+  companyName: String;
   companyInfo: string;
   password: string;
+  registrationId: number;
 }

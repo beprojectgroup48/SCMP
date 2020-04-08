@@ -1,132 +1,42 @@
-<div class="row">
-  <!-- <div class="col-md-3"  style="margin-top: 10px; margin-left: 10px;">
-    <div class="card card-user">
-      <div class="card-header">
-        <h5 class="card-title">User Profile</h5>
+<div class="row" style="width: 99%">
+  <div class="col-md-8" style="margin-top: 10px;margin-left: 18%">
+    <div class="card">
+      <div style="position: relative; left: 0; top: 0;">
+        <img src="../../../assets/wallpaper2.jpg" height="50%" width="100%" style="position: relative;top: 0;left: 0;"/>
+        <img mat-card-image [src]="_d.bypassSecurityTrustUrl(imgsrc)" 
+        style="border-radius: 50%;position: absolute;top: 50%;left: 7%;width: 20%;height: 70%" width="70px" alt="User Photo" class="mat-card-image center">
+        <img src="../../../assets/user2.png" (click)="openDialog()" alt="" style="height: 38px;cursor: pointer;position: absolute;top: 0px;left: 93%;">
+        <p style="font-size: 22px;font-weight: 500;color: white;position: absolute;top: 75%;left: 29%;">{{currentData.name}}</p>
+        <input hidden type="file" #uploader accept="image/*" (change)="uploadFile($event)">
+        <img (click)="uploader.click()" src="../../../assets/edit.png" alt="" style="cursor: pointer;width:25px;position: absolute;top: 106%;left: 23%;">
       </div>
-      <div class="card-body" style="text-align: center;">
-        
-        <div class="author">
-        <img mat-card-image [src]="_d.bypassSecurityTrustUrl(imgsrc)" alt="User Photo" class="mat-card-image">
-        </div> 
-        <button mat-button type="submit" class="upload" ><mat-icon>edit</mat-icon>
-          <input type='file' accept=".png, .jpg, .jpeg" (change)="onSelectFile($event)">
-        </button>
       
-      <!--
-         <div class="author">
-            <img class="avatar" src="assets/avatar.svg" alt="...">
-            
-       </div> -->
-       <!-- <h5 class="title">Distributor 1</h5>
-       <p>
-         Cipla
-       </p>
-        <p class="description text-center">
-          Hadapsar, Pune
-        </p> 
-      </div>
-    </div>
-  </div> -->
-
-
-  <div class="col-md-8" style="margin-top: 20px; margin-left: 50px;">
-    <div class="card card-user">
-      <div class="card-header">
-        <h5 class="card-title">My Profile</h5>
-      </div>
-      <div class="card-body" style="text-align: center;">
-        
-        <div class="author">
-        <img mat-card-image [src]="_d.bypassSecurityTrustUrl(imgsrc)" alt="User Photo" class="mat-card-image">
-        </div> 
-        <!-- <button mat-button type="submit" class="upload" ><mat-icon>edit</mat-icon> -->
-          <input type='file' accept=".png, .jpg, .jpeg" (change)="onSelectFile($event)">
-        
+      <div class="row" style="margin-top: 60px;">
+          <div class="col-md-6">
+          <label style="font-weight: 500;font-size: 18px;margin-left: 20px;">Company Name</label><label style="margin-left: 20px;max-width: 50%;">{{currentData.companyName}}</label>
+          <hr style="margin-top: 5px;margin-bottom: 5px;margin-left: 20px;">
+          <label style="font-weight: 500;font-size: 18px;margin-left: 20px;margin-right: 20px">Company Info</label><label style="margin-left: 20px;">{{currentData.companyInfo}}</label>
+          <hr style="margin-top: 5px;margin-bottom: 5px;margin-left: 20px;">
       </div>
 
-      <div class="card-body">
-       <form>
-          <div class="row">
-            <div class="col-md-5 pr-1">
-              <div class="form-group">
-                <label>Company Name</label>
-                <input type="text" class="form-control" disabled="" placeholder="Company" value="Cipla">
-              </div>
-            </div>
-            <div class="col-md-3 px-1">
-              <div class="form-group">
-                <label>Username</label>
-                <input  type="text" class="form-control" matInput [(ngModel)]="currentData.username" disabled="" [ngModelOptions]="{standalone: true}"  >
-              </div>
-            </div>
-            <div class="col-md-4 pl-1">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" disabled="" matInput [(ngModel)]="currentData.email"[ngModelOptions]="{standalone: true}" >
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 pr-1">
-              <div class="form-group">
-                <label>First Name</label>
-                <input type="text" class="form-control" disabled="" matInput [(ngModel)]="currentData.fname"[ngModelOptions]="{standalone: true}">
-              </div>
-            </div>
-            <div class="col-md-6 pl-1">
-              <div class="form-group">
-                <label>Last Name</label>
-                <input type="text" class="form-control" disabled="" matInput [(ngModel)]="currentData.lname"[ngModelOptions]="{standalone: true}">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Address</label>
-                <input type="text" class="form-control" disabled="" matInput [(ngModel)]="currentData.address"[ngModelOptions]="{standalone: true}">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 pr-1">
-              <div class="form-group">
-                <label>City</label>
-                <input type="text" class="form-control" disabled="" matInput [(ngModel)]="currentData.city"[ngModelOptions]="{standalone: true}">
-              </div>
-            </div>
-            <div class="col-md-4 px-1">
-              <div class="form-group">
-                <label>Country</label>
-                <input type="text" class="form-control" disabled="" matInput [(ngModel)]="currentData.country"[ngModelOptions]="{standalone: true}">
-              </div>
-            </div>
-            <div class="col-md-4 pl-1">
-              <div class="form-group">
-                <label>Mobile Number</label>
-                
-                <input type="number" class="form-control" disabled="" matInput [(ngModel)]="currentData.mob"[ngModelOptions]="{standalone: true}">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Company Information</label>
-                <textarea class="form-control textarea" disabled=""matInput [(ngModel)]="currentData.companyInfo"[ngModelOptions]="{standalone: true}"></textarea>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="update ml-auto mr-auto">
-              <button class="btn btn-primary btn-round" (click)="openDialog()">
-              Update Profile
-            </button>
-            </div>
-          </div>
-        </form>
+      <div class="col-md-6" >
+        <label style="font-weight: 500;font-size: 18px;padding-bottom: 1px">My details</label>
+        <hr style="margin-top: 5px;margin-bottom: 5px;margin-right: 20px;">
+        <label style="color: rgb(129, 129, 129)">Username</label><label style="margin-left: 80px;max-width: 50%;">{{currentData.username}}</label>
+        <hr style="margin-top: 5px;margin-bottom: 5px;margin-right: 20px;">
+        <label style="color: rgb(129, 129, 129)">Email</label><label style="margin-left: 113px;max-width: 50%;">{{currentData.email}}</label>
+        <hr style="margin-top: 5px;margin-bottom: 5px;margin-right: 20px;">
+        <label style="color: rgb(129, 129, 129)">Mobile number</label><label style="margin-left: 45px;max-width: 50%;">{{currentData.mobileNumber}}</label>
+        <hr style="margin-top: 5px;margin-bottom: 5px;margin-right: 20px;">
+        <label style="color: rgb(129, 129, 129)">Address</label><label style="margin-left: 95px;max-width: 50%;">{{currentData.address}}</label>
+        <hr style="margin-top: 5px;margin-bottom: 5px;margin-right: 20px;">
+        <label style="color: rgb(129, 129, 129)">City</label><label style="margin-left: 127px;max-width: 50%;">{{currentData.city}}</label>
+        <hr style="margin-top: 5px;margin-bottom: 5px;margin-right: 20px;">
+        <label style="color: rgb(129, 129, 129)">Registration Id</label><label style="margin-left: 52px;max-width: 50%;">{{currentData.registrationId}}</label>
+        <hr style="margin-top: 5px;margin-bottom: 5px;margin-right: 20px;">
       </div>
+      </div>
+
     </div>
   </div>
 </div>

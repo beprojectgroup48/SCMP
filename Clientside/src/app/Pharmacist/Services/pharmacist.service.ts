@@ -9,8 +9,8 @@ export class PharmacistService {
 
   constructor(private http: Http) { }
 
-  getOutgoingOrders(){
-    return this.http.get('http://localhost:3000/pharmacist/allOutgoingOrders').pipe(map(res => res.json()));
+  getYourOrders(){
+    return this.http.get('http://localhost:3000/pharmacist/yourOrders').pipe(map(res => res.json()));
   }
   getDistributors(){
     return  this.http.get('http://localhost:3000/pharmacist/alldistributors').pipe(map(res => res.json()));

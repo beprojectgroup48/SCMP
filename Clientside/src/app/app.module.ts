@@ -1,3 +1,4 @@
+import { ForgetpassComponent } from './Login/Components/Forgot Password/forgetpass.component';
 import { ManufacturerDashboardComponent } from './Manufacturer/Components/Dashboard/manu-dashboard.component';
 import { ManufacturerNavigationComponent } from './Manufacturer/Components/Navigation/manu-navigation.component';
 import { ManufacturerProfileComponent } from './Manufacturer/Components/Profile/manu-profile.component';
@@ -16,24 +17,24 @@ import { DistributorChangePasswordComponent } from './Distributor/Components/Pro
 import { DistributorOutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/dis-outgoing-orders.component';
 import { DistributorIncomingOrdersComponent } from './Distributor/Components/Incoming Orders/dis-incoming-orders.component';
 import { DistributorViewOrderComponent } from './Distributor/Components/Your Order/View Order/dis-view-order.component';
+import { ListOfPharmacistComponent } from './Distributor/Components/List of Pharmacists/list-of-pharmacist.component';
+import { AddManufacturerComponent } from './Distributor/Components/List of Manufacturers/Add Manufacturer/add-manufacturer.component';
+import { SubscribedManufacturersComponent } from './Distributor/Components/List of Manufacturers/Subscribed Manufacturers/subscribed-manufacturers.component';
+import { DistributorDashboardComponent } from './Distributor/Components/Dashboard/dis-dashboard.component';
+import { DistributorNavigationComponent } from './Distributor/Components/Navigation/dis-navigation.component';
+import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
+
 import { PharmacistUpdateProfileComponent } from './Pharmacist/Components/Profile/Update Profile/pharm-update-profile.component';
 import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Order/pharm-order.component';
 import { PharmacistAddItemsComponent } from './Pharmacist/Components/Book Order/Add Items/pharm-add-items.component';
 import { AddDistributorComponent } from './Pharmacist/Components/List of Distributors/Add Distributor/add-distributor.component';
 import { SubscribedDistributorsComponent } from './Pharmacist/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
-import { PharmacistOutgoingOrdersComponent } from './Pharmacist/Components/Outgoing Orders/pharm-outgoing-orders.component';
 import { PharmacistChangePasswordComponent } from './Pharmacist/Components/Profile/Change Password/pharm-change-password.component';
 import { PharmacistProfileComponent } from './Pharmacist/Components/Profile/pharm-profile.component';
 import { PharmacistShowProductsComponent } from './Pharmacist/Components/Your Order/Show Products/pharm-show-products.component';
 import { PharmacistViewOrderComponent } from './Pharmacist/Components/Your Order/View Order/pharm-view-order.component';
 import { PharmacistDashboardComponent } from './Pharmacist/Components/Dashboard/pharm-dashboard.component';
 import { PharmacistNavigationComponent } from './Pharmacist/Components/Navigation/pharm-navigation.component';
-import { ListOfPharmacistComponent } from './Distributor/Components/List of Pharmacists/list-of-pharmacist.component';
-import { AddManufacturerComponent } from './Distributor/Components/List of Manufacturers/Add Manufacturer/add-manufacturer.component';
-import { SubscribedManufacturersComponent } from './Distributor/Components/List of Manufacturers/Subscribed Manufacturers/subscribed-manufacturers.component';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 
 import { 
   MatButtonModule,
@@ -61,6 +62,9 @@ import {
 
 } from '@angular/material';
 
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -68,13 +72,10 @@ import { MainPageComponent } from './Main Page/Components/mainpage.component'
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+
 import { LoginComponent } from './Login/Components/login.component';
 import { RegisterComponent } from './Register/Components/register.component';
-import { ForgetpassComponent } from './Forgot Password/Components/forgetpass.component';
-import { DistributorDashboardComponent } from './Distributor/Components/Dashboard/dis-dashboard.component';
-import { DistributorNavigationComponent } from './Distributor/Components/Navigation/dis-navigation.component';
 import { CommonModule } from '@angular/common';
-import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
 
 
 @NgModule({
@@ -107,13 +108,10 @@ import { DistributorProfileComponent } from './Distributor/Components/Profile/di
     PharmacistShowProductsComponent,
     PharmacistProfileComponent,
     PharmacistChangePasswordComponent,
-    PharmacistOutgoingOrdersComponent,
     SubscribedDistributorsComponent,
     AddDistributorComponent,
     PharmacistAddItemsComponent,
     PharmacistOrderComponent,
-    PharmacistUpdateProfileComponent,
-    
     ManufacturerDashboardComponent,
     ManufacturerNavigationComponent,
     ManufacturerProfileComponent,
@@ -157,11 +155,15 @@ import { DistributorProfileComponent } from './Distributor/Components/Profile/di
   entryComponents:[
     DistributorAddItemsComponent,
     PharmacistAddItemsComponent,
+   
     DistributorShowProductsComponent,
     PharmacistShowProductsComponent,
+    
     AddManufacturerComponent,
     AddDistributorComponent,
     PharmacistUpdateProfileComponent,
+    ManufacturerUpdateProfileComponent,
+    DistributorUpdateProfileComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
