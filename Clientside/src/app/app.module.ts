@@ -58,7 +58,8 @@ import {
   MatMenuModule,
   MatDatepickerModule,
   MatBadgeModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatTooltipModule
 
 } from '@angular/material';
 
@@ -153,7 +154,8 @@ import { CommonModule } from '@angular/common';
     MatMenuModule,
     MatDatepickerModule,    
     MatBadgeModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTooltipModule
   ],
   entryComponents:[
     DistributorAddItemsComponent,
