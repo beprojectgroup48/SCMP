@@ -3,11 +3,10 @@ import { ManufacturerNavigationComponent } from './Manufacturer/Components/Navig
 import { ManufacturerProfileComponent } from './Manufacturer/Components/Profile/manu-profile.component';
 import { ManufacturerChangePasswordComponent } from './Manufacturer/Components/Profile/Change Password/manu-change-password.component';
 import { ManufacturerUpdateProfileComponent } from './Manufacturer/Components/Profile/Update Profile/manu-update-profile.component';
-import { ManufacturerOrderComponent } from './Manufacturer/Components/Book Order/Order/manu-order.component';
-import { ManufacturerAddItemsComponent } from './Manufacturer/Components/Book Order/Add Items/manu-add-items.component';
-import { ManufacturerShowProductsComponent } from './Manufacturer/Components/Your Order/Show Products/manu-show-products.component';
-import { ManufacturerViewOrderComponent } from './Manufacturer/Components/Your Order/View Order/manu-view-order.component';
 import { ManufacturerIncomingOrdersComponent } from './Manufacturer/Components/Incoming Orders/manu-incoming-orders.component';
+import { CreateProductComponent } from './Manufacturer/Components/Create Product/create-product.component';
+import { TransferOrderComponent } from './Manufacturer/Components/Transfer Order/transfer-order.component';
+
 
 import { DistributorUpdateProfileComponent } from './Distributor/Components/Profile/Update Profile/dis-update-profile.component';
 import { DistributorShowProductsComponent } from './Distributor/Components/Your Order/Show Products/dis-show-products.component';
@@ -57,7 +56,8 @@ import {
   MatMenuModule,
   MatDatepickerModule,
   MatBadgeModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  
 
 } from '@angular/material';
 
@@ -75,6 +75,7 @@ import { DistributorDashboardComponent } from './Distributor/Components/Dashboar
 import { DistributorNavigationComponent } from './Distributor/Components/Navigation/dis-navigation.component';
 import { CommonModule } from '@angular/common';
 import { DistributorProfileComponent } from './Distributor/Components/Profile/dis-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -111,17 +112,16 @@ import { DistributorProfileComponent } from './Distributor/Components/Profile/di
     AddDistributorComponent,
     PharmacistAddItemsComponent,
     PharmacistOrderComponent,
+    PharmacistUpdateProfileComponent,
+    
     ManufacturerDashboardComponent,
     ManufacturerNavigationComponent,
     ManufacturerProfileComponent,
     ManufacturerChangePasswordComponent,
     ManufacturerUpdateProfileComponent,
-    ManufacturerOrderComponent,
-    ManufacturerAddItemsComponent,
-    ManufacturerShowProductsComponent,
-    ManufacturerViewOrderComponent,
     ManufacturerIncomingOrdersComponent,
-    PharmacistUpdateProfileComponent
+    CreateProductComponent,
+    TransferOrderComponent
   ],
   imports: [
     BrowserModule,

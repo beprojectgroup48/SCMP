@@ -10,10 +10,10 @@ export class ManufacturerService {
   constructor(private http: Http) { }
 
   getIncomingOrders(){
-    return this.http.get('http://localhost:3000/pharmacist/allIncomingOrders').pipe(map(res => res.json()));
+    return this.http.get('http://localhost:3000/manufacturer/allIncomingOrders').pipe(map(res => res.json()));
   }
   getDistributors(){
-    return  this.http.get('http://localhost:3000/pharmacist/alldistributors').pipe(map(res => res.json()));
+    return  this.http.get('http://localhost:3000/manufacturer/alldistributors').pipe(map(res => res.json()));
    }
   placeOrder(order){
     const headers = new Headers();
