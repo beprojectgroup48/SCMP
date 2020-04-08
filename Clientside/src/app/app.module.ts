@@ -101,7 +101,7 @@ import { CommonModule } from '@angular/common';
     DistributorShowProductsComponent,
     DistributorUpdateProfileComponent,
     AddManufacturerComponent,
-
+    PharmacistUpdateProfileComponent,
     PharmacistDashboardComponent,
     PharmacistViewOrderComponent,
     PharmacistNavigationComponent,
