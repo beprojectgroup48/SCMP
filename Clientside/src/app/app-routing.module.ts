@@ -21,7 +21,6 @@ import { PharmacistViewOrderComponent } from './Pharmacist/Components/Your Order
 import { PharmacistProfileComponent } from './Pharmacist/Components/Profile/pharm-profile.component';
 import { PharmacistChangePasswordComponent } from './Pharmacist/Components/Profile/Change Password/pharm-change-password.component';
 import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Order/pharm-order.component';
-import { PharmacistOutgoingOrdersComponent} from './Pharmacist/Components/Outgoing Orders/pharm-outgoing-orders.component';
 import { PharmacistDashboardComponent } from './Pharmacist/Components/Dashboard/pharm-dashboard.component';
 import { PharmacistNavigationComponent } from './Pharmacist/Components/Navigation/pharm-navigation.component';
 
@@ -67,10 +66,8 @@ const routes: Routes = [
   {path:'pharmacist', component:PharmacistNavigationComponent,
       children:[
         {path:'dashboard', component:PharmacistDashboardComponent},
-        {path:'dashboard/outgoing-orders',component:PharmacistOutgoingOrdersComponent},
         {path:'bookorder', component:PharmacistOrderComponent},
         {path:'profile', component:PharmacistProfileComponent},
-        {path:'dashboard/incoming-orders', component:ManufacturerIncomingOrdersComponent},
         {path:'profile/edit', component:PharmacistChangePasswordComponent},
         {path:'listofdistributors', component:SubscribedDistributorsComponent},
         {path:'view-order',component:PharmacistViewOrderComponent},

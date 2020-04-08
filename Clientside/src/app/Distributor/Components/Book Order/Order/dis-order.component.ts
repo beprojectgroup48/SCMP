@@ -46,6 +46,10 @@ export class DistributorOrderComponent implements OnInit {
   }
 
   updateProductList(ctrl){
+    this.currentCompleteOrder.finalAmount = 0;
+    this.currentSubOrderList.splice(0, this.currentSubOrderList.length);
+    this.currentCompleteOrder.orders.splice(0, this.currentCompleteOrder.orders.length);
+    this.count = 0;
     if (ctrl.selectedIndex != 0) {
       this.manufacturerName1 = this.manufacturersList[ctrl.selectedIndex-1].name;
     }
