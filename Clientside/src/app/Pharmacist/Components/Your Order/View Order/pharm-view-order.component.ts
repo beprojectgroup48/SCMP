@@ -11,11 +11,12 @@ import { PharmacistService} from '../../../Services/pharmacist.service';
   styles: ['./pharm-view-order.component.css']
 })
 export class PharmacistViewOrderComponent implements OnInit {
-  orderList: PharmacistCompleteOrder[] = ELEMENT_DATA;
+
+  orderList: PharmacistCompleteOrder[] = [];
   PriceFilterdOrderList: PharmacistCompleteOrder[] = [];
   StatusFilterdOrderList: PharmacistCompleteOrder[] = [];
   DateFilterdOrderList: PharmacistCompleteOrder[] = [];
-  currentOrderProducts: PharmacistSubOrder[] = ELEMENT_DATA2;
+  currentOrderProducts: PharmacistSubOrder[] = [];
 
   priceFilterArray: number[] = [];
   priceFilterFlags: boolean[] = [false,false,false,false,false,false];
@@ -45,6 +46,7 @@ export class PharmacistViewOrderComponent implements OnInit {
 
   getOrders() {
     this.pharmacistService.getOutgoingOrders().subscribe(data=>{
+      console.log("Ashish"+data.listOfOutgoingOrders);
       if(data.listOfOutgoingOrders == undefined)
         return;
       this.orderList = data.listOfOutgoingOrders.orders;
@@ -269,14 +271,14 @@ export class PharmacistViewOrderComponent implements OnInit {
           this.PriceFilterdOrderList.splice(0, this.PriceFilterdOrderList.length);
         this.priceFilterCount = this.priceFilterCount + 1;
         this.priceFilterArray.push(c);
-        let indices = this.orderList.map((element,index) => element.finalAmount <= b && element.finalAmount > a ? index: '').filter(String);
+        let indices = this.orderList.map((element,index) => element.totalAmount <= b && element.totalAmount > a ? index: '').filter(String);
         for(let i=0;i<indices.length;i++)
           this.PriceFilterdOrderList.push(this.orderList[indices[i]]);
       }
       else{
         this.priceFilterCount = this.priceFilterCount - 1;
         this.priceFilterArray.splice(index, 1);
-        let indices = this.PriceFilterdOrderList.map((element,index) => element.finalAmount <= b && element.finalAmount > a ? index: '').filter(String);
+        let indices = this.PriceFilterdOrderList.map((element,index) => element.totalAmount <= b && element.totalAmount > a ? index: '').filter(String);
         for(let i=indices.length-1;i>=0;i--)
           this.PriceFilterdOrderList.splice(Number(indices[i]), 1);
         if(this.priceFilterCount == 0){
@@ -293,13 +295,13 @@ export class PharmacistViewOrderComponent implements OnInit {
     this.service.getOrderList().then(res => this.orderList = res);
   }*/
 
-  showProducts(orderID: number) {
+  showProducts(i: number) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     dialogConfig.width = "50%";
     //dialogConfig.maxHeight = "50%";
-    dialogConfig.data = this.currentOrderProducts;
+    dialogConfig.data = this.commonArray[i].subOrders;
     this.dialog.open(PharmacistShowProductsComponent, dialogConfig);
   }
 
@@ -329,18 +331,18 @@ export class PharmacistViewOrderComponent implements OnInit {
     }
   }
 }
-
+/*
 const ELEMENT_DATA: PharmacistCompleteOrder[] = [
-  { orderId: "1324", orders: undefined, pharmacistUsername: "PH123456", pharmacistName:"Ganesh", issueDate: new Date('2-12-2020'),
-  distributorUsername: "DB123456", distributorName:"Ashish Distributors", dueDate: new Date('4-12-2020'), finalAmount: 4000, status: "Pending"},
-  { orderId: "2433", orders: undefined, pharmacistUsername: "PH659745", pharmacistName:"Mahesh", issueDate: new Date('3-23-2020'), 
-  distributorUsername: "DB589641", distributorName:"Avinash Distributors", dueDate: new Date('4-12-2020'), finalAmount: 5000, status: "Done"},
-  { orderId: "3234", orders: undefined, pharmacistUsername: "PH896314", pharmacistName:"Ramesh", issueDate: new Date('3-13-2020'), 
-  distributorUsername: "DB302569", distributorName:"Rohan Distributors", dueDate: new Date('4-12-2020'), finalAmount: 2000, status: "Pending"},
-  { orderId: "4224", orders: undefined, pharmacistUsername: "PH102591", pharmacistName:"Rakesh", issueDate: new Date('2-16-2020'), 
-  distributorUsername: "DB759412", distributorName:"Puru Distributors", dueDate: new Date('4-12-2020'), finalAmount: 9000, status: "Processing"},
-  { orderId: "5543", orders: undefined, pharmacistUsername: "PH400632", pharmacistName:"Nilesh", issueDate: new Date('1-8-2020'), 
-  distributorUsername: "DB954102", distributorName:"Vipul Distributors", dueDate: new Date('4-12-2020'), finalAmount: 300, status: "Pending"},
+  { orderId: "1324", subOrders: undefined, issueDate: new Date('2-12-2020'),
+  distributorUsername: "DB123456", distributorName:"Ashish Distributors", deliveryDate: new Date('4-12-2020'), totalAmount: 4000, status: "Pending"},
+  { orderId: "2433", subOrders: undefined, issueDate: new Date('3-23-2020'), 
+  distributorUsername: "DB589641", distributorName:"Avinash Distributors", deliveryDate: new Date('4-12-2020'), totalAmount: 5000, status: "Done"},
+  { orderId: "3234", subOrders: undefined, issueDate: new Date('3-13-2020'), 
+  distributorUsername: "DB302569", distributorName:"Rohan Distributors", deliveryDate: new Date('4-12-2020'), totalAmount: 2000, status: "Pending"},
+  { orderId: "4224", subOrders: undefined, issueDate: new Date('2-16-2020'), 
+  distributorUsername: "DB759412", distributorName:"Puru Distributors", deliveryDate: new Date('4-12-2020'), totalAmount: 9000, status: "Processing"},
+  { orderId: "5543", subOrders: undefined, issueDate: new Date('1-8-2020'), 
+  distributorUsername: "DB954102", distributorName:"Vipul Distributors", deliveryDate: new Date('4-12-2020'), totalAmount: 300, status: "Pending"},
 ];
 
 const ELEMENT_DATA2: PharmacistSubOrder[] = [
@@ -348,4 +350,4 @@ const ELEMENT_DATA2: PharmacistSubOrder[] = [
   { productId: "4865", productName: "Fever", unitPrice: 200, quantity: 4, totalAmount: 800, manufacturerUsername: "MF896412", manufacturerName:"Sehwag"},
   { productId: "1956", productName: "Cold", unitPrice: 300, quantity: 2, totalAmount: 600, manufacturerUsername: "MF489210", manufacturerName:"Virat"},
   { productId: "2020", productName: "Flu", unitPrice: 400, quantity: 6, totalAmount: 2400, manufacturerUsername: "MF023694", manufacturerName:"Dhoni"},
-];
+];*/

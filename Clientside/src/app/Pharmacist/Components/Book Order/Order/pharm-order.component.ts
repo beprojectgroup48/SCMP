@@ -38,14 +38,14 @@ export class PharmacistOrderComponent implements OnInit {
     this.currentCompleteOrder.orderId=this.OrderId;
    // this.currentCompleteOrder.distributorUsername = this.username;
     this.currentCompleteOrder.issueDate = new Date();
-    this.currentCompleteOrder.dueDate = undefined;
-    this.currentCompleteOrder.finalAmount = 0;
+    this.currentCompleteOrder.deliveryDate = undefined;
+    this.currentCompleteOrder.totalAmount = 0;
     this.currentCompleteOrder.status =  "Pending";
     this.currentCompleteOrder.distributorName = "0";
     this.currentCompleteOrder.distributorUsername =  "0";
     this.manufacturerName1 =  "0";
     this.manufacturerUsername1 =  "0";
-    this.currentCompleteOrder.orders = this.currentSubOrderList;
+    this.currentCompleteOrder.subOrders = this.currentSubOrderList;
     this.dateRe = new Date().toDateString();
   }
 
@@ -93,9 +93,9 @@ export class PharmacistOrderComponent implements OnInit {
       if(index != -1)
       {
         this.currentSubOrderList[index].quantity += result.quantity;
-        this.currentCompleteOrder.finalAmount -= this.currentSubOrderList[index].totalAmount;
+        this.currentCompleteOrder.totalAmount -= this.currentSubOrderList[index].totalAmount;
         this.currentSubOrderList[index].totalAmount = this.currentSubOrderList[index].quantity * this.currentSubOrderList[index].unitPrice;
-        this.currentCompleteOrder.finalAmount += this.currentSubOrderList[index].totalAmount;
+        this.currentCompleteOrder.totalAmount += this.currentSubOrderList[index].totalAmount;
         return;
       }
       this.currentSubOrder = new PharmacistSubOrder();
@@ -127,8 +127,8 @@ export class PharmacistOrderComponent implements OnInit {
       var index = this.currentSubOrderList.findIndex(x => x.productId === result.productId);
       if(index != -1 && index == orderItemIndex)
       {
-        this.currentCompleteOrder.finalAmount -= this.currentSubOrderList[orderItemIndex].totalAmount;
-        this.currentCompleteOrder.finalAmount += result.totalAmount;
+        this.currentCompleteOrder.totalAmount -= this.currentSubOrderList[orderItemIndex].totalAmount;
+        this.currentCompleteOrder.totalAmount += result.totalAmount;
         this.currentSubOrderList[orderItemIndex].quantity = result.quantity;
         this.currentSubOrderList[orderItemIndex].totalAmount = result.totalAmount;
         return;
@@ -136,14 +136,14 @@ export class PharmacistOrderComponent implements OnInit {
       else if(index != -1)
       {
         this.currentSubOrderList[index].quantity += result.quantity;
-        this.currentCompleteOrder.finalAmount -= this.currentSubOrderList[index].totalAmount;
+        this.currentCompleteOrder.totalAmount -= this.currentSubOrderList[index].totalAmount;
         this.currentSubOrderList[index].totalAmount = this.currentSubOrderList[index].quantity * this.currentSubOrderList[index].unitPrice;
-        this.currentCompleteOrder.finalAmount += this.currentSubOrderList[index].totalAmount;
+        this.currentCompleteOrder.totalAmount += this.currentSubOrderList[index].totalAmount;
         this.onDeleteOrderItem(orderItemIndex);
         return;
       }
-        this.currentCompleteOrder.finalAmount -= this.currentSubOrderList[orderItemIndex].totalAmount;
-        this.currentCompleteOrder.finalAmount += result.totalAmount;
+        this.currentCompleteOrder.totalAmount -= this.currentSubOrderList[orderItemIndex].totalAmount;
+        this.currentCompleteOrder.totalAmount += result.totalAmount;
         
         this.currentSubOrderList[orderItemIndex].productId = result.productId;
         this.currentSubOrderList[orderItemIndex].productName = result.productName;
@@ -154,13 +154,13 @@ export class PharmacistOrderComponent implements OnInit {
   }
 
   onDeleteOrderItem(i: number) {
-    this.currentCompleteOrder.finalAmount -= this.currentSubOrderList[i].totalAmount;
+    this.currentCompleteOrder.totalAmount -= this.currentSubOrderList[i].totalAmount;
     this.currentSubOrderList.splice(i, 1);
     this.count=this.count-1;
   }
 
   updateGrandTotal() {
-    this.currentCompleteOrder.finalAmount += this.currentSubOrder.totalAmount;
+    this.currentCompleteOrder.totalAmount += this.currentSubOrder.totalAmount;
   }
 
   /*validateForm() {

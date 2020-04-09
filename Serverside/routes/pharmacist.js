@@ -6,8 +6,8 @@ let crypto = require('crypto');
 var path = require('path');
 const config = require('../config/database');
 var router = express.Router();
-var completeOrder = require('../models/distributor/complete-order');
-var subOrder = require('../models/distributor/sub-order');
+var completeOrder = require('../models/pharmacist/complete-order');
+var subOrder = require('../models/pharmacist/sub-order');
 const manufacturers = require('../models/manufacturer/manufacturermodel');
 const pharmacist = require('../models/pharmacist/pharmacistmodel');
 const incomingOrders = require('../models/distributor/incoming-order');
@@ -108,13 +108,13 @@ router.post('/placeOrder/:id', (req, res)=>{
       /*  productName:req.body.productName,
         quantity: req.body.quantity,
         unitamount: req.body.unitamount,
-       */manufacturerName:req.body.manufacturerName,
-        subOrders: req.body.orders,
+       */distributorName:req.body.distributorName,
+        subOrders: req.body.subOrders,
         issueDate: req.body.issueDate,
-        deliveryDate: req.body.dueDate,
-        totalAmount:req.body.finalAmount,
+        deliveryDate: req.body.deliveryDate,
+        totalAmount:req.body.totalAmount,
         status: req.body.status,
-        manufacturerUsername: req.body.manufacturerUsername
+        distributorUsername: req.body.distributorUsername
     });
     
     completeOrder.placeOrder(order, (err, confirmOrder)=>{
@@ -147,11 +147,11 @@ router.get('/allIncomingOrders/:id', (req, res)=>{
 
 router.get('/allOutgoingOrders/:id', (req, res)=>{
     console.log('inside all orders');
-    pharmacist.findById({_id: req.params.id}).populate("orders").exec((err, listOfOutgoingOrders)=>{
+    pharmacist.findById({_id: req.params.id}).populate("ordersPharmacist").exec((err, listOfOutgoingOrders)=>{
         if(err){
             console.log('error in retrieving outgoing orders ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json(listOfOutgoingOrders);
+            res.json({msg:'list of orders',listOfOutgoingOrders});
         }
     })
 })
