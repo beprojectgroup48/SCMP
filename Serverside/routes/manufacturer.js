@@ -79,16 +79,19 @@ router.get('/allmanufacturers', (req, res)=>{
             res.json(listOfManufacturers);
         }
     })
-})
-router.get('/allpharmacists', (req, res)=>{
-    pharmacists.find((err, listOfPharmacists)=>{
-        if(err){
-            console.log('error in retrieving pharmacists ' + JSON.stringify(err, undefined, 2)); 
-        }else{
-            res.json(listOfPharmacists);
-        }
-    })
 })*/
+router.get('/alldistributors/:id', (req, res)=>{
+    console.log('inside all dists')
+    manufacturer.findById({_id: req.params.id}).populate("distributors").exec((err, distributors)=>{
+        if(err){
+           // res.json({error: 'you have not subscribe to any manufacturers'});
+           console.log('error in retrieving manufacturers ' + JSON.stringify(err, undefined, 2)); 
+        }else{
+            console.log(distributors);
+            res.json({msg:'list of distributors',distributors});
+        }
+    });
+})
 router.get('/manudashboard/:id', (req, res, next)=>{
     const dashboard = manufacturer.findOne({_id: req.params.id}, (err, data)=>{
         if(err){
@@ -134,25 +137,14 @@ router.post('/placeOrder/:id', (req, res)=>{
     })
 })
 
-router.get('/allIncomingOrders', (req, res)=>{
-    
-    incomingOrders.find({}, {orderId:1, pharmacistName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfIncomingOrders)=>{
+router.get('/allIncomingOrders/:id', (req, res)=>{
+    manufacturer.findById({_id: req.params.id}).populate("manufacturers").exec((err, manufacturers)=>{
         if(err){
-            console.log('error in retrieving incoming orders ' + JSON.stringify(err, undefined, 2)); 
+            res.json({error: 'you have not subscribe to any manufacturers'});
+          //  console.log('error in retrieving manufacturers ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json(listOfIncomingOrders);
+            res.json({msg:'list of manufacturers',manufacturers});
         }
-    })
-})
-
-router.get('/allOutgoingOrders/:id', (req, res)=>{
-    console.log('inside all orders');
-    pharmacist.findById({_id: req.params.id}).populate("orders").exec((err, listOfOutgoingOrders)=>{
-        if(err){
-            console.log('error in retrieving outgoing orders ' + JSON.stringify(err, undefined, 2)); 
-        }else{
-            res.json(listOfOutgoingOrders);
-        }
-    })
-})
+    });
+});
 module.exports = router;

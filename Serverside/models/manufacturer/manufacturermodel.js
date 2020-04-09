@@ -40,7 +40,7 @@ const manufacturerSchema = mongoose.Schema({
     },
     distributors: [{
       type: Schema.Types.Object,
-      ref: 'distributor'
+      ref: 'distributors'
     }],
     image: {
       type: String

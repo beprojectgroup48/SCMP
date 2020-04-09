@@ -1,6 +1,6 @@
 import { map } from 'rxjs/operators';
 import { Http, Headers, ResponseContentType } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { Injectable, ɵConsole } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class ManufacturerService {
     return this.http.get('http://localhost:3000/manufacturer/allIncomingOrders/'+this.id).pipe(map(res => res.json()));
   }
   getDistributors(){
-    return  this.http.get('http://localhost:3000/manufacturer/alldistributors/'+ this.id).pipe(map(res => res.json()));
+     return  this.http.get('http://localhost:3000/manufacturer/alldistributors/'+ this.id).pipe(map(res => res.json()));
    }
   placeOrder(order){
     const headers = new Headers();

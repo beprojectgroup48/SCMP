@@ -72,23 +72,23 @@ router.get("/image/:filename", (req, res) => {
   });
 
 router.get('/allmanufacturers/:id', (req, res)=>{
-    distributor.findById({_id: req.params.id}).populate("manufacturers").exec((err, manufacturers)=>{
+    distributor.findById({_id: req.params.id}).populate('manufacturers').exec((err, allmanufacturers)=>{
         if(err){
-            res.json({error: 'you have not subscribe to any manufacturers'});
+          res.json({error: 'you have not subscribe to any manufacturers'});
           //  console.log('error in retrieving manufacturers ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json({msg:'list of manufacturers',manufacturers});
+           // console.log(manufacturer);
+           res.json({msg:'list of manufacturers',allmanufacturers});
         }
     });
 })
 router.get('/allpharmacists/:id', (req, res)=>{
-    console.log('inside all pharms')
-    distributor.findById({_id: req.params.id}).populate("pharmacists").exec((err, pharmacists)=>{
+    distributor.findById({_id: req.params.id}).populate("pharmacists").exec((err, allpharmacists)=>{
         if(err){
-            res.json({error: 'you have not accept to any pharmacists'});
-           // console.log('error in retrieving pharmacists' + JSON.stringify(err, undefined, 2)); 
+            //res.json({error: 'you have not accept to any pharmacists'});
+            console.log('error in retrieving pharmacists' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json({msg:'list of pharmacists',pharmacists});
+            res.json({msg:'list of pharmacists',allpharmacists});
         }
     });
 })

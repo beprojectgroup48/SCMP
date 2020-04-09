@@ -28,7 +28,7 @@ import { PharmacistUpdateProfileComponent } from './Pharmacist/Components/Profil
 import { PharmacistOrderComponent } from './Pharmacist/Components/Book Order/Order/pharm-order.component';
 import { PharmacistAddItemsComponent } from './Pharmacist/Components/Book Order/Add Items/pharm-add-items.component';
 import { AddDistributorComponent } from './Pharmacist/Components/List of Distributors/Add Distributor/add-distributor.component';
-import { SubscribedDistributorsComponent } from './Pharmacist/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
+import { PharmacistSubscribedDistributorsComponent } from './Pharmacist/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
 import { PharmacistChangePasswordComponent } from './Pharmacist/Components/Profile/Change Password/pharm-change-password.component';
 import { PharmacistProfileComponent } from './Pharmacist/Components/Profile/pharm-profile.component';
 import { PharmacistShowProductsComponent } from './Pharmacist/Components/Your Order/Show Products/pharm-show-products.component';
@@ -76,6 +76,7 @@ import { HttpModule } from '@angular/http';
 import { LoginComponent } from './Login/Components/login.component';
 import { RegisterComponent } from './Register/Components/register.component';
 import { CommonModule } from '@angular/common';
+import { ManufacturerSubscribedDistributorsComponent } from './Manufacturer/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,7 @@ import { CommonModule } from '@angular/common';
     PharmacistShowProductsComponent,
     PharmacistProfileComponent,
     PharmacistChangePasswordComponent,
-    SubscribedDistributorsComponent,
+    PharmacistSubscribedDistributorsComponent,
     AddDistributorComponent,
     PharmacistAddItemsComponent,
     PharmacistOrderComponent,
@@ -116,6 +117,7 @@ import { CommonModule } from '@angular/common';
     ManufacturerProfileComponent,
     ManufacturerChangePasswordComponent,
     ManufacturerUpdateProfileComponent,
+    ManufacturerSubscribedDistributorsComponent,
     ManufacturerIncomingOrdersComponent,
     CreateProductComponent,
     TransferOrderComponent
