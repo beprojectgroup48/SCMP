@@ -27,7 +27,7 @@ export class DistributorService {
   placeOrder(order){
     const headers = new Headers();
     headers.append('content-Type' , 'application/json');
-    console.log(order);
+    console.log("Place Order"+order);
     return this.http.post('http://localhost:3000/distributor/placeOrder/'+this.id, order, {headers : headers}).pipe(map(res => res.json()));
   }
   uploadProfilePhoto(selectedFile){

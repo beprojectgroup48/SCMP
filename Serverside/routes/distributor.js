@@ -109,10 +109,10 @@ router.post('/placeOrder/:id', (req, res)=>{
         quantity: req.body.quantity,
         unitamount: req.body.unitamount,
        */manufacturerName:req.body.manufacturerName,
-        subOrders: req.body.orders,
+        subOrders: req.body.subOrders,
         issueDate: req.body.issueDate,
-        deliveryDate: req.body.dueDate,
-        totalAmount:req.body.finalAmount,
+        deliveryDate: req.body.deliveryDate,
+        totalAmount:req.body.totalAmount,
         status: req.body.status,
         manufacturerUsername: req.body.manufacturerUsername
     });

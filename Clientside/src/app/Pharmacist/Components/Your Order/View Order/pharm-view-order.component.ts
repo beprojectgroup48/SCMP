@@ -35,23 +35,33 @@ export class PharmacistViewOrderComponent implements OnInit {
   commonArrayCache: PharmacistCompleteOrder[] = [];
   totalFilterCount: number = 0;
 
-  constructor(private dialog: MatDialog, private pharmacistService: PharmacistService) { }
+  constructor(private dialog: MatDialog, private pharmacistService: PharmacistService) {
+    this.getOrders();
+  }
 
   ngOnInit() {
-    for(let i=0;i<this.orderList.length;i++){
-      this.PriceFilterdOrderList.push(this.orderList[i]);
-      this.StatusFilterdOrderList.push(this.orderList[i]);
-      this.DateFilterdOrderList.push(this.orderList[i]);
-      this.commonArray.push(this.orderList[i]);
-    }  
-    this.getOrders();
     //this.refreshList();
   }
+
   getOrders() {
     this.pharmacistService.getOutgoingOrders().subscribe(data=>{
-      console.log(data);
+      if(data.listOfOutgoingOrders == undefined)
+        return;
+      this.orderList = data.listOfOutgoingOrders.orders;
+      for(var i=0;i<this.orderList.length;i++)
+      {
+        this.orderList[i].issueDate = new Date(this.orderList[i].issueDate);
+        this.orderList[i].deliveryDate = new Date(this.orderList[i].deliveryDate);
+      }
+      for(let i=0;i<this.orderList.length;i++){
+        this.PriceFilterdOrderList.push(this.orderList[i]);
+        this.StatusFilterdOrderList.push(this.orderList[i]);
+        this.DateFilterdOrderList.push(this.orderList[i]);
+        this.commonArray.push(this.orderList[i]);
+      }
     })
   }
+
   refreshFilterCount(){
     this.totalFilterCount = 0;
     if(this.priceFilterCount != 0)

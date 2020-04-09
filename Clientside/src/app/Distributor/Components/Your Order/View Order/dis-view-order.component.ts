@@ -1,4 +1,3 @@
-import { DistributorSubOrder } from '../../../Models/dis-sub-order';
 import { DistributorShowProductsComponent } from '../Show Products/dis-show-products.component';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { DistributorCompleteOrder } from '../../../Models/dis-complete-order';
@@ -11,11 +10,11 @@ import { DistributorService } from 'src/app/Distributor/Services/distributor.ser
   styles: ['./dis-view-order.component.css']
 })
 export class DistributorViewOrderComponent implements OnInit {
-  orderList: DistributorCompleteOrder[] = ELEMENT_DATA;
+
+  orderList: DistributorCompleteOrder[] = [];
   PriceFilterdOrderList: DistributorCompleteOrder[] = [];
   StatusFilterdOrderList: DistributorCompleteOrder[] = [];
   DateFilterdOrderList: DistributorCompleteOrder[] = [];
-  currentOrderProducts: DistributorSubOrder[] = ELEMENT_DATA2;
 
   priceFilterArray: number[] = [];
   priceFilterFlags: boolean[] = [false,false,false,false,false,false];
@@ -35,22 +34,33 @@ export class DistributorViewOrderComponent implements OnInit {
   commonArrayCache: DistributorCompleteOrder[] = [];
   totalFilterCount: number = 0;
 
-  constructor(private dialog: MatDialog, private distributorService: DistributorService) { }
+  constructor(private dialog: MatDialog, private distributorService: DistributorService) {
+    this.getOrders();
+   }
 
   ngOnInit() {
-    for(let i=0;i<this.orderList.length;i++){
-      this.PriceFilterdOrderList.push(this.orderList[i]);
-      this.StatusFilterdOrderList.push(this.orderList[i]);
-      this.DateFilterdOrderList.push(this.orderList[i]);
-      this.commonArray.push(this.orderList[i]);
-    }  
     //this.refreshList();
   }
+  
   getOrders() {
     this.distributorService.getOutgoingOrders().subscribe(data=>{
-      console.log(data);
+      if(data.listOfOutgoingOrders == undefined)
+        return;
+      this.orderList = data.listOfOutgoingOrders.orders;
+      for(var i=0;i<this.orderList.length;i++)
+      {
+        this.orderList[i].issueDate = new Date(this.orderList[i].issueDate);
+        this.orderList[i].deliveryDate = new Date(this.orderList[i].deliveryDate);
+      }
+      for(let i=0;i<this.orderList.length;i++){
+        this.PriceFilterdOrderList.push(this.orderList[i]);
+        this.StatusFilterdOrderList.push(this.orderList[i]);
+        this.DateFilterdOrderList.push(this.orderList[i]);
+        this.commonArray.push(this.orderList[i]);
+      }
     })
   }
+
   refreshFilterCount(){
     this.totalFilterCount = 0;
     if(this.priceFilterCount != 0)
@@ -259,14 +269,14 @@ export class DistributorViewOrderComponent implements OnInit {
           this.PriceFilterdOrderList.splice(0, this.PriceFilterdOrderList.length);
         this.priceFilterCount = this.priceFilterCount + 1;
         this.priceFilterArray.push(c);
-        let indices = this.orderList.map((element,index) => element.finalAmount <= b && element.finalAmount > a ? index: '').filter(String);
+        let indices = this.orderList.map((element,index) => element.totalAmount <= b && element.totalAmount > a ? index: '').filter(String);
         for(let i=0;i<indices.length;i++)
           this.PriceFilterdOrderList.push(this.orderList[indices[i]]);
       }
       else{
         this.priceFilterCount = this.priceFilterCount - 1;
         this.priceFilterArray.splice(index, 1);
-        let indices = this.PriceFilterdOrderList.map((element,index) => element.finalAmount <= b && element.finalAmount > a ? index: '').filter(String);
+        let indices = this.PriceFilterdOrderList.map((element,index) => element.totalAmount <= b && element.totalAmount > a ? index: '').filter(String);
         for(let i=indices.length-1;i>=0;i--)
           this.PriceFilterdOrderList.splice(Number(indices[i]), 1);
         if(this.priceFilterCount == 0){
@@ -283,13 +293,13 @@ export class DistributorViewOrderComponent implements OnInit {
     this.service.getOrderList().then(res => this.orderList = res);
   }*/
 
-  showProducts(orderID: number) {
+  showProducts(i: number) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     dialogConfig.width = "50%";
     //dialogConfig.maxHeight = "50%";
-    dialogConfig.data = this.currentOrderProducts;
+    dialogConfig.data = this.commonArray[i].subOrders;
     this.dialog.open(DistributorShowProductsComponent, dialogConfig);
   }
 
@@ -319,13 +329,13 @@ export class DistributorViewOrderComponent implements OnInit {
     }
   }
 }
-
+/*
 const ELEMENT_DATA: DistributorCompleteOrder[] = [
-  { orderId: "1324", orders: undefined, distributorUsername: "DB123456", distributorName:"Ganesh", issueDate: new Date('2-12-2020'), dueDate: new Date('4-12-2020'), finalAmount: 4000, status: "Pending"},
-  { orderId: "2433", orders: undefined, distributorUsername: "DB659745", distributorName:"Mahesh", issueDate: new Date('3-23-2020'), dueDate: new Date('4-12-2020'), finalAmount: 5000, status: "Done"},
-  { orderId: "3234", orders: undefined, distributorUsername: "DB896314", distributorName:"Ramesh", issueDate: new Date('3-13-2020'), dueDate: new Date('4-12-2020'), finalAmount: 2000, status: "Pending"},
-  { orderId: "4224", orders: undefined, distributorUsername: "DB102591", distributorName:"Rakesh", issueDate: new Date('2-16-2020'), dueDate: new Date('4-12-2020'), finalAmount: 9000, status: "Processing"},
-  { orderId: "5543", orders: undefined, distributorUsername: "DB400632", distributorName:"Nilesh", issueDate: new Date('1-8-2020'), dueDate: new Date('4-12-2020'), finalAmount: 300, status: "Pending"},
+  { orderId: "1324", subOrders: undefined, issueDate: new Date('2-12-2020'), deliveryDate: new Date('4-12-2020'), totalAmount: 4000, status: "Pending"},
+  { orderId: "2433", subOrders: undefined, issueDate: new Date('3-23-2020'), deliveryDate: new Date('4-12-2020'), totalAmount: 5000, status: "Done"},
+  { orderId: "3234", subOrders: undefined, issueDate: new Date('3-13-2020'), deliveryDate: new Date('4-12-2020'), totalAmount: 2000, status: "Pending"},
+  { orderId: "4224", subOrders: undefined, issueDate: new Date('2-16-2020'), deliveryDate: new Date('4-12-2020'), totalAmount: 9000, status: "Processing"},
+  { orderId: "5543", subOrders: undefined, issueDate: new Date('1-8-2020'), deliveryDate: new Date('4-12-2020'), totalAmount: 300, status: "Pending"},
 ];
 
 const ELEMENT_DATA2: DistributorSubOrder[] = [
@@ -333,4 +343,4 @@ const ELEMENT_DATA2: DistributorSubOrder[] = [
   { productId: "4865", productName: "Fever", unitPrice: 200, quantity: 4, totalAmount: 800, manufacturerUsername: "MF896412", manufacturerName:"Sehwag"},
   { productId: "1956", productName: "Cold", unitPrice: 300, quantity: 2, totalAmount: 600, manufacturerUsername: "MF489210", manufacturerName:"Virat"},
   { productId: "2020", productName: "Flu", unitPrice: 400, quantity: 6, totalAmount: 2400, manufacturerUsername: "MF023694", manufacturerName:"Dhoni"},
-];
+];*/

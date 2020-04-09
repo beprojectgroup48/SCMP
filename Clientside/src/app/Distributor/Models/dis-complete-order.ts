@@ -2,11 +2,11 @@ import { DistributorSubOrder } from './dis-sub-order';
 
 export class DistributorCompleteOrder {
     orderId: String;
-    orders: DistributorSubOrder[];
-    distributorUsername: String;
-    distributorName: String;
+    manufacturerUsername: String;
+    manufacturerName: String;
+    subOrders: DistributorSubOrder[];
     issueDate: Date;
-    dueDate: Date;
-    finalAmount: number;
+    deliveryDate: Date;
+    totalAmount: number;
     status: String;
   }

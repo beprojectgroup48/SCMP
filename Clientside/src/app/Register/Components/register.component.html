@@ -158,7 +158,7 @@
 </div>
 </div>
 </div>
-  <button  type="button" (click)="addUser(frm)" class="btn btn-success" value="Register" [disabled]="frm.invalid || verify!=1">Register</button>
+  <button routerLink="/login" type="button" (click)="addUser(frm)" class="btn btn-success" value="Register" [disabled]="frm.invalid || verify!=1">Register</button>
   <p style="margin-top: 5px;color: #6b706e;">Already have an account?</p>
   <a style="margin-left: -5px; display: inline;" routerLink="/login">Login</a>
 </form>
