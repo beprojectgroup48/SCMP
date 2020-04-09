@@ -19,10 +19,11 @@ export class DistributorService {
     return this.http.get('http://localhost:3000/distributor/distdashboard/'+ this.id).pipe(map(res => res.json()));
   }
   getManufacturers(){
-    return this.http.get('http://localhost:3000/distributor/allmanufacturers').pipe(map(res => res.json()));
+    return this.http.get('http://localhost:3000/distributor/allmanufacturers/'+this.id).pipe(map(res => res.json()));
   }
   getPharmacists(){
-   return  this.http.get('http://localhost:3000/distributor/allpharmacists').pipe(map(res => res.json()));
+    console.log('inide pharm serv')
+   return  this.http.get('http://localhost:3000/distributor/allpharmacists/'+this.id).pipe(map(res => res.json()));
   }
   placeOrder(order){
     const headers = new Headers();

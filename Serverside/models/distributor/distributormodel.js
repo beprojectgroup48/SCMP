@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-
-let manufacturer = require('../manufacturer/manufacturermodel');
-let pharmacist = require('../pharmacist/pharmacistmodel');
-let orders = require('./complete-order');
 let Schema = mongoose.Schema;
 const distributorSchema = mongoose.Schema({
   username:{
@@ -36,13 +32,13 @@ const distributorSchema = mongoose.Schema({
   manufacturers: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'manufacturer'
+      ref: 'manufacturers'
     }
   ],
   pharmacists: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'pharmacist'
+      ref: 'pharmacists'
     }
   ],
   orders: [{

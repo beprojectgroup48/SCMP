@@ -79,16 +79,16 @@ router.get('/allmanufacturers', (req, res)=>{
             res.json(listOfManufacturers);
         }
     })
-})
-router.get('/allpharmacists', (req, res)=>{
-    pharmacists.find((err, listOfPharmacists)=>{
+})*/
+router.get('/alldistributors/:id', (req, res)=>{
+    pharmacist.findById({_id: req.params.id}).populate("distributors").exec((err, alldistributors)=>{
         if(err){
-            console.log('error in retrieving pharmacists ' + JSON.stringify(err, undefined, 2)); 
+            console.log('error in retrieving outgoing orders ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json(listOfPharmacists);
+            res.json(alldistributors);
         }
     })
-})*/
+})
 router.get('/pharmdashboard/:id', (req, res, next)=>{
     const dashboard = pharmacist.findOne({_id: req.params.id}, (err, data)=>{
         if(err){
@@ -134,13 +134,13 @@ router.post('/placeOrder/:id', (req, res)=>{
     })
 })
 
-router.get('/allIncomingOrders', (req, res)=>{
+router.get('/allIncomingOrders/:id', (req, res)=>{
     
-    incomingOrders.find({}, {orderId:1, pharmacistName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfIncomingOrders)=>{
+    pharmacist.findById({_id: req.params.id}).populate("orders").exec((err, listOfOutgoingOrders)=>{
         if(err){
-            console.log('error in retrieving incoming orders ' + JSON.stringify(err, undefined, 2)); 
+            console.log('error in retrieving outgoing orders ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json(listOfIncomingOrders);
+            res.json(listOfOutgoingOrders);
         }
     })
 })

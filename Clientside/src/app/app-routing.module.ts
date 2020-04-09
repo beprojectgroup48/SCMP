@@ -5,6 +5,7 @@ import { ManufacturerNavigationComponent } from './Manufacturer/Components/Navig
 import { ManufacturerProfileComponent } from './Manufacturer/Components/Profile/manu-profile.component';
 import { ManufacturerChangePasswordComponent } from './Manufacturer/Components/Profile/Change Password/manu-change-password.component';
 import { ManufacturerUpdateProfileComponent } from './Manufacturer/Components/Profile/Update Profile/manu-update-profile.component';
+import { ManufacturerSubscribedDistributorsComponent } from './Manufacturer/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
 import { ManufacturerIncomingOrdersComponent } from './Manufacturer/Components/Incoming Orders/manu-incoming-orders.component';
 import { CreateProductComponent } from './Manufacturer/Components/Create Product/create-product.component';
 import { TransferOrderComponent } from './Manufacturer/Components/Transfer Order/transfer-order.component';
@@ -15,7 +16,7 @@ import { DistributorChangePasswordComponent } from './Distributor/Components/Pro
 import { DistributorOutgoingOrdersComponent } from './Distributor/Components/Outgoing Orders/dis-outgoing-orders.component';
 import { DistributorIncomingOrdersComponent } from './Distributor/Components/Incoming Orders/dis-incoming-orders.component';
 import { DistributorViewOrderComponent } from './Distributor/Components/Your Order/View Order/dis-view-order.component';
-import { SubscribedDistributorsComponent } from './Pharmacist/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
+import { PharmacistSubscribedDistributorsComponent } from './Pharmacist/Components/List of Distributors/Subscribed Distributor/subscribed-distributors.component';
 import { PharmacistViewOrderComponent } from './Pharmacist/Components/Your Order/View Order/pharm-view-order.component';
 import { PharmacistProfileComponent } from './Pharmacist/Components/Profile/pharm-profile.component';
 import { PharmacistChangePasswordComponent } from './Pharmacist/Components/Profile/Change Password/pharm-change-password.component';
@@ -68,7 +69,7 @@ const routes: Routes = [
         {path:'bookorder', component:PharmacistOrderComponent},
         {path:'profile', component:PharmacistProfileComponent},
         {path:'profile/edit', component:PharmacistChangePasswordComponent},
-        {path:'listofdistributors', component:SubscribedDistributorsComponent},
+        {path:'pharmlistofdistributors', component:PharmacistSubscribedDistributorsComponent},
         {path:'view-order',component:PharmacistViewOrderComponent},
         {path:'update-profile',component:PharmacistUpdateProfileComponent}
   ]},
@@ -80,7 +81,7 @@ const routes: Routes = [
      {path: 'profile', component:ManufacturerProfileComponent},
      {path: 'profile/edit', component:ManufacturerChangePasswordComponent},
      {path: 'update-profile', component:ManufacturerUpdateProfileComponent},
-     {path: 'listofdistributors',component: SubscribedDistributorsComponent},
+     {path: 'manulistofdistributors',component: ManufacturerSubscribedDistributorsComponent},
      {path: 'createproduct', component: CreateProductComponent},
      {path: 'transferorder', component: TransferOrderComponent}
    

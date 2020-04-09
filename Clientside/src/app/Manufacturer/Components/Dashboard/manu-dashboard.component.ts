@@ -23,10 +23,10 @@ export class ManufacturerDashboardComponent implements OnInit {
   PieChart=[];
   // PieChart2=[];
 
-  constructor(private router: Router,private distributorService: ManufacturerService) { }
+  constructor(private router: Router,private manufacturerService: ManufacturerService) { }
 
   getIncomingOrderList(){
-      this.distributorService.getIncomingOrders().subscribe(incomingOrderList =>{
+      this.manufacturerService.getIncomingOrders().subscribe(incomingOrderList =>{
       this.incomingOrderList = incomingOrderList;
       for(var i=0;i<this.incomingOrderList.length;i++)
     {
@@ -52,7 +52,8 @@ export class ManufacturerDashboardComponent implements OnInit {
 // }
 
   ngOnInit() {
-
+    var token = localStorage.getItem('token');
+    if(token != null){
     this.getIncomingOrderList();
     //this.getOutgoingOrderList();
     
@@ -101,8 +102,12 @@ options: {
 //    }
 //   }
 //   });
-  
+}else{
+   this.router.navigate(['/login']);
+   
 }
+}
+
     gotoIncoming(){
         this.router.navigate(['/manufacturer/dashboard/incoming-orders']);
     }

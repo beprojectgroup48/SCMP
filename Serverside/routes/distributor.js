@@ -70,25 +70,28 @@ router.get("/image/:filename", (req, res) => {
      }
     });
   });
-/*
-router.get('/allmanufacturers', (req, res)=>{
-    manufacturers.find((err, listOfManufacturers)=>{
+
+router.get('/allmanufacturers/:id', (req, res)=>{
+    distributor.findById({_id: req.params.id}).populate('manufacturers').exec((err, allmanufacturers)=>{
         if(err){
-            console.log('error in retrieving manufacturers ' + JSON.stringify(err, undefined, 2)); 
+          res.json({error: 'you have not subscribe to any manufacturers'});
+          //  console.log('error in retrieving manufacturers ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json(listOfManufacturers);
+           // console.log(manufacturer);
+           res.json({msg:'list of manufacturers',allmanufacturers});
         }
-    })
+    });
 })
-router.get('/allpharmacists', (req, res)=>{
-    pharmacists.find((err, listOfPharmacists)=>{
+router.get('/allpharmacists/:id', (req, res)=>{
+    distributor.findById({_id: req.params.id}).populate("pharmacists").exec((err, allpharmacists)=>{
         if(err){
-            console.log('error in retrieving pharmacists ' + JSON.stringify(err, undefined, 2)); 
+            //res.json({error: 'you have not accept to any pharmacists'});
+            console.log('error in retrieving pharmacists' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json(listOfPharmacists);
+            res.json({msg:'list of pharmacists',allpharmacists});
         }
-    })
-})*/
+    });
+})
 router.get('/distdashboard/:id', (req, res, next)=>{
     const dashboard = distributor.findOne({_id: req.params.id}, (err, data)=>{
         if(err){
@@ -133,14 +136,13 @@ router.post('/placeOrder/:id', (req, res)=>{
 })
 
 router.get('/allIncomingOrders/:id', (req, res)=>{
-    
-    incomingOrders.find({}, {orderId:1, pharmacistName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfIncomingOrders)=>{
+    distributor.findById({_id: req.params.id}).populate("orders").exec((err, listOfOutgoingOrders)=>{
         if(err){
-            console.log('error in retrieving incoming orders ' + JSON.stringify(err, undefined, 2)); 
+            console.log('error in retrieving outgoing orders ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json(listOfIncomingOrders);
+            res.json({msg:'list of orders',listOfOutgoingOrders});
         }
-    })
+    });
 })
 
 router.get('/allOutgoingOrders/:id', (req, res)=>{
