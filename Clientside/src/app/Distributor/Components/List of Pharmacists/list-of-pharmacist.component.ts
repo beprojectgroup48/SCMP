@@ -26,7 +26,9 @@ export class ListOfPharmacistComponent implements OnInit {
     this.getPharmacistList();
   }
   getPharmacistList(){
+    console.log('inside phar')
     this.distributorService.getPharmacists().subscribe(pharmacistList =>{
+      console.log('pharmacists' + pharmacistList)
       this.pharmacistList = pharmacistList;
       this.dataSource = new MatTableDataSource(this.pharmacistList);
       this.dataSource.paginator = this.paginator;

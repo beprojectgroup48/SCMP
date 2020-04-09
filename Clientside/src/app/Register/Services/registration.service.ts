@@ -19,7 +19,7 @@ export class RegistrationService {
     const headers = new Headers();
     headers.append('content-Type' , 'application/json');
 
-    return this.http.post('http://localhost:3000/register/manufacutrer', muser, {headers : headers}).pipe(map(res => res.json()));
+    return this.http.post('http://localhost:3000/register/manufacturer', muser, {headers : headers}).pipe(map(res => res.json()));
 
   }
   registerDistributor(duser){

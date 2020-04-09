@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');;
-
+const Schema = mongoose.Schema;
 const manufacturerSchema = mongoose.Schema({
     username:{
         type:String,
@@ -34,9 +34,16 @@ const manufacturerSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    licenceNumber: {
+    registrationId: {
         type: String,
         required: true
+    },
+    distributors: [{
+      type: Schema.Types.Object,
+      ref: 'distributor'
+    }],
+    image: {
+      type: String
     }
 },{
   collection: 'manufacturer'

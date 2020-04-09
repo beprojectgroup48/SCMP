@@ -51,6 +51,7 @@ export class SubscribedManufacturersComponent implements OnInit {
 
   getManufacturerList(){
     this.distributorService.getManufacturers().subscribe(manufacturerList =>{
+      console.log('manufacturers' + manufacturerList);
       this.manufacturerList = manufacturerList;
       this.dataSource = new MatTableDataSource(this.manufacturerList);
       this.dataSource.paginator = this.paginator;

@@ -52,7 +52,8 @@ export class ManufacturerDashboardComponent implements OnInit {
 // }
 
   ngOnInit() {
-
+    var token = localStorage.getItem('token');
+    if(token != null){
     this.getIncomingOrderList();
     //this.getOutgoingOrderList();
     
@@ -101,8 +102,12 @@ options: {
 //    }
 //   }
 //   });
-  
+}else{
+   this.router.navigate(['/login']);
+   
 }
+}
+
     gotoIncoming(){
         this.router.navigate(['/manufacturer/dashboard/incoming-orders']);
     }

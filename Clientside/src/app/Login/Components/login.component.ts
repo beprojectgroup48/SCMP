@@ -25,11 +25,16 @@ export class LoginComponent implements OnInit {
        if(data){
          console.log(data);
          if(user.username.substring(0,2) == "MF"){
-
+           console.log('inside MF');
+           localStorage.setItem('id', data.manufacturer.id);
+           localStorage.setItem('username', data.manufacturer.username);
+           localStorage.setItem('token', data.token);
+        
+          this.router.navigate(['/manufacturer']);
          }else if(user.username.substring(0,2) == "DB"){
-         localStorage.setItem('id', data.distributor.id);
-         localStorage.setItem('username', data.distributor.username);
-         localStorage.setItem('token', data.token);
+          localStorage.setItem('id', data.distributor.id);
+          localStorage.setItem('username', data.distributor.username);
+          localStorage.setItem('token', data.token);
          this.router.navigate(['/distributor']);
          }else if (user.username.substring(0,2) == "PH"){
         localStorage.setItem('id', data.pharmacist.id);
