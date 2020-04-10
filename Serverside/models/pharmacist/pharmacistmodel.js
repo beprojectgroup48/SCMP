@@ -36,7 +36,7 @@ const pharmacistSchema = mongoose.Schema({
     }],
     orders: [{
       type : Schema.Types.ObjectId,
-      ref : 'orders'
+      ref : 'ordersPharmacist'
       }
     ], 
     image: {

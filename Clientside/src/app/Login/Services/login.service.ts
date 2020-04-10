@@ -12,7 +12,7 @@ export class LoginService {
     const headers = new Headers();
     headers.append('content-Type' , 'application/json');
     if(user.username.substring(0,2) == "MF")
-      return this.http.post('http://localhost:3000/login/manufacutrer', user, {headers : headers}).pipe(map(res => res.json()));
+      return this.http.post('http://localhost:3000/login/manufacturer', user, {headers : headers}).pipe(map(res => res.json()));
     else if(user.username.substring(0,2) == "DB"){
       return this.http.post('http://localhost:3000/login/distributor', user, {headers : headers}).pipe(map(res => res.json()));
     }else if (user.username.substring(0,2) == "PH"){

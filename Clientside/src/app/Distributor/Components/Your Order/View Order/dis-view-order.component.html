@@ -91,7 +91,7 @@
         <thead class="thead-light">
           <th>#Order Id.</th>
           <th>Issue Date</th>
-          <th>Due Date</th>
+          <th>Delivery Date</th>
           <th>Final Amount</th>
           <th>Status</th>
           <th>
@@ -107,11 +107,11 @@
           <tr *ngFor="let item of commonArray;let i=index">
             <th>{{item.orderId}}</th>
             <td>{{item.issueDate.toDateString()}}</td>
-            <td>{{item.dueDate.toDateString()}}</td>
-            <td>{{item.finalAmount}}</td>
+            <td>{{item.deliveryDate.toDateString()}}</td>
+            <td>{{item.totalAmount}}</td>
             <td>{{item.status}}</td>
             <td>
-                <a class="btn btn-sm btn-success text-white" (click)="showProducts(item.orderId)"> Show Products</a>
+                <a class="btn btn-sm btn-success text-white" (click)="showProducts(i)"> Show Products</a>
                 <a class="btn text-danger" (click)="onDeleteOrder(i)"><i class="fa fa-trash fa-lg"></i></a>
             </td>
           </tr>

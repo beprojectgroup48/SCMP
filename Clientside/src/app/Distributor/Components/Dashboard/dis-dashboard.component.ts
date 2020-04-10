@@ -63,11 +63,22 @@ export class DistributorDashboardComponent implements OnInit {
     this.dataSource2 = new MatTableDataSource(this.outgoingOrderList);*/
   })
 }
-
+  getManufacturers(){
+    this.distributorService.getManufacturers().subscribe(data=>{
+      console.log(data);
+    })
+  }
+  getPharmacists(){
+    this.distributorService.getPharmacists().subscribe(data =>{
+      console.log(data);
+    })
+  }
   ngOnInit() {
     var token = localStorage.getItem('token');
     if( token !== null){
     this.getDashboard();
+    //this.getManufacturers();
+    //this.getPharmacists();
    // this.getIncomingOrderList();
     this.getOutgoingOrderList();
    this.PieChart = new Chart('pieChart', {

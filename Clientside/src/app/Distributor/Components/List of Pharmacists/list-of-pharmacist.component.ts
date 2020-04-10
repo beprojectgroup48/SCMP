@@ -26,10 +26,12 @@ export class ListOfPharmacistComponent implements OnInit {
     this.getPharmacistList();
   }
   getPharmacistList(){
+    console.log('inside phar')
     this.distributorService.getPharmacists().subscribe(pharmacistList =>{
-      this.pharmacistList = pharmacistList;
-      this.dataSource = new MatTableDataSource(this.pharmacistList);
-      this.dataSource.paginator = this.paginator;
+      console.log(pharmacistList)
+      //this.pharmacistList = pharmacistList;
+      //this.dataSource = new MatTableDataSource(this.pharmacistList);
+      //this.dataSource.paginator = this.paginator;
     })  
   }
 }

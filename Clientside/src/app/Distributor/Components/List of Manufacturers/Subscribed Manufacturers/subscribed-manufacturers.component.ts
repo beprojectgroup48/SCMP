@@ -46,18 +46,23 @@ export class SubscribedManufacturersComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.sendData = result.selected;
       console.log(result.selected);
+      this.distributorService.addSubscribedManufacturers(result.selected).subscribe(data=>{
+        console.log(data);
+      })
     });
   }
 
   getManufacturerList(){
     this.distributorService.getManufacturers().subscribe(manufacturerList =>{
-      this.manufacturerList = manufacturerList;
-      this.dataSource = new MatTableDataSource(this.manufacturerList);
-      this.dataSource.paginator = this.paginator;
+      console.log( manufacturerList);
+    //  this.manufacturerList = manufacturerList;
+    //  this.dataSource = new MatTableDataSource(this.manufacturerList);
+     // this.dataSource.paginator = this.paginator;
     })
   }
 
 }
+
 // this is the list of subscribed manufacturers by this distributor
 const ELEMENT_DATA: listOfManufacturer[] = [
   {username:"MF74563",email:"vipul321@scmp.com",name:"Vipul Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},

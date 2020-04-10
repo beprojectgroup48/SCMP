@@ -54,7 +54,7 @@ app.use('/register', registerroute);
 app.use('/login', loginroute);
 app.use('/distributor', distributorroute);
 app.use('/pharmacist',pharmacistroute);
-//app.use('/manufacturer', manufacturerroute);
+app.use('/manufacturer', manufacturerroute);
 
 const port = 3000;
 

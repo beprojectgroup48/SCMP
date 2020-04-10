@@ -17,7 +17,7 @@ export class PharmacistService {
     return this.http.get('http://localhost:3000/pharmacist/allOutgoingOrders/'+this.id).pipe(map(res => res.json()));
   }
   getDistributors(){
-    return  this.http.get('http://localhost:3000/pharmacist/alldistributors').pipe(map(res => res.json()));
+    return  this.http.get('http://localhost:3000/pharmacist/alldistributors/'+this.id).pipe(map(res => res.json()));
    }
    getPharmacistDashboard(){
     return this.http.get('http://localhost:3000/pharmacist/pharmdashboard/'+ this.id).pipe(map(res => res.json()));
@@ -28,7 +28,11 @@ export class PharmacistService {
     console.log(order);
     return this.http.post('http://localhost:3000/pharmacist/placeOrder/'+this.id, order, {headers : headers}).pipe(map(res => res.json()));
   }
-
+  deleteOrder(id){
+    const headers = new Headers();
+    headers.append('content-Type' , 'application/json');
+    return this.http.post('http://localhost:3000/pharmacist/deleteOrder/'+this.id, id, {headers : headers}).pipe(map(res => res.json()));
+  }
   uploadProfilePhoto(selectedFile){
     console.log(this.id);
     var formData: any = new FormData();

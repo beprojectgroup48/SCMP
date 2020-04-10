@@ -11,7 +11,7 @@ import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/m
   templateUrl: './subscribed-distributors.component.html',
   styleUrls: ['./subscribed-distributors.component.css']
 })
-export class SubscribedDistributorsComponent implements OnInit {
+export class PharmacistSubscribedDistributorsComponent implements OnInit {
   distributorList: Distributor[];
   displayedColumns: string[] = ['username', 'name', 'email', 'mobileNumber', 'location', 'licenceNumber'];
   dataSource: any;
@@ -51,6 +51,7 @@ export class SubscribedDistributorsComponent implements OnInit {
 
   getDistributorsList(){
       this.pharmacistService.getDistributors().subscribe(distributorList =>{
+      console.log(distributorList);
       this.distributorList = distributorList;
       this.dataSource = new MatTableDataSource(this.distributorList);
       this.dataSource.paginator = this.paginator;

@@ -45,6 +45,9 @@ module.exports.getOrdersFromPharmacists = function(username, callback){
 module.exports.placeOrder = function(order, callback){
     order.save(callback);
 }
+module.exports.deleteOrder = function(id, callback){
+    orders.findOneAndDelete({orderId:id}, callback);
+}
 
 /*module.exports.getAllManufacturers = function(callback){
     manufacturers.find((err, listOfManufacturers)=>{

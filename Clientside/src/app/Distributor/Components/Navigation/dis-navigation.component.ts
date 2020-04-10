@@ -12,10 +12,10 @@ import { MatDialog } from '@angular/material';
 })
 export class DistributorNavigationComponent  {
   
-  constructor(
-    private router:Router,
-    public dialog:MatDialog
-    ) { }
+  constructor(private router:Router,public dialog:MatDialog) {}
+
+  notis: String[] = ["A new order has been placed 1","A new order has been placed 2","A new order has been placed 3"]
+
   goToProfile(){ 
     this.router.navigate(['/distributor/profile']);
   }

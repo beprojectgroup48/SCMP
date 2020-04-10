@@ -13,6 +13,7 @@ var sendMail = require('../sendEmail');
 
 
 router.post('/manufacturer', (req, res )=>{
+    console.log('inside manufacturer');
     let manufacturer = new Manufacturer ({
         email: req.body.email,
         username: req.body.username,
@@ -21,7 +22,6 @@ router.post('/manufacturer', (req, res )=>{
         mobileNumber:req.body.mobileNumber,
         transportAgency:req.body.transportAgency,
         modeOfTransport:req.body.modeOfTransport,
-        formType: req.body.formType,
         location:req.body.location,
         registrationId:req.body.registrationId
     });

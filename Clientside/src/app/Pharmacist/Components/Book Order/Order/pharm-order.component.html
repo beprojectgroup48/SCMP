@@ -22,7 +22,7 @@ min-height: 90%;">
       <div class="form-group">
           <label>Issue Date</label>
           <mat-form-field class="input-group" style="font-size: 16px;margin-top: -18px">
-            <input style="color:rgb(90, 90, 90)" name="dueDate" [value]="date.value" disabled [min]="currentCompleteOrder.issueDate" matInput [matDatepicker]="picker1">
+            <input style="color:rgb(90, 90, 90)" name="issueDate" [value]="date.value" disabled [min]="currentCompleteOrder.issueDate" matInput [matDatepicker]="picker1">
             <mat-datepicker-toggle [disabled]="true" matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker [disabled]="true"></mat-datepicker>
         </mat-form-field>
@@ -44,13 +44,13 @@ min-height: 90%;">
           <div class="input-group-prepend">
             <div class="input-group-text">&#8377;</div>
           </div>
-          <input name="GTotal" class="form-control" [(ngModel)]="currentCompleteOrder.finalAmount" readonly>
+          <input name="GTotal" class="form-control" [(ngModel)]="currentCompleteOrder.totalAmount" readonly>
         </div>
       </div>
       <div class="form-group">
-          <label>Due Date</label>
+          <label>Delivery Date</label>
           <mat-form-field class="input-group" style="font-size: 16px;margin-top: -18px">
-              <input [min]="currentCompleteOrder.issueDate" matInput [matDatepicker]="picker" name="dueDate" #dueDate="ngModel" [(ngModel)]="currentCompleteOrder.dueDate">
+              <input [min]="currentCompleteOrder.issueDate" matInput [matDatepicker]="picker" name="deliveryDate" #deliveryDate="ngModel" [(ngModel)]="currentCompleteOrder.deliveryDate">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
@@ -86,7 +86,7 @@ min-height: 90%;">
         </td>
       </tr>
 
-      <tr *ngFor="let order of currentCompleteOrder.orders;let i=index;">
+      <tr *ngFor="let order of currentCompleteOrder.subOrders;let i=index;">
         <td>{{order.productName}}</td>
         <td>{{order.manufacturerName}}</td>
         <td>{{order.unitPrice}}</td>
@@ -100,7 +100,7 @@ min-height: 90%;">
     </tbody>
   </table>
   <div class="form-group">
-    <button type="submit" class="btn btn-dark" [disabled]="currentCompleteOrder.distributorUsername==0 || manufacturerUsername1==0 || form.invalid || count==0 || currentCompleteOrder.dueDate==invalid"><i class="fa fa-database"></i> Submit</button>
+    <button type="submit" class="btn btn-dark" [disabled]="currentCompleteOrder.distributorUsername==0 || manufacturerUsername1==0 || form.invalid || count==0 || currentCompleteOrder.deliveryDate==invalid"><i class="fa fa-database"></i> Submit</button>
   </div>
 </form>
 </div>

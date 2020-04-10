@@ -19,16 +19,42 @@ export class DistributorService {
     return this.http.get('http://localhost:3000/distributor/distdashboard/'+ this.id).pipe(map(res => res.json()));
   }
   getManufacturers(){
-    return this.http.get('http://localhost:3000/distributor/allmanufacturers').pipe(map(res => res.json()));
+    return this.http.get('http://localhost:3000/distributor/allmanufacturers/'+this.id).pipe(map(res => res.json()));
   }
   getPharmacists(){
-   return  this.http.get('http://localhost:3000/distributor/allpharmacists').pipe(map(res => res.json()));
+    console.log('inide pharm serv')
+   return  this.http.get('http://localhost:3000/distributor/allpharmacists/'+this.id).pipe(map(res => res.json()));
+  }
+  addSubscribedManufacturers(subscribedManufacturers: any){
+    const headers = new Headers();
+     headers.append('content-Type' , 'application/json');
+      return this.http.post('http://localhost:3000/distributor/addSubscribedManufacturers/'+this.id, subscribedManufacturers, {headers: headers}).pipe(map(res=>res.json()));
+  }
+  addSubscribedPharmacists(subscribedPharmacists: any){
+    const headers = new Headers();
+     headers.append('content-Type' , 'application/json');
+      return this.http.post('http://localhost:3000/distributor/addSubscribedManufacturers/'+this.id, subscribedPharmacists, {headers: headers}).pipe(map(res=>res.json()));
+  }
+  removeSubscribedManufacturers(username: any){
+    const headers = new Headers();
+     headers.append('content-Type' , 'application/json');
+      return this.http.post('http://localhost:3000/distributor/addSubscribedManufacturers/'+this.id, username, {headers: headers}).pipe(map(res=>res.json()));
+  }
+  removeSubscribedPharmacists(username: any){
+    const headers = new Headers();
+     headers.append('content-Type' , 'application/json');
+      return this.http.post('http://localhost:3000/distributor/addSubscribedManufacturers/'+this.id, username, {headers: headers}).pipe(map(res=>res.json()));
   }
   placeOrder(order){
     const headers = new Headers();
     headers.append('content-Type' , 'application/json');
-    console.log(order);
+    console.log("Place Order"+order);
     return this.http.post('http://localhost:3000/distributor/placeOrder/'+this.id, order, {headers : headers}).pipe(map(res => res.json()));
+  }
+  deleteOrder(id){
+    const headers = new Headers();
+    headers.append('content-Type' , 'application/json');
+    return this.http.post('http://localhost:3000/distributor/deleteOrder/'+this.id, id, {headers : headers}).pipe(map(res => res.json()));
   }
   uploadProfilePhoto(selectedFile){
     var formData: any = new FormData();

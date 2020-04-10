@@ -6,8 +6,8 @@ let crypto = require('crypto');
 var path = require('path');
 const config = require('../config/database');
 var router = express.Router();
-var completeOrder = require('../models/distributor/complete-order');
-var subOrder = require('../models/distributor/sub-order');
+var completeOrder = require('../models/pharmacist/complete-order');
+var subOrder = require('../models/pharmacist/sub-order');
 const manufacturers = require('../models/manufacturer/manufacturermodel');
 const pharmacist = require('../models/pharmacist/pharmacistmodel');
 const incomingOrders = require('../models/distributor/incoming-order');
@@ -79,16 +79,16 @@ router.get('/allmanufacturers', (req, res)=>{
             res.json(listOfManufacturers);
         }
     })
-})
-router.get('/allpharmacists', (req, res)=>{
-    pharmacists.find((err, listOfPharmacists)=>{
+})*/
+router.get('/alldistributors/:id', (req, res)=>{
+    pharmacist.findById({_id: req.params.id}).populate("distributors").exec((err, alldistributors)=>{
         if(err){
-            console.log('error in retrieving pharmacists ' + JSON.stringify(err, undefined, 2)); 
+            console.log('error in retrieving outgoing orders ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json(listOfPharmacists);
+            res.json(alldistributors);
         }
     })
-})*/
+})
 router.get('/pharmdashboard/:id', (req, res, next)=>{
     const dashboard = pharmacist.findOne({_id: req.params.id}, (err, data)=>{
         if(err){
@@ -108,13 +108,13 @@ router.post('/placeOrder/:id', (req, res)=>{
       /*  productName:req.body.productName,
         quantity: req.body.quantity,
         unitamount: req.body.unitamount,
-       */manufacturerName:req.body.manufacturerName,
-        subOrders: req.body.orders,
+       */distributorName:req.body.distributorName,
+        subOrders: req.body.subOrders,
         issueDate: req.body.issueDate,
-        deliveryDate: req.body.dueDate,
-        totalAmount:req.body.finalAmount,
+        deliveryDate: req.body.deliveryDate,
+        totalAmount:req.body.totalAmount,
         status: req.body.status,
-        manufacturerUsername: req.body.manufacturerUsername
+        distributorUsername: req.body.distributorUsername
     });
     
     completeOrder.placeOrder(order, (err, confirmOrder)=>{
@@ -133,14 +133,29 @@ router.post('/placeOrder/:id', (req, res)=>{
         }
     })
 })
-
-router.get('/allIncomingOrders', (req, res)=>{
-    
-    incomingOrders.find({}, {orderId:1, pharmacistName:1, issueDate:1, deliveryDate:1, totalAmount:1, status:1}, (err, listOfIncomingOrders)=>{
+router.post('/deleteOrder/:id', (req, res)=>{
+    console.log(req.body.orderId);
+    /* completeOrder.deleteOrder(req.body.orderId, (err, deletedOrder)=>{
         if(err){
-            console.log('error in retrieving incoming orders ' + JSON.stringify(err, undefined, 2)); 
+            console.log('error '+ JSON.stringify(err));
         }else{
-            res.json(listOfIncomingOrders);
+            distributor.findByIdAndUpdate({_id: req.params.id }, {$pull:{orders: deletedOrder._id}}, (err, result)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                }
+            })
+        }
+    })*/
+})
+router.get('/allIncomingOrders/:id', (req, res)=>{
+    
+    pharmacist.findById({_id: req.params.id}).populate("orders").exec((err, listOfOutgoingOrders)=>{
+        if(err){
+            console.log('error in retrieving outgoing orders ' + JSON.stringify(err, undefined, 2)); 
+        }else{
+            res.json(listOfOutgoingOrders);
         }
     })
 })
@@ -151,7 +166,8 @@ router.get('/allOutgoingOrders/:id', (req, res)=>{
         if(err){
             console.log('error in retrieving outgoing orders ' + JSON.stringify(err, undefined, 2)); 
         }else{
-            res.json(listOfOutgoingOrders);
+            console.log('returning message');
+            res.json({msg:'list of orders',listOfOutgoingOrders});
         }
     })
 })

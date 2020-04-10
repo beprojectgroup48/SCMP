@@ -18,12 +18,22 @@ export class ManufacturerProfileComponent {
 
   url ='';
   imgsrc="/assets/avatar.svg";
-
-  uploadFile(event){
-    const file = event.srcElement.files[0]; 
-    this.imgsrc = window.URL.createObjectURL(file);
+  onSelectFile(event)
+  {
+    
+    const file = (event.target as HTMLInputElement).files[0];
+    this.pharmacistService.uploadProfilePhoto(file).subscribe(data =>{
+      var filename = data.filename;   
+      this.setProfilePhoto(filename);
+    })
+    
   }
-  
+  setProfilePhoto(filename:any){
+    this.pharmacistService.getProfilePhoto(filename).subscribe(blob=>{
+      this.imgsrc = window.URL.createObjectURL(blob);       
+      // this.imgsrc = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+    })
+  }
   currentData: ManufacturerProfile={
   username: 'MF123456',
   name: 'Ashish Chintakindi',
