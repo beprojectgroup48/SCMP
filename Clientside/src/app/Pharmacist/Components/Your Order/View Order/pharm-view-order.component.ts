@@ -53,7 +53,7 @@ export class PharmacistViewOrderComponent implements OnInit {
       for(var i=0;i<this.orderList.length;i++)
       {
         this.orderList[i].issueDate = new Date(this.orderList[i].issueDate);
-        this.orderList[i].deliveryDate = new Date(this.orderList[i].deliverDate);
+        this.orderList[i].deliveryDate = new Date(this.orderList[i].deliveryDate);
       }
       for(let i=0;i<this.orderList.length;i++){
         this.PriceFilterdOrderList.push(this.orderList[i]);
@@ -301,7 +301,7 @@ export class PharmacistViewOrderComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.width = "50%";
     //dialogConfig.maxHeight = "50%";
-    dialogConfig.data = this.commonArray[i].orders;
+    dialogConfig.data = this.commonArray[i].subOrders;
     this.dialog.open(PharmacistShowProductsComponent, dialogConfig);
   }
 

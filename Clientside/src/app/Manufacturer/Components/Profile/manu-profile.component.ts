@@ -5,7 +5,7 @@ import { ManufacturerUpdateProfileComponent } from './Update Profile/manu-update
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { ManufacturerProfile } from '../../Models/manu-profile';
-
+import { ManufacturerService } from '../../Services/manufacturer.service';
 
 @Component({
   selector: 'app-manu-profile',
@@ -14,7 +14,13 @@ import { ManufacturerProfile } from '../../Models/manu-profile';
 })
 export class ManufacturerProfileComponent {
  
-  public constructor(public _d:DomSanitizer,private router:Router,public dialog:MatDialog) {}
+  public constructor(
+    
+    private router:Router,
+    private manufacturerService: ManufacturerService,
+    public dialog:MatDialog,
+    public _d:DomSanitizer,
+    ) {}
 
   url ='';
   imgsrc="/assets/avatar.svg";
@@ -22,14 +28,14 @@ export class ManufacturerProfileComponent {
   {
     
     const file = (event.target as HTMLInputElement).files[0];
-    this.pharmacistService.uploadProfilePhoto(file).subscribe(data =>{
+    this.manufacturerService.uploadProfilePhoto(file).subscribe(data =>{
       var filename = data.filename;   
       this.setProfilePhoto(filename);
     })
     
   }
   setProfilePhoto(filename:any){
-    this.pharmacistService.getProfilePhoto(filename).subscribe(blob=>{
+    this.manufacturerService.getProfilePhoto(filename).subscribe(blob=>{
       this.imgsrc = window.URL.createObjectURL(blob);       
       // this.imgsrc = this.sanitizer.bypassSecurityTrustUrl(objectURL);
     })
