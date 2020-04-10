@@ -58,7 +58,7 @@ export class AddManufacturerComponent implements OnInit {
 const ELEMENT_DATA: listOfManufacturer[] = [
   {username:"MF12345",email:"ashok321@scmp.com",name:"Ashok Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
   {username:"MF74563",email:"vipul321@scmp.com",name:"Vipul Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
-  {username:"MF56932",email:"kishor321@scmp.com",name:"Kishor Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
+  {username:"MF56381",email:"kishor321@scmp.com",name:"Kishor Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
   {username:"MF87459",email:"kartik321@scmp.com",name:"kartik Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
   {username:"MF36415",email:"viraj321@scmp.com",name:"Viraj Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},
   {username:"MF78965",email:"mahesh321@scmp.com",name:"Mahesh Industries",mobileNumber:8695412563,location:"Pune",licenceNumber:45632},

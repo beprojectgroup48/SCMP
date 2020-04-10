@@ -46,6 +46,9 @@ export class SubscribedManufacturersComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.sendData = result.selected;
       console.log(result.selected);
+      this.distributorService.addSubscribedManufacturers(result.selected).subscribe(data=>{
+        console.log(data);
+      })
     });
   }
 

@@ -133,7 +133,22 @@ router.post('/placeOrder/:id', (req, res)=>{
         }
     })
 })
-
+router.post('/deleteOrder/:id', (req, res)=>{
+    console.log(req.body.orderId);
+    /* completeOrder.deleteOrder(req.body.orderId, (err, deletedOrder)=>{
+        if(err){
+            console.log('error '+ JSON.stringify(err));
+        }else{
+            distributor.findByIdAndUpdate({_id: req.params.id }, {$pull:{orders: deletedOrder._id}}, (err, result)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                }
+            })
+        }
+    })*/
+})
 router.get('/allIncomingOrders/:id', (req, res)=>{
     
     pharmacist.findById({_id: req.params.id}).populate("orders").exec((err, listOfOutgoingOrders)=>{

@@ -302,12 +302,13 @@ export class DistributorViewOrderComponent implements OnInit {
     dialogConfig.data = this.commonArray[i].subOrders;
     this.dialog.open(DistributorShowProductsComponent, dialogConfig);
   }
-
-  onDeleteOrder(i: number) {
+  
+  onDeleteOrder(i) {
+   var id = this.orderList[i].orderId;
     if (confirm('Are you sure to delete this record?')) {
-      //this.service.deleteOrder(id).then(res => {
+      this.distributorService.deleteOrder({orderId:id}).subscribe(res => {
         //this.refreshList();
-      //});
+      });
       var index = this.PriceFilterdOrderList.findIndex(e1 => e1.orderId === this.commonArray[i].orderId);
       if(index != -1)
         this.PriceFilterdOrderList.splice(index, 1);
