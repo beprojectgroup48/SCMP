@@ -17,7 +17,7 @@ export class PharmacistService {
     return this.http.get('http://localhost:3000/pharmacist/allOutgoingOrders/'+this.id).pipe(map(res => res.json()));
   }
   getDistributors(){
-    return  this.http.get('http://localhost:3000/pharmacist/alldistributors').pipe(map(res => res.json()));
+    return  this.http.get('http://localhost:3000/pharmacist/alldistributors/'+this.id).pipe(map(res => res.json()));
    }
    getPharmacistDashboard(){
     return this.http.get('http://localhost:3000/pharmacist/pharmdashboard/'+ this.id).pipe(map(res => res.json()));

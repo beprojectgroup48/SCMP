@@ -32,4 +32,4 @@ const pharmacistSubOrderSchema = mongoose.Schema({
     }
     
 });
-const pharmacistSubOrderSchema = module.exports = mongoose.model('pharmacistSubOrderSchema', pharmacistSubOrderSchema);
+const pharmacistSubOrders = module.exports = mongoose.model('pharmacistSubOrders', pharmacistSubOrderSchema);

@@ -147,10 +147,11 @@ router.get('/allIncomingOrders/:id', (req, res)=>{
 
 router.get('/allOutgoingOrders/:id', (req, res)=>{
     console.log('inside all orders');
-    pharmacist.findById({_id: req.params.id}).populate("ordersPharmacist").exec((err, listOfOutgoingOrders)=>{
+    pharmacist.findById({_id: req.params.id}).populate("orders").exec((err, listOfOutgoingOrders)=>{
         if(err){
             console.log('error in retrieving outgoing orders ' + JSON.stringify(err, undefined, 2)); 
         }else{
+            console.log('returning message');
             res.json({msg:'list of orders',listOfOutgoingOrders});
         }
     })

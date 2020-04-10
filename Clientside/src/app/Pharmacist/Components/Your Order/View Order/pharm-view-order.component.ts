@@ -46,14 +46,14 @@ export class PharmacistViewOrderComponent implements OnInit {
 
   getOrders() {
     this.pharmacistService.getOutgoingOrders().subscribe(data=>{
-      console.log("Ashish"+data.listOfOutgoingOrders);
+      console.log(data.listOfOutgoingOrders);
       if(data.listOfOutgoingOrders == undefined)
         return;
       this.orderList = data.listOfOutgoingOrders.orders;
       for(var i=0;i<this.orderList.length;i++)
       {
         this.orderList[i].issueDate = new Date(this.orderList[i].issueDate);
-        this.orderList[i].deliveryDate = new Date(this.orderList[i].deliveryDate);
+        this.orderList[i].deliveryDate = new Date(this.orderList[i].deliverDate);
       }
       for(let i=0;i<this.orderList.length;i++){
         this.PriceFilterdOrderList.push(this.orderList[i]);
@@ -301,7 +301,7 @@ export class PharmacistViewOrderComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.width = "50%";
     //dialogConfig.maxHeight = "50%";
-    dialogConfig.data = this.commonArray[i].subOrders;
+    dialogConfig.data = this.commonArray[i].orders;
     this.dialog.open(PharmacistShowProductsComponent, dialogConfig);
   }
 
