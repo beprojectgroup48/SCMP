@@ -16,12 +16,19 @@ export class TransferOrderComponent implements OnInit {
 
   isValid: boolean= false;
   isValidOrder: boolean= false;
+  validLabel: boolean= false;
+  
   onGetOrderDetails(){
     this.isValid= true;
   }
 
+
   onShowProducts(){
     this.isValidOrder= true;
+  }
+
+  showLabel(){
+    this.validLabel= true;
   }
   ngOnInit() {
   }

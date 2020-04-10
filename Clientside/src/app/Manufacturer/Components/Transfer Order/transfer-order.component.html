@@ -43,12 +43,12 @@
             <tr>
               <td>
                 <label>Issue Date:</label>
-                <label class="labelvalue">10 March 2020</label>
+                <label class="labelvalue">09/04/2020</label>
               </td>
               
                 <td>
                   <label>Due Date:</label>
-                  <label class="labelvalue">25 March 2020</label>
+                  <label class="labelvalue">10/04/2020</label>
                 </td>
               
             
@@ -57,7 +57,7 @@
             <tr>
               <td>
                 <label>Total Amount:</label>
-                <label class="labelvalue">4000</label>
+                <label class="labelvalue">100</label>
               </td>
             </tr>
           </table> 
@@ -87,7 +87,7 @@
         
       </thead>
       <tbody>
-        <tr *ngFor="let product of data1;let i=index">
+        <!-- <tr *ngFor="let product of data1;let i=index">
           <td>{{i+1}}</td>
           <td>{{product.productName}}</td>
           <td>{{product.unitPrice}}</td>
@@ -96,8 +96,23 @@
           <td>
             <a class="btn btn-sm btn-success text-white" > Transfer Product</a>
           </td>
+        </tr> -->
+
+
+        <tr>
+          <td>1</td>
+          <td>Crosin</td>
+          <td>10</td>
+          <td>10</td>
+          <td>100</td>
+          <td>
+            <a class="btn btn-sm btn-success text-white" (click)="showLabel()"> Transfer Product</a>
+          </td>
         </tr>
+      
+
       </tbody>
     </table>
+    <label *ngIf="validLabel"> Order Transfered Successfully</label>
   </mat-card-content>
 </mat-card>
