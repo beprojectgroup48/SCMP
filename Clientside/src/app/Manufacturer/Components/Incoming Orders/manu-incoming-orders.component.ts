@@ -1,4 +1,4 @@
-import { IncomingOrders } from '../../Models/incoming-orders';
+import { ManufacturerIncomingOrders } from '../../Models/manu-incoming-orders';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { ManufacturerService } from '../../Services/manufacturer.service';
@@ -9,7 +9,7 @@ import { ManufacturerService } from '../../Services/manufacturer.service';
   styleUrls: ['./manu-incoming-orders.component.css']
 })
 export class ManufacturerIncomingOrdersComponent implements OnInit {
-  incomingOrderList: IncomingOrders[];
+  incomingOrderList: ManufacturerIncomingOrders[];
   displayedColumns: string[] = ['orderId', 'pharmacistName', 'issueDate', 'deliveryDate','totalAmount','status'];
   dataSource: any;
 
@@ -35,7 +35,7 @@ export class ManufacturerIncomingOrdersComponent implements OnInit {
   }
 }
 
-const ELEMENT_DATA: IncomingOrders[] = [
+const ELEMENT_DATA: ManufacturerIncomingOrders[] = [
   { orderId: '1', pharmacistName: 'Avinash', issueDate: new Date('3-10-2020') , deliveryDate: new Date('3-15-2020'), totalAmount: 100000, status: 'Pending'},
   { orderId: '2', pharmacistName: 'Puru', issueDate: new Date('5-2-2020') , deliveryDate: new Date('5-14-2020'), totalAmount: 200000, status: 'Done'},
   { orderId: '3', pharmacistName: 'Rohan', issueDate: new Date('7-21-2020') , deliveryDate: new Date('7-29-2020'), totalAmount: 100000, status: 'Pending'},

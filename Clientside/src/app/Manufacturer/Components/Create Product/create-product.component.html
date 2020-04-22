@@ -3,75 +3,53 @@
   Create Product
 </div>
 <mat-card-content>
- 
- <p>
-   <mat-form-field>
-    <mat-label>Product ID:</mat-label>
-    <input type="number" placeholder="Enter Product ID" matInput>
-   </mat-form-field>
-  </p>
-
-  <p>
-    <mat-form-field>
-     <mat-label>Product Name:</mat-label>
-     <input type="text" placeholder="Enter Product Name" matInput>
-    </mat-form-field>
-   </p>
-
-   <p>
-    <mat-form-field>
-     <mat-label>Select Type</mat-label>
-     <mat-select>
-       <mat-option value="options">Ayurvedic</mat-option>
-       <mat-option value="options">Allopathic</mat-option>
-       <mat-option value="options">Homeopathic</mat-option>
-
-     </mat-select>
-     
-    </mat-form-field>
-   </p>
-
-   <p>
-    <mat-form-field style="align-items: center;">
-     <mat-label>Batch No:</mat-label>
-     <input type="number" placeholder="Enter Batch No." matInput>
-    </mat-form-field>
-   </p>
-
-   <p>
-    <mat-form-field>
-     <mat-label>Color:</mat-label>
-     <input type="text" placeholder="Enter Color" matInput>
-    </mat-form-field>
-   </p>
- 
-   <p>
-    <mat-form-field>
-     <mat-label>Mfg Date:</mat-label>
-     <input type="date" placeholder="Enter Mfg Date" matInput>
-    </mat-form-field>
-   </p>
-
-   <p>
-    <mat-form-field>
-     <mat-label>Expiry Date:</mat-label>
-     <input type="date" placeholder="Enter Expiry Date" matInput>
-    </mat-form-field>
-   </p>
- 
-   <p>
-    <mat-form-field>
-     <mat-label>Unit Price:</mat-label>
-     <input type="number" placeholder="Enter Unit Price" matInput>
-    </mat-form-field>
-   </p>
-
-   
- 
-</mat-card-content>  
-<mat-card-actions>
-  <button class="primary" >Create Product</button>
-  
-</mat-card-actions>
-
+  <form #form="ngForm">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+        <label>Product ID:</label>
+        <input type="number" name="productId" class="form-control">
+    </div>
+    <div class="form-group col-md-6">
+            <label>Product Name:</label>
+            <input type="text" name="productName" class="form-control" >
+        </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+        <label>Select Type</label><br>
+        <select class="selected">
+          <option value="options">Choose Type</option>
+          <option value="options">Ayurvedic</option>
+          <option value="options">Allopathic</option>
+          <option value="options">Homeopathic</option>
+        </select>
+      </div>
+    <div class="form-group col-md-6">
+        <label>Color</label>
+        <input type="text" name="color" class="form-control" >
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+        <label>Mfg Date:</label>
+        <input type="date" name="mfgDate" class="form-control" required>
+    </div>
+    <div class="form-group col-md-6">
+        <label>Expiary Date:</label>
+        <input type="date" name="expDate"  class="form-control" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+        <label>Batch No.:</label>
+        <input type="number" name="batch"  class="form-control" required>
+    </div>
+    <div class="form-group col-md-6">
+        <label>Unit Price:</label>
+        <input type="number" name="unitPrice"  class="form-control" required>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-dark" ><i class="fa fa-edit"></i> Create Product</button>
+</form>
+</mat-card-content>
 </mat-card>

@@ -1,4 +1,4 @@
-export class IncomingOrders {
+export class ManufacturerIncomingOrders {
   orderId: String;
   pharmacistName: String;
   issueDate: Date;
